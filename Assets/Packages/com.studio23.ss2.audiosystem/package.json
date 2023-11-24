@@ -1,0 +1,34 @@
+{
+  "name": "com.studio23.ss2.audiosystem",
+  "version": "0.1",
+  "displayName": "audiosystem",
+  "description": "This is a system for audio using FMOD.",
+  "unity": "2022.3",
+  "unityRelease": "10f1",
+  "documentationUrl": "https://openupm.com/packages/com.studio23.ss2.audiosystem",
+  "changelogUrl": "https://openupm.com/packages/com.studio23.ss2.audiosystem",
+  "licensesUrl": "https://api.github.com/licenses/mit",
+  "scopedRegistries": [
+    {
+      "name": "Studio 23",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.studio23.ss2.audiosystem"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
+  },
+  "keywords": [
+    "audiosystem",
+    "audio",
+    "FMOD",
+    "audio system"
+  ],
+  "author": {
+    "name": "DefaultCompany",
+    "email": "contact@studio-23.xyz",
+    "url": "https://studio-23.xyz"
+  }
+}
