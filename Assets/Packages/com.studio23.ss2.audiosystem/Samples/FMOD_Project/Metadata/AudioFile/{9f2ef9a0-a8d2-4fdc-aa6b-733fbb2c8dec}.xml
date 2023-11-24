@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9f2ef9a0-a8d2-4fdc-aa6b-733fbb2c8dec}">
+		<property name="assetPath">
+			<value>Green Notification (Money sound).mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.2559999999999998</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e96cf9b7-e7e3-4d3c-871c-11dd5511c014}</destination>
+		</relationship>
+	</object>
+</objects>
