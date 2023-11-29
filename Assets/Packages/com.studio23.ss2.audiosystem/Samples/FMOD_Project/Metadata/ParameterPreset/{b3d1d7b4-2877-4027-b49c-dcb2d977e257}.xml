@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{b3d1d7b4-2877-4027-b49c-dcb2d977e257}">
+		<property name="name">
+			<value>DanceType</value>
+		</property>
+		<relationship name="folder">
+			<destination>{96f30c7a-51f2-4d31-8ff4-e46f25ec803e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{062ff45f-f4e6-4cb4-9a14-bea59a0f3a9d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{062ff45f-f4e6-4cb4-9a14-bea59a0f3a9d}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

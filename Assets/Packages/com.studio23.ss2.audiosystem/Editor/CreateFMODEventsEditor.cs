@@ -5,12 +5,14 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using FMOD.Studio;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 
 namespace Studio23.SS2.AudioSystem.Editor
 {
     public class CreateFMODEventsEditor : EditorWindow
     {
-        static Dictionary<string,List<string>> _eventList = new Dictionary<string,List<string>>();
+        static Dictionary<string, List<string>> _eventList = new Dictionary<string, List<string>>();
+        static Dictionary<string, List<string>> _parameterList = new Dictionary<string, List<string>>();
         private static string _className = "FMODEventTable";
         private static string _folderPath = "Assets/Resources/FMOD_BankEvents";
         private static string _nameSpace = "Studio23.SS2.AudioSystem.Data";
@@ -30,17 +32,31 @@ namespace Studio23.SS2.AudioSystem.Editor
                     }
                     else
                     {
-                        List<string> valuesForKey1 = new List<string> {e.Path};
+                        List<string> valuesForKey1 = new List<string> { e.Path };
                         _eventList.Add(b.Name, valuesForKey1);
                     }
+                }
 
+                foreach (var p in e.Parameters)
+                {
+                    if (_parameterList.ContainsKey(e.Path))
+                    {
+                        List<string> valuesForKey1 = _parameterList[e.Path];
+                        valuesForKey1.Add(p.name);
+                    }
+                    else
+                    {
+                        List<string> valuesForKey1 = new List<string> { p.name };
+                        _parameterList.Add(e.Path, valuesForKey1);
+                    }
                 }
             }
 
-            GenerateStringProperties();
+            GenerateEventList();
+            GenerateParameterList();
         }
 
-        private static void GenerateStringProperties()
+        private static void GenerateEventList()
         {
             for (int i = 0; i < _eventList.Count; i++)
             {
@@ -48,7 +64,7 @@ namespace Studio23.SS2.AudioSystem.Editor
 
                 scriptContent += $"\tpublic static class {_eventList.ElementAt(i).Key}\n\t{{\n";
 
-                foreach(var value in _eventList.ElementAt(i).Value)
+                foreach (var value in _eventList.ElementAt(i).Value)
                 {
                     var eventName = value.Replace("event:/", "");
                     scriptContent += $"\t\tpublic static readonly string {eventName} = \"{value}\";\n";
@@ -62,6 +78,7 @@ namespace Studio23.SS2.AudioSystem.Editor
                 {
                     Directory.CreateDirectory(_folderPath);
                 }
+
                 string scriptPath = Path.Combine(_folderPath, $"{_eventList.ElementAt(i).Key}.cs");
                 if (File.Exists(scriptPath))
                 {
@@ -71,6 +88,50 @@ namespace Studio23.SS2.AudioSystem.Editor
                 File.WriteAllText(scriptPath, scriptContent);
                 AssetDatabase.Refresh();
             }
+        }
+
+        private static void GenerateParameterList()
+        {
+            /*for (int i = 0; i < _parameterList.Count; i++)
+            {
+                foreach (var p in _parameterList.ElementAt(i).Value)
+                {
+                    Debug.Log(p);
+                }
+            }*/
+
+            string scriptContent = $"namespace {_nameSpace}\n{{\n";
+
+            for (int i = 0; i < _parameterList.Count; i++)
+            {
+                var eventName = _parameterList.ElementAt(i).Key.Replace("event:/", "");
+
+                scriptContent += $"\tpublic static class {eventName}\n\t{{\n";
+
+                foreach (var value in _parameterList.ElementAt(i).Value)
+                {
+                    var temp = value.Replace($"parameter:/{eventName}/", "");
+                    var parameterName = temp.Replace(" ", "");
+
+                    scriptContent += $"\t\tpublic static readonly string {parameterName} = \"{parameterName}\";\n";
+                }
+                scriptContent += "\t}\n";
+            }
+            scriptContent += "}";
+
+
+            if (!Directory.Exists(_folderPath))
+            {
+                Directory.CreateDirectory(_folderPath);
+            }
+            string scriptPath = Path.Combine(_folderPath, $"ParameterList.cs");
+            if (File.Exists(scriptPath))
+            {
+                File.Delete(scriptPath);
+            }
+
+            File.WriteAllText(scriptPath, scriptContent);
+            AssetDatabase.Refresh();
         }
     }
 }
