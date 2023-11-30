@@ -6,6 +6,8 @@ using UnityEditor;
 using UnityEngine;
 using FMOD.Studio;
 using Unity.VisualScripting.YamlDotNet.Core.Tokens;
+using CodiceApp.EventTracking.Plastic;
+using JetBrains.Annotations;
 
 namespace Studio23.SS2.AudioSystem.Editor
 {
@@ -14,7 +16,7 @@ namespace Studio23.SS2.AudioSystem.Editor
         static Dictionary<string, List<string>> _eventList = new Dictionary<string, List<string>>();
         static Dictionary<string, List<string>> _parameterList = new Dictionary<string, List<string>>();
         private static string _className = "FMODEventTable";
-        private static string _folderPath = "Assets/Resources/FMOD_BankEvents";
+        private static string _folderPath = "Assets/Resources/FMOD_Data";
         private static string _nameSpace = "Studio23.SS2.AudioSystem.Data";
 
 
@@ -62,7 +64,9 @@ namespace Studio23.SS2.AudioSystem.Editor
             {
                 string scriptContent = $"namespace {_nameSpace}\n{{\n";
 
-                scriptContent += $"\tpublic static class {_eventList.ElementAt(i).Key}\n\t{{\n";
+                string filename = $"FMODBank_{_eventList.ElementAt(i).Key}";
+
+                scriptContent += $"\tpublic static class {filename}\n\t{{\n";
 
                 foreach (var value in _eventList.ElementAt(i).Value)
                 {
@@ -79,7 +83,7 @@ namespace Studio23.SS2.AudioSystem.Editor
                     Directory.CreateDirectory(_folderPath);
                 }
 
-                string scriptPath = Path.Combine(_folderPath, $"{_eventList.ElementAt(i).Key}.cs");
+                string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
                 if (File.Exists(scriptPath))
                 {
                     File.Delete(scriptPath);
@@ -100,23 +104,27 @@ namespace Studio23.SS2.AudioSystem.Editor
                 }
             }*/
 
+            string filename = "FMODParameterList";
             string scriptContent = $"namespace {_nameSpace}\n{{\n";
+
+            scriptContent += $"\tpublic static class {filename}\n\t{{\n";
 
             for (int i = 0; i < _parameterList.Count; i++)
             {
                 var eventName = _parameterList.ElementAt(i).Key.Replace("event:/", "");
 
-                scriptContent += $"\tpublic static class {eventName}\n\t{{\n";
+                scriptContent += $"\t\tpublic static class {eventName}\n\t\t{{\n";
 
                 foreach (var value in _parameterList.ElementAt(i).Value)
                 {
                     var temp = value.Replace($"parameter:/{eventName}/", "");
                     var parameterName = temp.Replace(" ", "");
 
-                    scriptContent += $"\t\tpublic static readonly string {parameterName} = \"{parameterName}\";\n";
+                    scriptContent += $"\t\t\tpublic static readonly string {parameterName} = \"{parameterName}\";\n";
                 }
-                scriptContent += "\t}\n";
+                scriptContent += "\t\t}\n";
             }
+            scriptContent += "\t}\n";
             scriptContent += "}";
 
 
@@ -124,7 +132,7 @@ namespace Studio23.SS2.AudioSystem.Editor
             {
                 Directory.CreateDirectory(_folderPath);
             }
-            string scriptPath = Path.Combine(_folderPath, $"ParameterList.cs");
+            string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
             if (File.Exists(scriptPath))
             {
                 File.Delete(scriptPath);
