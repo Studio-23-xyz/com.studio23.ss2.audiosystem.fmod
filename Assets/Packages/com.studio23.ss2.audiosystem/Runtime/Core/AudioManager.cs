@@ -4,12 +4,11 @@ using System.Linq;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.Data;
 using UnityEngine;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-
-    public List<FMODInstanceData> InstanceDataList;
     public List<FMODEmitterData> EmitterDataList;
 
     void Awake()
@@ -25,36 +24,55 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void CreateInstance(string eventName, GameObject referenceGameobject)
+    public void CreateEmitter(string eventName, GameObject referenceGameObject, StudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
     {
-        var newInstance = new FMODInstanceData(eventName, referenceGameobject);
-        InstanceDataList.Add(newInstance);
-    }
-
-    public void Play(string eventName, GameObject referenceGameobject)
-    {
-        var temp = InstanceDataList.FirstOrDefault(x =>
-            x.EventName.Equals(eventName) && x.ReferenceGameObject == referenceGameobject);
-        if (temp != null)
-        {
-            temp.Play();
-        }
-    }
-
-    public void CreateEmitter(string eventName, GameObject referenceGameobject, StudioEventEmitter emitter)
-    {
-        var newEmitter = new FMODEmitterData(eventName, referenceGameobject, emitter);
+        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        if (fetchData != null) return;
+        var newEmitter = new FMODEmitterData(eventName, referenceGameObject, emitter, stopModeType);
         EmitterDataList.Add(newEmitter);
     }
 
-    public void Play(string eventName, GameObject referenceGameobject, StudioEventEmitter emitter)
+    public void Play(string eventName, GameObject referenceGameObject)
     {
-        var temp = EmitterDataList.FirstOrDefault(x =>
-            x.EventName.Equals(eventName) && x.ReferenceGameObject == referenceGameobject && x.Emitter == emitter);
-        if (temp != null)
+        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        if (fetchData == null) return;
+        fetchData.Play();
+    }
+
+    public void Pause(string eventName, GameObject referenceGameObject)
+    {
+        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        if (fetchData == null) return;
+        fetchData.Pause();
+    }
+
+    public void UnPause(string eventName, GameObject referenceGameObject)
+    {
+        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        if (fetchData == null) return;
+        fetchData.UnPause();
+    }
+
+    public void TogglePauseAll(bool isGamePaused)
+    {
+        foreach (var emitter in EmitterDataList)
         {
-            temp.Play();
+            emitter.TogglePause(isGamePaused);
         }
+    }
+
+    public void Release(string eventName, GameObject referenceGameObject)
+    {
+        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        if (fetchData == null) return;
+        fetchData.Release();
+        EmitterDataList.Remove(fetchData);
+    }
+
+    private FMODEmitterData EventEmitterExists(string eventName, GameObject referenceGameObject)
+    {
+        return EmitterDataList.FirstOrDefault(x =>
+            x.EventName.Equals(eventName) && x.ReferenceGameObject == referenceGameObject);
     }
 
 }

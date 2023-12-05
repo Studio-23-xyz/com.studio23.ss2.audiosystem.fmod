@@ -6,71 +6,46 @@ using UnityEngine;
 
 public class Dummy : MonoBehaviour
 {
-    public StudioEventEmitter emitter;
-    public int tempIndex;
-    public float time;
-    public bool startTime;
-    public int maxCount;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //AudioManager.Instance.CreateInstance(FMODBank_Sample.Test, gameObject);
-        //AudioManager.Instance.Play(FMODBank_Sample.Test, gameObject);
-        
-
-    }
+    public bool isPaused;
 
     [ContextMenu("Play")]
-    public void Demo()
+    public void Play()
     {
-        startTime = true;
+        AudioManager.Instance.CreateEmitter(FMODBank_Sample.Test, gameObject);
+        AudioManager.Instance.Play(FMODBank_Sample.Test, gameObject);
 
-        for (tempIndex = 0; tempIndex <= maxCount; tempIndex++)
-        {
-            var instance = RuntimeManager.CreateInstance(FMODBank_Sample.Test);
-        }
-
-
-        /*StudioEventEmitter emitter2 = new StudioEventEmitter
-        {
-            EventReference = EventReference.Find(FMODBank_Sample.Test)
-        };
-        emitter2.EventInstance.start();*/
-
-        /*AudioManager.Instance.CreateEmitter(FMODBank_Sample.Test, gameObject, emitter);
-        AudioManager.Instance.Play(FMODBank_Sample.Test, gameObject, emitter);*/
     }
 
     [ContextMenu("Play2")]
-    public void Demo2()
+    public void Play2()
     {
-        startTime = true;
-        for (tempIndex = 0; tempIndex <= maxCount; tempIndex++)
-        {
-            StudioEventEmitter emitter2 = new StudioEventEmitter
-            {
-                EventReference = EventReference.Find(FMODBank_Sample.Test)
-                
-            };
-            emitter2.Play();
-        }
+        AudioManager.Instance.CreateEmitter(FMODBank_Sample2.Test2, gameObject);
+        AudioManager.Instance.Play(FMODBank_Sample2.Test2, gameObject);
     }
 
-
-    // Update is called once per frame
-    void Update()
+    [ContextMenu("Release")]
+    public void Release()
     {
-        if (startTime)
-        {
-            time += Time.deltaTime;
-            if (tempIndex >= maxCount)
-            {
-                Debug.Log($"Time consumed: {time}");
-                tempIndex = 0;
-                startTime = false;
-                time = 0.0f;
-            }
-        }
+        AudioManager.Instance.Release(FMODBank_Sample.Test, gameObject);
+    }
+
+    [ContextMenu("Pause")]
+    public void Pause()
+    {
+        AudioManager.Instance.Pause(FMODBank_Sample.Test, gameObject);
+    }
+
+    [ContextMenu("UnPause")]
+    public void UnPause()
+    {
+        AudioManager.Instance.UnPause(FMODBank_Sample.Test, gameObject);
+    }
+
+    [ContextMenu("Toggle")]
+    public void Toggle()
+    {
+        isPaused = !isPaused;
+        AudioManager.Instance.TogglePauseAll(isPaused);
+        
     }
 }

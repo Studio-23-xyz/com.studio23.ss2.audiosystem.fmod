@@ -8,7 +8,7 @@ namespace Studio23.SS2.AudioSystem.Data
     {
         public string EventName;
         public GameObject ReferenceGameObject;
-        public FMODEventState EventState;
+        public FMODEventState EventState = FMODEventState.Stopped;
         public STOP_MODE StopModeType;
 
         public FMODData(string eventName, GameObject referenceGameObject, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
@@ -27,10 +27,12 @@ namespace Studio23.SS2.AudioSystem.Data
         public abstract void SwitchLocalization();
     }
 
+    [System.Flags]
     public enum FMODEventState
     {
-        Play,
-        Pause,
-        Stop
+        Playing = 1,
+        Suspended = 2,
+        Paused = 4,
+        Stopped = 8,
     }
 }

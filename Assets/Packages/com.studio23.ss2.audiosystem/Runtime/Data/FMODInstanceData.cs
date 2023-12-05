@@ -27,19 +27,19 @@ namespace Studio23.SS2.AudioSystem.Data
         public override void Play()
         {
             Instance.start();
-            EventState = FMODEventState.Play;
+            EventState = FMODEventState.Playing;
         }
 
         public override void Pause()
         {
             Instance.setPaused(true);
-            EventState = FMODEventState.Pause;
+            EventState = FMODEventState.Paused;
         }
 
         public override void Stop()
         {
             Instance.stop(StopModeType);
-            EventState = FMODEventState.Stop;
+            EventState = FMODEventState.Stopped;
         }
 
         public override void Release()
