@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d867be9ae491f641b78cd2e767c8871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6707f94c87aba842bef2b7f72e22c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstanceDataList: []
   EmitterDataList: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

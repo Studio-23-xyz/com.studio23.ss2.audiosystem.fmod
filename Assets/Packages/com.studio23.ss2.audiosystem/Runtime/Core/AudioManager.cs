@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using FMODUnity;
-using Studio23.SS2.AudioSystem.Data;
 using UnityEngine;
+using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
+using Studio23.SS2.AudioSystem.Data;
 
 public class AudioManager : MonoBehaviour
 {
@@ -74,5 +73,4 @@ public class AudioManager : MonoBehaviour
         return EmitterDataList.FirstOrDefault(x =>
             x.EventName.Equals(eventName) && x.ReferenceGameObject == referenceGameObject);
     }
-
 }
