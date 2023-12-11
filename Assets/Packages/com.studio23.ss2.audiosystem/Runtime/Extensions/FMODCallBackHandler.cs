@@ -1,8 +1,8 @@
-using FMOD.Studio;
-using Studio23.SS2.AudioSystem.Data;
 using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using FMOD.Studio;
+using Studio23.SS2.AudioSystem.Data;
 
 public static class FMODCallBackHandler
 {

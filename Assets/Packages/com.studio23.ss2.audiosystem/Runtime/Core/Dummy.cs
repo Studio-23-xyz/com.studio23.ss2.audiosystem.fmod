@@ -11,34 +11,33 @@ public class Dummy : MonoBehaviour
     [ContextMenu("Play")]
     public void Play()
     {
-        AudioManager.Instance.CreateEmitter(FMODBank_Sample.Test, gameObject);
-        AudioManager.Instance.Play(FMODBank_Sample.Test, gameObject);
-
+        AudioManager.Instance.CreateEmitter(FMODBank_Test.Test, gameObject);
+        AudioManager.Instance.Play(FMODBank_Test.Test, gameObject);
     }
 
     [ContextMenu("Play2")]
     public void Play2()
     {
-        AudioManager.Instance.CreateEmitter(FMODBank_Sample2.Test2, gameObject);
-        AudioManager.Instance.Play(FMODBank_Sample2.Test2, gameObject);
+        AudioManager.Instance.CreateEmitter(FMODBank_SFX.UI_Cancel, gameObject);
+        AudioManager.Instance.Play(FMODBank_SFX.UI_Cancel, gameObject);
     }
 
     [ContextMenu("Release")]
     public void Release()
     {
-        AudioManager.Instance.Release(FMODBank_Sample.Test, gameObject);
+        AudioManager.Instance.Release(FMODBank_SFX.Test, gameObject);
     }
 
     [ContextMenu("Pause")]
     public void Pause()
     {
-        AudioManager.Instance.Pause(FMODBank_Sample.Test, gameObject);
+        AudioManager.Instance.Pause(FMODBank_SFX.UI_Cancel, gameObject);
     }
 
     [ContextMenu("UnPause")]
     public void UnPause()
     {
-        AudioManager.Instance.UnPause(FMODBank_Sample.Test, gameObject);
+        AudioManager.Instance.UnPause(FMODBank_SFX.UI_Cancel, gameObject);
     }
 
     [ContextMenu("Toggle")]
@@ -46,6 +45,17 @@ public class Dummy : MonoBehaviour
     {
         isPaused = !isPaused;
         AudioManager.Instance.TogglePauseAll(isPaused);
-        
+    }
+
+    [ContextMenu("Load Bank")]
+    public void LoadBank()
+    {
+        AudioManager.Instance.LoadBank(FMODBankList.Test);
+    }
+
+    [ContextMenu("Unload Bank")]
+    public void UnloadBank()
+    {
+        AudioManager.Instance.UnloadBank(FMODBankList.Test);
     }
 }

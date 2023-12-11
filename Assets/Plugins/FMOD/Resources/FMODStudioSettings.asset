@@ -156,15 +156,15 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
-  sourceProjectPath: Assets/Packages/com.studio23.ss2.audiosystem/Samples/FMOD_Project/FMOD_Project.fspro
-  sourceBankPath: Assets/Packages/com.studio23.ss2.audiosystem/Samples/FMOD_Project/Build
+  HasSourceProject: 0
+  HasPlatforms: 0
+  sourceProjectPath: Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Sample_FMOD_Project.fspro
+  sourceBankPath: Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Build/Desktop
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
-  AutomaticEventLoading: 1
-  BankLoadType: 0
+  AutomaticEventLoading: 0
+  BankLoadType: 1
   AutomaticSampleLoading: 0
   EncryptionKey: 
   ImportType: 0
@@ -183,9 +183,17 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Sample
-  - Sample2
-  BanksToLoad: []
+  - Dialogue_CN
+  - Dialogue_EN
+  - Dialogue_JP
+  - Music
+  - SFX
+  - Test
+  - Vehicles
+  - VO
+  BanksToLoad:
+  - Master
+  - Master.strings
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
   AndroidUseOBB: 0

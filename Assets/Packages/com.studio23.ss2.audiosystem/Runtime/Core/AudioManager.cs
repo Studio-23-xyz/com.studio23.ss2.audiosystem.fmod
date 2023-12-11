@@ -1,14 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using FMOD.Studio;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Studio23.SS2.AudioSystem.Data;
+using System.ComponentModel;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     public List<FMODEmitterData> EmitterDataList;
+    public Dictionary<string, Bank> BankList;
 
     void Awake()
     {
@@ -20,6 +23,64 @@ public class AudioManager : MonoBehaviour
         else
         {
             DestroyImmediate(this);
+        }
+    }
+
+    void Start()
+    {
+        BankList = new Dictionary<string, Bank>();
+    }
+
+    public void LoadBank(string bankName, LOAD_BANK_FLAGS flag = LOAD_BANK_FLAGS.NORMAL)
+    {
+        var result = RuntimeManager.StudioSystem.loadBankFile(bankName, flag, out Bank bank);
+        if (result == FMOD.RESULT.OK && !BankList.ContainsKey(bankName)) BankList.Add(bankName, bank);
+    }
+
+    public void UnloadBank(string bankName)
+    {
+        for (int i = 0; i < BankList.Count; i++)
+        {
+            if (BankList.ElementAt(i).Key.Equals(bankName))
+            {
+                var bank = BankList.ElementAt(i).Value;
+
+                
+
+                bank.unload();
+                BankList.Remove(BankList.ElementAt(i).Key);
+                break;
+            }
+        }
+    }
+
+    public void UnloadAllBanks(string bankName)
+    {
+        RuntimeManager.StudioSystem.unloadAll();
+        BankList.Clear();
+    }
+
+    public void LoadBankSampleData(string bankName)
+    {
+        for (int i = 0; i < BankList.Count; i++)
+        {
+            if (BankList.ElementAt(i).Key.Equals(bankName))
+            {
+                BankList.ElementAt(i).Value.loadSampleData();
+                break;
+            }
+        }
+    }
+
+    public void UnloadBankSampleData(string bankName)
+    {
+        for (int i = 0; i < BankList.Count; i++)
+        {
+            if (BankList.ElementAt(i).Key.Equals(bankName))
+            {
+                BankList.ElementAt(i).Value.unloadSampleData();
+                break;
+            }
         }
     }
 

@@ -1,18 +1,15 @@
-using System.Collections;
+using FMOD.Studio;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using FMOD.Studio;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
-using CodiceApp.EventTracking.Plastic;
-using JetBrains.Annotations;
 
 namespace Studio23.SS2.AudioSystem.Editor
 {
     public class CreateFMODEventsEditor : EditorWindow
     {
+        private static Dictionary<string, string> _bankList = new Dictionary<string, string>();
         static Dictionary<string, List<string>> _eventList = new Dictionary<string, List<string>>();
         static Dictionary<string, List<string>> _parameterList = new Dictionary<string, List<string>>();
         private static string _className = "FMODEventTable";
@@ -20,13 +17,14 @@ namespace Studio23.SS2.AudioSystem.Editor
         private static string _nameSpace = "Studio23.SS2.AudioSystem.Data";
 
 
-        [MenuItem("Studio-23/Audio System/Generate Event Data")]
+        [MenuItem("Studio-23/Audio System/Generate All FMOD Data")]
         public static void GetAllEvents()
         {
             foreach (var e in FMODUnity.EventManager.Events)
             {
                 foreach (var b in e.Banks)
                 {
+
                     if (_eventList.ContainsKey(b.Name))
                     {
                         List<string> valuesForKey1 = _eventList[b.Name];
@@ -36,6 +34,11 @@ namespace Studio23.SS2.AudioSystem.Editor
                     {
                         List<string> valuesForKey1 = new List<string> { e.Path };
                         _eventList.Add(b.Name, valuesForKey1);
+                    }
+
+                    if (!_bankList.ContainsKey(b.Name))
+                    {
+                        _bankList.Add(b.Name, b.Path);
                     }
                 }
 
@@ -53,9 +56,37 @@ namespace Studio23.SS2.AudioSystem.Editor
                     }
                 }
             }
-
+            GenerateBankList();
             GenerateEventList();
             GenerateParameterList();
+        }
+
+        private static void GenerateBankList()
+        {
+            string filename = "FMODBankList";
+            string scriptContent = $"namespace {_nameSpace}\n{{\n";
+
+            scriptContent += $"\tpublic static class {filename}\n\t{{\n";
+
+            for (int i = 0; i < _bankList.Count; i++)
+            {
+                scriptContent += $"\t\tpublic static readonly string {_bankList.ElementAt(i).Key} = \"{_bankList.ElementAt(i).Value}\";\n";
+            }
+            scriptContent += "\t}\n";
+            scriptContent += "}";
+
+            if (!Directory.Exists(_folderPath))
+            {
+                Directory.CreateDirectory(_folderPath);
+            }
+            string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
+            if (File.Exists(scriptPath))
+            {
+                File.Delete(scriptPath);
+            }
+
+            File.WriteAllText(scriptPath, scriptContent);
+            AssetDatabase.Refresh();
         }
 
         private static void GenerateEventList()
@@ -70,8 +101,9 @@ namespace Studio23.SS2.AudioSystem.Editor
 
                 foreach (var value in _eventList.ElementAt(i).Value)
                 {
-                    var eventName = value.Replace("event:/", "");
-                    scriptContent += $"\t\tpublic static readonly string {eventName} = \"{value}\";\n";
+                    var eventName = value.Replace("event:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_");
+                    var newData = new EventData(_eventList.ElementAt(i).Key, value);
+                    scriptContent += $"\t\tpublic static readonly EventData {eventName} = \"{newData}\";\n";
                 }
 
                 scriptContent += "\t}\n";
@@ -96,14 +128,6 @@ namespace Studio23.SS2.AudioSystem.Editor
 
         private static void GenerateParameterList()
         {
-            /*for (int i = 0; i < _parameterList.Count; i++)
-            {
-                foreach (var p in _parameterList.ElementAt(i).Value)
-                {
-                    Debug.Log(p);
-                }
-            }*/
-
             string filename = "FMODParameterList";
             string scriptContent = $"namespace {_nameSpace}\n{{\n";
 
@@ -111,16 +135,16 @@ namespace Studio23.SS2.AudioSystem.Editor
 
             for (int i = 0; i < _parameterList.Count; i++)
             {
-                var eventName = _parameterList.ElementAt(i).Key.Replace("event:/", "");
+                var eventName = _parameterList.ElementAt(i).Key.Replace("event:/", "").Replace("/", "_").Replace(" ", "_").Replace("-", "_");
 
                 scriptContent += $"\t\tpublic static class {eventName}\n\t\t{{\n";
 
                 foreach (var value in _parameterList.ElementAt(i).Value)
                 {
-                    var temp = value.Replace($"parameter:/{eventName}/", "");
-                    var parameterName = temp.Replace(" ", "");
+                    var variableValue = value.Split("/").Last();
+                    var parameterName = variableValue.Replace(" ", "_").Replace("-", "_");
 
-                    scriptContent += $"\t\t\tpublic static readonly string {parameterName} = \"{parameterName}\";\n";
+                    scriptContent += $"\t\t\tpublic static readonly string {parameterName} = \"{variableValue}\";\n";
                 }
                 scriptContent += "\t\t}\n";
             }
@@ -140,6 +164,18 @@ namespace Studio23.SS2.AudioSystem.Editor
 
             File.WriteAllText(scriptPath, scriptContent);
             AssetDatabase.Refresh();
+        }
+    }
+
+    public class EventData
+    {
+        public string BankRef;
+        public string EventName;
+
+        public EventData(string bank, string eventName)
+        {
+            BankRef = bank;
+            EventName = eventName;
         }
     }
 }
