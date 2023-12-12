@@ -2,7 +2,6 @@ namespace Studio23.SS2.AudioSystem.Data
 {
 	public static class FMODBank_Vehicles
 	{
-		public static readonly string BankName = "bank:/Vehicles";
 		public static FMODEventData Vehicles_Car_Engine = new FMODEventData("bank:/Vehicles", "event:/Vehicles/Car Engine");
 		public static FMODEventData Vehicles_Ride_on_Mower = new FMODEventData("bank:/Vehicles", "event:/Vehicles/Ride-on Mower");
 	}

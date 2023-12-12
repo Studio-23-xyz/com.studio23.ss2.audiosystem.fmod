@@ -3,21 +3,24 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
+using Cysharp.Threading.Tasks;
 
 namespace Studio23.SS2.AudioSystem.Data
 {
     [System.Serializable]
     public class FMODEmitterData
     {
+        public string BankName;
         public string EventName;
         public GameObject ReferenceGameObject;
-        public StudioEventEmitter Emitter;
+        public CustomStudioEventEmitter Emitter;
         public FMODEventState EventState = FMODEventState.Stopped;
         public STOP_MODE StopModeType;
 
-        public FMODEmitterData(string eventName, GameObject referenceGameObject, StudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        public FMODEmitterData(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
-            EventName = eventName;
+            BankName = eventData.BankName;
+            EventName = eventData.EventName;
             ReferenceGameObject = referenceGameObject;
             Emitter = emitter;
             StopModeType = stopModeType;
@@ -27,16 +30,16 @@ namespace Studio23.SS2.AudioSystem.Data
 
         public void Initialize()
         {
-            if (Emitter == null) Emitter = ReferenceGameObject.AddComponent<StudioEventEmitter>();
+            if (Emitter == null) Emitter = ReferenceGameObject.AddComponent<CustomStudioEventEmitter>();
             Emitter.EventReference = EventReference.Find(EventName);
+            Emitter.CustomInitialize();
+            FMODCallBackHandler.InitializeCallback(this);
         }
 
         public void Play()
         {
-            Emitter.Play();
+            Emitter.CustomPlay();
             EventState = FMODEventState.Playing;
-
-            FMODCallBackHandler.InitializeCallback(this);
         }
 
         public void Pause()
@@ -67,10 +70,13 @@ namespace Studio23.SS2.AudioSystem.Data
             EventState = FMODEventState.Stopped;
         }
 
-        public void Release()
+        public async UniTask ReleaseAsync()
         {
-            Stop();
-            Emitter.EventInstance.release();
+            await UniTask.RunOnThreadPool(() =>
+            {
+                Stop();
+                Emitter.EventInstance.release();
+            });
             Object.Destroy(Emitter);
         }
 

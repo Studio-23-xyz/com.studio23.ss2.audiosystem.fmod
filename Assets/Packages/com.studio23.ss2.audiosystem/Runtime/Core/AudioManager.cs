@@ -6,6 +6,7 @@ using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Studio23.SS2.AudioSystem.Data;
 using System.ComponentModel;
+using Cysharp.Threading.Tasks;
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,7 +14,11 @@ public class AudioManager : MonoBehaviour
     public List<FMODEmitterData> EmitterDataList;
     public Dictionary<string, Bank> BankList;
 
-    void Awake()
+    public delegate UniTask BankHandler(string bankName);
+    public event BankHandler OnBankLoaded;
+    public event BankHandler OnBankUnloaded;
+
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -26,7 +31,17 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void OnEnable()
+    {
+        OnBankUnloaded += ClearEmitter;
+    }
+
+    private void OnDisable()
+    {
+        OnBankUnloaded -= ClearEmitter;
+    }
+
+    private void Start()
     {
         BankList = new Dictionary<string, Bank>();
     }
@@ -34,7 +49,11 @@ public class AudioManager : MonoBehaviour
     public void LoadBank(string bankName, LOAD_BANK_FLAGS flag = LOAD_BANK_FLAGS.NORMAL)
     {
         var result = RuntimeManager.StudioSystem.loadBankFile(bankName, flag, out Bank bank);
-        if (result == FMOD.RESULT.OK && !BankList.ContainsKey(bankName)) BankList.Add(bankName, bank);
+        if (result == FMOD.RESULT.OK && !BankList.ContainsKey(bankName))
+        {
+            OnBankLoaded?.Invoke(bankName);
+            BankList.Add(bankName, bank);
+        }
     }
 
     public void UnloadBank(string bankName)
@@ -43,21 +62,40 @@ public class AudioManager : MonoBehaviour
         {
             if (BankList.ElementAt(i).Key.Equals(bankName))
             {
-                var bank = BankList.ElementAt(i).Value;
-
-                
-
-                bank.unload();
-                BankList.Remove(BankList.ElementAt(i).Key);
-                break;
+                RemoveBank(i); 
             }
         }
     }
 
-    public void UnloadAllBanks(string bankName)
+    public void UnloadAllBanks()
     {
-        RuntimeManager.StudioSystem.unloadAll();
-        BankList.Clear();
+        for (int i = 0; i < BankList.Count; i++)
+        {
+            RemoveBank(i);
+        }
+    }
+
+    private void RemoveBank(int index)
+    {
+        var bank = BankList.ElementAt(index).Value;
+        bank.getPath(out string bankPath);
+        OnBankUnloaded?.Invoke(bankPath);
+        bank.unloadSampleData();
+        bank.unload();
+        BankList.Remove(BankList.ElementAt(index).Key);
+    }
+
+    private async UniTask ClearEmitter(string bankPath)
+    {
+        for (int i = 0; i < EmitterDataList.Count; i++)
+        {
+            FMODEmitterData emitter = EmitterDataList[i];
+            if (emitter.BankName.Equals(bankPath))
+            {
+                await emitter.ReleaseAsync();
+                EmitterDataList.Remove(emitter);
+            }
+        }
     }
 
     public void LoadBankSampleData(string bankName)
@@ -72,43 +110,31 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void UnloadBankSampleData(string bankName)
+    public void CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
     {
-        for (int i = 0; i < BankList.Count; i++)
-        {
-            if (BankList.ElementAt(i).Key.Equals(bankName))
-            {
-                BankList.ElementAt(i).Value.unloadSampleData();
-                break;
-            }
-        }
-    }
-
-    public void CreateEmitter(string eventName, GameObject referenceGameObject, StudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
-    {
-        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
         if (fetchData != null) return;
-        var newEmitter = new FMODEmitterData(eventName, referenceGameObject, emitter, stopModeType);
+        var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
         EmitterDataList.Add(newEmitter);
     }
 
-    public void Play(string eventName, GameObject referenceGameObject)
+    public void Play(FMODEventData eventData, GameObject referenceGameObject)
     {
-        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
         if (fetchData == null) return;
         fetchData.Play();
     }
 
-    public void Pause(string eventName, GameObject referenceGameObject)
+    public void Pause(FMODEventData eventData, GameObject referenceGameObject)
     {
-        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
         if (fetchData == null) return;
         fetchData.Pause();
     }
 
-    public void UnPause(string eventName, GameObject referenceGameObject)
+    public void UnPause(FMODEventData eventData, GameObject referenceGameObject)
     {
-        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
         if (fetchData == null) return;
         fetchData.UnPause();
     }
@@ -121,11 +147,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void Release(string eventName, GameObject referenceGameObject)
+    public async void Release(FMODEventData eventData, GameObject referenceGameObject)
     {
-        var fetchData = EventEmitterExists(eventName, referenceGameObject);
+        var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
         if (fetchData == null) return;
-        fetchData.Release();
+        await fetchData.ReleaseAsync();
         EmitterDataList.Remove(fetchData);
     }
 

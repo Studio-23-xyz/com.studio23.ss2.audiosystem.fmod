@@ -1,7 +1,9 @@
+using CodiceApp.EventTracking.Plastic;
 using FMOD.Studio;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,16 +26,15 @@ namespace Studio23.SS2.AudioSystem.Editor
             {
                 foreach (var b in e.Banks)
                 {
-
-                    if (_eventList.ContainsKey(b.Name))
+                    if (_eventList.ContainsKey(b.StudioPath))
                     {
-                        List<string> valuesForKey1 = _eventList[b.Name];
+                        List<string> valuesForKey1 = _eventList[b.StudioPath];
                         valuesForKey1.Add(e.Path);
                     }
                     else
                     {
                         List<string> valuesForKey1 = new List<string> { e.Path };
-                        _eventList.Add(b.Name, valuesForKey1);
+                        _eventList.Add(b.StudioPath, valuesForKey1);
                     }
 
                     if (!_bankList.ContainsKey(b.Name))
@@ -95,33 +96,33 @@ namespace Studio23.SS2.AudioSystem.Editor
             {
                 string scriptContent = $"namespace {_nameSpace}\n{{\n";
 
-                string filename = $"FMODBank_{_eventList.ElementAt(i).Key}";
+                string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Replace("bank:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_")}";
 
                 scriptContent += $"\tpublic static class {filename}\n\t{{\n";
 
                 foreach (var value in _eventList.ElementAt(i).Value)
                 {
                     var eventName = value.Replace("event:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_");
-                    var newData = new EventData(_eventList.ElementAt(i).Key, value);
-                    scriptContent += $"\t\tpublic static readonly EventData {eventName} = \"{newData}\";\n";
+                    scriptContent += $"\t\tpublic static FMODEventData {eventName} = new FMODEventData(\"{_eventList.ElementAt(i).Key}\", \"{value}\");\n";
                 }
 
                 scriptContent += "\t}\n";
                 scriptContent += "}";
 
-
                 if (!Directory.Exists(_folderPath))
                 {
                     Directory.CreateDirectory(_folderPath);
                 }
-
                 string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
                 if (File.Exists(scriptPath))
                 {
                     File.Delete(scriptPath);
                 }
 
-                File.WriteAllText(scriptPath, scriptContent);
+                using (StreamWriter writer = new StreamWriter(scriptPath, false))
+                {
+                    writer.Write(scriptContent);
+                }
                 AssetDatabase.Refresh();
             }
         }
@@ -164,18 +165,6 @@ namespace Studio23.SS2.AudioSystem.Editor
 
             File.WriteAllText(scriptPath, scriptContent);
             AssetDatabase.Refresh();
-        }
-    }
-
-    public class EventData
-    {
-        public string BankRef;
-        public string EventName;
-
-        public EventData(string bank, string eventName)
-        {
-            BankRef = bank;
-            EventName = eventName;
         }
     }
 }

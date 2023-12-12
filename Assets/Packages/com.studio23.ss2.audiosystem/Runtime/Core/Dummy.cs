@@ -58,4 +58,10 @@ public class Dummy : MonoBehaviour
     {
         AudioManager.Instance.UnloadBank(FMODBankList.Test);
     }
+
+    [ContextMenu("Unload All Banks")]
+    public void UnloadAllBanks()
+    {
+        AudioManager.Instance.UnloadAllBanks();
+    }
 }

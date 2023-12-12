@@ -2,7 +2,6 @@ namespace Studio23.SS2.AudioSystem.Data
 {
 	public static class FMODBank_SFX
 	{
-		public static readonly string BankName = "bank:/SFX";
 		public static FMODEventData Test = new FMODEventData("bank:/SFX", "event:/Test");
 		public static FMODEventData snapshot_Health_Low = new FMODEventData("bank:/SFX", "snapshot:/Health Low");
 		public static FMODEventData Character_Player_Footsteps = new FMODEventData("bank:/SFX", "event:/Character/Player Footsteps");
