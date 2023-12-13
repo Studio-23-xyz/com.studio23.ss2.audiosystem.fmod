@@ -1,20 +1,15 @@
-using CodiceApp.EventTracking.Plastic;
-using FMOD.Studio;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEditor;
-using UnityEngine;
 
 namespace Studio23.SS2.AudioSystem.Editor
 {
-    public class CreateFMODEventsEditor : EditorWindow
+    public class CreateFMODDataEditor : EditorWindow
     {
         private static Dictionary<string, string> _bankList = new Dictionary<string, string>();
-        static Dictionary<string, List<string>> _eventList = new Dictionary<string, List<string>>();
-        static Dictionary<string, List<string>> _parameterList = new Dictionary<string, List<string>>();
-        private static string _className = "FMODEventTable";
+        private static Dictionary<string, List<string>> _eventList = new Dictionary<string, List<string>>();
+        private static Dictionary<string, List<string>> _parameterList = new Dictionary<string, List<string>>();
         private static string _folderPath = "Assets/Resources/FMOD_Data";
         private static string _nameSpace = "Studio23.SS2.AudioSystem.Data";
 

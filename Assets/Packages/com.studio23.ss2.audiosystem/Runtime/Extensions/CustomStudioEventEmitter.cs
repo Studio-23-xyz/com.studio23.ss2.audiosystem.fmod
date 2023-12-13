@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
-namespace FMODUnity
+namespace Studio23.SS2.AudioSystem.Extensions
 {
     [AddComponentMenu("Studio 23/Custom FMOD Studio Event Emitter")]
     public class CustomStudioEventEmitter : FMODUnity.EventHandler

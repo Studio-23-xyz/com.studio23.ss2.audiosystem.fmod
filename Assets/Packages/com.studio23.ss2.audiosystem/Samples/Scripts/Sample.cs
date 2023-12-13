@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using FMODUnity;
+using Studio23.SS2.AudioSystem.Core;
 using Studio23.SS2.AudioSystem.Data;
 using UnityEngine;
 
-public class Dummy : MonoBehaviour
+public class Sample : MonoBehaviour
 {
     public bool isPaused;
 

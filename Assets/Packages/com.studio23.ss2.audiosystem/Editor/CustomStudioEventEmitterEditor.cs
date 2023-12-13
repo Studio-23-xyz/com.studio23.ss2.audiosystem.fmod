@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
+using Studio23.SS2.AudioSystem.Extensions;
 using UnityEditor;
 using UnityEngine;
 
-namespace FMODUnity
+namespace Studio23.SS2.AudioSystem.Editor
 {
     [CustomEditor(typeof(CustomStudioEventEmitter))]
     [CanEditMultipleObjects]
-    public class CustomStudioEventEmitterEditor : Editor
+    public class CustomStudioEventEmitterEditor : UnityEditor.Editor
     {
         private ParameterValueView parameterValueView;
 

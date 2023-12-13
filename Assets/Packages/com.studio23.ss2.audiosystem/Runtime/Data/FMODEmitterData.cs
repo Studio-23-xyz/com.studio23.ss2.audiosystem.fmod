@@ -4,6 +4,7 @@ using Object = UnityEngine.Object;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
+using Studio23.SS2.AudioSystem.Extensions;
 
 namespace Studio23.SS2.AudioSystem.Data
 {
