@@ -74,6 +74,9 @@ https://www.fmod.com/docs/studio/authoring-events.html#automation-and-modulation
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{f62477ae-0c2b-4a81-8a56-904d0bc0b5c1}">
+		<relationship name="automationTracks">
+			<destination>{17458a39-3ccf-479a-8429-7f9be6784623}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{10af966e-5261-4534-af60-3b9d27a2cd28}</destination>
 		</relationship>
@@ -133,6 +136,11 @@ https://www.fmod.com/docs/studio/authoring-events.html#automation-and-modulation
 			<destination>{eae6d28b-c6ae-4afe-bdbe-894c17400850}</destination>
 		</relationship>
 	</object>
+	<object class="AutomationTrack" id="{17458a39-3ccf-479a-8429-7f9be6784623}">
+		<relationship name="automator">
+			<destination>{74a411dd-1dc7-4ee5-889b-fce7e37d94b0}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{91fd17ef-f18b-407d-bf74-48a24118310c}">
 		<relationship name="effects">
 			<destination>{34bff1bf-68de-4219-a8f3-92b9e6cc2715}</destination>
@@ -171,6 +179,9 @@ https://www.fmod.com/docs/studio/authoring-events.html#automation-and-modulation
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{21fbfee3-90eb-4aa3-85fc-62aa88a33775}">
+		<property name="volume">
+			<value>-12</value>
+		</property>
 		<property name="name">
 			<value>Rolling</value>
 		</property>

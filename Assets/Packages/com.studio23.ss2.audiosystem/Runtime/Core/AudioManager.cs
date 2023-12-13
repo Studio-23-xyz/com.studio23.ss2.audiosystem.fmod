@@ -7,6 +7,8 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
 using Studio23.SS2.AudioSystem.Data;
 using Studio23.SS2.AudioSystem.Extensions;
+using Unity.VisualScripting.YamlDotNet.Core;
+using CodiceApp.EventTracking.Plastic;
 
 namespace Studio23.SS2.AudioSystem.Core
 {
@@ -14,6 +16,8 @@ namespace Studio23.SS2.AudioSystem.Core
     {
         private List<FMODEmitterData> _emitterDataList;
         private Dictionary<string, Bank> _bankList;
+        private List<FMODBusData> _busDataList;
+        private List<FMODVCAData> _VCADataList;
 
         public delegate UniTask BankHandler(string bankName);
         public event BankHandler OnBankLoaded;
@@ -58,6 +62,8 @@ namespace Studio23.SS2.AudioSystem.Core
         {
             _emitterDataList = new List<FMODEmitterData>();
             _bankList = new Dictionary<string, Bank>();
+            _busDataList = new List<FMODBusData>();
+            _VCADataList = new List<FMODVCAData>();
         }
 
         public void LoadBank(string bankName, LOAD_BANK_FLAGS flag = LOAD_BANK_FLAGS.NORMAL)
@@ -121,6 +127,81 @@ namespace Studio23.SS2.AudioSystem.Core
                     _bankList.ElementAt(i).Value.loadSampleData();
                     break;
                 }
+            }
+        }
+
+        public void CreateBus(string busName, float defaultVolume)
+        {
+            var newBus = new FMODBusData(busName, defaultVolume);
+            _busDataList.Add(newBus);
+        }
+
+        public void SetBusVolume(string busName, float volume)
+        {
+            var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
+            if (busData != null)
+            {
+                busData.SetVolume(volume);
+            }
+        }
+
+        public void PauseBus(string busName)
+        {
+            var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
+            if (busData != null)
+            {
+                busData.Pause();
+            }
+        }
+
+        public void UnPauseBus(string busName)
+        {
+            var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
+            if (busData != null)
+            {
+                busData.UnPause();
+            }
+        }
+
+        public void MuteBus(string busName)
+        {
+            var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
+            if (busData != null)
+            {
+                busData.Mute();
+            }
+        }
+
+        public void UnMuteBus(string busName)
+        {
+            var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
+            if (busData != null)
+            {
+                busData.UnMute();
+            }
+        }
+
+        public void StopAllBusEvents(string busName)
+        {
+            var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
+            if (busData != null)
+            {
+                busData.StopAllEvents();
+            }
+        }
+
+        public void CreateVCA(string VCAName, float defaultVolume)
+        {
+            var newVCA = new FMODVCAData(VCAName, defaultVolume);
+            _VCADataList.Add(newVCA);
+        }
+
+        public void SetVCAVolume(string VCAName, float volume)
+        {
+            var VCAData = _VCADataList.FirstOrDefault(x => x.VCAName.Equals(VCAName));
+            if (VCAData != null)
+            {
+                VCAData.SetVolume(volume);
             }
         }
 

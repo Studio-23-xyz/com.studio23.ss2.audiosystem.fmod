@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using Studio23.SS2.AudioSystem.Core;
 using Studio23.SS2.AudioSystem.Data;
 using UnityEngine;
@@ -13,29 +15,22 @@ public class Sample : MonoBehaviour
         AudioManager.Instance.Play(FMODBank_Test.Test, gameObject);
     }
 
-    [ContextMenu("Play2")]
-    public void Play2()
-    {
-        AudioManager.Instance.CreateEmitter(FMODBank_SFX.UI_Cancel, gameObject);
-        AudioManager.Instance.Play(FMODBank_SFX.UI_Cancel, gameObject);
-    }
-
     [ContextMenu("Release")]
     public void Release()
     {
-        AudioManager.Instance.Release(FMODBank_SFX.Test, gameObject);
+        AudioManager.Instance.Release(FMODBank_Test.Test, gameObject);
     }
 
     [ContextMenu("Pause")]
     public void Pause()
     {
-        AudioManager.Instance.Pause(FMODBank_SFX.UI_Cancel, gameObject);
+        AudioManager.Instance.Pause(FMODBank_Test.Test, gameObject);
     }
 
     [ContextMenu("UnPause")]
     public void UnPause()
     {
-        AudioManager.Instance.UnPause(FMODBank_SFX.UI_Cancel, gameObject);
+        AudioManager.Instance.UnPause(FMODBank_Test.Test, gameObject);
     }
 
     [ContextMenu("Toggle")]
@@ -62,4 +57,53 @@ public class Sample : MonoBehaviour
     {
         AudioManager.Instance.UnloadAllBanks();
     }
+
+    [ContextMenu("Generate Bus List")]
+    public void GenerateBusList()
+    {
+        FMODUnity.RuntimeManager.StudioSystem.getBankList(out FMOD.Studio.Bank[] loadedBanks);
+        foreach (FMOD.Studio.Bank bank in loadedBanks)
+        {
+            var busListOk = bank.getBusList(out Bus[] myBuses);
+            bank.getBusCount(out int busCount);
+            if (busCount > 0)
+            {
+                foreach (var bus in myBuses)
+                {
+                    bus.getPath(out string busPath);
+                    Debug.Log(busPath);
+                }
+            }
+        }
+    }
+
+    [ContextMenu("Get Bus Volume")]
+    public void GetBusVolume()
+    {
+        Bus musicBus = RuntimeManager.GetBus(FMODBusList.Test);
+        musicBus.getVolume(out float volume, out float finalVolume);
+        Debug.Log($"Volume {volume} Final Volume {finalVolume}");
+    }
+
+    [ContextMenu("Set Bus Volume")]
+    public void SetBusVolume()
+    {
+        Bus musicBus = RuntimeManager.GetBus(FMODBusList.Test);
+        musicBus.setVolume(0.0f);
+    }
+
+    [ContextMenu("Load Test Snapshot")]
+    public void LoadTestSnapshot()
+    {
+        AudioManager.Instance.CreateEmitter(FMODBank_Master.snapshot_Test, gameObject);
+        AudioManager.Instance.Play(FMODBank_Master.snapshot_Test, gameObject);
+    }
+
+    [ContextMenu("Increase Bus Volume")]
+    public void IncreaseBusVolume()
+    {
+        Bus musicBus = RuntimeManager.GetBus(FMODBusList.Test);
+        musicBus.setVolume(1f);
+    }
+
 }

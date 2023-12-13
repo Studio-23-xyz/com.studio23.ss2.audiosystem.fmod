@@ -1,13 +1,20 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FMOD;
+using FMOD.Studio;
 using UnityEditor;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Studio23.SS2.AudioSystem.Editor
 {
     public class CreateFMODDataEditor : EditorWindow
     {
         private static Dictionary<string, string> _bankList = new Dictionary<string, string>();
+        private static List<string> _busList = new List<string>();
+        private static List<string> _VCAList = new List<string>();
         private static Dictionary<string, List<string>> _eventList = new Dictionary<string, List<string>>();
         private static Dictionary<string, List<string>> _parameterList = new Dictionary<string, List<string>>();
         private static string _folderPath = "Assets/Resources/FMOD_Data";
@@ -15,8 +22,16 @@ namespace Studio23.SS2.AudioSystem.Editor
 
 
         [MenuItem("Studio-23/Audio System/Generate All FMOD Data")]
-        public static void GetAllEvents()
+        public static void GetAllData()
         {
+            foreach (var b in FMODUnity.EventManager.Banks)
+            {
+                if (!_bankList.ContainsKey(b.Name))
+                {
+                    _bankList.Add(b.Name, b.Path);
+                }
+            }
+
             foreach (var e in FMODUnity.EventManager.Events)
             {
                 foreach (var b in e.Banks)
@@ -30,11 +45,6 @@ namespace Studio23.SS2.AudioSystem.Editor
                     {
                         List<string> valuesForKey1 = new List<string> { e.Path };
                         _eventList.Add(b.StudioPath, valuesForKey1);
-                    }
-
-                    if (!_bankList.ContainsKey(b.Name))
-                    {
-                        _bankList.Add(b.Name, b.Path);
                     }
                 }
 
@@ -52,6 +62,7 @@ namespace Studio23.SS2.AudioSystem.Editor
                     }
                 }
             }
+
             GenerateBankList();
             GenerateEventList();
             GenerateParameterList();
@@ -66,7 +77,8 @@ namespace Studio23.SS2.AudioSystem.Editor
 
             for (int i = 0; i < _bankList.Count; i++)
             {
-                scriptContent += $"\t\tpublic static readonly string {_bankList.ElementAt(i).Key} = \"{_bankList.ElementAt(i).Value}\";\n";
+                string bankName = _bankList.ElementAt(i).Key.Replace(".", "_");
+                scriptContent += $"\t\tpublic static readonly string {bankName} = \"{_bankList.ElementAt(i).Value}\";\n";
             }
             scriptContent += "\t}\n";
             scriptContent += "}";
@@ -83,6 +95,7 @@ namespace Studio23.SS2.AudioSystem.Editor
 
             File.WriteAllText(scriptPath, scriptContent);
             AssetDatabase.Refresh();
+            GetMixerDataList();
         }
 
         private static void GenerateEventList()
@@ -131,7 +144,7 @@ namespace Studio23.SS2.AudioSystem.Editor
 
             for (int i = 0; i < _parameterList.Count; i++)
             {
-                var eventName = _parameterList.ElementAt(i).Key.Replace("event:/", "").Replace("/", "_").Replace(" ", "_").Replace("-", "_");
+                var eventName = _parameterList.ElementAt(i).Key.Replace("event:/", "").Replace(":/", "_").Replace("/", "_").Replace(" ", "_").Replace("-", "_");
 
                 scriptContent += $"\t\tpublic static class {eventName}\n\t\t{{\n";
 
@@ -147,6 +160,115 @@ namespace Studio23.SS2.AudioSystem.Editor
             scriptContent += "\t}\n";
             scriptContent += "}";
 
+
+            if (!Directory.Exists(_folderPath))
+            {
+                Directory.CreateDirectory(_folderPath);
+            }
+            string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
+            if (File.Exists(scriptPath))
+            {
+                File.Delete(scriptPath);
+            }
+
+            File.WriteAllText(scriptPath, scriptContent);
+            AssetDatabase.Refresh();
+        }
+
+        private static void GetMixerDataList()
+        {
+            FMOD.Studio.System.create(out FMOD.Studio.System fmodSystem);
+            fmodSystem.initialize(8, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, new IntPtr(0));
+
+            for (int i = 0; i < _bankList.Count; i++)
+            {
+                fmodSystem.loadBankFile(_bankList.ElementAt(i).Value, LOAD_BANK_FLAGS.NORMAL, out Bank masterBank);
+            }
+            
+            fmodSystem.getBankList(out FMOD.Studio.Bank[] allBanks);
+            foreach (FMOD.Studio.Bank bank in allBanks)
+            {
+                var busResult = bank.getBusList(out Bus[] bus);
+                if (busResult == RESULT.OK)
+                {
+                    bank.getBusCount(out int busCount);
+                    if (busCount > 0)
+                    {
+                        foreach (var b in bus)
+                        {
+                            b.getPath(out string busPath);
+                            if (!_busList.Contains(busPath)) _busList.Add(busPath);
+                        }
+                    }
+                }
+                var VCAResult = bank.getVCAList(out VCA[] VCA);
+                if (VCAResult == RESULT.OK)
+                {
+                    bank.getVCACount(out int VCACount);
+                    if (VCACount > 0)
+                    {
+                        foreach (var v in VCA)
+                        {
+                            v.getPath(out string VCAPath);
+                            if (!_VCAList.Contains(VCAPath)) _VCAList.Add(VCAPath);
+                        }
+                    }
+                }
+            }
+
+            fmodSystem.unloadAll();
+            fmodSystem.release();
+            GenerateBusList();
+            GenerateVCAList();
+        }
+
+        private static void GenerateBusList()
+        {
+            string filename = "FMODBusList";
+            string scriptContent = $"namespace {_nameSpace}\n{{\n";
+
+            scriptContent += $"\tpublic static class {filename}\n\t{{\n";
+
+
+            for (int i = 0; i < _busList.Count; i++)
+            {
+                string busName = _busList[i].Replace("bus:/", "").Replace(" ", "_").Replace("/", "_").Replace("-", "_");
+                if (String.IsNullOrEmpty(busName)) busName = "Master";
+                scriptContent += $"\t\tpublic static readonly string {busName} = \"{_busList[i]}\";\n";
+            }
+            scriptContent += "\t}\n";
+            scriptContent += "}";
+
+            if (!Directory.Exists(_folderPath))
+            {
+                Directory.CreateDirectory(_folderPath);
+            }
+            string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
+            if (File.Exists(scriptPath))
+            {
+                File.Delete(scriptPath);
+            }
+
+            File.WriteAllText(scriptPath, scriptContent);
+            AssetDatabase.Refresh();
+        }
+
+        private static void GenerateVCAList()
+        {
+            string filename = "FMODVCAList";
+            string scriptContent = $"namespace {_nameSpace}\n{{\n";
+
+            scriptContent += $"\tpublic static class {filename}\n\t{{\n";
+
+
+            for (int i = 0; i < _VCAList.Count; i++)
+            {
+                string VCAName = _VCAList[i].Replace("vca:/", "").Replace(" ", "_").Replace("/", "_").Replace("-", "_");
+                if (String.IsNullOrEmpty(VCAName)) VCAName = "Master";
+                scriptContent += $"\t\tpublic static readonly string {VCAName} = \"{_VCAList[i]}\";\n";
+            }
+            scriptContent += "\t}\n";
+            scriptContent += "}";
 
             if (!Directory.Exists(_folderPath))
             {
