@@ -62,6 +62,7 @@ namespace Studio23.SS2.AudioSystem.Editor
             }
 
             GenerateBankList();
+            GenerateLocaleList();
             GenerateEventList();
             GenerateParameterList();
         }
@@ -279,6 +280,65 @@ namespace Studio23.SS2.AudioSystem.Editor
             }
 
             File.WriteAllText(scriptPath, scriptContent);
+            AssetDatabase.Refresh();
+        }
+
+        private static void GenerateLocaleList()
+        {
+            string filename = "FMODLocaleList";
+            var scriptContent = "using System.Collections.Generic;\n\n";
+            scriptContent += $"namespace {_nameSpace}\n{{\n";
+            scriptContent += $"\tpublic enum Language\n";
+            scriptContent += "\t{";
+            scriptContent += "\n";
+
+            for (int i = 0; i < _bankList.Count; i++)
+            {
+                if (_bankList.ElementAt(i).Key.Contains("LOCALE"))
+                {
+                    var temp = _bankList.ElementAt(i).Key.Split("LOCALE_")[1];
+                    scriptContent += $"\t\t{temp},\n";
+                }
+            }
+            scriptContent += "\t}";
+            scriptContent += "\n\n";
+
+            scriptContent += $"\tpublic static class {filename}\n\t{{\n";
+            scriptContent += $"\t\tpublic static Dictionary<Language, string> LanguageList = new Dictionary<Language, string>\n";
+            scriptContent += "\t\t{";
+            scriptContent += "\n";
+
+            for (int i = 0; i < _bankList.Count; i++)
+            {
+                if (_bankList.ElementAt(i).Key.Contains("LOCALE"))
+                {
+                    var temp = _bankList.ElementAt(i).Key.Split("LOCALE_")[1];
+                    scriptContent += "\t\t\t{";
+                    scriptContent += $"Language.{temp}, \"FMODBankList.{_bankList.ElementAt(i).Key}\"";
+                    scriptContent += "},";
+                    scriptContent += "\n";
+                }
+            }
+
+            scriptContent += "\t\t";
+            scriptContent += "};\n";
+            scriptContent += "\t}\n";
+            scriptContent += "}";
+
+            if (!Directory.Exists(_folderPath))
+            {
+                Directory.CreateDirectory(_folderPath);
+            }
+            string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
+            if (File.Exists(scriptPath))
+            {
+                File.Delete(scriptPath);
+            }
+
+            using (StreamWriter writer = new StreamWriter(scriptPath, false))
+            {
+                writer.Write(scriptContent);
+            }
             AssetDatabase.Refresh();
         }
     }

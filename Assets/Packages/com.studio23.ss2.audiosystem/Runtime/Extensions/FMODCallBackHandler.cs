@@ -1,11 +1,11 @@
 using System;
 using System.Runtime.InteropServices;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 using AOT;
 using FMOD;
-using UnityEngine;
 using FMOD.Studio;
 using Studio23.SS2.AudioSystem.Data;
-using Debug = UnityEngine.Debug;
 
 namespace Studio23.SS2.AudioSystem.Extensions
 {
@@ -20,8 +20,7 @@ namespace Studio23.SS2.AudioSystem.Extensions
         }
 
         [MonoPInvokeCallback(typeof(EVENT_CALLBACK))]
-        public static RESULT EventCallbackHandler(EVENT_CALLBACK_TYPE type, IntPtr instancePtr,
-            IntPtr parameterPtr)
+        public static RESULT EventCallbackHandler(EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
         {
             EventInstance instance = new EventInstance(instancePtr);
 
@@ -36,31 +35,81 @@ namespace Studio23.SS2.AudioSystem.Extensions
             else if (EventStateInfoPtr != IntPtr.Zero)
             {
                 // Get the object to store the FMODEmitterData
-                GCHandle eventStateHandle = GCHandle.FromIntPtr(EventStateInfoPtr);
-                FMODEmitterData eventStateInfo = (FMODEmitterData)eventStateHandle.Target;
+                GCHandle eventInfoHandle = GCHandle.FromIntPtr(EventStateInfoPtr);
+                FMODEmitterData eventInfo = (FMODEmitterData)eventInfoHandle.Target;
 
-                eventStateInfo.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY UserProperties);
+                eventInfo.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY UserProperties);
 
                 switch (type)
                 {
-                    case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
+                    case FMOD.Studio.EVENT_CALLBACK_TYPE.SOUND_STOPPED:
                     {
-                        bool isLooping = Convert.ToBoolean(UserProperties.intValue());
-                        if (isLooping)
-                            eventStateInfo.EventState = FMODEventState.Playing;
+                        IsLoopingCheck(UserProperties, eventInfo);
+                        break;
+                    }
+                    case FMOD.Studio.EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND:
+                    {
+                        IsLoopingCheck(UserProperties, eventInfo);
+
+                        MODE soundMode = MODE.LOOP_NORMAL | MODE.CREATECOMPRESSEDSAMPLE | MODE.NONBLOCKING;
+                        var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
+
+                        if (eventInfo.key.Contains("."))
+                        {
+                            Sound dialogueSound;
+                            var soundResult = FMODUnity.RuntimeManager.CoreSystem.createSound(Application.streamingAssetsPath + "/" + eventInfo.key, soundMode, out dialogueSound);
+                            if (soundResult == RESULT.OK)
+                            {
+                                parameter.sound = dialogueSound.handle;
+                                parameter.subsoundIndex = -1;
+                                Marshal.StructureToPtr(parameter, parameterPtr, false);
+                            }
+                        }
                         else
-                            eventStateInfo.EventState = FMODEventState.Stopped;
+                        {
+                            SOUND_INFO dialogueSoundInfo;
+                            var keyResult = FMODUnity.RuntimeManager.StudioSystem.getSoundInfo(eventInfo.key, out dialogueSoundInfo);
+                            if (keyResult != RESULT.OK)
+                            {
+                                break;
+                            }
+                            Sound dialogueSound;
+                            var soundResult = FMODUnity.RuntimeManager.CoreSystem.createSound(dialogueSoundInfo.name_or_data, soundMode | dialogueSoundInfo.mode, ref dialogueSoundInfo.exinfo, out dialogueSound);
+                            if (soundResult == RESULT.OK)
+                            {
+                                Debug.Log("Playing Dialogue");
+                                parameter.sound = dialogueSound.handle;
+                                parameter.subsoundIndex = dialogueSoundInfo.subsoundindex;
+                                Marshal.StructureToPtr(parameter, parameterPtr, false);
+                            }
+                        }
+                        break;
+                    }
+                    case EVENT_CALLBACK_TYPE.DESTROY_PROGRAMMER_SOUND:
+                    {
+                        var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
+                        var sound = new Sound(parameter.sound);
+                        sound.release();
+
                         break;
                     }
                     case EVENT_CALLBACK_TYPE.DESTROYED:
                     {
-                        eventStateHandle.Free();
+                        eventInfoHandle.Free();
                         break;
                     }
                 }
             }
-
             return RESULT.OK;
+        }
+
+        private static void IsLoopingCheck(USER_PROPERTY userProperties, FMODEmitterData eventData)
+        {
+            bool isLooping = Convert.ToBoolean(userProperties.intValue());
+            if (isLooping)
+                eventData.EventState = FMODEventState.Playing;
+            else
+                eventData.EventState = FMODEventState.Stopped;
         }
     }
 }

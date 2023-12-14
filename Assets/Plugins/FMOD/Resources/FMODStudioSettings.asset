@@ -183,9 +183,11 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Dialogue_CN
-  - Dialogue_EN
-  - Dialogue_JP
+  - Dialogue
+  - DialogueTable_LOCALE_BN
+  - DialogueTable_LOCALE_CN
+  - DialogueTable_LOCALE_EN
+  - DialogueTable_LOCALE_JP
   - Music
   - SFX
   - Test

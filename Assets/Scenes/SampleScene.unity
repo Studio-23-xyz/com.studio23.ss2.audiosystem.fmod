@@ -341,7 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6707f94c87aba842bef2b7f72e22c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EmitterDataList: []
+  _emitterDataList: []
+  CurrentLocale: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

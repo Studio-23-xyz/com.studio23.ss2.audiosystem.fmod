@@ -7,19 +7,19 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
 using Studio23.SS2.AudioSystem.Data;
 using Studio23.SS2.AudioSystem.Extensions;
-using Unity.VisualScripting.YamlDotNet.Core;
-using CodiceApp.EventTracking.Plastic;
 using FMOD;
+using System;
 
 namespace Studio23.SS2.AudioSystem.Core
 {
     public class AudioManager : MonoBehaviour
     {
-        private List<FMODEmitterData> _emitterDataList;
+        public List<FMODEmitterData> _emitterDataList;
         private Dictionary<string, Bank> _bankList;
         private List<FMODBusData> _busDataList;
         private List<FMODVCAData> _VCADataList;
-
+        public Language CurrentLocale = Language.EN;
+        
         public delegate UniTask BankHandler(string bankName);
         public event BankHandler OnBankLoaded;
         public event BankHandler OnBankUnloaded;
@@ -57,6 +57,7 @@ namespace Studio23.SS2.AudioSystem.Core
         private void Start()
         {
             Initialize();
+
         }
 
         private void Initialize()
@@ -65,6 +66,8 @@ namespace Studio23.SS2.AudioSystem.Core
             _bankList = new Dictionary<string, Bank>();
             _busDataList = new List<FMODBusData>();
             _VCADataList = new List<FMODVCAData>();
+
+            //SwitchLocalization(CurrentLocale);
         }
 
         #region Banks
@@ -131,6 +134,13 @@ namespace Studio23.SS2.AudioSystem.Core
                     break;
                 }
             }
+        }
+
+        public void SwitchLocalization(Language targetLocale)
+        {
+            if (FMODLocaleList.LanguageList.ContainsKey(CurrentLocale)) UnloadBank(FMODLocaleList.LanguageList[CurrentLocale]);
+            if (FMODLocaleList.LanguageList.ContainsKey(targetLocale)) LoadBank(FMODLocaleList.LanguageList[targetLocale]);
+            CurrentLocale = targetLocale;
         }
 
         #endregion
@@ -228,6 +238,14 @@ namespace Studio23.SS2.AudioSystem.Core
         {
             var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
             if (fetchData == null) return;
+            fetchData.Play();
+        }
+
+        public void PlayExternal(string key, FMODEventData eventData, GameObject referenceGameObject)
+        {
+            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
+            if (fetchData == null) return;
+            fetchData.key = key;
             fetchData.Play();
         }
 

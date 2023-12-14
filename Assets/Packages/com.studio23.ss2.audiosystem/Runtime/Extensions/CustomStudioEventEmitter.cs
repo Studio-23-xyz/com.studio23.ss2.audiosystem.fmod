@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FMODUnity;
+using Studio23.SS2.AudioSystem.Data;
 using UnityEngine;
 
 namespace Studio23.SS2.AudioSystem.Extensions
@@ -491,6 +492,23 @@ namespace Studio23.SS2.AudioSystem.Extensions
                 return (playbackState != FMOD.Studio.PLAYBACK_STATE.STOPPED);
             }
             return false;
+        }
+
+        void OnDrawGizmos()
+        {
+            if (this.enabled)
+            {
+                if (IsPlaying())
+                {
+                    Gizmos.color = Color.green;
+                    Gizmos.DrawSphere(transform.position, 1f);
+                }
+                else if (!IsPlaying())
+                {
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawSphere(transform.position, 1f);
+                }
+            }
         }
     }
 }
