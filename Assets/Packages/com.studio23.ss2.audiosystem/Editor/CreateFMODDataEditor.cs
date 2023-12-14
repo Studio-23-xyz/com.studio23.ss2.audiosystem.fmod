@@ -5,8 +5,6 @@ using System.Linq;
 using FMOD;
 using FMOD.Studio;
 using UnityEditor;
-using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 namespace Studio23.SS2.AudioSystem.Editor
 {
@@ -98,83 +96,6 @@ namespace Studio23.SS2.AudioSystem.Editor
             GetMixerDataList();
         }
 
-        private static void GenerateEventList()
-        {
-            for (int i = 0; i < _eventList.Count; i++)
-            {
-                string scriptContent = $"namespace {_nameSpace}\n{{\n";
-
-                string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Replace("bank:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_")}";
-
-                scriptContent += $"\tpublic static class {filename}\n\t{{\n";
-
-                foreach (var value in _eventList.ElementAt(i).Value)
-                {
-                    var eventName = value.Replace("event:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_");
-                    scriptContent += $"\t\tpublic static FMODEventData {eventName} = new FMODEventData(\"{_eventList.ElementAt(i).Key}\", \"{value}\");\n";
-                }
-
-                scriptContent += "\t}\n";
-                scriptContent += "}";
-
-                if (!Directory.Exists(_folderPath))
-                {
-                    Directory.CreateDirectory(_folderPath);
-                }
-                string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
-                if (File.Exists(scriptPath))
-                {
-                    File.Delete(scriptPath);
-                }
-
-                using (StreamWriter writer = new StreamWriter(scriptPath, false))
-                {
-                    writer.Write(scriptContent);
-                }
-                AssetDatabase.Refresh();
-            }
-        }
-
-        private static void GenerateParameterList()
-        {
-            string filename = "FMODParameterList";
-            string scriptContent = $"namespace {_nameSpace}\n{{\n";
-
-            scriptContent += $"\tpublic static class {filename}\n\t{{\n";
-
-            for (int i = 0; i < _parameterList.Count; i++)
-            {
-                var eventName = _parameterList.ElementAt(i).Key.Replace("event:/", "").Replace(":/", "_").Replace("/", "_").Replace(" ", "_").Replace("-", "_");
-
-                scriptContent += $"\t\tpublic static class {eventName}\n\t\t{{\n";
-
-                foreach (var value in _parameterList.ElementAt(i).Value)
-                {
-                    var variableValue = value.Split("/").Last();
-                    var parameterName = variableValue.Replace(" ", "_").Replace("-", "_");
-
-                    scriptContent += $"\t\t\tpublic static readonly string {parameterName} = \"{variableValue}\";\n";
-                }
-                scriptContent += "\t\t}\n";
-            }
-            scriptContent += "\t}\n";
-            scriptContent += "}";
-
-
-            if (!Directory.Exists(_folderPath))
-            {
-                Directory.CreateDirectory(_folderPath);
-            }
-            string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
-            if (File.Exists(scriptPath))
-            {
-                File.Delete(scriptPath);
-            }
-
-            File.WriteAllText(scriptPath, scriptContent);
-            AssetDatabase.Refresh();
-        }
-
         private static void GetMixerDataList()
         {
             FMOD.Studio.System.create(out FMOD.Studio.System fmodSystem);
@@ -184,7 +105,7 @@ namespace Studio23.SS2.AudioSystem.Editor
             {
                 fmodSystem.loadBankFile(_bankList.ElementAt(i).Value, LOAD_BANK_FLAGS.NORMAL, out Bank masterBank);
             }
-            
+
             fmodSystem.getBankList(out FMOD.Studio.Bank[] allBanks);
             foreach (FMOD.Studio.Bank bank in allBanks)
             {
@@ -269,6 +190,83 @@ namespace Studio23.SS2.AudioSystem.Editor
             }
             scriptContent += "\t}\n";
             scriptContent += "}";
+
+            if (!Directory.Exists(_folderPath))
+            {
+                Directory.CreateDirectory(_folderPath);
+            }
+            string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
+            if (File.Exists(scriptPath))
+            {
+                File.Delete(scriptPath);
+            }
+
+            File.WriteAllText(scriptPath, scriptContent);
+            AssetDatabase.Refresh();
+        }
+
+        private static void GenerateEventList()
+        {
+            for (int i = 0; i < _eventList.Count; i++)
+            {
+                string scriptContent = $"namespace {_nameSpace}\n{{\n";
+
+                string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Replace("bank:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_")}";
+
+                scriptContent += $"\tpublic static class {filename}\n\t{{\n";
+
+                foreach (var value in _eventList.ElementAt(i).Value)
+                {
+                    var eventName = value.Replace("event:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_");
+                    scriptContent += $"\t\tpublic static FMODEventData {eventName} = new FMODEventData(\"{_eventList.ElementAt(i).Key}\", \"{value}\");\n";
+                }
+
+                scriptContent += "\t}\n";
+                scriptContent += "}";
+
+                if (!Directory.Exists(_folderPath))
+                {
+                    Directory.CreateDirectory(_folderPath);
+                }
+                string scriptPath = Path.Combine(_folderPath, $"{filename}.cs");
+                if (File.Exists(scriptPath))
+                {
+                    File.Delete(scriptPath);
+                }
+
+                using (StreamWriter writer = new StreamWriter(scriptPath, false))
+                {
+                    writer.Write(scriptContent);
+                }
+                AssetDatabase.Refresh();
+            }
+        }
+
+        private static void GenerateParameterList()
+        {
+            string filename = "FMODParameterList";
+            string scriptContent = $"namespace {_nameSpace}\n{{\n";
+
+            scriptContent += $"\tpublic static class {filename}\n\t{{\n";
+
+            for (int i = 0; i < _parameterList.Count; i++)
+            {
+                var eventName = _parameterList.ElementAt(i).Key.Replace("event:/", "").Replace(":/", "_").Replace("/", "_").Replace(" ", "_").Replace("-", "_");
+
+                scriptContent += $"\t\tpublic static class {eventName}\n\t\t{{\n";
+
+                foreach (var value in _parameterList.ElementAt(i).Value)
+                {
+                    var variableValue = value.Split("/").Last();
+                    var parameterName = variableValue.Replace(" ", "_").Replace("-", "_");
+
+                    scriptContent += $"\t\t\tpublic static readonly string {parameterName} = \"{variableValue}\";\n";
+                }
+                scriptContent += "\t\t}\n";
+            }
+            scriptContent += "\t}\n";
+            scriptContent += "}";
+
 
             if (!Directory.Exists(_folderPath))
             {

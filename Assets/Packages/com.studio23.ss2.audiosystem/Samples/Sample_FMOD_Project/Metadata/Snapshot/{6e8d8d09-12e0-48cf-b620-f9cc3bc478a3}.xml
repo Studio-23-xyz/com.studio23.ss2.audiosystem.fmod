@@ -101,18 +101,10 @@
 		<property name="nameOfPropertyBeingAutomated">
 			<value>value</value>
 		</property>
-		<relationship name="automationCurves">
-			<destination>{5b42069e-e00b-4cba-9fe4-cd145b151fa5}</destination>
-		</relationship>
 	</object>
 	<object class="AutomationTrack" id="{24a12406-6923-486d-bec9-ae5fbf1e403c}">
 		<relationship name="automator">
 			<destination>{b0bc7cdf-b8a3-4edd-bb7d-a651a07d8c4c}</destination>
-		</relationship>
-	</object>
-	<object class="AutomationCurve" id="{5b42069e-e00b-4cba-9fe4-cd145b151fa5}">
-		<relationship name="parameter">
-			<destination>{5995a0f1-9dcc-4eae-b9d7-56cc73199586}</destination>
 		</relationship>
 	</object>
 </objects>

@@ -9,6 +9,7 @@ using Studio23.SS2.AudioSystem.Data;
 using Studio23.SS2.AudioSystem.Extensions;
 using Unity.VisualScripting.YamlDotNet.Core;
 using CodiceApp.EventTracking.Plastic;
+using FMOD;
 
 namespace Studio23.SS2.AudioSystem.Core
 {
@@ -66,10 +67,12 @@ namespace Studio23.SS2.AudioSystem.Core
             _VCADataList = new List<FMODVCAData>();
         }
 
+        #region Banks
+
         public void LoadBank(string bankName, LOAD_BANK_FLAGS flag = LOAD_BANK_FLAGS.NORMAL)
         {
             var result = RuntimeManager.StudioSystem.loadBankFile(bankName, flag, out Bank bank);
-            if (result == FMOD.RESULT.OK && !_bankList.ContainsKey(bankName))
+            if (result == RESULT.OK && !_bankList.ContainsKey(bankName))
             {
                 OnBankLoaded?.Invoke(bankName);
                 _bankList.Add(bankName, bank);
@@ -129,6 +132,10 @@ namespace Studio23.SS2.AudioSystem.Core
                 }
             }
         }
+
+        #endregion
+
+        #region Bus & VCA
 
         public void CreateBus(string busName, float defaultVolume)
         {
@@ -205,6 +212,10 @@ namespace Studio23.SS2.AudioSystem.Core
             }
         }
 
+        #endregion
+
+        #region Events
+
         public void CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
             var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
@@ -250,11 +261,25 @@ namespace Studio23.SS2.AudioSystem.Core
             _emitterDataList.Remove(fetchData);
         }
 
+        public void SetLocalParameter(FMODEventData eventData, GameObject referenceGameObject, string parameterName, float parameterValue)
+        {
+            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
+            if (fetchData == null) return;
+            fetchData.SetParameter(parameterName, parameterValue);
+        }
+
+        public void SetGlobalParameter(string parameterName, float parameterValue)
+        {
+            RuntimeManager.StudioSystem.setParameterByName(parameterName, parameterValue);
+        }
+
         private FMODEmitterData EventEmitterExists(string eventName, GameObject referenceGameObject)
         {
             return _emitterDataList.FirstOrDefault(x =>
                 x.EventName.Equals(eventName) && x.ReferenceGameObject == referenceGameObject);
         }
+
+        #endregion
 
         private void OnDestroy()
         {

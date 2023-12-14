@@ -13,8 +13,7 @@ namespace Studio23.SS2.AudioSystem.Extensions
     {
         public static void InitializeCallback(FMODEmitterData eventData)
         {
-            EVENT_CALLBACK EventCallback =
-                new EVENT_CALLBACK(EventCallbackHandler);
+            EVENT_CALLBACK EventCallback = new EVENT_CALLBACK(EventCallbackHandler);
             GCHandle EventGCHandle = GCHandle.Alloc(eventData);
             eventData.Emitter.EventInstance.setUserData(GCHandle.ToIntPtr(EventGCHandle));
             eventData.Emitter.EventInstance.setCallback(EventCallback);

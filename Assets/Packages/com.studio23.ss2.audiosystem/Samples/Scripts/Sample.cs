@@ -97,6 +97,7 @@ public class Sample : MonoBehaviour
     {
         AudioManager.Instance.CreateEmitter(FMODBank_Master.snapshot_Test, gameObject);
         AudioManager.Instance.Play(FMODBank_Master.snapshot_Test, gameObject);
+
     }
 
     [ContextMenu("Increase Bus Volume")]
@@ -104,6 +105,30 @@ public class Sample : MonoBehaviour
     {
         Bus musicBus = RuntimeManager.GetBus(FMODBusList.Test);
         musicBus.setVolume(1f);
+    }
+
+    [ContextMenu("Set Local Parameter Increase")]
+    public void SetParameter1()
+    {
+        AudioManager.Instance.SetLocalParameter(FMODBank_Test.Test, gameObject, FMODParameterList.Test.TestParameter, 0f);
+    }
+
+    [ContextMenu("Set Local Parameter Decrease")]
+    public void SetParameter2()
+    {
+        AudioManager.Instance.SetLocalParameter(FMODBank_Test.Test, gameObject, FMODParameterList.Test.TestParameter, 1f);
+    }
+
+    [ContextMenu("Set Global Parameter Increase")]
+    public void SetParameter3()
+    {
+        AudioManager.Instance.SetGlobalParameter(FMODParameterList.snapshot_Test.GlobalTest, 1f);
+    }
+
+    [ContextMenu("Set Global Parameter Decrease")]
+    public void SetParameter4()
+    {
+        AudioManager.Instance.SetGlobalParameter(FMODParameterList.snapshot_Test.GlobalTest, 0f);
     }
 
 }

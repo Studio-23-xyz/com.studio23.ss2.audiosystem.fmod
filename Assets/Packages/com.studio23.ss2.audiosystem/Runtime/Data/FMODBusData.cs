@@ -1,6 +1,6 @@
+using System;
 using FMOD.Studio;
 using FMODUnity;
-using System;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Studio23.SS2.AudioSystem.Data
