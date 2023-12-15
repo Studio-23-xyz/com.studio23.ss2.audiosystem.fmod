@@ -23,6 +23,7 @@ namespace Studio23.SS2.AudioSystem.Editor
         {
             var emitter = target as CustomStudioEventEmitter;
 
+            if (emitter == null) return;
             EditorEventRef editorEvent = EventManager.EventFromGUID(emitter.EventReference.Guid);
             if (editorEvent != null && editorEvent.Is3D)
             {
@@ -38,6 +39,7 @@ namespace Studio23.SS2.AudioSystem.Editor
                     emitter.OverrideMaxDistance = Mathf.Max(emitter.OverrideMinDistance, maxDistance);
                 }
             }
+
         }
 
         public override void OnInspectorGUI()

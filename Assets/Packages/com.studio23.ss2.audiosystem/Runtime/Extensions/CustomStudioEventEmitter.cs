@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using FMODUnity;
-using Studio23.SS2.AudioSystem.Data;
 using UnityEngine;
+using FMODUnity;
 
 namespace Studio23.SS2.AudioSystem.Extensions
 {
@@ -498,15 +497,36 @@ namespace Studio23.SS2.AudioSystem.Extensions
         {
             if (this.enabled)
             {
+                instance.getPaused(out bool isPaused);
+
+                float minRadius;
+                float maxRadius;
+                eventDescription.is3D(out bool is3D);
+                if (is3D)
+                {
+                    instance.getMinMaxDistance(out float minDistance, out float maxDistance);
+                    minRadius = minDistance;
+                    maxRadius = maxDistance;
+                }
+                else minRadius = maxRadius = 1f;
+
                 if (IsPlaying())
                 {
                     Gizmos.color = Color.green;
-                    Gizmos.DrawSphere(transform.position, 1f);
+                    if (is3D) Gizmos.DrawSphere(transform.position, maxRadius);
+                    Gizmos.DrawSphere(transform.position, minRadius);
+                }
+                if (isPaused)
+                {
+                    Gizmos.color = Color.yellow;
+                    if (is3D) Gizmos.DrawSphere(transform.position, maxRadius);
+                    Gizmos.DrawSphere(transform.position, minRadius);
                 }
                 else if (!IsPlaying())
                 {
                     Gizmos.color = Color.red;
-                    Gizmos.DrawSphere(transform.position, 1f);
+                    if (is3D) Gizmos.DrawSphere(transform.position, maxRadius);
+                    Gizmos.DrawSphere(transform.position, minRadius);
                 }
             }
         }

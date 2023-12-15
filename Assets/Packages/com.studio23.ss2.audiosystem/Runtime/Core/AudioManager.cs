@@ -9,6 +9,7 @@ using Studio23.SS2.AudioSystem.Data;
 using Studio23.SS2.AudioSystem.Extensions;
 using FMOD;
 using System;
+using System.Reflection;
 
 namespace Studio23.SS2.AudioSystem.Core
 {
@@ -18,7 +19,6 @@ namespace Studio23.SS2.AudioSystem.Core
         private Dictionary<string, Bank> _bankList;
         private List<FMODBusData> _busDataList;
         private List<FMODVCAData> _VCADataList;
-        public Language CurrentLocale = Language.EN;
         
         public delegate UniTask BankHandler(string bankName);
         public event BankHandler OnBankLoaded;
@@ -57,7 +57,6 @@ namespace Studio23.SS2.AudioSystem.Core
         private void Start()
         {
             Initialize();
-
         }
 
         private void Initialize()
@@ -66,8 +65,6 @@ namespace Studio23.SS2.AudioSystem.Core
             _bankList = new Dictionary<string, Bank>();
             _busDataList = new List<FMODBusData>();
             _VCADataList = new List<FMODVCAData>();
-
-            //SwitchLocalization(CurrentLocale);
         }
 
         #region Banks
@@ -136,30 +133,29 @@ namespace Studio23.SS2.AudioSystem.Core
             }
         }
 
-        public void SwitchLocalization(Language targetLocale)
+        public void SwitchLocalization(string currentLocale, string targetLocale)
         {
-            if (FMODLocaleList.LanguageList.ContainsKey(CurrentLocale)) UnloadBank(FMODLocaleList.LanguageList[CurrentLocale]);
-            if (FMODLocaleList.LanguageList.ContainsKey(targetLocale)) LoadBank(FMODLocaleList.LanguageList[targetLocale]);
-            CurrentLocale = targetLocale;
+            if (string.IsNullOrEmpty(targetLocale)) return;
+            UnloadBank(currentLocale);
+            LoadBank(targetLocale);
         }
 
         #endregion
 
         #region Bus & VCA
 
-        public void CreateBus(string busName, float defaultVolume)
+        private FMODBusData GetBus(string busName, float defaultVolume)
         {
             var newBus = new FMODBusData(busName, defaultVolume);
             _busDataList.Add(newBus);
+            return newBus;
         }
 
         public void SetBusVolume(string busName, float volume)
         {
             var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
-            if (busData != null)
-            {
-                busData.SetVolume(volume);
-            }
+            if (busData == null) busData = GetBus(busName, volume);
+            busData.SetVolume(volume);
         }
 
         public void PauseBus(string busName)
@@ -232,20 +228,22 @@ namespace Studio23.SS2.AudioSystem.Core
             if (fetchData != null) return;
             var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
             _emitterDataList.Add(newEmitter);
+            FMODCallBackHandler.InitializeCallback(newEmitter);
+        }
+
+        public void PlayDialogue(string key, FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        {
+            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
+            if (fetchData == null) return;
+            var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
+            _emitterDataList.Add(newEmitter);
+            FMODCallBackHandler.InitializeDialogueCallback(newEmitter, key);
         }
 
         public void Play(FMODEventData eventData, GameObject referenceGameObject)
         {
             var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
             if (fetchData == null) return;
-            fetchData.Play();
-        }
-
-        public void PlayExternal(string key, FMODEventData eventData, GameObject referenceGameObject)
-        {
-            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
-            if (fetchData == null) return;
-            fetchData.key = key;
             fetchData.Play();
         }
 

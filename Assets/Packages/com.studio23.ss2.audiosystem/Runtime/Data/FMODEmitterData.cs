@@ -36,7 +36,6 @@ namespace Studio23.SS2.AudioSystem.Data
             if (Emitter == null) Emitter = ReferenceGameObject.AddComponent<CustomStudioEventEmitter>();
             Emitter.EventReference = EventReference.Find(EventName);
             Emitter.CustomInitialize();
-            FMODCallBackHandler.InitializeCallback(this);
         }
 
         public void Play()
