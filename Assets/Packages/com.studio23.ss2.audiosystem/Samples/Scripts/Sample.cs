@@ -1,8 +1,8 @@
+using UnityEngine;
 using FMOD.Studio;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.Core;
 using Studio23.SS2.AudioSystem.Data;
-using UnityEngine;
 
 public class Sample : MonoBehaviour
 {
@@ -100,45 +100,46 @@ public class Sample : MonoBehaviour
         AudioManager.Instance.UnloadBank(FMODBankList.Dialogue);
     }
 
-    [ContextMenu("Load EN Bank")]
-    public void LoadENBank()
-    {
-        AudioManager.Instance.LoadBank(FMODBankList.DialogueTable_LOCALE_EN);
-    }
+    //[ContextMenu("Load EN Bank")]
+    //public void LoadENBank()
+    //{
+    //    AudioManager.Instance.LoadBank(FMODBankList.DialogueTable_LOCALE_EN);
+    //}
 
-    [ContextMenu("Unload EN Bank")]
-    public void UnloadENBank()
-    {
-        AudioManager.Instance.UnloadBank(FMODBankList.DialogueTable_LOCALE_EN);
-    }
+    //[ContextMenu("Unload EN Bank")]
+    //public void UnloadENBank()
+    //{
+    //    AudioManager.Instance.UnloadBank(FMODBankList.DialogueTable_LOCALE_EN);
+    //}
+
+    //[ContextMenu("Load JP Bank")]
+    //public void LoadJPBank()
+    //{
+    //    AudioManager.Instance.LoadBank(FMODBankList.DialogueTable_LOCALE_JP);
+    //}
+
+    //[ContextMenu("Unload JP Bank")]
+    //public void UnloadJPBank()
+    //{
+    //    AudioManager.Instance.UnloadBank(FMODBankList.DialogueTable_LOCALE_JP);
+    //}
 
     [ContextMenu("Load JP Bank")]
     public void LoadJPBank()
     {
-        AudioManager.Instance.LoadBank(FMODBankList.DialogueTable_LOCALE_JP);
+        AudioManager.Instance.SwitchLocalization(FMODLocaleList.LanguageList[Language.EN], FMODLocaleList.LanguageList[Language.JP]);
     }
 
-    [ContextMenu("Unload JP Bank")]
-    public void UnloadJPBank()
-    {
-        AudioManager.Instance.UnloadBank(FMODBankList.DialogueTable_LOCALE_JP);
-    }
-
-    [ContextMenu("Create Dialogue")]
+    [ContextMenu("Play Welcome Dialogue")]
     public void CreateDialogue()
     {
-        AudioManager.Instance.PlayDialogue("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
+        AudioManager.Instance.PlayProgrammerSound("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
     }
 
-    //[ContextMenu("Play Welcome Dialogue")]
-    //public void PlayWelcome()
-    //{
-    //    AudioManager.Instance.PlayExternal("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
-    //}
     [ContextMenu("Play Goodbye Dialogue")]
     public void PlayGoodbye()
     {
-        AudioManager.Instance.PlayDialogue("goodbye", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
+        AudioManager.Instance.PlayProgrammerSound("goodbye", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
     }
 
     [ContextMenu("Pause")]

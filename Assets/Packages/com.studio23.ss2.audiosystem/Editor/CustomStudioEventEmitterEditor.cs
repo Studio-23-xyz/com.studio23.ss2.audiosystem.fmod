@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEditor;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.Extensions;
-using UnityEditor;
-using UnityEngine;
 
 namespace Studio23.SS2.AudioSystem.Editor
 {

@@ -1,11 +1,9 @@
-using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
 using Studio23.SS2.AudioSystem.Extensions;
-using log4net.Util;
 
 namespace Studio23.SS2.AudioSystem.Data
 {
@@ -18,7 +16,6 @@ namespace Studio23.SS2.AudioSystem.Data
         public CustomStudioEventEmitter Emitter;
         public FMODEventState EventState = FMODEventState.Stopped;
         public STOP_MODE StopModeType;
-        public string key;
 
         public FMODEmitterData(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {

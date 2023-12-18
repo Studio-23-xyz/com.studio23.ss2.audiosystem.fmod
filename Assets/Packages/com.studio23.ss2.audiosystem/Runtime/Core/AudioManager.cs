@@ -1,21 +1,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
 using Studio23.SS2.AudioSystem.Data;
 using Studio23.SS2.AudioSystem.Extensions;
-using FMOD;
-using System;
-using System.Reflection;
 
 namespace Studio23.SS2.AudioSystem.Core
 {
     public class AudioManager : MonoBehaviour
     {
-        public List<FMODEmitterData> _emitterDataList;
+        private List<FMODEmitterData> _emitterDataList;
         private Dictionary<string, Bank> _bankList;
         private List<FMODBusData> _busDataList;
         private List<FMODVCAData> _VCADataList;
@@ -224,39 +222,43 @@ namespace Studio23.SS2.AudioSystem.Core
 
         public void CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
-            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData != null) return;
             var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
             _emitterDataList.Add(newEmitter);
             FMODCallBackHandler.InitializeCallback(newEmitter);
         }
 
-        public void PlayDialogue(string key, FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        public void PlayProgrammerSound(string key, FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
-            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
-            if (fetchData == null) return;
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            if (fetchData != null)
+            {
+                FMODProgrammerSoundCallBackHandler.InitializeDialogueCallback(fetchData, key);
+                return;
+            }
             var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
             _emitterDataList.Add(newEmitter);
-            FMODCallBackHandler.InitializeDialogueCallback(newEmitter, key);
+            FMODProgrammerSoundCallBackHandler.InitializeDialogueCallback(newEmitter, key, true);
         }
 
         public void Play(FMODEventData eventData, GameObject referenceGameObject)
         {
-            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
             fetchData.Play();
         }
 
         public void Pause(FMODEventData eventData, GameObject referenceGameObject)
         {
-            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
             fetchData.Pause();
         }
 
         public void UnPause(FMODEventData eventData, GameObject referenceGameObject)
         {
-            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
             fetchData.UnPause();
         }
@@ -271,7 +273,7 @@ namespace Studio23.SS2.AudioSystem.Core
 
         public async void Release(FMODEventData eventData, GameObject referenceGameObject)
         {
-            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
             await fetchData.ReleaseAsync();
             _emitterDataList.Remove(fetchData);
@@ -279,7 +281,7 @@ namespace Studio23.SS2.AudioSystem.Core
 
         public void SetLocalParameter(FMODEventData eventData, GameObject referenceGameObject, string parameterName, float parameterValue)
         {
-            var fetchData = EventEmitterExists(eventData.EventName, referenceGameObject);
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
             fetchData.SetParameter(parameterName, parameterValue);
         }
@@ -289,10 +291,10 @@ namespace Studio23.SS2.AudioSystem.Core
             RuntimeManager.StudioSystem.setParameterByName(parameterName, parameterValue);
         }
 
-        private FMODEmitterData EventEmitterExists(string eventName, GameObject referenceGameObject)
+        private FMODEmitterData EventEmitterExists(FMODEventData eventData, GameObject referenceGameObject)
         {
             return _emitterDataList.FirstOrDefault(x =>
-                x.EventName.Equals(eventName) && x.ReferenceGameObject == referenceGameObject);
+                x.BankName.Equals(eventData.BankName) && x.EventName.Equals(eventData.EventName) && x.ReferenceGameObject == referenceGameObject);
         }
 
         #endregion

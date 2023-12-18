@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor;
 using FMOD;
 using FMOD.Studio;
-using UnityEditor;
 
 namespace Studio23.SS2.AudioSystem.Editor
 {
