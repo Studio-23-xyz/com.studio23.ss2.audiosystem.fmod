@@ -2,6 +2,10 @@ namespace Studio23.SS2.AudioSystem.Data
 {
 	public static class FMODParameterList
 	{
+		public static class Test
+		{
+			public static readonly string TestParameter = "TestParameter";
+		}
 		public static class Music_Level_03
 		{
 			public static readonly string Stinger = "Stinger";
@@ -96,13 +100,17 @@ namespace Studio23.SS2.AudioSystem.Data
 			public static readonly string RPM = "RPM";
 			public static readonly string Area = "Area";
 		}
-		public static class Test
-		{
-			public static readonly string TestParameter = "TestParameter";
-		}
 		public static class snapshot_Test
 		{
 			public static readonly string GlobalTest = "GlobalTest";
+		}
+		public static class Test_3
+		{
+			public static readonly string TestParameter = "TestParameter";
+		}
+		public static class Test_2
+		{
+			public static readonly string TestParameter = "TestParameter";
 		}
 	}
 }

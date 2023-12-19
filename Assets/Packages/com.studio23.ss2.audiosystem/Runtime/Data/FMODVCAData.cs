@@ -1,4 +1,3 @@
-using System;
 using FMOD.Studio;
 using FMODUnity;
 
@@ -16,17 +15,14 @@ namespace Studio23.SS2.AudioSystem.Data
             VCA = RuntimeManager.GetVCA(vcaName);
             VCAName = vcaName;
             DefaultVolume = defaultVolume;
-            CurrentVolume = DefaultVolume;
-        }
-
-        public void Initialize()
-        {
-            throw new NotImplementedException();
+            CurrentVolume = defaultVolume;
+            SetVolume(defaultVolume);
         }
 
         public void SetVolume(float volume)
         {
             VCA.setVolume(volume);
+            CurrentVolume = volume;
         }
     }
 }

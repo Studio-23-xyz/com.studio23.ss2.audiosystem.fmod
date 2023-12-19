@@ -3,7 +3,10 @@
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "FMODUnity",
+        "com.studio23.ss2.audiosystem",
+        "UniTask"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

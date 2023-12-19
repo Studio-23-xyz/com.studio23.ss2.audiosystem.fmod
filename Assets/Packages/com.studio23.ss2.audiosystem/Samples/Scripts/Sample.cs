@@ -21,6 +21,12 @@ public class Sample : MonoBehaviour
         AudioManager.Instance.Release(FMODBank_Test.Test, gameObject);
     }
 
+    [ContextMenu("Stop")]
+    public void Stop()
+    {
+        AudioManager.Instance.Stop(FMODBank_Test.Test, gameObject);
+    }
+
     [ContextMenu("Pause")]
     public void Pause()
     {
@@ -152,5 +158,12 @@ public class Sample : MonoBehaviour
     public void UnPauseWelcome()
     {
         AudioManager.Instance.UnPause(FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
+    }
+
+    [ContextMenu("StopAllBusEvents")]
+    public async void StopAllBusEvents()
+    {
+        AudioManager.Instance.SetBusVolume(FMODBusList.Test, 1f);
+        await AudioManager.Instance.StopAllBusEvents(FMODBusList.Test);
     }
 }

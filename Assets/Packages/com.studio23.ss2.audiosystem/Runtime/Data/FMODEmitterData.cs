@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
 using Studio23.SS2.AudioSystem.Extensions;
+using FMOD.Studio;
 
 namespace Studio23.SS2.AudioSystem.Data
 {
@@ -16,6 +18,7 @@ namespace Studio23.SS2.AudioSystem.Data
         public CustomStudioEventEmitter Emitter;
         public FMODEventState EventState = FMODEventState.Stopped;
         public STOP_MODE StopModeType;
+        public EVENT_CALLBACK_TYPE CurrentCallbackType;
 
         public FMODEmitterData(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
@@ -63,19 +66,25 @@ namespace Studio23.SS2.AudioSystem.Data
             else if (!isGamePaused && (EventState == FMODEventState.Paused)) UnPause();
         }
 
-        public void Stop()
+        public async UniTask StopAsync(STOP_MODE stopModeType)
         {
-            Emitter.Stop();
+            Emitter.EventInstance.stop(stopModeType);
             EventState = FMODEventState.Stopped;
+            await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED);
+        }
+
+        public async UniTask StopAsync()
+        {
+            Emitter.EventInstance.stop(StopModeType);
+            EventState = FMODEventState.Stopped;
+            await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED);
         }
 
         public async UniTask ReleaseAsync()
         {
-            await UniTask.RunOnThreadPool(() =>
-            {
-                Stop();
-                Emitter.EventInstance.release();
-            });
+            await StopAsync();
+            Emitter.EventInstance.release();
+            await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED);
             Object.Destroy(Emitter);
         }
 

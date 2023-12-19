@@ -85,42 +85,52 @@ public static class FMODProgrammerSoundCallBackHandler
         EventInstance instance = new EventInstance(instancePtr);
 
         // Retrieve the user data
-        IntPtr EventInfoPtr;
-        RESULT result = instance.getUserData(out EventInfoPtr);
+        IntPtr EventDataPtr;
+        RESULT result = instance.getUserData(out EventDataPtr);
 
         if (result != RESULT.OK)
         {
             Debug.LogError("Programmer Sound Callback error: " + result);
         }
-        else if (EventInfoPtr != IntPtr.Zero)
+        else if (EventDataPtr != IntPtr.Zero)
         {
             // Get the object to store the FMODEmitterData
-            GCHandle eventInfoHandle = GCHandle.FromIntPtr(EventInfoPtr);
-            SoundData eventInfo = (SoundData)eventInfoHandle.Target;
+            GCHandle eventDataHandle = GCHandle.FromIntPtr(EventDataPtr);
+            SoundData eventData = (SoundData)eventDataHandle.Target;
 
-            eventInfo.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY UserProperties);
-
+            eventData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY UserProperties);
+            eventData.EmitterData.CurrentCallbackType = type;
             switch (type)
             {
-                case FMOD.Studio.EVENT_CALLBACK_TYPE.CREATED:
+                case EVENT_CALLBACK_TYPE.CREATED:
                 {
                     OnDialogueStarted?.Invoke();
                     break;
                 }
-                case FMOD.Studio.EVENT_CALLBACK_TYPE.SOUND_STOPPED:
+                case EVENT_CALLBACK_TYPE.STARTED:
                 {
-                    IsLoopingCheck(UserProperties, eventInfo.EmitterData);
+                    eventData.EmitterData.EventState = FMODEventState.Playing;
+                    break;
+                }
+                case EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND:
+                {
+                    IsLoopingCheck(UserProperties, eventData.EmitterData);
+                    var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
+
+                    parameter.sound = eventData.Sound.handle;
+                    parameter.subsoundIndex = eventData.SoundInfo.subsoundindex;
+                    Marshal.StructureToPtr(parameter, parameterPtr, false);
+                    break;
+                }
+                case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
+                {
+                    IsLoopingCheck(UserProperties, eventData.EmitterData);
                     OnDialogueComplete?.Invoke();
                     break;
                 }
-                case FMOD.Studio.EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND:
+                case EVENT_CALLBACK_TYPE.STOPPED:
                 {
-                    IsLoopingCheck(UserProperties, eventInfo.EmitterData);
-                    var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
-
-                    parameter.sound = eventInfo.Sound.handle;
-                    parameter.subsoundIndex = eventInfo.SoundInfo.subsoundindex;
-                    Marshal.StructureToPtr(parameter, parameterPtr, false);
+                    eventData.EmitterData.EventState = FMODEventState.Stopped;
                     break;
                 }
                 case EVENT_CALLBACK_TYPE.DESTROY_PROGRAMMER_SOUND:
@@ -132,7 +142,7 @@ public static class FMODProgrammerSoundCallBackHandler
                 }
                 case EVENT_CALLBACK_TYPE.DESTROYED:
                 {
-                    eventInfoHandle.Free();
+                    eventDataHandle.Free();
                     break;
                 }
             }

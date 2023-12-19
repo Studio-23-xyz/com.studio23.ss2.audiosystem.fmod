@@ -10,9 +10,9 @@ namespace Studio23.SS2.AudioSystem.Data
 		public static readonly string Vehicles = "Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Build/Desktop/Vehicles.bank";
 		public static readonly string VO = "Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Build/Desktop/VO.bank";
 		public static readonly string Dialogue = "Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Build/Desktop/Dialogue.bank";
-		public static readonly string DialogueTable_LOCALE_EN = "Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Build/Desktop/DialogueTable_LOCALE_EN.bank";
 		public static readonly string DialogueTable_LOCALE_BN = "Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Build/Desktop/DialogueTable_LOCALE_BN.bank";
 		public static readonly string DialogueTable_LOCALE_CN = "Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Build/Desktop/DialogueTable_LOCALE_CN.bank";
+		public static readonly string DialogueTable_LOCALE_EN = "Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Build/Desktop/DialogueTable_LOCALE_EN.bank";
 		public static readonly string DialogueTable_LOCALE_JP = "Assets/Packages/com.studio23.ss2.audiosystem/Samples/Sample_FMOD_Project/Build/Desktop/DialogueTable_LOCALE_JP.bank";
 	}
 }

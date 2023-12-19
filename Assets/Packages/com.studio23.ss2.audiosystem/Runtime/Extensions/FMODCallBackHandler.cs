@@ -24,31 +24,41 @@ namespace Studio23.SS2.AudioSystem.Extensions
             EventInstance instance = new EventInstance(instancePtr);
 
             // Retrieve the user data
-            IntPtr EventStateInfoPtr;
-            RESULT result = instance.getUserData(out EventStateInfoPtr);
+            IntPtr EventDataPtr;
+            RESULT result = instance.getUserData(out EventDataPtr);
 
             if (result != RESULT.OK)
             {
                 Debug.LogError("Event State Callback error: " + result);
             }
-            else if (EventStateInfoPtr != IntPtr.Zero)
+            else if (EventDataPtr != IntPtr.Zero)
             {
                 // Get the object to store the FMODEmitterData
-                GCHandle eventInfoHandle = GCHandle.FromIntPtr(EventStateInfoPtr);
-                FMODEmitterData eventInfo = (FMODEmitterData)eventInfoHandle.Target;
+                GCHandle eventDataHandle = GCHandle.FromIntPtr(EventDataPtr);
+                FMODEmitterData eventData = (FMODEmitterData)eventDataHandle.Target;
 
-                eventInfo.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY UserProperties);
-
+                eventData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY UserProperties);
+                eventData.CurrentCallbackType = type;
                 switch (type)
                 {
-                    case FMOD.Studio.EVENT_CALLBACK_TYPE.SOUND_STOPPED:
+                    case EVENT_CALLBACK_TYPE.STARTED:
                     {
-                        IsLoopingCheck(UserProperties, eventInfo);
+                        eventData.EventState = FMODEventState.Playing;
+                        break;
+                    }
+                    case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
+                    {
+                        IsLoopingCheck(UserProperties, eventData);
+                        break;
+                    }
+                    case EVENT_CALLBACK_TYPE.STOPPED:
+                    {
+                        eventData.EventState = FMODEventState.Stopped;
                         break;
                     }
                     case EVENT_CALLBACK_TYPE.DESTROYED:
                     {
-                        eventInfoHandle.Free();
+                        eventDataHandle.Free();
                         break;
                     }
                 }

@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using FMOD.Studio;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
@@ -19,17 +20,13 @@ namespace Studio23.SS2.AudioSystem.Data
             Bus = RuntimeManager.GetBus(busName);
             BusName = busName;
             DefaultVolume = defaultVolume;
-            CurrentVolume = DefaultVolume;
-        }
-
-        public void Initialize()
-        {
-            throw new NotImplementedException();
+            SetVolume(defaultVolume);
         }
 
         public void SetVolume(float volume)
         {
             Bus.setVolume(volume);
+            CurrentVolume = volume;
         }
 
         public void Pause()
@@ -56,9 +53,12 @@ namespace Studio23.SS2.AudioSystem.Data
             IsMuted = false;
         }
 
-        public void StopAllEvents(STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        public async UniTask StopAllEventsAsync(STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
-            Bus.stopAllEvents(stopModeType);
+            await UniTask.RunOnThreadPool(() =>
+            {
+                Bus.stopAllEvents(stopModeType);
+            });
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using FMOD;
 using FMOD.Studio;
@@ -8,15 +9,18 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
 using Studio23.SS2.AudioSystem.Data;
 using Studio23.SS2.AudioSystem.Extensions;
+using Debug = UnityEngine.Debug;
 
+
+[assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.Tests")]
 namespace Studio23.SS2.AudioSystem.Core
 {
     public class AudioManager : MonoBehaviour
     {
-        private List<FMODEmitterData> _emitterDataList;
-        private Dictionary<string, Bank> _bankList;
-        private List<FMODBusData> _busDataList;
-        private List<FMODVCAData> _VCADataList;
+        public List<FMODEmitterData> _emitterDataList;
+        internal Dictionary<string, Bank> _bankList;
+        internal List<FMODBusData> _busDataList;
+        internal List<FMODVCAData> _VCADataList;
         
         public delegate UniTask BankHandler(string bankName);
         public event BankHandler OnBankLoaded;
@@ -37,9 +41,13 @@ namespace Studio23.SS2.AudioSystem.Core
                         obj.name = "AudioManager";
                     }
                 }
-
                 return _instance;
             }
+        }
+
+        private void Awake()
+        {
+            DontDestroyOnLoad(this);
         }
 
         private void OnEnable()
@@ -84,6 +92,7 @@ namespace Studio23.SS2.AudioSystem.Core
                 if (_bankList.ElementAt(i).Key.Equals(bankName))
                 {
                     RemoveBank(i);
+                    _bankList.Remove(_bankList.ElementAt(i).Key);
                 }
             }
         }
@@ -94,6 +103,7 @@ namespace Studio23.SS2.AudioSystem.Core
             {
                 RemoveBank(i);
             }
+            _bankList.Clear();
         }
 
         private void RemoveBank(int index)
@@ -192,28 +202,27 @@ namespace Studio23.SS2.AudioSystem.Core
             }
         }
 
-        public void StopAllBusEvents(string busName)
+        public async UniTask StopAllBusEvents(string busName)
         {
             var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
             if (busData != null)
             {
-                busData.StopAllEvents();
+                await busData.StopAllEventsAsync();
             }
         }
 
-        public void CreateVCA(string VCAName, float defaultVolume)
+        public FMODVCAData GetVCA(string VCAName, float defaultVolume)
         {
             var newVCA = new FMODVCAData(VCAName, defaultVolume);
             _VCADataList.Add(newVCA);
+            return newVCA;
         }
 
         public void SetVCAVolume(string VCAName, float volume)
         {
             var VCAData = _VCADataList.FirstOrDefault(x => x.VCAName.Equals(VCAName));
-            if (VCAData != null)
-            {
-                VCAData.SetVolume(volume);
-            }
+            if (VCAData == null) VCAData = GetVCA(VCAName, volume);
+            VCAData.SetVolume(volume);
         }
 
         #endregion
@@ -242,10 +251,11 @@ namespace Studio23.SS2.AudioSystem.Core
             FMODProgrammerSoundCallBackHandler.InitializeDialogueCallback(newEmitter, key, true);
         }
 
-        public void Play(FMODEventData eventData, GameObject referenceGameObject)
+        public async void Play(FMODEventData eventData, GameObject referenceGameObject)
         {
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
+            if (fetchData.EventState == FMODEventState.Playing) await fetchData.StopAsync(STOP_MODE.IMMEDIATE);
             fetchData.Play();
         }
 
@@ -271,7 +281,21 @@ namespace Studio23.SS2.AudioSystem.Core
             }
         }
 
-        public async void Release(FMODEventData eventData, GameObject referenceGameObject)
+        public async UniTask Stop(FMODEventData eventData, GameObject referenceGameObject)
+        {
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            if (fetchData == null) return;
+            await fetchData.StopAsync();
+        }
+
+        public async UniTask Stop(FMODEventData eventData, GameObject referenceGameObject, STOP_MODE stopMode)
+        {
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            if (fetchData == null) return;
+            await fetchData.StopAsync(stopMode);
+        }
+
+        public async UniTask Release(FMODEventData eventData, GameObject referenceGameObject)
         {
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
