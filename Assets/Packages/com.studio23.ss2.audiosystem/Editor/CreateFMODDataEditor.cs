@@ -271,6 +271,9 @@ namespace Studio23.SS2.AudioSystem.Editor
             {
                 string scriptContent = $"namespace {_nameSpace}\n{{\n";
 
+                //string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Split("/").Last().Replace(".bank", "").Replace(" ", "_").Replace("-", "_")}";
+
+
                 string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Replace("bank:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_")}";
 
                 scriptContent += $"\tpublic static class {filename}\n\t{{\n";

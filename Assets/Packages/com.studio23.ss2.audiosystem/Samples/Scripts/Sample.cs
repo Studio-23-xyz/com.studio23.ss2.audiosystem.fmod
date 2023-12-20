@@ -7,163 +7,167 @@ using Studio23.SS2.AudioSystem.Data;
 public class Sample : MonoBehaviour
 {
     public bool isPaused;
+    public Language currentLocale;
+
+    #region Basic Audio
 
     [ContextMenu("Play")]
     public void Play()
     {
-        AudioManager.Instance.CreateEmitter(FMODBank_Test.Test, gameObject);
-        AudioManager.Instance.Play(FMODBank_Test.Test, gameObject);
-    }
-
-    [ContextMenu("Release")]
-    public void Release()
-    {
-        AudioManager.Instance.Release(FMODBank_Test.Test, gameObject);
-    }
-
-    [ContextMenu("Stop")]
-    public void Stop()
-    {
-        AudioManager.Instance.Stop(FMODBank_Test.Test, gameObject);
+        FMODManager.Instance.CreateEmitter(FMODBank_Sample.Test, gameObject);
+        FMODManager.Instance.Play(FMODBank_Sample.Test, gameObject);
     }
 
     [ContextMenu("Pause")]
     public void Pause()
     {
-        AudioManager.Instance.Pause(FMODBank_Test.Test, gameObject);
+        FMODManager.Instance.Pause(FMODBank_Sample.Test, gameObject);
     }
 
     [ContextMenu("UnPause")]
     public void UnPause()
     {
-        AudioManager.Instance.UnPause(FMODBank_Test.Test, gameObject);
+        FMODManager.Instance.UnPause(FMODBank_Sample.Test, gameObject);
     }
 
     [ContextMenu("Toggle")]
     public void Toggle()
     {
         isPaused = !isPaused;
-        AudioManager.Instance.TogglePauseAll(isPaused);
+        FMODManager.Instance.TogglePauseAll(isPaused);
+    }
+
+    [ContextMenu("Change Parameter")]
+    public void ChangeParameter()
+    {
+        FMODManager.Instance.SetLocalParameter(FMODBank_Sample.Test, gameObject, FMODParameterList.Test.TestParameter, Random.Range(0.0f, 1.0f));
+    }
+
+    [ContextMenu("Stop")]
+    public async void Stop()
+    {
+        await FMODManager.Instance.Stop(FMODBank_Sample.Test, gameObject);
+    }
+
+    [ContextMenu("Release")]
+    public async void Release()
+    {
+        await FMODManager.Instance.Release(FMODBank_Sample.Test, gameObject);
+    }
+
+    #endregion
+
+    #region Banks
+
+    [ContextMenu("Play Sound")]
+    public void PlaySound()
+    {
+        FMODManager.Instance.CreateEmitter(FMODBank_Test.Test_3, gameObject);
+        FMODManager.Instance.Play(FMODBank_Test.Test_3, gameObject);
+    }
+
+    [ContextMenu("Stop Sound")]
+    public async void StopSound()
+    {
+        await FMODManager.Instance.Stop(FMODBank_Test.Test_3, gameObject);
     }
 
     [ContextMenu("Load Bank")]
     public void LoadBank()
     {
-        AudioManager.Instance.LoadBank(FMODBankList.Test);
+        FMODManager.Instance.LoadBank(FMODBankList.Test);
     }
 
     [ContextMenu("Unload Bank")]
     public void UnloadBank()
     {
-        AudioManager.Instance.UnloadBank(FMODBankList.Test);
+        FMODManager.Instance.UnloadBank(FMODBankList.Test);
     }
 
     [ContextMenu("Unload All Banks")]
     public void UnloadAllBanks()
     {
-        AudioManager.Instance.UnloadAllBanks();
+        FMODManager.Instance.UnloadAllBanks();
     }
 
-    [ContextMenu("Get Bus Volume")]
-    public void GetBusVolume()
+    #endregion
+
+    #region Dialogue
+
+    [ContextMenu("Play EN")]
+    public void PlayEN()
     {
-        Bus musicBus = RuntimeManager.GetBus(FMODBusList.Test);
-        musicBus.getVolume(out float volume, out float finalVolume);
-        Debug.Log($"Volume {volume} Final Volume {finalVolume}");
+        FMODManager.Instance.SwitchLocalization(FMODLocaleList.LanguageList[currentLocale], FMODLocaleList.LanguageList[Language.EN]);
+        currentLocale = Language.EN;
+        FMODManager.Instance.PlayProgrammerSound("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
     }
+
+    [ContextMenu("Play JP")]
+    public void PlayJP()
+    {
+        FMODManager.Instance.SwitchLocalization(FMODLocaleList.LanguageList[currentLocale], FMODLocaleList.LanguageList[Language.JP]);
+        currentLocale = Language.JP;
+        FMODManager.Instance.PlayProgrammerSound("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
+    }
+
+    [ContextMenu("Switch to CN")]
+    public void SwitchToCN()
+    {
+        FMODManager.Instance.SwitchLocalization(FMODLocaleList.LanguageList[currentLocale], FMODLocaleList.LanguageList[Language.CN]);
+        currentLocale = Language.CN;
+    }
+
+    [ContextMenu("Play CN")]
+    public void PlayCN()
+    {
+        FMODManager.Instance.PlayProgrammerSound("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
+    }
+
+    #endregion
+
+    #region Mixer
 
     [ContextMenu("Set Bus Volume")]
     public void SetBusVolume()
     {
-        Bus musicBus = RuntimeManager.GetBus(FMODBusList.Test);
-        musicBus.setVolume(0.0f);
+        FMODManager.Instance.SetBusVolume(FMODBusList.Sample, Random.Range(0.0f, 1.0f));
     }
 
-    [ContextMenu("Load Test Snapshot")]
-    public void LoadTestSnapshot()
+    [ContextMenu("Set VCA Volume")]
+    public void SetVCAVolume()
     {
-        AudioManager.Instance.CreateEmitter(FMODBank_Master.snapshot_Test, gameObject);
-        AudioManager.Instance.Play(FMODBank_Master.snapshot_Test, gameObject);
-
+        FMODManager.Instance.SetVCAVolume(FMODVCAList.Sample, Random.Range(0.0f, 1.0f));
     }
 
-    [ContextMenu("Increase Bus Volume")]
-    public void IncreaseBusVolume()
+    [ContextMenu("Pause Bus")]
+    public void PauseBus()
     {
-        Bus musicBus = RuntimeManager.GetBus(FMODBusList.Test);
-        musicBus.setVolume(1f);
+        FMODManager.Instance.PauseBus(FMODBusList.Sample);
     }
 
-    [ContextMenu("Load Dialogue Bank")]
-    public void LoadDialogueBank()
+    [ContextMenu("UnPause Bus")]
+    public void UnPauseBus()
     {
-        AudioManager.Instance.LoadBank(FMODBankList.Dialogue);
+        FMODManager.Instance.UnPauseBus(FMODBusList.Sample);
     }
 
-    [ContextMenu("Unload Dialogue Bank")]
-    public void UnloadDialogueBank()
+    [ContextMenu("Mute Bus")]
+    public void MuteBus()
     {
-        AudioManager.Instance.UnloadBank(FMODBankList.Dialogue);
+        FMODManager.Instance.MuteBus(FMODBusList.Sample);
     }
 
-    //[ContextMenu("Load EN Bank")]
-    //public void LoadENBank()
-    //{
-    //    AudioManager.Instance.LoadBank(FMODBankList.DialogueTable_LOCALE_EN);
-    //}
-
-    //[ContextMenu("Unload EN Bank")]
-    //public void UnloadENBank()
-    //{
-    //    AudioManager.Instance.UnloadBank(FMODBankList.DialogueTable_LOCALE_EN);
-    //}
-
-    //[ContextMenu("Load JP Bank")]
-    //public void LoadJPBank()
-    //{
-    //    AudioManager.Instance.LoadBank(FMODBankList.DialogueTable_LOCALE_JP);
-    //}
-
-    //[ContextMenu("Unload JP Bank")]
-    //public void UnloadJPBank()
-    //{
-    //    AudioManager.Instance.UnloadBank(FMODBankList.DialogueTable_LOCALE_JP);
-    //}
-
-    [ContextMenu("Load JP Bank")]
-    public void LoadJPBank()
+    [ContextMenu("UnMute Bus")]
+    public void UnMuteBus()
     {
-        AudioManager.Instance.SwitchLocalization(FMODLocaleList.LanguageList[Language.EN], FMODLocaleList.LanguageList[Language.JP]);
+        FMODManager.Instance.UnMuteBus(FMODBusList.Sample);
     }
 
-    [ContextMenu("Play Welcome Dialogue")]
-    public void CreateDialogue()
-    {
-        AudioManager.Instance.PlayProgrammerSound("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
-    }
-
-    [ContextMenu("Play Goodbye Dialogue")]
-    public void PlayGoodbye()
-    {
-        AudioManager.Instance.PlayProgrammerSound("goodbye", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
-    }
-
-    [ContextMenu("Pause")]
-    public void PauseWelcome()
-    {
-        AudioManager.Instance.Pause(FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
-    }
-
-    [ContextMenu("UnPause")]
-    public void UnPauseWelcome()
-    {
-        AudioManager.Instance.UnPause(FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
-    }
-
-    [ContextMenu("StopAllBusEvents")]
+    [ContextMenu("Stop All Bus Events")]
     public async void StopAllBusEvents()
     {
-        AudioManager.Instance.SetBusVolume(FMODBusList.Test, 1f);
-        await AudioManager.Instance.StopAllBusEvents(FMODBusList.Test);
+        await FMODManager.Instance.StopAllBusEvents(FMODBusList.Sample);
     }
+
+    #endregion
 }

@@ -2,9 +2,9 @@ namespace Studio23.SS2.AudioSystem.Data
 {
 	public static class FMODParameterList
 	{
-		public static class Test
+		public static class snapshot_Test
 		{
-			public static readonly string TestParameter = "TestParameter";
+			public static readonly string GlobalTest = "GlobalTest";
 		}
 		public static class Music_Level_03
 		{
@@ -45,8 +45,8 @@ namespace Studio23.SS2.AudioSystem.Data
 		}
 		public static class Interactables_Barrel_Roll
 		{
-			public static readonly string Speed = "Speed";
 			public static readonly string Area = "Area";
+			public static readonly string Speed = "Speed";
 		}
 		public static class Character_Door_Close
 		{
@@ -83,6 +83,10 @@ namespace Studio23.SS2.AudioSystem.Data
 			public static readonly string Cover = "Cover";
 			public static readonly string Rain = "Rain";
 		}
+		public static class Test
+		{
+			public static readonly string TestParameter = "TestParameter";
+		}
 		public static class Weapons_Machine_Gun
 		{
 			public static readonly string Auto_Stop = "Auto-Stop";
@@ -99,10 +103,6 @@ namespace Studio23.SS2.AudioSystem.Data
 			public static readonly string Load = "Load";
 			public static readonly string RPM = "RPM";
 			public static readonly string Area = "Area";
-		}
-		public static class snapshot_Test
-		{
-			public static readonly string GlobalTest = "GlobalTest";
 		}
 		public static class Test_3
 		{

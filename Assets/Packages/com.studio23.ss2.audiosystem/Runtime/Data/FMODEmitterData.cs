@@ -70,14 +70,14 @@ namespace Studio23.SS2.AudioSystem.Data
         {
             Emitter.EventInstance.stop(stopModeType);
             EventState = FMODEventState.Stopped;
-            await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED);
+            await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED));
         }
 
         public async UniTask StopAsync()
         {
             Emitter.EventInstance.stop(StopModeType);
             EventState = FMODEventState.Stopped;
-            await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED);
+            await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED));
         }
 
         public async UniTask ReleaseAsync()

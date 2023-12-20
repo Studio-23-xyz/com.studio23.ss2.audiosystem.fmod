@@ -363,7 +363,7 @@ MonoBehaviour:
   TargetAssetPath: FMODBanks
   TargetBankFolder: 
   EventLinkage: 0
-  LoggingLevel: 2
+  LoggingLevel: 1
   SpeakerModeSettings: []
   SampleRateSettings: []
   LiveUpdateSettings: []
@@ -381,6 +381,7 @@ MonoBehaviour:
   - DialogueTable_LOCALE_EN
   - DialogueTable_LOCALE_JP
   - Music
+  - Sample
   - SFX
   - Test
   - Vehicles
@@ -389,7 +390,7 @@ MonoBehaviour:
   - Master
   - Master.strings
   - Dialogue
-  - Music
+  - Sample
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
   AndroidUseOBB: 0
