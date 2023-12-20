@@ -1,26 +1,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using UnityEngine;
 using Cysharp.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
-using Studio23.SS2.AudioSystem.Data;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.Tests")]
 namespace Studio23.SS2.AudioSystem.Core
 {
-    public class BanksHandler : MonoBehaviour
+    public class BanksHandler
     {
         internal Dictionary<string, Bank> _bankList;
 
         public delegate UniTask BankEvent(string bankName);
-
         public BankEvent OnBankLoaded;
         public BankEvent OnBankUnloaded;
 
-        public void Initialize()
+        internal void Initialize()
         {
             _bankList = new Dictionary<string, Bank>();
         }
@@ -65,19 +62,6 @@ namespace Studio23.SS2.AudioSystem.Core
             bank.unload();
             _bankList.Remove(_bankList.ElementAt(index).Key);
         }
-
-        //private async UniTask ClearEmitter(string bankPath)
-        //{
-        //    for (int i = 0; i < _emitterDataList.Count; i++)
-        //    {
-        //        FMODEmitterData emitter = _emitterDataList[i];
-        //        if (emitter.BankName.Equals(bankPath))
-        //        {
-        //            await emitter.ReleaseAsync();
-        //            _emitterDataList.Remove(emitter);
-        //        }
-        //    }
-        //}
 
         public void LoadBankSampleData(string bankName)
         {

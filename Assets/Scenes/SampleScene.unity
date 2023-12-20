@@ -340,7 +340,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1106752782}
         m_TargetAssemblyTypeName: Sample, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1106752782}
         m_TargetAssemblyTypeName: Sample, Assembly-CSharp
         m_MethodName: Stop
         m_Mode: 1
@@ -2673,7 +2673,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1106752782}
         m_TargetAssemblyTypeName: Sample, Assembly-CSharp
         m_MethodName: UnPause
         m_Mode: 1
@@ -4410,7 +4410,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1106752782}
         m_TargetAssemblyTypeName: Sample, Assembly-CSharp
         m_MethodName: Toggle
         m_Mode: 1
@@ -6492,7 +6492,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1106752782}
         m_TargetAssemblyTypeName: Sample, Assembly-CSharp
         m_MethodName: Release
         m_Mode: 1
@@ -7605,7 +7605,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1106752782}
         m_TargetAssemblyTypeName: Sample, Assembly-CSharp
         m_MethodName: ChangeParameter
         m_Mode: 1
@@ -7738,7 +7738,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1106752782}
         m_TargetAssemblyTypeName: Sample, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 1
@@ -7951,6 +7951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6707f94c87aba842bef2b7f72e22c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitializeOnStart: 1
 --- !u!4 &2003649483
 Transform:
   m_ObjectHideFlags: 0

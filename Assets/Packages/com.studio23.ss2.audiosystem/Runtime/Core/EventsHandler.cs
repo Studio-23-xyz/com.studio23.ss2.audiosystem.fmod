@@ -9,14 +9,13 @@ using Studio23.SS2.AudioSystem.Data;
 using Studio23.SS2.AudioSystem.Extensions;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.Tests")]
-[assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.Core")]
 namespace Studio23.SS2.AudioSystem.Core
 {
-    public class EventsHandler : MonoBehaviour
+    public class EventsHandler
     {
         internal List<FMODEmitterData> _emitterDataList;
 
-        public void Initialize()
+        internal void Initialize()
         {
             _emitterDataList = new List<FMODEmitterData>();
         }
@@ -116,6 +115,18 @@ namespace Studio23.SS2.AudioSystem.Core
             return _emitterDataList.FirstOrDefault(x =>
                 x.BankName.Equals(eventData.BankName) && x.EventName.Equals(eventData.EventName) &&
                 x.ReferenceGameObject == referenceGameObject);
+        }
+        internal async UniTask ClearEmitter(string bankPath)
+        {
+            for (int i = 0; i < FMODManager.Instance.EventsHandler._emitterDataList.Count; i++)
+            {
+                FMODEmitterData emitter = FMODManager.Instance.EventsHandler._emitterDataList[i];
+                if (emitter.BankName.Equals(bankPath))
+                {
+                    await emitter.ReleaseAsync();
+                    FMODManager.Instance.EventsHandler._emitterDataList.Remove(emitter);
+                }
+            }
         }
     }
 }
