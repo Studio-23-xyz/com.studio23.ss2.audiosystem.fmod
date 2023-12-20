@@ -1,8 +1,9 @@
-namespace Studio23.SS2.AudioSystem.Data
+namespace Studio23.SS2.AudioSystem.FMOD.Data
 {
 	public static class FMODBank_SFX
 	{
 		public static FMODEventData snapshot_Health_Low = new FMODEventData("bank:/SFX", "snapshot:/Health Low");
+		public static FMODEventData Test = new FMODEventData("bank:/SFX", "event:/Test");
 		public static FMODEventData Character_Player_Footsteps = new FMODEventData("bank:/SFX", "event:/Character/Player Footsteps");
 		public static FMODEventData Character_Door_Open = new FMODEventData("bank:/SFX", "event:/Character/Door Open");
 		public static FMODEventData Weapons_Explosion = new FMODEventData("bank:/SFX", "event:/Weapons/Explosion");
@@ -19,7 +20,6 @@ namespace Studio23.SS2.AudioSystem.Data
 		public static FMODEventData Interactables_Wooden_Collision = new FMODEventData("bank:/SFX", "event:/Interactables/Wooden Collision");
 		public static FMODEventData Ambience_Forest = new FMODEventData("bank:/SFX", "event:/Ambience/Forest");
 		public static FMODEventData UI_Cancel = new FMODEventData("bank:/SFX", "event:/UI/Cancel");
-		public static FMODEventData Test = new FMODEventData("bank:/SFX", "event:/Test");
 		public static FMODEventData Weapons_Machine_Gun = new FMODEventData("bank:/SFX", "event:/Weapons/Machine Gun");
 	}
 }

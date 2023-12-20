@@ -1,4 +1,4 @@
-namespace Studio23.SS2.AudioSystem.Data
+namespace Studio23.SS2.AudioSystem.FMOD.Data
 {
 	public static class FMODBank_Vehicles
 	{

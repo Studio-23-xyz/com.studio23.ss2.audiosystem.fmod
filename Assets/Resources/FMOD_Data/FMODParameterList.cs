@@ -1,4 +1,4 @@
-namespace Studio23.SS2.AudioSystem.Data
+namespace Studio23.SS2.AudioSystem.FMOD.Data
 {
 	public static class FMODParameterList
 	{
@@ -24,6 +24,10 @@ namespace Studio23.SS2.AudioSystem.Data
 		public static class Music_Level_02
 		{
 			public static readonly string Area = "Area";
+		}
+		public static class Test
+		{
+			public static readonly string TestParameter = "TestParameter";
 		}
 		public static class Character_Player_Footsteps
 		{
@@ -83,14 +87,18 @@ namespace Studio23.SS2.AudioSystem.Data
 			public static readonly string Cover = "Cover";
 			public static readonly string Rain = "Rain";
 		}
-		public static class Test
-		{
-			public static readonly string TestParameter = "TestParameter";
-		}
 		public static class Weapons_Machine_Gun
 		{
 			public static readonly string Auto_Stop = "Auto-Stop";
 			public static readonly string Area = "Area";
+		}
+		public static class Test_3
+		{
+			public static readonly string TestParameter = "TestParameter";
+		}
+		public static class Test_2
+		{
+			public static readonly string TestParameter = "TestParameter";
 		}
 		public static class Vehicles_Car_Engine
 		{
@@ -103,14 +111,6 @@ namespace Studio23.SS2.AudioSystem.Data
 			public static readonly string Load = "Load";
 			public static readonly string RPM = "RPM";
 			public static readonly string Area = "Area";
-		}
-		public static class Test_3
-		{
-			public static readonly string TestParameter = "TestParameter";
-		}
-		public static class Test_2
-		{
-			public static readonly string TestParameter = "TestParameter";
 		}
 	}
 }
