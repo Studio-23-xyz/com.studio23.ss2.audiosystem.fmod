@@ -34,18 +34,13 @@ This package cannot function on its own and is intended to be used with FMOD. Ma
 
 ### FMOD Settings
 
-Follow FMOD's documentation on where to set up your FMOD Project. After the FMOD project is set up, make sure to build your project for all platforms. Now go to FMOD -> Edit Settings. Under Bank Import, set Source Type to Single Platform Build and specify your desired platform's build directory. This package does not support Source Type of FMOD Studio Project or Multiple Platform Build. To build for multiple platforms, 
+Follow FMOD's documentation on where to set up your FMOD Project. After the FMOD project is set up, make sure to build your FMOD project for all platforms. Now go to FMOD -> Edit Settings. Under Bank Import, set Source Type to Single Platform Build and specify your desired platform's build directory. This package does not support Source Type of FMOD Studio Project or Multiple Platform Build. To build the Unity project for multiple platforms, select the desired platform's build directory before building for that platform.
 
 
 ### Generating all FMOD data
 
-To use FMOD and its features, we need references to events, parameters, banks, buses and VCAs. 
-This package come with a default scriptable objects which requires to setup necessary credit sections. But If you want to customize and create a new credit sections, just go to Studio 23-> Credit System -> Create Credit Section. Then
-fill up the necessary information you required. There is section information where you can create new category and names related to the category.
-![Category-Section](Screenshots/creditSection-1.png)
-Final output can be looked like This
-![Category-Section](Screenshots/creditSection-2.png)
-Create Credit Settings will create new scriptable object, which you can assign onto credit controller system. 
+To use FMOD and its features, we need references to events, parameters, banks, buses and VCAs. Go to Studio 23 -> Generate All FMOD Data. This will generate all the references from FMOD Studio. Make sure to build the FMOD project and select the correct platform build directory before generating the FMOD Data. You will need to generate the data again if you rebuild your FMOD project.
+
 
 ### Setting up Credit Settings
 
