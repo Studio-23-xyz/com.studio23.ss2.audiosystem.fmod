@@ -5,9 +5,9 @@ using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
 using FMOD.Studio;
-using Studio23.SS2.AudioSystem.FMOD.Extensions;
+using Studio23.SS2.AudioSystem.fmod.Extensions;
 
-namespace Studio23.SS2.AudioSystem.FMOD.Data
+namespace Studio23.SS2.AudioSystem.fmod.Data
 {
     [System.Serializable]
     public class FMODEmitterData
@@ -31,6 +31,9 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
             Initialize();
         }
 
+        /// <summary>
+        /// Creates an Emitter if there is none and creates an Event Instance within the Emitter.
+        /// </summary>
         public void Initialize()
         {
             if (Emitter == null) Emitter = ReferenceGameObject.AddComponent<CustomStudioEventEmitter>();
@@ -38,24 +41,37 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
             Emitter.CustomInitialize();
         }
 
+        /// <summary>
+        /// Plays the Emitter.
+        /// </summary>
         public void Play()
         {
             Emitter.CustomPlay();
             EventState = FMODEventState.Playing;
         }
 
+        /// <summary>
+        /// Suspends the Emitter. Is not affected by TogglePause
+        /// </summary>
         public void Pause()
         {
             Emitter.EventInstance.setPaused(true);
             EventState = FMODEventState.Suspended;
         }
 
+        /// <summary>
+        /// UnSuspends the Emitter. Is not affected by TogglePause
+        /// </summary>
         public void UnPause()
         {
             Emitter.EventInstance.setPaused(false);
             EventState = FMODEventState.Playing;
         }
 
+        /// <summary>
+        /// Pauses the Emitter.
+        /// </summary>
+        /// <param name="isGamePaused"></param>
         public void TogglePause(bool isGamePaused)
         {
             if (isGamePaused && EventState == FMODEventState.Playing)
@@ -66,13 +82,10 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
             else if (!isGamePaused && (EventState == FMODEventState.Paused)) UnPause();
         }
 
-        public async UniTask StopAsync(STOP_MODE stopModeType)
-        {
-            Emitter.EventInstance.stop(stopModeType);
-            EventState = FMODEventState.Stopped;
-            await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED));
-        }
-
+        /// <summary>
+        /// Stops the Emitter with default STOP_MODE.
+        /// </summary>
+        /// <returns></returns>
         public async UniTask StopAsync()
         {
             Emitter.EventInstance.stop(StopModeType);
@@ -80,6 +93,22 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
             await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED));
         }
 
+        /// <summary>
+        /// Stops the Emitter with different STOP_MODE.
+        /// </summary>
+        /// <param name="stopModeType"></param>
+        /// <returns></returns>
+        public async UniTask StopAsync(STOP_MODE stopModeType)
+        {
+            Emitter.EventInstance.stop(stopModeType);
+            EventState = FMODEventState.Stopped;
+            await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED));
+        }
+
+        /// <summary>
+        /// Releases the Event Instance and destroys the Emitter.
+        /// </summary>
+        /// <returns></returns>
         public async UniTask ReleaseAsync()
         {
             await StopAsync();
@@ -88,6 +117,11 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
             Object.Destroy(Emitter);
         }
 
+        /// <summary>
+        /// Sets a Local parameter value by name.
+        /// </summary>
+        /// <param name="parameterName"></param>
+        /// <param name="parameterValue"></param>
         public void SetParameter(string parameterName, float parameterValue)
         {
             Emitter.EventInstance.setParameterByName(parameterName, parameterValue);

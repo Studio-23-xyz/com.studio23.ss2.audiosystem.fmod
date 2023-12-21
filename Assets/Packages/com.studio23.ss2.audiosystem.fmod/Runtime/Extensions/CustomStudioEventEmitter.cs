@@ -1,12 +1,11 @@
-
-using System;
-using System.Collections.Generic;
 using FMOD.Studio;
 using FMODUnity;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
-namespace Studio23.SS2.AudioSystem.FMOD.Extensions
+namespace Studio23.SS2.AudioSystem.fmod.Extensions
 {
     [AddComponentMenu("Studio 23/Custom FMOD Studio Event Emitter")]
     public class CustomStudioEventEmitter : FMODUnity.EventHandler
@@ -182,6 +181,9 @@ namespace Studio23.SS2.AudioSystem.FMOD.Extensions
             }
         }
 
+        /// <summary>
+        /// Creates the Event Instance separately from Play().
+        /// </summary>
         public void CustomInitialize()
         {
             if (TriggerOnce && hasTriggered)
@@ -284,6 +286,9 @@ namespace Studio23.SS2.AudioSystem.FMOD.Extensions
             }
         }
 
+        /// <summary>
+        /// Plays the created Event Instance.
+        /// </summary>
         public void CustomPlay()
         {
             instance.start();

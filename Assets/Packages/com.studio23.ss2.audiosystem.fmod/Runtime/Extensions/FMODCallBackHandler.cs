@@ -1,16 +1,20 @@
 using AOT;
 using FMOD;
 using FMOD.Studio;
-using Studio23.SS2.AudioSystem.FMOD.Data;
+using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
 using System.Runtime.InteropServices;
 using Debug = UnityEngine.Debug;
 
-namespace Studio23.SS2.AudioSystem.FMOD.Extensions
+namespace Studio23.SS2.AudioSystem.fmod.Extensions
 {
     public static class FMODCallBackHandler
     {
-        public static void InitializeCallback(FMODEmitterData eventData)
+        /// <summary>
+        /// Initializes a default CallBack for all Event Instances.
+        /// </summary>
+        /// <param name="eventData"></param>
+        public static void InitializeCallBack(FMODEmitterData eventData)
         {
             EVENT_CALLBACK EventCallback = new EVENT_CALLBACK(EventCallbackHandler);
             GCHandle EventGCHandle = GCHandle.Alloc(eventData);
@@ -66,6 +70,12 @@ namespace Studio23.SS2.AudioSystem.FMOD.Extensions
             return RESULT.OK;
         }
 
+        /// <summary>
+        /// Checks if the Event Instance is looping.
+        /// If the Event is looping, define a variable under User Properties of an Event from FMOD Studio called "IsLooping" and set it to 1.
+        /// </summary>
+        /// <param name="userProperties"></param>
+        /// <param name="eventData"></param>
         public static void IsLoopingCheck(USER_PROPERTY userProperties, FMODEmitterData eventData)
         {
             bool isLooping = Convert.ToBoolean(userProperties.intValue());

@@ -1,7 +1,7 @@
 using FMOD.Studio;
 using FMODUnity;
 
-namespace Studio23.SS2.AudioSystem.FMOD.Data
+namespace Studio23.SS2.AudioSystem.fmod.Data
 {
     public class FMODVCAData
     {
@@ -19,6 +19,10 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
             SetVolume(defaultVolume);
         }
 
+        /// <summary>
+        /// Sets the volume for a VCA.
+        /// </summary>
+        /// <param name="volume"></param>
         public void SetVolume(float volume)
         {
             VCA.setVolume(volume);

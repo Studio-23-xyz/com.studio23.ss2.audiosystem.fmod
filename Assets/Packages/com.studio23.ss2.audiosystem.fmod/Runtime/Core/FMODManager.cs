@@ -1,13 +1,16 @@
 using UnityEngine;
 
-namespace Studio23.SS2.AudioSystemFMOD.Core
+namespace Studio23.SS2.AudioSystem.fmod.Core
 {
     public class FMODManager : MonoBehaviour
     {
-        public EventsHandler EventsHandler;
-        public BanksHandler BanksHandler;
-        public MixerHandler MixerHandler;
+        public EventsManager EventsManager;
+        public BanksManager BanksManager;
+        public MixerManager MixerManager;
 
+        /// <summary>
+        /// Set true to Initialize on Start.
+        /// </summary>
         public bool InitializeOnStart;
         
         private static FMODManager _instance;
@@ -31,19 +34,19 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
 
         private void Awake()
         {
-            BanksHandler = new BanksHandler();
-            EventsHandler = new EventsHandler();
-            MixerHandler = new MixerHandler();
+            BanksManager = new BanksManager();
+            EventsManager = new EventsManager();
+            MixerManager = new MixerManager();
         }
 
         private void OnEnable()
         {
-            BanksHandler.OnBankUnloaded += EventsHandler.ClearEmitter;
+            BanksManager.OnBankUnloaded += EventsManager.ClearEmitter;
         }
 
         private void OnDisable()
         {
-            BanksHandler.OnBankUnloaded -= EventsHandler.ClearEmitter;
+            BanksManager.OnBankUnloaded -= EventsManager.ClearEmitter;
         }
 
         private void Start()
@@ -53,14 +56,14 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
 
         private void Initialize()
         {
-            EventsHandler.Initialize();
-            BanksHandler.Initialize();
-            MixerHandler.Initialize();
+            EventsManager.Initialize();
+            BanksManager.Initialize();
+            MixerManager.Initialize();
         }
 
         private void OnDestroy()
         {
-            BanksHandler.UnloadAllBanks();
+            BanksManager.UnloadAllBanks();
         }
     }
 }

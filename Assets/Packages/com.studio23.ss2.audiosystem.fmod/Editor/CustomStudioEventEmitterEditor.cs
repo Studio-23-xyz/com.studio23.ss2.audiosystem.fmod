@@ -1,12 +1,12 @@
 ﻿using FMODUnity;
-using Studio23.SS2.AudioSystem.FMOD.Extensions;
+using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace Studio23.SS2.AudioSystem.FMOD.Editor
+namespace Studio23.SS2.AudioSystem.fmod.Editor
 {
     [CustomEditor(typeof(CustomStudioEventEmitter))]
     [CanEditMultipleObjects]
@@ -39,7 +39,6 @@ namespace Studio23.SS2.AudioSystem.FMOD.Editor
                     emitter.OverrideMaxDistance = Mathf.Max(emitter.OverrideMinDistance, maxDistance);
                 }
             }
-
         }
 
         public override void OnInspectorGUI()

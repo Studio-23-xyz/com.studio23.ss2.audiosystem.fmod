@@ -1,13 +1,13 @@
+using Cysharp.Threading.Tasks;
+using Studio23.SS2.AudioSystem.fmod.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Cysharp.Threading.Tasks;
-using Studio23.SS2.AudioSystem.FMOD.Data;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
-namespace Studio23.SS2.AudioSystemFMOD.Core
+namespace Studio23.SS2.AudioSystem.fmod.Core
 {
-    public class MixerHandler
+    public class MixerManager
     {
         internal List<FMODBusData> _busDataList;
         internal List<FMODVCAData> _VCADataList;
@@ -25,6 +25,11 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             return newBus;
         }
 
+        /// <summary>
+        /// Sets the volume for a Bus.
+        /// </summary>
+        /// <param name="busName"></param>
+        /// <param name="volume"></param>
         public void SetBusVolume(string busName, float volume)
         {
             var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
@@ -32,6 +37,10 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             busData.SetVolume(volume);
         }
 
+        /// <summary>
+        /// Pauses a Bus.
+        /// </summary>
+        /// <param name="busName"></param>
         public void PauseBus(string busName)
         {
             var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
@@ -41,6 +50,10 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             }
         }
 
+        /// <summary>
+        /// UnPause a Bus.
+        /// </summary>
+        /// <param name="busName"></param>
         public void UnPauseBus(string busName)
         {
             var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
@@ -50,6 +63,10 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             }
         }
 
+        /// <summary>
+        /// Mute a Bus.
+        /// </summary>
+        /// <param name="busName"></param>
         public void MuteBus(string busName)
         {
             var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
@@ -59,6 +76,10 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             }
         }
 
+        /// <summary>
+        /// UnMute a Bus.
+        /// </summary>
+        /// <param name="busName"></param>
         public void UnMuteBus(string busName)
         {
             var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
@@ -68,6 +89,11 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             }
         }
 
+        /// <summary>
+        /// Stops all active Events under a Bus.
+        /// </summary>
+        /// <param name="busName"></param>
+        /// <returns></returns>
         public async UniTask StopAllBusEvents(string busName)
         {
             var busData = _busDataList.FirstOrDefault(x => x.BusName.Equals(busName));
@@ -77,13 +103,18 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             }
         }
 
-        public FMODVCAData GetVCA(string VCAName, float defaultVolume)
+        private FMODVCAData GetVCA(string VCAName, float defaultVolume)
         {
             var newVCA = new FMODVCAData(VCAName, defaultVolume);
             _VCADataList.Add(newVCA);
             return newVCA;
         }
 
+        /// <summary>
+        /// Sets the volume for a VCA.
+        /// </summary>
+        /// <param name="VCAName"></param>
+        /// <param name="volume"></param>
         public void SetVCAVolume(string VCAName, float volume)
         {
             var VCAData = _VCADataList.FirstOrDefault(x => x.VCAName.Equals(VCAName));

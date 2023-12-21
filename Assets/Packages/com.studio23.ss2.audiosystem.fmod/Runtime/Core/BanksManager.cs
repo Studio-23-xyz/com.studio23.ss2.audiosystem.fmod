@@ -1,15 +1,15 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using Cysharp.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
-namespace Studio23.SS2.AudioSystemFMOD.Core
+namespace Studio23.SS2.AudioSystem.fmod.Core
 {
-    public class BanksHandler
+    public class BanksManager
     {
         internal Dictionary<string, Bank> _bankList;
 
@@ -22,6 +22,12 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             _bankList = new Dictionary<string, Bank>();
         }
 
+        /// <summary>
+        /// Loads a Bank.
+        /// By default LOAD_BANK_FLAGS is set to NORMAL.
+        /// </summary>
+        /// <param name="bankName"></param>
+        /// <param name="flag"></param>
         public void LoadBank(string bankName, LOAD_BANK_FLAGS flag = LOAD_BANK_FLAGS.NORMAL)
         {
             var result = RuntimeManager.StudioSystem.loadBankFile(bankName, flag, out Bank bank);
@@ -32,6 +38,10 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             }
         }
 
+        /// <summary>
+        /// Unloads a Bank.
+        /// </summary>
+        /// <param name="bankName"></param>
         public void UnloadBank(string bankName)
         {
             for (int i = 0; i < _bankList.Count; i++)
@@ -43,6 +53,10 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             }
         }
 
+        /// <summary>
+        /// Unloads all Banks loaded by user.
+        /// Will not unload Banks loaded by FMOD at Game start.
+        /// </summary>
         public void UnloadAllBanks()
         {
             for (int i = 0; i < _bankList.Count; i++)
@@ -63,6 +77,11 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             _bankList.Remove(_bankList.ElementAt(index).Key);
         }
 
+        /// <summary>
+        /// Loads Sample Data for a Bank.
+        /// Make sure to load the Sample Data for a Bank that has already been loaded.
+        /// </summary>
+        /// <param name="bankName"></param>
         public void LoadBankSampleData(string bankName)
         {
             for (int i = 0; i < _bankList.Count; i++)
@@ -75,6 +94,11 @@ namespace Studio23.SS2.AudioSystemFMOD.Core
             }
         }
 
+        /// <summary>
+        /// Switches localization for audio.
+        /// </summary>
+        /// <param name="currentLocale"></param>
+        /// <param name="targetLocale"></param>
         public void SwitchLocalization(string currentLocale, string targetLocale)
         {
             if (string.IsNullOrEmpty(targetLocale)) return;

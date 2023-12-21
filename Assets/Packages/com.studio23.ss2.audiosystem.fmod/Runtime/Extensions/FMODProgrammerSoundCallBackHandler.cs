@@ -7,9 +7,9 @@ using Cysharp.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
-using Studio23.SS2.AudioSystem.FMOD.Data;
+using Studio23.SS2.AudioSystem.fmod.Data;
 
-namespace Studio23.SS2.AudioSystem.FMOD.Extensions
+namespace Studio23.SS2.AudioSystem.fmod.Extensions
 {
     public static class FMODProgrammerSoundCallBackHandler
     {
@@ -18,8 +18,13 @@ namespace Studio23.SS2.AudioSystem.FMOD.Extensions
         public static ProgrammerSoundEvent OnDialogueStarted;
         public static ProgrammerSoundEvent OnDialogueComplete;
 
-        public static async void InitializeDialogueCallback(FMODEmitterData eventData, string key,
-            bool assignCallBack = false)
+        /// <summary>
+        /// Initializes a CallBack for all Event Instances with programmer sounds.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="key"></param>
+        /// <param name="assignCallBack"></param>
+        public static async void InitializeProgrammerCallback(FMODEmitterData eventData, string key, bool assignCallBack = false)
         {
             var data = await LoadExternalSound(eventData, key);
             if (assignCallBack)
@@ -33,6 +38,12 @@ namespace Studio23.SS2.AudioSystem.FMOD.Extensions
             eventData.Play();
         }
 
+        /// <summary>
+        /// Loads the external audio file before it is played.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         private static async UniTask<SoundData> LoadExternalSound(FMODEmitterData eventData, string key)
         {
             MODE soundMode = MODE.LOOP_NORMAL | MODE.CREATECOMPRESSEDSAMPLE | MODE.NONBLOCKING;
@@ -89,7 +100,7 @@ namespace Studio23.SS2.AudioSystem.FMOD.Extensions
         }
 
         [MonoPInvokeCallback(typeof(EVENT_CALLBACK))]
-        public static RESULT ProgrammerSoundCallbackHandler(EVENT_CALLBACK_TYPE type, IntPtr instancePtr,
+        private static RESULT ProgrammerSoundCallbackHandler(EVENT_CALLBACK_TYPE type, IntPtr instancePtr,
             IntPtr parameterPtr)
         {
             EventInstance instance = new EventInstance(instancePtr);

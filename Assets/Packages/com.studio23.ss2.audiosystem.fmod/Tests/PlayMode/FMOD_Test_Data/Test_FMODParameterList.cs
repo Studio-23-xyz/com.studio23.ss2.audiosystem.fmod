@@ -1,7 +1,13 @@
-namespace Studio23.SS2.AudioSystem.FMOD.Data
+using Studio23.SS2.AudioSystem.fmod.Data;
+
+namespace Studio23.SS2.AudioSystem.fmod.Tests
 {
 	public static class Test_FMODParameterList
 	{
+		public static class snapshot_Test
+		{
+			public static readonly string GlobalTest = "GlobalTest";
+		}
 		public static class Music_Level_03
 		{
 			public static readonly string Stinger = "Stinger";
@@ -20,6 +26,10 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
 		public static class Music_Level_02
 		{
 			public static readonly string Area = "Area";
+		}
+		public static class Test
+		{
+			public static readonly string TestParameter = "TestParameter";
 		}
 		public static class Character_Player_Footsteps
 		{
@@ -41,8 +51,8 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
 		}
 		public static class Interactables_Barrel_Roll
 		{
-			public static readonly string Speed = "Speed";
 			public static readonly string Area = "Area";
+			public static readonly string Speed = "Speed";
 		}
 		public static class Character_Door_Close
 		{
@@ -84,6 +94,14 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
 			public static readonly string Auto_Stop = "Auto-Stop";
 			public static readonly string Area = "Area";
 		}
+		public static class Test_3
+		{
+			public static readonly string TestParameter = "TestParameter";
+		}
+		public static class Test_2
+		{
+			public static readonly string TestParameter = "TestParameter";
+		}
 		public static class Vehicles_Car_Engine
 		{
 			public static readonly string RPM = "RPM";
@@ -95,14 +113,6 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
 			public static readonly string Load = "Load";
 			public static readonly string RPM = "RPM";
 			public static readonly string Area = "Area";
-		}
-		public static class Test
-		{
-			public static readonly string TestParameter = "TestParameter";
-		}
-		public static class snapshot_Test
-		{
-			public static readonly string GlobalTest = "GlobalTest";
 		}
 	}
 }

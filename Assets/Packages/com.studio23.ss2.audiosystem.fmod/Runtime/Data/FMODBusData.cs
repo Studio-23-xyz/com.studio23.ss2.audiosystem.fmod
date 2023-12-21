@@ -4,7 +4,7 @@ using FMOD.Studio;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
-namespace Studio23.SS2.AudioSystem.FMOD.Data
+namespace Studio23.SS2.AudioSystem.fmod.Data
 {
     public class FMODBusData
     {
@@ -23,36 +23,57 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
             SetVolume(defaultVolume);
         }
 
+        /// <summary>
+        /// Sets the volume for a Bus.
+        /// </summary>
+        /// <param name="volume"></param>
         public void SetVolume(float volume)
         {
             Bus.setVolume(volume);
             CurrentVolume = volume;
         }
 
+        /// <summary>
+        /// Pauses a Bus.
+        /// </summary>
         public void Pause()
         {
             Bus.setPaused(true);
             IsPaused = true;
         }
 
+        /// <summary>
+        /// UnPauses a Bus.
+        /// </summary>
         public void UnPause()
         {
             Bus.setPaused(false);
             IsPaused = false;
         }
 
+        /// <summary>
+        /// Mutes a Bus.
+        /// </summary>
         public void Mute()
         {
             Bus.setMute(true);
             IsMuted = true;
         }
 
+        /// <summary>
+        /// UnMutes a Bus.
+        /// </summary>
         public void UnMute()
         {
             Bus.setMute(false);
             IsMuted = false;
         }
 
+        /// <summary>
+        /// Stops all active Events under a Bus.
+        /// </summary>
+        /// <param name="stopModeType"></param>
+        /// <returns></returns>
         public async UniTask StopAllEventsAsync(STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
             await UniTask.RunOnThreadPool(() =>
@@ -61,5 +82,4 @@ namespace Studio23.SS2.AudioSystem.FMOD.Data
             });
         }
     }
-
 }

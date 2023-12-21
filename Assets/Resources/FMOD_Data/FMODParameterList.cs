@@ -1,4 +1,4 @@
-namespace Studio23.SS2.AudioSystem.FMOD.Data
+namespace Studio23.SS2.AudioSystem.fmod.Data
 {
 	public static class FMODParameterList
 	{

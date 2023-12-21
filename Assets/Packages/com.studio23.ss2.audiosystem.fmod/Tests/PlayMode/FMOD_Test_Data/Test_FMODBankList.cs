@@ -1,4 +1,6 @@
-namespace Studio23.SS2.AudioSystem.FMOD.Data
+using Studio23.SS2.AudioSystem.fmod.Data;
+
+namespace Studio23.SS2.AudioSystem.fmod.Tests
 {
 	public static class Test_FMODBankList
 	{
