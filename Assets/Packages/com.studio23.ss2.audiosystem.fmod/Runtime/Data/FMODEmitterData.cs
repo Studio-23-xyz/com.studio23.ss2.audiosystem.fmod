@@ -4,8 +4,10 @@ using Object = UnityEngine.Object;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
+using FMOD;
 using FMOD.Studio;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
+using Debug = UnityEngine.Debug;
 
 namespace Studio23.SS2.AudioSystem.fmod.Data
 {
@@ -14,6 +16,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
     {
         public string BankName;
         public string EventName;
+        public string EventGUID;
         public GameObject ReferenceGameObject;
         public CustomStudioEventEmitter Emitter;
         public FMODEventState EventState = FMODEventState.Stopped;
@@ -24,6 +27,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             BankName = eventData.BankName;
             EventName = eventData.EventName;
+            EventGUID = eventData.EventGUID;
             ReferenceGameObject = referenceGameObject;
             Emitter = emitter;
             StopModeType = stopModeType;
@@ -37,7 +41,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public void Initialize()
         {
             if (Emitter == null) Emitter = ReferenceGameObject.AddComponent<CustomStudioEventEmitter>();
-            Emitter.EventReference = EventReference.Find(EventName);
+            var eventReference = new EventReference
+            {
+                Guid = GUID.Parse(EventGUID)
+            };
+            Emitter.EventReference = eventReference;
+            Debug.Log(Emitter.EventReference);
             Emitter.CustomInitialize();
         }
 

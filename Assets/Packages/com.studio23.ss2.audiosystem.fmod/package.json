@@ -2,32 +2,40 @@
   "name": "com.studio23.ss2.audiosystem.fmod",
   "version": "0.0.1",
   "displayName": "Audio System FMOD",
-  "description": "This is a system for audio using FMOD.",
+  "description": "This is a system for managing and utilizing audio using FMOD. It provides an easier way to use FMOD from the get go.",
   "unity": "2022.3",
   "unityRelease": "10f1",
-  "documentationUrl": "https://openupm.com/packages/com.studio23.ss2.audiosystem.fmod",
-  "changelogUrl": "https://openupm.com/packages/com.studio23.ss2.audiosystem.fmod",
-  "licensesUrl": "https://api.github.com/licenses/mit",
+  "documentationUrl": "https://studio-23-xyz.github.io/AudioSystemFMOD/manual/",
+  "changelogUrl": "https://studio-23-xyz.github.io/AudioSystemFMOD/changelog/CHANGELOG.html",
+  "licensesUrl": "https://studio-23-xyz.github.io/AudioSystemFMOD/license/LICENSE.html",
   "scopedRegistries": [
     {
       "name": "Studio 23",
       "url": "https://package.openupm.com",
       "scopes": [
-        "com.studio23.ss2.audiosystem.fmod"
+        "com.studio23.ss2",
+		"com.cysharp.unitask"
       ]
     }
   ],
   "dependencies": {
-    "com.unity.nuget.newtonsoft-json": "3.2.1"
-  },
+    "com.cysharp.unitask": "2.5.0"
+	},
   "keywords": [
-    "audiosystem",
+    "audio system",
+	"audiosystem",
     "audio",
-    "FMOD",
-    "audio system"
+    "FMOD"
   ],
+  "samples": [
+    {
+      "displayName": "Audio System FMOD Example",
+      "description": "A small sample to demonstrate the abilities of this package.",
+      "path": "Samples~"
+    }   
+  ],    
   "author": {
-    "name": "DefaultCompany",
+    "name": "Studio 23",
     "email": "contact@studio-23.xyz",
     "url": "https://studio-23.xyz"
   }

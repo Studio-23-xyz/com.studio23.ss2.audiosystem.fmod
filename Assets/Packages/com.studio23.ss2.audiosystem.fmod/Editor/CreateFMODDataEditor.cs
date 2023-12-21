@@ -1,6 +1,7 @@
 using FMOD;
 using FMOD.Studio;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -45,16 +46,18 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
             foreach (var e in FMODUnity.EventManager.Events)
             {
+                var eventWithGuid = e.Path + "GUID" + e.Guid;
                 foreach (var b in e.Banks)
                 {
                     if (_eventList.ContainsKey(b.StudioPath))
                     {
                         List<string> valuesForKey1 = _eventList[b.StudioPath];
-                        valuesForKey1.Add(e.Path);
+
+                        valuesForKey1.Add(eventWithGuid);
                     }
                     else
                     {
-                        List<string> valuesForKey1 = new List<string> { e.Path };
+                        List<string> valuesForKey1 = new List<string> { eventWithGuid };
                         _eventList.Add(b.StudioPath, valuesForKey1);
                     }
                 }
@@ -319,8 +322,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
                 foreach (var value in _eventList.ElementAt(i).Value)
                 {
-                    var eventName = value.Replace("event:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_");
-                    scriptContent += $"\t\tpublic static FMODEventData {eventName} = new FMODEventData(\"{_eventList.ElementAt(i).Key}\", \"{value}\");\n";
+                    var guidValue = value.Split("GUID")[1];
+                    var eventName = value.Split("GUID")[0].Replace("event:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_");
+                    scriptContent += $"\t\tpublic static FMODEventData {eventName} = new FMODEventData(\"{_eventList.ElementAt(i).Key}\", \"{value.Split("GUID")[0]}\", \"{guidValue}\");\n";
                 }
 
                 scriptContent += "\t}\n";

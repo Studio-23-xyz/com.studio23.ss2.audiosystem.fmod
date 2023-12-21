@@ -331,8 +331,8 @@ MonoBehaviour:
   BanksToLoad:
   - Master
   - Master.strings
-  - Dialogue
   - Sample
+  - Dialogue
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
   AndroidUseOBB: 0
