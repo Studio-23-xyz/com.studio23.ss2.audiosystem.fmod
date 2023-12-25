@@ -22,7 +22,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
         private static string _testFolderPath = "Assets/Packages/com.studio23.ss2.audiosystem.fmod/Tests/PlayMode/FMOD_Test_Data";
         private static string _testNameSpace = "Studio23.SS2.AudioSystem.fmod.Tests";
 
-        [MenuItem("Studio-23/Audio System/Generate All FMOD Data")]
+        [MenuItem("Studio 23/Audio System/Generate All FMOD Data")]
         public static void GenerateData()
         {
             GetAllData(_folderPath, _nameSpace);

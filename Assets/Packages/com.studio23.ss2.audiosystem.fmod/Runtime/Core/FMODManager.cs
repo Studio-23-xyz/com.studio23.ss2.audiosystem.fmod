@@ -34,8 +34,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
         private void Awake()
         {
-            BanksManager = new BanksManager();
             EventsManager = new EventsManager();
+            BanksManager = new BanksManager();
             MixerManager = new MixerManager();
         }
 

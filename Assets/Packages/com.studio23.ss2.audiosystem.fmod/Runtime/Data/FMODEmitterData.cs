@@ -46,7 +46,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
                 Guid = GUID.Parse(EventGUID)
             };
             Emitter.EventReference = eventReference;
-            Debug.Log(Emitter.EventReference);
             Emitter.CustomInitialize();
         }
 
