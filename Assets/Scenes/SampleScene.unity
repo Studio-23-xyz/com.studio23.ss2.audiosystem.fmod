@@ -4068,7 +4068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
-  currentLocale: 0
+  currentLocale: 2
 --- !u!4 &1106752783
 Transform:
   m_ObjectHideFlags: 0

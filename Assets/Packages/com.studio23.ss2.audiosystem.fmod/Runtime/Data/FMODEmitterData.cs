@@ -1,13 +1,11 @@
-using System;
-using UnityEngine;
-using Object = UnityEngine.Object;
-using FMODUnity;
-using STOP_MODE = FMOD.Studio.STOP_MODE;
 using Cysharp.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
+using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
-using Debug = UnityEngine.Debug;
+using UnityEngine;
+using Object = UnityEngine.Object;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Studio23.SS2.AudioSystem.fmod.Data
 {
@@ -33,6 +31,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
             StopModeType = stopModeType;
 
             Initialize();
+        }
+
+        public (string, string, int) GetKey()
+        {
+            return (BankName, EventName, ReferenceGameObject.GetInstanceID());
         }
 
         /// <summary>
@@ -98,7 +101,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             Emitter.EventInstance.stop(StopModeType);
             EventState = FMODEventState.Stopped;
-            await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED));
+            await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED));
         }
 
         /// <summary>
@@ -110,7 +113,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             Emitter.EventInstance.stop(stopModeType);
             EventState = FMODEventState.Stopped;
-            await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED));
+            await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED));
         }
 
         /// <summary>

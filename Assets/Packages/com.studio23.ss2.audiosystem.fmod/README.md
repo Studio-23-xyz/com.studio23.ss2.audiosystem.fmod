@@ -75,7 +75,7 @@ In the data generated you will find:
     - Sounds are not played through separate event intances. Sounds are not played through ```PlayOneShot()```. This is to ensure we have full control over what sounds are being played and their individual states.
     - Emitters can be created at runtime or set beforehand.
     - Make sure to load the correct banks before creating an emitter at runtime or else the sound won't play and will give an error.
-3. The BanksManager can be used to load/unload banks, load/unload sample data and switch localization. Make sure to load the correct banks beofre trying to play a sound.
+3. The BanksManager can be used to load/unload banks, load/unload sample data and switch localization. Make sure to load the correct banks before trying to play a sound.
 4. The MixerManager can be used to control the Buses and VCAs within FMOD.
 
 ### CallBack Handlers

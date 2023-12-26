@@ -5,6 +5,7 @@ using FMODUnity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Debug = UnityEngine.Debug;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
 namespace Studio23.SS2.AudioSystem.fmod.Core
@@ -44,37 +45,39 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="bankName"></param>
         public void UnloadBank(string bankName)
         {
-            for (int i = 0; i < _bankList.Count; i++)
+            if (_bankList.TryGetValue(bankName, out Bank bank))
             {
-                if (_bankList.ElementAt(i).Key.Equals(bankName))
+                var result = bank.unload();
+                if (result == RESULT.OK)
                 {
-                    RemoveBank(i);
+                    bank.getPath(out string bankPath);
+                    OnBankUnloaded?.Invoke(bankPath);
+                    bank.unloadSampleData();
+                    _bankList.Remove(bankName);
                 }
+                else
+                {
+                    Debug.LogError($"Failed to unload bank '{bankName}': {result}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Failed to find bank '{bankName}' to unload");
             }
         }
 
         /// <summary>
         /// Unloads all Banks loaded by user.
-        /// Will not unload Banks loaded by FMOD at Game start.
+        /// Will not unload Banks loaded by FMOD Initialization.
         /// </summary>
         public void UnloadAllBanks()
         {
-            for (int i = 0; i < _bankList.Count; i++)
+            List<string> banksToRemove = _bankList.Keys.ToList();
+            foreach (var bank in banksToRemove)
             {
-                RemoveBank(i);
+                UnloadBank(bank);
             }
-
             _bankList.Clear();
-        }
-
-        private void RemoveBank(int index)
-        {
-            var bank = _bankList.ElementAt(index).Value;
-            bank.getPath(out string bankPath);
-            OnBankUnloaded?.Invoke(bankPath);
-            bank.unloadSampleData();
-            bank.unload();
-            _bankList.Remove(_bankList.ElementAt(index).Key);
         }
 
         /// <summary>
@@ -84,13 +87,17 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="bankName"></param>
         public void LoadBankSampleData(string bankName)
         {
-            for (int i = 0; i < _bankList.Count; i++)
+            if (_bankList.TryGetValue(bankName, out Bank bank))
             {
-                if (_bankList.ElementAt(i).Key.Equals(bankName))
+                var result = bank.loadSampleData();
+                if (result != RESULT.OK)
                 {
-                    _bankList.ElementAt(i).Value.loadSampleData();
-                    break;
+                    Debug.LogError($"Failed to load sample data for '{bankName}': {result}");
                 }
+            }
+            else
+            {
+                Debug.LogError($"Bank '{bankName}' not found in the bank list.");
             }
         }
 

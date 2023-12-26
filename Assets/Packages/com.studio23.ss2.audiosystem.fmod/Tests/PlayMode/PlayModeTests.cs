@@ -63,9 +63,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator GetBus()
         {
             _fmodManager.MixerManager.SetBusVolume(Test_FMODBusList.SFX, 0.65f);
-            Assert.IsTrue(
-                _fmodManager.MixerManager._busDataList.FirstOrDefault(x => x.BusName.Equals(Test_FMODBusList.SFX)) !=
-                null);
+            Assert.IsTrue(_fmodManager.MixerManager._busDataList[Test_FMODBusList.SFX] != null);
             yield return null;
 
         }
@@ -75,10 +73,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator SetBusVolume()
         {
             _fmodManager.MixerManager.SetBusVolume(Test_FMODBusList.SFX, 0.8f);
-            Assert.IsTrue(_fmodManager.MixerManager._busDataList
-                .FirstOrDefault(x => x.BusName.Equals(Test_FMODBusList.SFX)).CurrentVolume == 0.8f);
+            Assert.IsTrue(_fmodManager.MixerManager._busDataList[Test_FMODBusList.SFX].CurrentVolume == 0.8f);
             yield return null;
-
         }
 
         [UnityTest]
@@ -86,8 +82,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator PauseBus()
         {
             _fmodManager.MixerManager.PauseBus(Test_FMODBusList.SFX);
-            Assert.IsTrue(_fmodManager.MixerManager._busDataList
-                .FirstOrDefault(x => x.BusName.Equals(Test_FMODBusList.SFX)).IsPaused);
+            Assert.IsTrue(_fmodManager.MixerManager._busDataList[Test_FMODBusList.SFX].IsPaused);
             yield return null;
 
         }
@@ -97,8 +92,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator UnPauseBus()
         {
             _fmodManager.MixerManager.UnPauseBus(Test_FMODBusList.SFX);
-            Assert.IsFalse(_fmodManager.MixerManager._busDataList
-                .FirstOrDefault(x => x.BusName.Equals(Test_FMODBusList.SFX)).IsPaused);
+            Assert.IsFalse(_fmodManager.MixerManager._busDataList[Test_FMODBusList.SFX].IsPaused);
             yield return null;
         }
 
@@ -107,8 +101,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator MuteBus()
         {
             _fmodManager.MixerManager.MuteBus(Test_FMODBusList.SFX);
-            Assert.IsTrue(_fmodManager.MixerManager._busDataList
-                .FirstOrDefault(x => x.BusName.Equals(Test_FMODBusList.SFX)).IsMuted);
+            Assert.IsTrue(_fmodManager.MixerManager._busDataList[Test_FMODBusList.SFX].IsMuted);
             yield return null;
         }
 
@@ -117,8 +110,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator UnMuteBus()
         {
             _fmodManager.MixerManager.UnMuteBus(Test_FMODBusList.SFX);
-            Assert.IsFalse(_fmodManager.MixerManager._busDataList
-                .FirstOrDefault(x => x.BusName.Equals(Test_FMODBusList.SFX)).IsMuted);
+            Assert.IsFalse(_fmodManager.MixerManager._busDataList[Test_FMODBusList.SFX].IsMuted);
             yield return null;
         }
 
@@ -127,9 +119,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator GetVCA()
         {
             _fmodManager.MixerManager.SetVCAVolume(Test_FMODVCAList.Player, 0.65f);
-            Assert.IsTrue(
-                _fmodManager.MixerManager._VCADataList.FirstOrDefault(x => x.VCAName.Equals(Test_FMODVCAList.Player)) !=
-                null);
+            Assert.IsTrue(_fmodManager.MixerManager._VCADataList[Test_FMODVCAList.Player] != null);
             yield return null;
         }
 
@@ -138,8 +128,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator SetVCAVolume()
         {
             _fmodManager.MixerManager.SetVCAVolume(Test_FMODVCAList.Player, 0.8f);
-            Assert.IsTrue(_fmodManager.MixerManager._VCADataList
-                .FirstOrDefault(x => x.VCAName.Equals(Test_FMODVCAList.Player)).CurrentVolume == 0.8f);
+            Assert.IsTrue(_fmodManager.MixerManager._VCADataList[Test_FMODVCAList.Player].CurrentVolume == 0.8f);
             yield return null;
         }
 
@@ -148,10 +137,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator CreateEmitter()
         {
             _fmodManager.EventsManager.CreateEmitter(Test_FMODBank_Test.Test, _fmodManager.gameObject);
-            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                x.ReferenceGameObject == _fmodManager.gameObject) != null);
+            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())] != null);
             yield return null;
         }
 
@@ -160,11 +146,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator PlaySound()
         {
             _fmodManager.EventsManager.Play(Test_FMODBank_Test.Test, _fmodManager.gameObject);
-            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                    x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                    x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                    x.ReferenceGameObject == _fmodManager.gameObject)
-                .EventState == FMODEventState.Playing);
+            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].EventState == FMODEventState.Playing);
             yield return null;
         }
 
@@ -173,11 +155,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator PauseSound()
         {
             _fmodManager.EventsManager.Pause(Test_FMODBank_Test.Test, _fmodManager.gameObject);
-            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                    x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                    x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                    x.ReferenceGameObject == _fmodManager.gameObject)
-                .EventState == FMODEventState.Suspended);
+            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].EventState == FMODEventState.Suspended);
             yield return null;
         }
 
@@ -186,11 +164,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator UnPauseSound()
         {
             _fmodManager.EventsManager.UnPause(Test_FMODBank_Test.Test, _fmodManager.gameObject);
-            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                    x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                    x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                    x.ReferenceGameObject == _fmodManager.gameObject)
-                .EventState == FMODEventState.Playing);
+            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].EventState == FMODEventState.Playing);
             yield return null;
         }
 
@@ -199,11 +173,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator TogglePause()
         {
             _fmodManager.EventsManager.TogglePauseAll(true);
-            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                    x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                    x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                    x.ReferenceGameObject == _fmodManager.gameObject)
-                .EventState == FMODEventState.Paused);
+            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].EventState == FMODEventState.Paused);
             yield return null;
         }
 
@@ -212,11 +182,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator ToggleUnPause()
         {
             _fmodManager.EventsManager.TogglePauseAll(false);
-            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                    x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                    x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                    x.ReferenceGameObject == _fmodManager.gameObject)
-                .EventState == FMODEventState.Playing);
+            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].EventState == FMODEventState.Playing);
             yield return null;
         }
 
@@ -225,11 +191,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator StopSound()
         {
             _fmodManager.EventsManager.Stop(Test_FMODBank_Test.Test, _fmodManager.gameObject);
-            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                    x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                    x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                    x.ReferenceGameObject == _fmodManager.gameObject)
-                .EventState == FMODEventState.Stopped);
+            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].EventState == FMODEventState.Stopped);
             yield return null;
         }
 
@@ -239,11 +201,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         {
             _fmodManager.EventsManager.SetLocalParameter(Test_FMODBank_Test.Test, _fmodManager.gameObject,
                 Test_FMODParameterList.Test.TestParameter, 0.5f);
-            _fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                    x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                    x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                    x.ReferenceGameObject == _fmodManager.gameObject)
-                .Emitter.EventInstance
+            _fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].Emitter.EventInstance
                 .getParameterByName(Test_FMODParameterList.Test.TestParameter, out float parameterValue);
             Assert.IsTrue(parameterValue == 0.5f);
             yield return null;
@@ -266,11 +224,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         {
             await _fmodManager.MixerManager.StopAllBusEvents(Test_FMODBusList.Sample);
             await UniTask.Delay(TimeSpan.FromSeconds(5));
-            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                    x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                    x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                    x.ReferenceGameObject == _fmodManager.gameObject)
-                .EventState == FMODEventState.Stopped);
+            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].EventState == FMODEventState.Stopped);
         });
 
         /*[UnityTest]
@@ -290,10 +244,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         public IEnumerator ReleaseSound() => UniTask.ToCoroutine(async () =>
         {
             await _fmodManager.EventsManager.Release(Test_FMODBank_Test.Test, _fmodManager.gameObject);
-            Assert.IsTrue(_fmodManager.EventsManager._emitterDataList.FirstOrDefault(x =>
-                x.BankName.Equals(Test_FMODBank_Test.Test.BankName) &&
-                x.EventName.Equals(Test_FMODBank_Test.Test.EventName) &&
-                x.ReferenceGameObject == _fmodManager.gameObject) == null);
+            Assert.IsFalse(_fmodManager.EventsManager._emitterDataList.ContainsKey((Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())));
         });
 
         [UnityTest]

@@ -3,7 +3,6 @@ using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
@@ -13,11 +12,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 {
     public class EventsManager
     {
-        internal List<FMODEmitterData> _emitterDataList;
+        internal Dictionary<(string, string, int), FMODEmitterData> _emitterDataList;
 
         internal void Initialize()
         {
-            _emitterDataList = new List<FMODEmitterData>();
+            _emitterDataList = new Dictionary<(string, string, int), FMODEmitterData>();
         }
 
         /// <summary>
@@ -34,7 +33,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData != null) return;
             var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
-            _emitterDataList.Add(newEmitter);
+            _emitterDataList.Add(newEmitter.GetKey(), newEmitter);
             FMODCallBackHandler.InitializeCallBack(newEmitter);
         }
 
@@ -49,17 +48,17 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="referenceGameObject"></param>
         /// <param name="emitter"></param>
         /// <param name="stopModeType"></param>
-        public void PlayProgrammerSound(string key, FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        public async void PlayProgrammerSound(string key, FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData != null)
             {
-                FMODProgrammerSoundCallBackHandler.InitializeProgrammerCallback(fetchData, key);
+                await FMODProgrammerSoundCallBackHandler.InitializeProgrammerCallback(fetchData, key);
                 return;
             }
             var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
-            _emitterDataList.Add(newEmitter);
-            FMODProgrammerSoundCallBackHandler.InitializeProgrammerCallback(newEmitter, key, true);
+            _emitterDataList.Add(newEmitter.GetKey(), newEmitter);
+            await FMODProgrammerSoundCallBackHandler.InitializeProgrammerCallback(newEmitter, key, true);
         }
 
         /// <summary>
@@ -108,7 +107,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         {
             foreach (var emitter in _emitterDataList)
             {
-                emitter.TogglePause(isGamePaused);
+                emitter.Value.TogglePause(isGamePaused);
             }
         }
 
@@ -150,7 +149,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
             await fetchData.ReleaseAsync();
-            _emitterDataList.Remove(fetchData);
+            _emitterDataList.Remove(fetchData.GetKey());
         }
 
         /// <summary>
@@ -180,21 +179,27 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
         private FMODEmitterData EventEmitterExists(FMODEventData eventData, GameObject referenceGameObject)
         {
-            return _emitterDataList.FirstOrDefault(x =>
-                x.BankName.Equals(eventData.BankName) && x.EventName.Equals(eventData.EventName) &&
-                x.ReferenceGameObject == referenceGameObject);
+            var key = (eventData.BankName, eventData.EventName, referenceGameObject.GetInstanceID());
+            _emitterDataList.TryGetValue(key, out var emitterData);
+            return emitterData;
         }
 
         internal async UniTask ClearEmitter(string bankPath)
         {
-            for (int i = 0; i < FMODManager.Instance.EventsManager._emitterDataList.Count; i++)
+            List<(string, string, int)> keysToRemove = new List<(string, string, int)>();
+
+            foreach (var key in _emitterDataList.Keys)
             {
-                FMODEmitterData emitter = FMODManager.Instance.EventsManager._emitterDataList[i];
-                if (emitter.BankName.Equals(bankPath))
+                if (key.Item1.Equals(bankPath))
                 {
-                    await emitter.ReleaseAsync();
-                    FMODManager.Instance.EventsManager._emitterDataList.Remove(emitter);
+                    keysToRemove.Add(key);
                 }
+            }
+
+            foreach (var key in keysToRemove)
+            {
+                await _emitterDataList[key].ReleaseAsync();
+                _emitterDataList.Remove(key);
             }
         }
     }

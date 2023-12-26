@@ -304,7 +304,7 @@ MonoBehaviour:
   ImportType: 0
   TargetAssetPath: FMODBanks
   TargetBankFolder: 
-  EventLinkage: 0
+  EventLinkage: 1
   LoggingLevel: 1
   SpeakerModeSettings: []
   SampleRateSettings: []

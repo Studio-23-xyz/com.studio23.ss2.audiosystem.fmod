@@ -1,6 +1,6 @@
-using UnityEngine;
 using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
+using UnityEngine;
 
 public class Sample : MonoBehaviour
 {

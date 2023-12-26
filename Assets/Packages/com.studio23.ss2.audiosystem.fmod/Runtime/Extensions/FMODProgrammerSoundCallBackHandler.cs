@@ -24,7 +24,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         /// <param name="eventData"></param>
         /// <param name="key"></param>
         /// <param name="assignCallBack"></param>
-        public static async void InitializeProgrammerCallback(FMODEmitterData eventData, string key, bool assignCallBack = false)
+        public static async UniTask InitializeProgrammerCallback(FMODEmitterData eventData, string key, bool assignCallBack = false)
         {
             var data = await LoadExternalSound(eventData, key);
             if (assignCallBack)
@@ -58,7 +58,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 if (soundResult != RESULT.OK)
                 {
                     Debug.LogError("Couldn't find external sound with key: " + key);
-                    await UniTask.Yield();
+                    return null;
                 }
             }
             else
@@ -68,7 +68,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 if (keyResult != RESULT.OK)
                 {
                     Debug.LogError("Couldn't find dialogue with key: " + key);
-                    await UniTask.Yield();
+                    return null;
                 }
 
                 // Load Sound
@@ -77,7 +77,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 if (soundResult != RESULT.OK)
                 {
                     Debug.LogError("Couldn't load dialogue sound: " + key);
-                    await UniTask.Yield();
+                    return null;
                 }
             }
 
@@ -92,7 +92,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 {
                     sound.release();
                     Debug.LogError("Failed to load sound " + key);
-                    await UniTask.Yield();
+                    return null;
                 }
             }
 
