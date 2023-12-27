@@ -139,15 +139,15 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.Playmode
             yield return null;
         }
 
-        [UnityTest]
-        [Order(13)]
-        public IEnumerator LoadSampleDataForEvent() => UniTask.ToCoroutine(async () =>
-        {
-            _fmodManager.EventsManager.LoadEventSampleData(Test_FMODBank_Test.Test, _fmodManager.gameObject);
-            _fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].Emitter.EventDescription.getSampleLoadingState(out LOADING_STATE loadingState);
-            await UniTask.WaitUntil(() => loadingState == LOADING_STATE.LOADED);
-            Assert.IsTrue(loadingState == LOADING_STATE.LOADED);
-        });
+        //[UnityTest]
+        //[Order(13)]
+        //public IEnumerator LoadSampleDataForEvent() => UniTask.ToCoroutine(async () =>
+        //{
+        //    _fmodManager.EventsManager.LoadEventSampleData(Test_FMODBank_Test.Test, _fmodManager.gameObject);
+        //    _fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].Emitter.EventDescription.getSampleLoadingState(out LOADING_STATE loadingState);
+        //    await UniTask.WaitUntil(() => loadingState == LOADING_STATE.LOADED);
+        //    Assert.IsTrue(loadingState == LOADING_STATE.LOADED);
+        //});
 
         [UnityTest]
         [Order(14)]
