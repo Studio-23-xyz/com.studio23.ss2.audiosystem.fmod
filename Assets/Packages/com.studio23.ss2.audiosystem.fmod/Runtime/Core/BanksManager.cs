@@ -35,7 +35,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             if (result == RESULT.OK && !_bankList.ContainsKey(bankName))
             {
                 OnBankLoaded?.Invoke(bankName);
-                _bankList.Add(bankName, bank);
+                _bankList[bankName] = bank;
             }
         }
 
@@ -45,25 +45,16 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="bankName"></param>
         public void UnloadBank(string bankName)
         {
-            if (_bankList.TryGetValue(bankName, out Bank bank))
+            Bank bank = BankExists(bankName);
+            var result = bank.unload();
+            if (result == RESULT.OK)
             {
-                var result = bank.unload();
-                if (result == RESULT.OK)
-                {
-                    bank.getPath(out string bankPath);
-                    OnBankUnloaded?.Invoke(bankPath);
-                    bank.unloadSampleData();
-                    _bankList.Remove(bankName);
-                }
-                else
-                {
-                    Debug.LogError($"Failed to unload bank '{bankName}': {result}");
-                }
+                bank.getPath(out string bankPath);
+                OnBankUnloaded?.Invoke(bankPath);
+                bank.unloadSampleData();
+                _bankList.Remove(bankName);
             }
-            else
-            {
-                Debug.LogWarning($"Bank '{bankName}' not found in the bank list.");
-            }
+            else Debug.LogError($"Failed to unload bank '{bankName}': {result}");
         }
 
         /// <summary>
@@ -73,9 +64,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         public void UnloadAllBanks()
         {
             List<string> banksToRemove = _bankList.Keys.ToList();
-            foreach (var bank in banksToRemove)
+            foreach (var bankName in banksToRemove)
             {
-                UnloadBank(bank);
+                UnloadBank(bankName);
             }
             _bankList.Clear();
         }
@@ -87,17 +78,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="bankName"></param>
         public void LoadBankSampleData(string bankName)
         {
-            if (_bankList.TryGetValue(bankName, out Bank bank))
+            Bank bank = BankExists(bankName);
+            var result = bank.loadSampleData();
+            if (result != RESULT.OK)
             {
-                var result = bank.loadSampleData();
-                if (result != RESULT.OK)
-                {
-                    Debug.LogError($"Failed to load sample data for '{bankName}': {result}");
-                }
-            }
-            else
-            {
-                Debug.LogWarning($"Bank '{bankName}' not found in the bank list.");
+                Debug.LogError($"Failed to load sample data for '{bankName}': {result}");
             }
         }
 
@@ -111,6 +96,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             if (string.IsNullOrEmpty(targetLocale)) return;
             UnloadBank(currentLocale);
             LoadBank(targetLocale);
+        }
+
+        private Bank BankExists(string bankName)
+        {
+            var key = bankName;
+            _bankList.TryGetValue(key, out var bank);
+            return bank;
         }
     }
 }

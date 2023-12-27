@@ -3,6 +3,7 @@ using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
@@ -198,21 +199,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
         internal async UniTask ClearEmitter(string bankPath)
         {
-            List<(string, string, int)> keysToRemove = new List<(string, string, int)>();
-
-            foreach (var key in _emitterDataList.Keys)
+            List<UniTask> releaseTasks = new List<UniTask>();
+            foreach (var key in _emitterDataList.Keys.Where(k => k.Item1.Equals(bankPath)).ToList())
             {
-                if (key.Item1.Equals(bankPath))
-                {
-                    keysToRemove.Add(key);
-                }
-            }
-
-            foreach (var key in keysToRemove)
-            {
-                await _emitterDataList[key].ReleaseAsync();
+                releaseTasks.Add(_emitterDataList[key].ReleaseAsync());
                 _emitterDataList.Remove(key);
             }
+            await UniTask.WhenAll(releaseTasks);
         }
     }
 }

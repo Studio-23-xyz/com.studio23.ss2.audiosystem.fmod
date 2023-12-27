@@ -3,24 +3,25 @@ using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
+using System.Runtime.CompilerServices;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
+[assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
 namespace Studio23.SS2.AudioSystem.fmod.Data
 {
     [System.Serializable]
     public class FMODEmitterData
     {
-        public string BankName;
-        public string EventName;
-        public string EventGUID;
-        public GameObject ReferenceGameObject;
-        public CustomStudioEventEmitter Emitter;
-        public FMODEventState EventState = FMODEventState.Stopped;
-        public STOP_MODE StopModeType;
-        public EVENT_CALLBACK_TYPE CurrentCallbackType;
+        internal string BankName;
+        internal string EventName;
+        internal string EventGUID;
+        internal GameObject ReferenceGameObject;
+        internal CustomStudioEventEmitter Emitter;
+        internal FMODEventState EventState = FMODEventState.Stopped;
+        internal STOP_MODE StopModeType;
+        internal EVENT_CALLBACK_TYPE CurrentCallbackType;
 
         public FMODEmitterData(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {

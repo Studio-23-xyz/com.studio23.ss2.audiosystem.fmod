@@ -1,18 +1,20 @@
 using Cysharp.Threading.Tasks;
 using FMOD.Studio;
 using FMODUnity;
+using System.Runtime.CompilerServices;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
+[assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
 namespace Studio23.SS2.AudioSystem.fmod.Data
 {
     public class FMODBusData
     {
-        public Bus Bus;
-        public string BusName;
-        public float DefaultVolume;
-        public float CurrentVolume;
-        public bool IsPaused;
-        public bool IsMuted;
+        internal Bus Bus;
+        internal string BusName;
+        internal float DefaultVolume;
+        internal float CurrentVolume;
+        internal bool IsPaused;
+        internal bool IsMuted;
 
         public FMODBusData(string busName, float defaultVolume)
         {

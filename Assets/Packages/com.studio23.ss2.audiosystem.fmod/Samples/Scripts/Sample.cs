@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using UnityEngine;
@@ -79,6 +80,7 @@ public class Sample : MonoBehaviour
     [ContextMenu("Unload Bank")]
     public void UnloadBank()
     {
+        
         FMODManager.Instance.BanksManager.UnloadBank(FMODBankList.Test);
     }
 

@@ -1,14 +1,16 @@
 using FMOD.Studio;
 using FMODUnity;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
 namespace Studio23.SS2.AudioSystem.fmod.Data
 {
     public class FMODVCAData
     {
-        public VCA VCA;
-        public string VCAName;
-        public float DefaultVolume;
-        public float CurrentVolume;
+        internal VCA VCA;
+        internal string VCAName;
+        internal float DefaultVolume;
+        internal float CurrentVolume;
 
         public FMODVCAData(string vcaName, float defaultVolume)
         {

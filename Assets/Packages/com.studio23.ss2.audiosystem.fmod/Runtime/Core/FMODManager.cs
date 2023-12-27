@@ -13,27 +13,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// </summary>
         public bool InitializeOnStart;
         
-        private static FMODManager _instance;
-        public static FMODManager Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = FindObjectOfType<FMODManager>();
-                    if (_instance == null)
-                    {
-                        GameObject obj = new GameObject("FMODManager");
-                        _instance = obj.AddComponent<FMODManager>();
-                        obj.name = "FMODManager";
-                    }
-                }
-                return _instance;
-            }
-        }
+        public static FMODManager Instance;
 
         private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this);
+            }
+            else
+            {
+                DestroyImmediate(this);
+            }
+
             EventsManager = new EventsManager();
             BanksManager = new BanksManager();
             MixerManager = new MixerManager();
@@ -54,7 +47,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             if (InitializeOnStart) Initialize();
         }
 
-        private void Initialize()
+        public void Initialize()
         {
             EventsManager.Initialize();
             BanksManager.Initialize();
