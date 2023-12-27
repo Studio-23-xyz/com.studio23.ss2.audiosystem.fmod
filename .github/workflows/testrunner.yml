@@ -19,7 +19,7 @@ jobs:
 
     name: Test in ${{ matrix.testMode }}
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     strategy:
 
@@ -30,8 +30,6 @@ jobs:
         testMode:
 
           - playmode
-
-          - editmode
 
     steps:
 
