@@ -11,7 +11,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         internal string VCAName;
         internal float DefaultVolume;
         internal float CurrentVolume;
-
         public FMODVCAData(string vcaName, float defaultVolume)
         {
             VCA = RuntimeManager.GetVCA(vcaName);

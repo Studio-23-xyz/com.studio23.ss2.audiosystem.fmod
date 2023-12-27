@@ -22,7 +22,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 Instance = this;
                 DontDestroyOnLoad(this);
             }
-            else
+            else if (Instance != this)
             {
                 DestroyImmediate(this);
             }

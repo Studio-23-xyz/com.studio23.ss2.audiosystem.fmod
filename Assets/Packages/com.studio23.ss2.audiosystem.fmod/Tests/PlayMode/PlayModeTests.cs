@@ -41,6 +41,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.Playmode
         {
             _fmodManager.BanksManager.LoadBank(Test_FMODBankList.SFX);
             _fmodManager.BanksManager.LoadBank(Test_FMODBankList.Music);
+            _fmodManager.BanksManager.LoadBank(Test_FMODBankList.DialogueTable_LOCALE_EN);
             Assert.IsTrue(_fmodManager.BanksManager._bankList.ContainsKey(Test_FMODBankList.SFX) &&
                           _fmodManager.BanksManager._bankList.ContainsKey(Test_FMODBankList.Music));
             yield return null;
@@ -51,9 +52,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.Playmode
         public IEnumerator SwitchLocalization()
         {
             _fmodManager.BanksManager.SwitchLocalization(Test_FMODLocaleList.LanguageList[Language.EN],
-                Test_FMODLocaleList.LanguageList[Language.EN]);
+                Test_FMODLocaleList.LanguageList[Language.JP]);
             Assert.IsTrue(
-                _fmodManager.BanksManager._bankList.ContainsKey(Test_FMODLocaleList.LanguageList[Language.EN]));
+                _fmodManager.BanksManager._bankList.ContainsKey(Test_FMODLocaleList.LanguageList[Language.JP]));
             yield return null;
         }
 
