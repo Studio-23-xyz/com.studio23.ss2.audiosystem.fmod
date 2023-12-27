@@ -1,11 +1,11 @@
 using Cysharp.Threading.Tasks;
-using FMOD.Studio;
 using FMODUnity;
 using NUnit.Framework;
 using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
 using System.Collections;
+using FMOD;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
@@ -25,6 +25,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.Playmode
             Assert.IsTrue(_fmodManager != null);
             yield return null;
         }
+
+#if UNITY_STANDALONE_LINUX
+
+        RuntimeManager.CoreSystem.setOutput(OUTPUTTYPE.ALSA);
+
+#endif
 
         [UnityTest]
         [Order(1)]
@@ -196,12 +202,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.Playmode
 
         [UnityTest]
         [Order(19)]
-        public IEnumerator StopSound()
+        public IEnumerator StopSound() => UniTask.ToCoroutine(async () =>
         {
-            _fmodManager.EventsManager.Stop(Test_FMODBank_Test.Test, _fmodManager.gameObject);
+            await _fmodManager.EventsManager.Stop(Test_FMODBank_Test.Test, _fmodManager.gameObject);
             Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].EventState == FMODEventState.Stopped);
-            yield return null;
-        }
+        });
 
         [UnityTest]
         [Order(20)]
