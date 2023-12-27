@@ -62,7 +62,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             }
             else
             {
-                Debug.LogWarning($"Failed to find bank '{bankName}' to unload");
+                Debug.LogWarning($"Bank '{bankName}' not found in the bank list.");
             }
         }
 
@@ -81,8 +81,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Loads Sample Data for a Bank.
-        /// Make sure to load the Sample Data for a Bank that has already been loaded.
+        /// Loads all non-streaming Sample Data for a Bank.
+        /// Make sure to load corresponding Bank before loading the Sample Data.
         /// </summary>
         /// <param name="bankName"></param>
         public void LoadBankSampleData(string bankName)
@@ -97,7 +97,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             }
             else
             {
-                Debug.LogError($"Bank '{bankName}' not found in the bank list.");
+                Debug.LogWarning($"Bank '{bankName}' not found in the bank list.");
             }
         }
 

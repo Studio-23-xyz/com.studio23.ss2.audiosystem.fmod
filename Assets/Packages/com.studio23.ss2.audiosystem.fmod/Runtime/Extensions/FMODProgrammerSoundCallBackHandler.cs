@@ -1,13 +1,13 @@
-using System;
-using System.Runtime.InteropServices;
-using UnityEngine;
-using Debug = UnityEngine.Debug;
 using AOT;
 using Cysharp.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Data;
+using System;
+using System.Runtime.InteropServices;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Studio23.SS2.AudioSystem.fmod.Extensions
 {
@@ -125,52 +125,48 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 switch (type)
                 {
                     case EVENT_CALLBACK_TYPE.CREATED:
-                    {
-                        OnDialogueStarted?.Invoke();
-                        break;
-                    }
+                        {
+                            OnDialogueStarted?.Invoke();
+                            break;
+                        }
                     case EVENT_CALLBACK_TYPE.STARTED:
-                    {
-                        eventData.EmitterData.EventState = FMODEventState.Playing;
-                        break;
-                    }
+                        {
+                            eventData.EmitterData.EventState = FMODEventState.Playing;
+                            break;
+                        }
                     case EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND:
-                    {
-                        FMODCallBackHandler.IsLoopingCheck(UserProperties, eventData.EmitterData);
-                        var parameter =
-                            (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr,
-                                typeof(PROGRAMMER_SOUND_PROPERTIES));
+                        {
+                            FMODCallBackHandler.IsLoopingCheck(UserProperties, eventData.EmitterData);
+                            var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
 
-                        parameter.sound = eventData.Sound.handle;
-                        parameter.subsoundIndex = eventData.SoundInfo.subsoundindex;
-                        Marshal.StructureToPtr(parameter, parameterPtr, false);
-                        break;
-                    }
+                            parameter.sound = eventData.Sound.handle;
+                            parameter.subsoundIndex = eventData.SoundInfo.subsoundindex;
+                            Marshal.StructureToPtr(parameter, parameterPtr, false);
+                            break;
+                        }
                     case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
-                    {
-                        FMODCallBackHandler.IsLoopingCheck(UserProperties, eventData.EmitterData);
-                        OnDialogueComplete?.Invoke();
-                        break;
-                    }
+                        {
+                            FMODCallBackHandler.IsLoopingCheck(UserProperties, eventData.EmitterData);
+                            OnDialogueComplete?.Invoke();
+                            break;
+                        }
                     case EVENT_CALLBACK_TYPE.STOPPED:
-                    {
-                        eventData.EmitterData.EventState = FMODEventState.Stopped;
-                        break;
-                    }
+                        {
+                            eventData.EmitterData.EventState = FMODEventState.Stopped;
+                            break;
+                        }
                     case EVENT_CALLBACK_TYPE.DESTROY_PROGRAMMER_SOUND:
-                    {
-                        var parameter =
-                            (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr,
-                                typeof(PROGRAMMER_SOUND_PROPERTIES));
-                        var sound = new Sound(parameter.sound);
-                        sound.release();
-                        break;
-                    }
+                        {
+                            var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
+                            var sound = new Sound(parameter.sound);
+                            sound.release();
+                            break;
+                        }
                     case EVENT_CALLBACK_TYPE.DESTROYED:
-                    {
-                        eventDataHandle.Free();
-                        break;
-                    }
+                        {
+                            eventDataHandle.Free();
+                            break;
+                        }
                 }
             }
 

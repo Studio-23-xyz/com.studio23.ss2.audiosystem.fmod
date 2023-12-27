@@ -4,6 +4,7 @@ using FMOD.Studio;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -125,7 +126,18 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
             await StopAsync();
             Emitter.EventInstance.release();
             await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED);
+            UnloadSampleData();
             Object.Destroy(Emitter);
+        }
+
+        public void LoadSampleData()
+        {
+            Emitter.EventDescription.loadSampleData();
+        }
+
+        public void UnloadSampleData()
+        {
+            Emitter.EventDescription.unloadSampleData();
         }
 
         /// <summary>

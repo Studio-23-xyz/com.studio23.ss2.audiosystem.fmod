@@ -38,6 +38,18 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="referenceGameObject"></param>
+        public void LoadEventSampleData(FMODEventData eventData, GameObject referenceGameObject)
+        {
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            if (fetchData == null) return;
+            fetchData.LoadSampleData();
+        }
+
+        /// <summary>
         /// Use to play FMOD Programmer Sounds. Localized audio tables for dialogues can be played.
         /// Any external audio not within FMOD can be played.
         /// If the GameObject already has an Emitter attached, then pass the Emitter to initialize it.

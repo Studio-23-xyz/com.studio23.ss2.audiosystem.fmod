@@ -1,16 +1,16 @@
 using Cysharp.Threading.Tasks;
+using FMOD.Studio;
 using FMODUnity;
 using NUnit.Framework;
 using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
 
-namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
+namespace Studio23.SS2.AudioSystem.fmod.Tests.Playmode
 {
     public class PlayModeTests
     {
@@ -55,7 +55,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
             Assert.IsTrue(
                 _fmodManager.BanksManager._bankList.ContainsKey(Test_FMODLocaleList.LanguageList[Language.EN]));
             yield return null;
-
         }
 
         [UnityTest]
@@ -65,7 +64,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
             _fmodManager.MixerManager.SetBusVolume(Test_FMODBusList.SFX, 0.65f);
             Assert.IsTrue(_fmodManager.MixerManager._busDataList[Test_FMODBusList.SFX] != null);
             yield return null;
-
         }
 
         [UnityTest]
@@ -84,7 +82,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
             _fmodManager.MixerManager.PauseBus(Test_FMODBusList.SFX);
             Assert.IsTrue(_fmodManager.MixerManager._busDataList[Test_FMODBusList.SFX].IsPaused);
             yield return null;
-
         }
 
         [UnityTest]
@@ -143,6 +140,16 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
 
         [UnityTest]
         [Order(13)]
+        public IEnumerator LoadSampleDataForEvent() => UniTask.ToCoroutine(async () =>
+        {
+            _fmodManager.EventsManager.LoadEventSampleData(Test_FMODBank_Test.Test, _fmodManager.gameObject);
+            _fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].Emitter.EventDescription.getSampleLoadingState(out LOADING_STATE loadingState);
+            await UniTask.WaitUntil(() => loadingState == LOADING_STATE.LOADED);
+            Assert.IsTrue(loadingState == LOADING_STATE.LOADED);
+        });
+
+        [UnityTest]
+        [Order(14)]
         public IEnumerator PlaySound()
         {
             _fmodManager.EventsManager.Play(Test_FMODBank_Test.Test, _fmodManager.gameObject);
@@ -151,7 +158,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(14)]
+        [Order(15)]
         public IEnumerator PauseSound()
         {
             _fmodManager.EventsManager.Pause(Test_FMODBank_Test.Test, _fmodManager.gameObject);
@@ -160,7 +167,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(15)]
+        [Order(16)]
         public IEnumerator UnPauseSound()
         {
             _fmodManager.EventsManager.UnPause(Test_FMODBank_Test.Test, _fmodManager.gameObject);
@@ -169,7 +176,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(16)]
+        [Order(17)]
         public IEnumerator TogglePause()
         {
             _fmodManager.EventsManager.TogglePauseAll(true);
@@ -178,7 +185,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(17)]
+        [Order(18)]
         public IEnumerator ToggleUnPause()
         {
             _fmodManager.EventsManager.TogglePauseAll(false);
@@ -187,7 +194,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(18)]
+        [Order(19)]
         public IEnumerator StopSound()
         {
             _fmodManager.EventsManager.Stop(Test_FMODBank_Test.Test, _fmodManager.gameObject);
@@ -196,7 +203,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(19)]
+        [Order(20)]
         public IEnumerator SetLocalParameter()
         {
             _fmodManager.EventsManager.SetLocalParameter(Test_FMODBank_Test.Test, _fmodManager.gameObject,
@@ -208,7 +215,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(20)]
+        [Order(21)]
         public IEnumerator SetGlobalParameter()
         {
             _fmodManager.EventsManager.SetGlobalParameter(Test_FMODParameterList.snapshot_Test.GlobalTest, 0.5f);
@@ -219,7 +226,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(21)]
+        [Order(22)]
         public IEnumerator StopAllBusEvents() => UniTask.ToCoroutine(async () =>
         {
             await _fmodManager.MixerManager.StopAllBusEvents(Test_FMODBusList.Sample);
@@ -227,20 +234,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
             Assert.IsTrue(_fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].EventState == FMODEventState.Stopped);
         });
 
-        /*[UnityTest]
-    [Order(22)]
-    public IEnumerator LoadBankSampleData() => UniTask.ToCoroutine(async () =>
-    {
-        _fmodManager.LoadBankSampleData(Test_FMODBankList.Test);
-        _fmodManager.Play(Test_FMODBank_Test.Test, _fmodManager.gameObject);
-        _fmodManager._bankList[Test_FMODBankList.Test].getSampleLoadingState(out LOADING_STATE loadingState);
-        await UniTask.WaitUntil(() => loadingState == LOADING_STATE.LOADED);
-        Debug.Log(loadingState);
-        Assert.IsTrue(loadingState == LOADING_STATE.LOADED);
-    });*/
+        //[UnityTest]
+        //[Order(24)]
+        //public IEnumerator LoadBankSampleData() => UniTask.ToCoroutine(async () =>
+        //{
+        //    _fmodManager.BanksManager.LoadBankSampleData(Test_FMODBankList.Test);
+        //    _fmodManager.EventsManager.Play(Test_FMODBank_Test.Test, _fmodManager.gameObject);
+        //    _fmodManager.BanksManager._bankList[Test_FMODBankList.Test].getSampleLoadingState(out LOADING_STATE loadingState);
+        //    await UniTask.WaitUntil(() => loadingState == LOADING_STATE.LOADED);
+        //    Debug.Log(loadingState);
+        //    Assert.IsTrue(loadingState == LOADING_STATE.LOADED);
+        //});
 
         [UnityTest]
-        [Order(23)]
+        [Order(25)]
         public IEnumerator ReleaseSound() => UniTask.ToCoroutine(async () =>
         {
             await _fmodManager.EventsManager.Release(Test_FMODBank_Test.Test, _fmodManager.gameObject);
@@ -248,7 +255,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         });
 
         [UnityTest]
-        [Order(24)]
+        [Order(26)]
         public IEnumerator UnloadSingleBank()
         {
             _fmodManager.BanksManager.UnloadBank(Test_FMODBankList.Test);
@@ -257,7 +264,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(25)]
+        [Order(27)]
         public IEnumerator UnloadAllBanks()
         {
             _fmodManager.BanksManager.UnloadAllBanks();
@@ -266,7 +273,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.playmode
         }
 
         [UnityTest]
-        [Order(26)]
+        [Order(28)]
         public IEnumerator DestroyAudioManager()
         {
             Object.DestroyImmediate(_fmodManager);

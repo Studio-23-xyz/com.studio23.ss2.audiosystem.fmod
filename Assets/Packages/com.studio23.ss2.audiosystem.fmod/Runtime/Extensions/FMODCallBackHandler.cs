@@ -73,7 +73,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 
         /// <summary>
         /// Checks if the Event Instance is looping.
-        /// If the Event is looping, define a variable under User Properties of an Event from FMOD Studio called "IsLooping" and set it to 1.
+        /// If the Event is looping, define a variable called "IsLooping" under the User Properties of an Event from FMOD Studio and set its value to 1.
         /// </summary>
         /// <param name="userProperties"></param>
         /// <param name="eventData"></param>

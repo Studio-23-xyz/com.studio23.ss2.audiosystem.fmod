@@ -75,9 +75,10 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// <returns></returns>
         public async UniTask StopAllEventsAsync(STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
-            await UniTask.RunOnThreadPool(() =>
+            await UniTask.RunOnThreadPool(async() =>
             {
                 Bus.stopAllEvents(stopModeType);
+                await UniTask.WaitForFixedUpdate();
             });
         }
     }
