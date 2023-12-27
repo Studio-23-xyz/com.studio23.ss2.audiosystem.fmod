@@ -25,12 +25,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.Playmode
             yield return null;
         }
 
-#if UNITY_STANDALONE_LINUX
-
-        FMODUnity.RuntimeManager.CoreSystem.setOutput(OUTPUTTYPE.ALSA);
-
-#endif
-
         [UnityTest]
         [Order(1)]
         public IEnumerator LoadSingleBank()
