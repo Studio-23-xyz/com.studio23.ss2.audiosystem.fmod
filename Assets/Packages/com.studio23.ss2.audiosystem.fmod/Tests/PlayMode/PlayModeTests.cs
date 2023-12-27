@@ -5,7 +5,6 @@ using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
 using System.Collections;
-using FMOD;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
@@ -28,7 +27,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.Playmode
 
 #if UNITY_STANDALONE_LINUX
 
-        RuntimeManager.CoreSystem.setOutput(OUTPUTTYPE.ALSA);
+        FMODUnity.RuntimeManager.CoreSystem.setOutput(OUTPUTTYPE.ALSA);
 
 #endif
 
