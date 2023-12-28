@@ -5,9 +5,9 @@
   "description": "This is a system for managing and utilizing audio using FMOD. It provides an easier way to use FMOD from the get go.",
   "unity": "2022.3",
   "unityRelease": "10f1",
-  "documentationUrl": "https://studio-23-xyz.github.io/AudioSystemFMOD/manual/",
-  "changelogUrl": "https://studio-23-xyz.github.io/AudioSystemFMOD/changelog/CHANGELOG.html",
-  "licensesUrl": "https://studio-23-xyz.github.io/AudioSystemFMOD/license/LICENSE.html",
+  "documentationUrl": "https://studio-23-xyz.github.io/com.studio23.ss2.audiosystem.fmod/manual/",
+  "changelogUrl": "https://studio-23-xyz.github.io/com.studio23.ss2.audiosystem.fmod/changelog/CHANGELOG.html",
+  "licensesUrl": "https://studio-23-xyz.github.io/com.studio23.ss2.audiosystem.fmod/license/LICENSE.html",
   "scopedRegistries": [
     {
       "name": "Studio 23",
