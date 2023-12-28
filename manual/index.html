@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Audio System FMOD |  |  </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Audio System FMOD |  |  ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      <meta name="docfx:docurl" content="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Documentation~/manual/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 align="center">Audio System FMOD</h1>
+
+<p align="center">
+<a href="https://openupm.com/packages/com.studio23.ss2.audiosystem.fmod/"><img src="https://img.shields.io/npm/v/com.studio23.ss2.audiosystem.fmod?label=openupm&amp;registry_uri=https://package.openupm.com"></a>
+</p>
+<p>Audio System FMOD is a tool designed for managing and utilizing the FMOD engine in a simpler and unified manner within Unity. It makes it easier to manage all game audio using and allows the user to focus more on audio and sound design.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#setup">Setup</a>
+<ul>
+<li><a href="#important">Important</a></li>
+<li><a href="#fmod-settings-in-unity">FMOD Settings in Unity</a>
+<ul>
+<li><a href="#bank-import">Bank Import</a></li>
+<li><a href="#initialization">Initialization</a></li>
+</ul>
+</li>
+<li><a href="#renaming-fmod-project-settings">Renaming FMOD Project Locales</a></li>
+<li><a href="#generating-all-fmod-data">Generating all FMOD data</a></li>
+</ul>
+</li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#fmod-manager">FMOD Manager</a></li>
+<li><a href="#callback-handlers">CallBack Handlers</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="installation">Installation</h2>
+<h3 id="install-via-git-url">Install via Git URL</h3>
+<p>You can also use the &quot;Install from Git URL&quot; option from Unity Package Manager to install the package.</p>
+<pre><code>https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod.git#upm
+</code></pre>
+<h2 id="setup">Setup</h2>
+<h3 id="important">Important</h3>
+<p>This package cannot function on its own and is intended to be used with FMOD. Make sure you have the FMOD for Unity plugin installed in your project before installing Audio System FMOD. You can find the plugin on the Unity Asset Store or on the <a href="https://www.fmod.com/download">FMOD website</a>. This package assumes familiarity with FMOD for its usage so please read up of FMOD's documentation.</p>
+<h3 id="fmod-settings-in-unity">FMOD Settings in Unity</h3>
+<h4 id="bank-import">Bank Import</h4>
+<p>Follow FMOD's documentation on where to set up your FMOD Project. After the FMOD project is set up, make sure to build your FMOD project for all platforms. In Unity, go to FMOD -&gt; Edit Settings. Under Bank Import, set Source Type to Single Platform Build and specify your desired platform's build directory. This package does not support Source Type of FMOD Studio Project or Multiple Platform Build. To build the Unity project for multiple platforms, select the desired platform's build directory before building for that platform.</p>
+<h4 id="initialization">Initialization</h4>
+<p>In Unity, go to FMOD -&gt; Edit Settings. Under Initialization, set Load Banks to None or Specified. If set to None, make sure to manually load the Master bank and Master.strings bank before trying to playback any audio. If you have more than one Master bank, then load those and their corresponding .strings banks too. Ideally, it may be wise to set Load Banks to Specified so that the master bank(s), .strings bank(s) and special banks (such as the base dialogue bank) can be loaded on game start.</p>
+<h3 id="renaming-fmod-project-locales">Renaming FMOD Project Locales</h3>
+<p>When setting up localized audio tables in FMOD Studio, the project locales must be renamed or else the data generation will be incorrect because it will not be able to find the correct banks. In FMOD Studio, go to Edit -&gt; Preferences -&gt; Assets. Add the keyword &quot;LOCALE_&quot; before the language code. For example, EN should become LOCALE_EN. Rename the locales before performing the next step.</p>
+<h3 id="generating-all-fmod-data">Generating all FMOD data</h3>
+<p>To use FMOD and its features, we need references to events, parameters, banks, buses and VCAs. Go to Studio-23 -&gt; Generate All FMOD Data. This will generate data containing the references from FMOD Studio. Make sure to build the FMOD project and select the correct platform build directory before generating the FMOD Data. You will need to generate the data again if you rebuild your FMOD project or if you want to build the Unity project for a different platform. Frequent regeneration will probably be needed.</p>
+<p>In the data generated you will find:</p>
+<ul>
+<li><code>FMODBank_[BankName]</code> containing references to all the events under the <code>[BankName]</code> Bank.</li>
+<li><code>FMODBankList</code> containing references to all the banks.</li>
+<li><code>FMODBusList</code> containing references to all the buses.</li>
+<li><code>FMODVCAList</code> containing references to all the VCAs.</li>
+<li><code>FMODParameterList</code> containing references to all the parameter names.</li>
+<li><code>FMODLocaleList</code> containing references to all languages supported by the current FMOD build and their corresponding bank.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<h3 id="fmod-manager">FMOD Manager</h3>
+<ol>
+<li>Attach the FMODManager script to a GameObject in your scene. You can access the EventsManager, BanksManager and MixerManager through the FMODManager.</li>
+<li>The EventsManager can be used to play, pause, unpause, stop events and change parameters. All events, game wide can be paused and unpaused. Programmer sounds can also be played.
+<ul>
+<li>Every sound is played through a Custom Studio Event Emitter. The only difference between our custom emitter and FMOD's emitter is how  the event instance is initialized.</li>
+<li>Sounds are not played through separate event intances. Sounds are not played through <code>PlayOneShot()</code>. This is to ensure we have full control over what sounds are being played and their individual states.</li>
+<li>Emitters can be created at runtime or set beforehand.</li>
+<li>Make sure to load the correct banks before creating an emitter at runtime or else the sound won't play and will give an error.</li>
+</ul>
+</li>
+<li>The BanksManager can be used to load/unload banks, load/unload sample data and switch localization. Make sure to load the correct banks before trying to play a sound.</li>
+<li>The MixerManager can be used to control the Buses and VCAs within FMOD.</li>
+</ol>
+<h3 id="callback-handlers">CallBack Handlers</h3>
+<p>We have provided two callback handlers.</p>
+<ol>
+<li>The default callback handler manages the internal states of each event. It can also handle looping audio. This callback is fired with every event that is played.</li>
+<li>The programmer callback handler manages the playback of externally loaded sounds and is required for dialogues and localized audio tables.</li>
+</ol>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Documentation~/manual/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/Studio-23-xyz" target="_blank">Studio-23-xyz</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

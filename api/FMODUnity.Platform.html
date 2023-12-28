@@ -1,0 +1,735 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Platform
+ |  |  </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Platform
+ |  |  ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      <meta name="docfx:docurl" content="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/new/main/apiSpec/new?filename=FMODUnity_Platform.md&amp;value=---%0Auid%3A%20FMODUnity.Platform%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="FMODUnity.Platform">
+
+
+
+  <h1 id="FMODUnity_Platform" data-uid="FMODUnity.Platform" class="text-break">
+    Class Platform
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="FMODUnity.html">FMODUnity</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Platform : ScriptableObject</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Platform</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="FMODUnity.PlatformAndroid.html">PlatformAndroid</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformAppleTV.html">PlatformAppleTV</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformDefault.html">PlatformDefault</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformGroup.html">PlatformGroup</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformIOS.html">PlatformIOS</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformLinux.html">PlatformLinux</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformMac.html">PlatformMac</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformMobileLow.html">PlatformMobileLow</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformPlayInEditor.html">PlatformPlayInEditor</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformWebGL.html">PlatformWebGL</a></div>
+      <div><a class="xref" href="FMODUnity.PlatformWindows.html">PlatformWindows</a></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="FMODUnity_Platform_Parent" data-uid="FMODUnity.Platform.Parent">
+  Parent
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[NonSerialized]
+public Platform Parent</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.Platform.html">Platform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="FMODUnity_Platform_Properties" data-uid="FMODUnity.Platform.Properties">
+  Properties
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Platform.PropertyStorage Properties</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.Platform.html">Platform</a>.<a class="xref" href="FMODUnity.Platform.PropertyStorage.html">PropertyStorage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="FMODUnity_Platform_BuildDirectory_" data-uid="FMODUnity.Platform.BuildDirectory*"></a>
+
+  <h3 id="FMODUnity_Platform_BuildDirectory" data-uid="FMODUnity.Platform.BuildDirectory">
+  BuildDirectory
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L853"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string BuildDirectory { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_CallbackHandler_" data-uid="FMODUnity.Platform.CallbackHandler*"></a>
+
+  <h3 id="FMODUnity_Platform_CallbackHandler" data-uid="FMODUnity.Platform.CallbackHandler">
+  CallbackHandler
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L861"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PlatformCallbackHandler CallbackHandler { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.PlatformCallbackHandler.html">PlatformCallbackHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_DSPBufferCount_" data-uid="FMODUnity.Platform.DSPBufferCount*"></a>
+
+  <h3 id="FMODUnity_Platform_DSPBufferCount" data-uid="FMODUnity.Platform.DSPBufferCount">
+  DSPBufferCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L858"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DSPBufferCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_DSPBufferLength_" data-uid="FMODUnity.Platform.DSPBufferLength*"></a>
+
+  <h3 id="FMODUnity_Platform_DSPBufferLength" data-uid="FMODUnity.Platform.DSPBufferLength">
+  DSPBufferLength
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L857"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DSPBufferLength { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_LiveUpdate_" data-uid="FMODUnity.Platform.LiveUpdate*"></a>
+
+  <h3 id="FMODUnity_Platform_LiveUpdate" data-uid="FMODUnity.Platform.LiveUpdate">
+  LiveUpdate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L848"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TriStateBool LiveUpdate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.TriStateBool.html">TriStateBool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_LiveUpdatePort_" data-uid="FMODUnity.Platform.LiveUpdatePort*"></a>
+
+  <h3 id="FMODUnity_Platform_LiveUpdatePort" data-uid="FMODUnity.Platform.LiveUpdatePort">
+  LiveUpdatePort
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L849"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LiveUpdatePort { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_Logging_" data-uid="FMODUnity.Platform.Logging*"></a>
+
+  <h3 id="FMODUnity_Platform_Logging" data-uid="FMODUnity.Platform.Logging">
+  Logging
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L851"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TriStateBool Logging { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.TriStateBool.html">TriStateBool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_Overlay_" data-uid="FMODUnity.Platform.Overlay*"></a>
+
+  <h3 id="FMODUnity_Platform_Overlay" data-uid="FMODUnity.Platform.Overlay">
+  Overlay
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L850"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TriStateBool Overlay { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.TriStateBool.html">TriStateBool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_Plugins_" data-uid="FMODUnity.Platform.Plugins*"></a>
+
+  <h3 id="FMODUnity_Platform_Plugins" data-uid="FMODUnity.Platform.Plugins">
+  Plugins
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L859"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Plugins { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_RealChannelCount_" data-uid="FMODUnity.Platform.RealChannelCount*"></a>
+
+  <h3 id="FMODUnity_Platform_RealChannelCount" data-uid="FMODUnity.Platform.RealChannelCount">
+  RealChannelCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L856"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RealChannelCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_SampleRate_" data-uid="FMODUnity.Platform.SampleRate*"></a>
+
+  <h3 id="FMODUnity_Platform_SampleRate" data-uid="FMODUnity.Platform.SampleRate">
+  SampleRate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L852"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SampleRate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_SpeakerMode_" data-uid="FMODUnity.Platform.SpeakerMode*"></a>
+
+  <h3 id="FMODUnity_Platform_SpeakerMode" data-uid="FMODUnity.Platform.SpeakerMode">
+  SpeakerMode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L854"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SPEAKERMODE SpeakerMode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.SPEAKERMODE.html">SPEAKERMODE</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_StaticPlugins_" data-uid="FMODUnity.Platform.StaticPlugins*"></a>
+
+  <h3 id="FMODUnity_Platform_StaticPlugins" data-uid="FMODUnity.Platform.StaticPlugins">
+  StaticPlugins
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L860"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; StaticPlugins { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_ThreadAffinities_" data-uid="FMODUnity.Platform.ThreadAffinities*"></a>
+
+  <h3 id="FMODUnity_Platform_ThreadAffinities" data-uid="FMODUnity.Platform.ThreadAffinities">
+  ThreadAffinities
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L969"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;ThreadAffinityGroup&gt; ThreadAffinities { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="FMODUnity.ThreadAffinityGroup.html">ThreadAffinityGroup</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FMODUnity_Platform_VirtualChannelCount_" data-uid="FMODUnity.Platform.VirtualChannelCount*"></a>
+
+  <h3 id="FMODUnity_Platform_VirtualChannelCount" data-uid="FMODUnity.Platform.VirtualChannelCount">
+  VirtualChannelCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L855"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int VirtualChannelCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="FMODUnity_Platform_GetPluginBasePath_" data-uid="FMODUnity.Platform.GetPluginBasePath*"></a>
+
+  <h3 id="FMODUnity_Platform_GetPluginBasePath" data-uid="FMODUnity.Platform.GetPluginBasePath">
+  GetPluginBasePath()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/Platform.cs/#L501"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual string GetPluginBasePath()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/Studio-23-xyz" target="_blank">Studio-23-xyz</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1021 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CustomStudioEventEmitter
+ |  |  </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CustomStudioEventEmitter
+ |  |  ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      <meta name="docfx:docurl" content="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/new/main/apiSpec/new?filename=Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter.md&amp;value=---%0Auid%3A%20Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter">
+
+
+
+  <h1 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter" class="text-break">
+    Class CustomStudioEventEmitter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Studio23.html">Studio23</a>.<a class="xref" href="Studio23.SS2.html">SS2</a>.<a class="xref" href="Studio23.SS2.AudioSystem.html">AudioSystem</a>.<a class="xref" href="Studio23.SS2.AudioSystem.fmod.html">fmod</a>.<a class="xref" href="Studio23.SS2.AudioSystem.fmod.Extensions.html">Extensions</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CustomStudioEventEmitter : EventHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="FMODUnity.EventHandler.html">EventHandler</a></div>
+      <div><span class="xref">CustomStudioEventEmitter</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IPointerEnterHandler</span></div>
+      <div><span class="xref">IPointerExitHandler</span></div>
+      <div><span class="xref">IPointerDownHandler</span></div>
+      <div><span class="xref">IPointerUpHandler</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_CollisionTag">EventHandler.CollisionTag</a>
+    </div>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_OnPointerEnter_PointerEventData_">EventHandler.OnPointerEnter(PointerEventData)</a>
+    </div>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_OnPointerExit_PointerEventData_">EventHandler.OnPointerExit(PointerEventData)</a>
+    </div>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_OnPointerDown_PointerEventData_">EventHandler.OnPointerDown(PointerEventData)</a>
+    </div>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_OnPointerUp_PointerEventData_">EventHandler.OnPointerUp(PointerEventData)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_AllowFadeout" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.AllowFadeout">
+  AllowFadeout
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowFadeout</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_AllowNonRigidbodyDoppler" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.AllowNonRigidbodyDoppler">
+  AllowNonRigidbodyDoppler
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowNonRigidbodyDoppler</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_Event" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.Event">
+  Event
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the EventReference field instead&quot;)]
+public string Event</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_EventReference" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.EventReference">
+  EventReference
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EventReference EventReference</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.EventReference.html">EventReference</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_OverrideAttenuation" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.OverrideAttenuation">
+  OverrideAttenuation
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool OverrideAttenuation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_OverrideMaxDistance" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.OverrideMaxDistance">
+  OverrideMaxDistance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float OverrideMaxDistance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_OverrideMinDistance" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.OverrideMinDistance">
+  OverrideMinDistance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float OverrideMinDistance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_Params" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.Params">
+  Params
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ParamRef[] Params</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.ParamRef.html">ParamRef</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_PlayEvent" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.PlayEvent">
+  PlayEvent
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EmitterGameEvent PlayEvent</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.EmitterGameEvent.html">EmitterGameEvent</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_Preload" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.Preload">
+  Preload
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Preload</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_StopEvent" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.StopEvent">
+  StopEvent
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EmitterGameEvent StopEvent</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMODUnity.EmitterGameEvent.html">EmitterGameEvent</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_TriggerOnce" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.TriggerOnce">
+  TriggerOnce
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TriggerOnce</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_eventDescription" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.eventDescription">
+  eventDescription
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected EventDescription eventDescription</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.Studio.EventDescription.html">EventDescription</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_instance" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.instance">
+  instance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected EventInstance instance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.Studio.EventInstance.html">EventInstance</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_EventDescription_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.EventDescription*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_EventDescription" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.EventDescription">
+  EventDescription
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EventDescription EventDescription { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.Studio.EventDescription.html">EventDescription</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_EventInstance_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.EventInstance*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_EventInstance" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.EventInstance">
+  EventInstance
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EventInstance EventInstance { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.Studio.EventInstance.html">EventInstance</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_IsActive_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.IsActive*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_IsActive" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.IsActive">
+  IsActive
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsActive { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_CustomInitialize_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.CustomInitialize*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_CustomInitialize" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.CustomInitialize">
+  CustomInitialize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L187"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates the Event Instance separately from Play().</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CustomInitialize()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_CustomPlay_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.CustomPlay*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_CustomPlay" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.CustomPlay">
+  CustomPlay()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays the created Event Instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CustomPlay()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_HandleGameEvent_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.HandleGameEvent*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_HandleGameEvent_FMODUnity_EmitterGameEvent_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.HandleGameEvent(FMODUnity.EmitterGameEvent)">
+  HandleGameEvent(EmitterGameEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L157"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void HandleGameEvent(EmitterGameEvent gameEvent)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gameEvent</code> <a class="xref" href="FMODUnity.EmitterGameEvent.html">EmitterGameEvent</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_IsPlaying_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.IsPlaying*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_IsPlaying" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.IsPlaying">
+  IsPlaying()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L493"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPlaying()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_OnDestroy_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.OnDestroy*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_OnDestroy" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.OnDestroy">
+  OnDestroy()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnDestroy()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_Play_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.Play*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_Play" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.Play">
+  Play()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L299"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Play()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_SetParameter_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.SetParameter*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_SetParameter_FMOD_Studio_PARAMETER_ID_System_Single_System_Boolean_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.SetParameter(FMOD.Studio.PARAMETER_ID,System.Single,System.Boolean)">
+  SetParameter(PARAMETER_ID, float, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L466"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetParameter(PARAMETER_ID id, float value, bool ignoreseekspeed = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="FMOD.Studio.PARAMETER_ID.html">PARAMETER_ID</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>ignoreseekspeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_SetParameter_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.SetParameter*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_SetParameter_System_String_System_Single_System_Boolean_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.SetParameter(System.String,System.Single,System.Boolean)">
+  SetParameter(string, float, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L439"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetParameter(string name, float value, bool ignoreseekspeed = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>ignoreseekspeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_Start_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.Start*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_Start" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.Start">
+  Start()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Start()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_Stop_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.Stop*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_Stop" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.Stop">
+  Stop()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L413"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Stop()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_UpdateActiveEmitters_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.UpdateActiveEmitters*"></a>
+
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_UpdateActiveEmitters" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.UpdateActiveEmitters">
+  UpdateActiveEmitters()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void UpdateActiveEmitters()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/Studio-23-xyz" target="_blank">Studio-23-xyz</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
