@@ -1,8 +1,6 @@
-using Studio23.SS2.AudioSystem.fmod.Data;
-
-namespace Studio23.SS2.AudioSystem.fmod.Tests
+namespace Studio23.SS2.AudioSystem.fmod.Data
 {
-	public static class Test_FMODBankList
+	public static class FMODBankList
 	{
 		public static readonly string Master_strings = "Assets/Packages/com.studio23.ss2.audiosystem.fmod/Samples/Demo1/Sample_FMOD_Project/Build/Desktop/Master.strings.bank";
 		public static readonly string Dialogue = "Assets/Packages/com.studio23.ss2.audiosystem.fmod/Samples/Demo1/Sample_FMOD_Project/Build/Desktop/Dialogue.bank";

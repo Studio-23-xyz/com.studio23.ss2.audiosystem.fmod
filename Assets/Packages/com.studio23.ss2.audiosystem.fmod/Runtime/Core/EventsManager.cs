@@ -5,7 +5,9 @@ using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEngine;
+using static UnityEditor.ShaderData;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
@@ -29,17 +31,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="referenceGameObject"></param>
         /// <param name="emitter"></param>
         /// <param name="stopModeType"></param>
-        public void CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        public FMODEmitterData CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
-            if (fetchData != null) return;
+            if (fetchData != null) return fetchData;
             var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
             _emitterDataList.Add(newEmitter.GetKey(), newEmitter);
             FMODCallBackHandler.InitializeCallBack(newEmitter);
+            return newEmitter;
         }
 
         /// <summary>
-        /// 
+        /// Loads the sample data of an event.
+        /// It may be beneficial to load the sample data of an event that is frequently used,
+        /// instead of loading/unloading every time the event is called.
         /// </summary>
         /// <param name="eventData"></param>
         /// <param name="referenceGameObject"></param>
@@ -75,15 +80,19 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Play the Emitter.
-        /// Make sure to call CreateEmitter() if there is no Emitter on the GameObject.
+        /// Plays the Emitter.
+        /// If the GameObject already has an Emitter attached, then pass the Emitter to initialize it.
+        /// By default it will create an Emitter and the Event Instance's STOP_MODE is set to ALLOWFADEOUT.
         /// </summary>
         /// <param name="eventData"></param>
         /// <param name="referenceGameObject"></param>
-        public async void Play(FMODEventData eventData, GameObject referenceGameObject)
+        public async void Play(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
-            if (fetchData == null) return;
+            if (fetchData == null)
+            {
+                fetchData = CreateEmitter(eventData, referenceGameObject, emitter, stopModeType);
+            }
             if (fetchData.EventState == FMODEventState.Playing) await fetchData.StopAsync(STOP_MODE.IMMEDIATE);
             fetchData.Play();
         }

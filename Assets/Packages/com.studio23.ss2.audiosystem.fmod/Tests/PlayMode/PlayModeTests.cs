@@ -39,10 +39,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Tests.Playmode
         public IEnumerator LoadMultipleBanks()
         {
             _fmodManager.BanksManager.LoadBank(Test_FMODBankList.SFX);
-            _fmodManager.BanksManager.LoadBank(Test_FMODBankList.Music);
             _fmodManager.BanksManager.LoadBank(Test_FMODBankList.DialogueTable_LOCALE_EN);
             Assert.IsTrue(_fmodManager.BanksManager._bankList.ContainsKey(Test_FMODBankList.SFX) &&
-                          _fmodManager.BanksManager._bankList.ContainsKey(Test_FMODBankList.Music));
+                          _fmodManager.BanksManager._bankList.ContainsKey(Test_FMODBankList.DialogueTable_LOCALE_EN));
             yield return null;
         }
 

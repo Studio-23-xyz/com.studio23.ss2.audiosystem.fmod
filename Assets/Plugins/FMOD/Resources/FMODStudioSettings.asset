@@ -322,12 +322,9 @@ MonoBehaviour:
   - DialogueTable_LOCALE_CN
   - DialogueTable_LOCALE_EN
   - DialogueTable_LOCALE_JP
-  - Music
   - Sample
   - SFX
   - Test
-  - Vehicles
-  - VO
   BanksToLoad:
   - Master
   - Master.strings

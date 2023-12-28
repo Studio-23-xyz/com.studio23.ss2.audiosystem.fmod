@@ -12,7 +12,7 @@ public class Sample : MonoBehaviour
     [ContextMenu("Play")]
     public void Play()
     {
-        FMODManager.Instance.EventsManager.CreateEmitter(FMODBank_Sample.Test, gameObject);
+        //FMODManager.Instance.EventsManager.CreateEmitter(FMODBank_Sample.Test, gameObject);
         FMODManager.Instance.EventsManager.Play(FMODBank_Sample.Test, gameObject);
     }
 
