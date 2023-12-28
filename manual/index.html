@@ -89,7 +89,7 @@
 <p align="center">
 <a href="https://openupm.com/packages/com.studio23.ss2.audiosystem.fmod/"><img src="https://img.shields.io/npm/v/com.studio23.ss2.audiosystem.fmod?label=openupm&amp;registry_uri=https://package.openupm.com"></a>
 </p>
-<p>Audio System FMOD is a tool designed for managing and utilizing the FMOD engine in a simpler and unified manner within Unity. It makes it easier to manage all game audio using and allows the user to focus more on audio and sound design.</p>
+<p>Audio System FMOD is a tool designed for managing and utilizing the FMOD engine in a simpler and unified manner within Unity. It makes it easier to manage all game audio using FMOD and allows the user to focus more on audio and sound design.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li><a href="#installation">Installation</a></li>
@@ -109,9 +109,13 @@
 <li><a href="#usage">Usage</a>
 <ul>
 <li><a href="#fmod-manager">FMOD Manager</a></li>
+<li><a href="#events-manager">Events Manager</a></li>
+<li><a href="#banks-manager">Banks Manager</a></li>
+<li><a href="#mixer-manager">Mixer Manager</a></li>
 <li><a href="#callback-handlers">CallBack Handlers</a></li>
 </ul>
 </li>
+<li><a href="#using-the-sample-provided">Using the sample provided</a></li>
 </ol>
 <h2 id="installation">Installation</h2>
 <h3 id="install-via-git-url">Install via Git URL</h3>
@@ -120,16 +124,48 @@
 </code></pre>
 <h2 id="setup">Setup</h2>
 <h3 id="important">Important</h3>
-<p>This package cannot function on its own and is intended to be used with FMOD. Make sure you have the FMOD for Unity plugin installed in your project before installing Audio System FMOD. You can find the plugin on the Unity Asset Store or on the <a href="https://www.fmod.com/download">FMOD website</a>. This package assumes familiarity with FMOD for its usage so please read up of FMOD's documentation.</p>
+<p>This package cannot function on its own and is intended to be used with FMOD. Make sure you have the FMOD for Unity plugin installed in your project before installing Audio System FMOD. You can find the plugin on the Unity Asset Store or on the <a href="https://www.fmod.com/download">FMOD website</a>. This package assumes familiarity with FMOD for its usage so please read up on FMOD's documentation.</p>
 <h3 id="fmod-settings-in-unity">FMOD Settings in Unity</h3>
 <h4 id="bank-import">Bank Import</h4>
-<p>Follow FMOD's documentation on where to set up your FMOD Project. After the FMOD project is set up, make sure to build your FMOD project for all platforms. In Unity, go to FMOD -&gt; Edit Settings. Under Bank Import, set Source Type to Single Platform Build and specify your desired platform's build directory. This package does not support Source Type of FMOD Studio Project or Multiple Platform Build. To build the Unity project for multiple platforms, select the desired platform's build directory before building for that platform.</p>
+<ol>
+<li>Follow FMOD's documentation on where to set up your FMOD Project.</li>
+<li>After the FMOD project is set up, build your FMOD project for all platforms.</li>
+<li>In Unity, go to FMOD -&gt; Edit Settings.</li>
+<li>Under Bank Import, set Source Type to Single Platform Build and specify your desired platform's build directory.
+<ul>
+<li>This package does not support Source Type of FMOD Studio Project or Multiple Platform Build.</li>
+</ul>
+</li>
+<li>To build the Unity project for other platforms, select the desired platform's build directory from the FMOD settings before building for that platform.</li>
+</ol>
 <h4 id="initialization">Initialization</h4>
-<p>In Unity, go to FMOD -&gt; Edit Settings. Under Initialization, set Load Banks to None or Specified. If set to None, make sure to manually load the Master bank and Master.strings bank before trying to playback any audio. If you have more than one Master bank, then load those and their corresponding .strings banks too. Ideally, it may be wise to set Load Banks to Specified so that the master bank(s), .strings bank(s) and special banks (such as the base dialogue bank) can be loaded on game start.</p>
+<ol>
+<li>In Unity, go to FMOD -&gt; Edit Settings.</li>
+<li>Under Initialization, Load Banks can be set to All, None or Specified.
+<ul>
+<li>If set to All, then you don't have to worry about bank loading/unloading other than the banks for dialogue audio tables. This may not be the best option for larger games.</li>
+<li>Ideally, it is better to set Load Banks to Specified so that you can specify important banks to be loaded on game start. For example, you can specify the master bank(s), .strings bank(s) and banks that are always required (such as a UI bank, base dialogue bank).
+<ul>
+<li>Specified banks cannot be unloaded. Don't specifiy a bank you may need to unload such as a localization bank.</li>
+</ul>
+</li>
+<li>If set to None, make sure to manually load the Master bank and Master.strings bank before trying to playback any audio. If you have more than one Master bank, then load those and their corresponding .strings banks too.</li>
+</ul>
+</li>
+</ol>
 <h3 id="renaming-fmod-project-locales">Renaming FMOD Project Locales</h3>
-<p>When setting up localized audio tables in FMOD Studio, the project locales must be renamed or else the data generation will be incorrect because it will not be able to find the correct banks. In FMOD Studio, go to Edit -&gt; Preferences -&gt; Assets. Add the keyword &quot;LOCALE_&quot; before the language code. For example, EN should become LOCALE_EN. Rename the locales before performing the next step.</p>
+<p>When setting up localized audio tables in FMOD Studio, the project locales must be renamed or else the data generation will be incorrect as it will not be able to find the correct banks.</p>
+<ol>
+<li>In FMOD Studio, go to Edit -&gt; Preferences -&gt; Assets. Add the keyword &quot;LOCALE_&quot; before the language code.</li>
+<li>For example, EN should become LOCALE_EN. Rename all the locales before performing the next step.</li>
+</ol>
 <h3 id="generating-all-fmod-data">Generating all FMOD data</h3>
-<p>To use FMOD and its features, we need references to events, parameters, banks, buses and VCAs. Go to Studio-23 -&gt; Generate All FMOD Data. This will generate data containing the references from FMOD Studio. Make sure to build the FMOD project and select the correct platform build directory before generating the FMOD Data. You will need to generate the data again if you rebuild your FMOD project or if you want to build the Unity project for a different platform. Frequent regeneration will probably be needed.</p>
+<p>To use FMOD and its features, we need references to events, parameters, banks, buses and VCAs.</p>
+<ol>
+<li>Make sure to build the FMOD project and select the correct platform build directory before generating the FMOD Data.</li>
+<li>Go to Studio-23 -&gt; Generate All FMOD Data. This will generate data containing the references from FMOD Studio.</li>
+<li>You will need to generate the data again if you rebuild your FMOD project, if you want to build the Unity project for a different platform. Frequent regeneration will be needed as your project grows.</li>
+</ol>
 <p>In the data generated you will find:</p>
 <ul>
 <li><code>FMODBank_[BankName]</code> containing references to all the events under the <code>[BankName]</code> Bank.</li>
@@ -141,24 +177,84 @@
 </ul>
 <h2 id="usage">Usage</h2>
 <h3 id="fmod-manager">FMOD Manager</h3>
+<p>Attach the FMODManager script to a GameObject in your scene. You can access the EventsManager, BanksManager and MixerManager through the FMODManager.</p>
+<h3 id="events-manager">Events Manager</h3>
 <ol>
-<li>Attach the FMODManager script to a GameObject in your scene. You can access the EventsManager, BanksManager and MixerManager through the FMODManager.</li>
-<li>The EventsManager can be used to play, pause, unpause, stop events and change parameters. All events, game wide can be paused and unpaused. Programmer sounds can also be played.
+<li>The EventsManager can be used to play, pause, unpause, stop events. All events, game wide can be paused and unpaused. Programmer sounds can be played. Local and global parameters can be changed.</li>
+<li>Every sound is played through a Custom Studio Event Emitter. The only difference between our custom emitter and FMOD's emitter is in how the event instance is initialized.
 <ul>
-<li>Every sound is played through a Custom Studio Event Emitter. The only difference between our custom emitter and FMOD's emitter is how  the event instance is initialized.</li>
-<li>Sounds are not played through separate event intances. Sounds are not played through <code>PlayOneShot()</code>. This is to ensure we have full control over what sounds are being played and their individual states.</li>
-<li>Emitters can be created at runtime or set beforehand.</li>
-<li>Make sure to load the correct banks before creating an emitter at runtime or else the sound won't play and will give an error.</li>
+<li>Sounds are not played through separate event intances.</li>
+<li>Sounds are not played through <code>PlayOneShot()</code>. This is to ensure the event instance isn't released automatically and it allows us to hold its reference so we can reuse it or pause/unpause it.</li>
 </ul>
 </li>
+<li>Make sure the correct banks are loaded before playing a sound or creating an emitter, or else the sound won't play and will give an error.</li>
+<li>Use <code>Play()</code> to play an event.
+<ul>
+<li>It will take the event we want to play and the gameobject from which it will play.</li>
+<li>By default, it will create an emitter on the GameObject and will set the event instance's <code>STOP_MODE</code> to <code>ALLOWFADEOUT</code>.</li>
+<li>If the GameObject already has an emitter component, we can pass that emitter instead to initialize it.</li>
+<li>If an emitter of type &quot;event and GameObject&quot; already exists, it will just play the event.</li>
+</ul>
+</li>
+<li><code>Pause()</code>,  <code>UnPause()</code>, <code>Stop()</code>, <code>Release()</code>, <code>LoadEventSampleData()</code>, work similarly, but they need an emitter of type &quot;event and GameObject&quot; to exist or else they will do nothing.</li>
+<li>Sometimes an emitter may need to be created or initialized at runtime without playing it.
+<ul>
+<li>Call <code>CreateEmitter()</code> to create an emitter on the GameObject.</li>
+<li>It will take the event we want to play and the gameobject from which it will play.</li>
+<li>By default, it will create an emitter on the GameObject and will set the event instance's <code>STOP_MODE</code> to <code>ALLOWFADEOUT</code>.</li>
+<li>If the GameObject already has an emitter component, we can pass that emitter instead to initialize it.</li>
+<li>Once an emitter of type &quot;event and GameObject&quot; is created, we no longer have to create this emitter again to use playback methods.</li>
+<li>We can call playback methods on this emitter by passing in the event and the GameObject.</li>
+</ul>
+</li>
+<li><code>PlayProgrammerSound()</code> creates an emitter similar to <code>Play()</code> and plays the sound immediately.
+<ul>
+<li>It will take the key of the audio file we want to play, the event we want to play and the gameobject from which it will play.</li>
+<li>The key can be a key from a audio table from FMOD.</li>
+<li>The key can also be the file name of an audio file in the streaming assets folder.</li>
+</ul>
+</li>
+<li><code>LoadEventSampleData()</code> Loads the sample data of an event. It may be beneficial to load the sample data of an event that is frequently used, instead of loading/unloading every time the event is called.</li>
+<li>Make sure to call <code>Release()</code> for events that are no longer needed. It will release the event instance and destroy the emitter.</li>
+<li><code>TogglePauseAll()</code> will pause/unpause all the events in the game.</li>
+<li><code>SetLocalParameter()</code> can be used to change parameters withing event instances.
+<ul>
+<li>It will take the event, the gameobject from which it is playing, the parameter name and the parameter value.</li>
+</ul>
+</li>
+<li><code>SetGlobalParameter()</code>can be used to change global parameters.</li>
+</ol>
+<h3 id="banks-manager">Banks Manager</h3>
+<ol>
 <li>The BanksManager can be used to load/unload banks, load/unload sample data and switch localization. Make sure to load the correct banks before trying to play a sound.</li>
+<li><code>LoadBank()</code> is used to load a bank. By default, <code>LOAD_BANK_FLAGS</code> is set to <code>NORMAL</code>.</li>
+<li><code>UnloadBank()</code> is used to unload bank. It cannot remove banks that have been specified FMOD in the FMOD Settings.</li>
+<li><code>UnloadAllBanks()</code> is used to unload all banks. It does not remove banks that have been specified FMOD in the FMOD Settings.</li>
+<li><code>LoadBankSampleData()</code> is used to load all the non-streaming sample data of a bank. Can also be used if banks are built with separate metadata and assets.</li>
+<li><code>SwitchLocalization()</code> is used to switch localization. It will unload the current localization bank and load the target localization bank.</li>
+</ol>
+<h3 id="mixer-manager">Mixer Manager</h3>
+<ol>
 <li>The MixerManager can be used to control the Buses and VCAs within FMOD.</li>
+<li><code>SetBusVolume()</code>, <code>PauseBus()</code>, <code>UnPauseBus()</code>, <code>MuteBus()</code>, <code>UnMuteBus()</code> all perform their respective functionality on the specified bus.</li>
+<li><code>StopAllBusEvents()</code> stops all events under a specific bus.</li>
+<li><code>SetVCAVolume()</code> is used to change the volume of a VCA.</li>
 </ol>
 <h3 id="callback-handlers">CallBack Handlers</h3>
-<p>We have provided two callback handlers.</p>
+<p>This system uses two callback handlers.</p>
 <ol>
-<li>The default callback handler manages the internal states of each event. It can also handle looping audio. This callback is fired with every event that is played.</li>
-<li>The programmer callback handler manages the playback of externally loaded sounds and is required for dialogues and localized audio tables.</li>
+<li>The default callback handler <code>FMODCallBackHandler</code> manages the internal playback states of each event. It can also handle looping audio. This callback is set whenever an emitter is created and is fired with every event that is played.</li>
+<li>The programmer callback handler <code>FMODProgrammerSoundCallBackHandler</code> manages the playback of externally loaded sounds and is required for dialogues and localized audio tables. This callback is set whenever an <code>PlayProgrammerSound()</code> is called and is fired with every subsequent call.</li>
+<li>It is possible to create and set your own callback handler. You can fetch or create an emitter using <code>CreateEmitter()</code> and pass this to the initialize method of your callback handler. Look at the initialize methods of our callback handle to get an idea on how to make your initialize method.</li>
+</ol>
+<h2 id="using-the-sample-provided">Using the sample provided</h2>
+<ol>
+<li>Open the FMOD Project file in the samples folder. Go to Files -&gt; Build All Platforms.</li>
+<li>In Unity, go to FMOD -&gt; Edit Settings.</li>
+<li>Under Bank Import, set Source Type to Single Platform Build and specify the Desktop build directory.</li>
+<li>Under Initialization, set Load Banks Specified.</li>
+<li>Under Specified Banks add <code>Master</code>, <code>Master.strings</code>, <code>Sample</code>, and <code>Dialogue</code></li>
+<li>Play the SampleScene.</li>
 </ol>
 
 </article>

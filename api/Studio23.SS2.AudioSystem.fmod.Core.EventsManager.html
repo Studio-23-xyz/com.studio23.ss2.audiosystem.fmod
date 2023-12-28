@@ -91,7 +91,7 @@
 
   <h1 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager" class="text-break">
     Class EventsManager
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -158,7 +158,7 @@
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_CreateEmitter_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_FMOD_Studio_STOP_MODE_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.CreateEmitter(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject,Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter,FMOD.Studio.STOP_MODE)">
   CreateEmitter(FMODEventData, GameObject, CustomStudioEventEmitter, STOP_MODE)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Creates a Custom FMOD Studio Event Emitter for an Event on a GameObject.
@@ -168,7 +168,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)</code></pre>
+    <pre><code class="lang-csharp hljs">public FMODEmitterData CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -183,6 +183,11 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
     <dd></dd>
   </dl>
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Studio23.SS2.AudioSystem.fmod.Data.FMODEmitterData.html">FMODEmitterData</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -198,10 +203,13 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_LoadEventSampleData_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.LoadEventSampleData(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject)">
   LoadEventSampleData(FMODEventData, GameObject)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L51"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Loads the sample data of an event.
+It may be beneficial to load the sample data of an event that is frequently used,
+instead of loading/unloading every time the event is called.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -231,7 +239,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_Pause_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.Pause(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject)">
   Pause(FMODEventData, GameObject)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Pause the Emitter.</p>
@@ -263,18 +271,19 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <a id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_Play_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.Play*"></a>
 
-  <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_Play_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.Play(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject)">
-  Play(FMODEventData, GameObject)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_Play_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_FMOD_Studio_STOP_MODE_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.Play(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject,Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter,FMOD.Studio.STOP_MODE)">
+  Play(FMODEventData, GameObject, CustomStudioEventEmitter, STOP_MODE)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L89"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Play the Emitter.
-Make sure to call CreateEmitter() if there is no Emitter on the GameObject.</p>
+  <div class="markdown level1 summary"><p>Plays the Emitter.
+If the GameObject already has an Emitter attached, then pass the Emitter to initialize it.
+By default it will create an Emitter and the Event Instance's STOP_MODE is set to ALLOWFADEOUT.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Play(FMODEventData eventData, GameObject referenceGameObject)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Play(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -282,6 +291,10 @@ Make sure to call CreateEmitter() if there is no Emitter on the GameObject.</p>
     <dt><code>eventData</code> <a class="xref" href="Studio23.SS2.AudioSystem.fmod.Data.FMODEventData.html">FMODEventData</a></dt>
     <dd></dd>
     <dt><code>referenceGameObject</code> <span class="xref">GameObject</span></dt>
+    <dd></dd>
+    <dt><code>emitter</code> <a class="xref" href="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.html">CustomStudioEventEmitter</a></dt>
+    <dd></dd>
+    <dt><code>stopModeType</code> <a class="xref" href="FMOD.Studio.STOP_MODE.html">STOP_MODE</a></dt>
     <dd></dd>
   </dl>
 
@@ -300,7 +313,7 @@ Make sure to call CreateEmitter() if there is no Emitter on the GameObject.</p>
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_PlayProgrammerSound_System_String_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_FMOD_Studio_STOP_MODE_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.PlayProgrammerSound(System.String,Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject,Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter,FMOD.Studio.STOP_MODE)">
   PlayProgrammerSound(string, FMODEventData, GameObject, CustomStudioEventEmitter, STOP_MODE)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Use to play FMOD Programmer Sounds. Localized audio tables for dialogues can be played.
@@ -343,7 +356,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_Release_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.Release(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject)">
   Release(FMODEventData, GameObject)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L169"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Release the Event Instance and destroy the Emitter.</p>
@@ -382,7 +395,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_SetGlobalParameter_System_String_System_Single_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.SetGlobalParameter(System.String,System.Single)">
   SetGlobalParameter(string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L197"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a Global parameter value by name.</p>
@@ -416,7 +429,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_SetLocalParameter_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_System_String_System_Single_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.SetLocalParameter(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject,System.String,System.Single)">
   SetLocalParameter(FMODEventData, GameObject, string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L184"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a Local parameter value by name.</p>
@@ -454,7 +467,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_Stop_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.Stop(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject)">
   Stop(FMODEventData, GameObject)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L142"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stop the Emitter with default STOP_MODE.</p>
@@ -493,7 +506,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_Stop_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_FMOD_Studio_STOP_MODE_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.Stop(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject,FMOD.Studio.STOP_MODE)">
   Stop(FMODEventData, GameObject, STOP_MODE)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L156"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Stop the Emitter with a different STOP_MODE.</p>
@@ -534,7 +547,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_TogglePauseAll_System_Boolean_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.TogglePauseAll(System.Boolean)">
   TogglePauseAll(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L128"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Pause all Emitters.</p>
@@ -566,7 +579,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
 
   <h3 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager_UnPause_Studio23_SS2_AudioSystem_fmod_Data_FMODEventData_GameObject_" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager.UnPause(Studio23.SS2.AudioSystem.fmod.Data.FMODEventData,GameObject)">
   UnPause(FMODEventData, GameObject)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L117"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>UnPause the Emitter</p>
