@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EffectPreset" id="{028d38fd-417b-0bad-290b-a30ea50da357}">
+		<property name="name">
+			<value>Reverb Send</value>
+		</property>
+		<relationship name="folder">
+			<destination>{aca7fd17-4939-0ce5-284c-74c26c487e44}</destination>
+		</relationship>
+		<relationship name="effect">
+			<destination>{3debf704-4e5f-496e-a8db-a2f9a9917a58}</destination>
+		</relationship>
+	</object>
+	<object class="MixerSend" id="{3debf704-4e5f-496e-a8db-a2f9a9917a58}">
+		<property name="level">
+			<value>0</value>
+		</property>
+		<property name="inputFormat">
+			<value>2</value>
+		</property>
+		<relationship name="automators">
+			<destination>{74a411dd-1dc7-4ee5-889b-fce7e37d94b0}</destination>
+		</relationship>
+		<relationship name="mixerReturn">
+			<destination>{524ae5a9-928c-4391-9635-34b41d4602af}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{74a411dd-1dc7-4ee5-889b-fce7e37d94b0}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>level</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{0eb87748-8618-4318-8b29-54bc661d8457}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{0eb87748-8618-4318-8b29-54bc661d8457}">
+		<relationship name="parameter">
+			<destination>{20a22b40-454b-4333-98b6-eee0b54cc783}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{87c99842-233f-442a-ae5b-0019104ccfad}</destination>
+			<destination>{e755ca64-3c6f-40c0-8b3a-758bd120ffe1}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{87c99842-233f-442a-ae5b-0019104ccfad}">
+		<property name="position">
+			<value>10</value>
+		</property>
+		<property name="value">
+			<value>-16</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{e755ca64-3c6f-40c0-8b3a-758bd120ffe1}">
+		<property name="position">
+			<value>39.209039548022595</value>
+		</property>
+		<property name="value">
+			<value>-2</value>
+		</property>
+	</object>
+</objects>
