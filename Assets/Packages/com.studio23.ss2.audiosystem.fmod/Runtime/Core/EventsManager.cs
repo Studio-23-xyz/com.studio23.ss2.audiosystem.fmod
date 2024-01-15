@@ -5,9 +5,7 @@ using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEngine;
-using static UnityEditor.ShaderData;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
