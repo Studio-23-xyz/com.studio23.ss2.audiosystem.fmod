@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.0.7] - 2024-03-11
+
+###
+
+- Removed FMOD from the package. FMOD no longer ships with this package.
+
 ## [v0.0.2] - 2023-12-28
 
 ### Updated
