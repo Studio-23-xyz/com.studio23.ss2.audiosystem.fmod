@@ -2,11 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class EventsManager
- |  |  </title>
+      <title>Class EventsManager |  |  </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class EventsManager
- |  |  ">
+      <meta name="title" content="Class EventsManager |  |  ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -91,8 +89,7 @@
 
 
   <h1 id="Studio23_SS2_AudioSystem_fmod_Core_EventsManager" data-uid="Studio23.SS2.AudioSystem.fmod.Core.EventsManager" class="text-break">
-    Class EventsManager
-  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Class EventsManager  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Core/EventsManager.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -120,7 +117,7 @@
 
 
 
-  <dl class="typelist derived">
+  <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
     <div>
@@ -169,7 +166,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FMODEmitterData CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)</code></pre>
+    <pre><code class="lang-csharp hljs">public FMODEmitterData CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, FMOD.Studio.STOP_MODE stopModeType = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -180,7 +177,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
     <dd></dd>
     <dt><code>emitter</code> <a class="xref" href="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.html">CustomStudioEventEmitter</a></dt>
     <dd></dd>
-    <dt><code>stopModeType</code> <a class="xref" href="FMOD.Studio.STOP_MODE.html">STOP_MODE</a></dt>
+    <dt><code>stopModeType</code> <span class="xref">STOP_MODE</span></dt>
     <dd></dd>
   </dl>
 
@@ -284,7 +281,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Play(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Play(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, FMOD.Studio.STOP_MODE stopModeType = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -295,7 +292,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
     <dd></dd>
     <dt><code>emitter</code> <a class="xref" href="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.html">CustomStudioEventEmitter</a></dt>
     <dd></dd>
-    <dt><code>stopModeType</code> <a class="xref" href="FMOD.Studio.STOP_MODE.html">STOP_MODE</a></dt>
+    <dt><code>stopModeType</code> <span class="xref">STOP_MODE</span></dt>
     <dd></dd>
   </dl>
 
@@ -325,7 +322,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PlayProgrammerSound(string key, FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)</code></pre>
+    <pre><code class="lang-csharp hljs">public void PlayProgrammerSound(string key, FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, FMOD.Studio.STOP_MODE stopModeType = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -338,7 +335,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
     <dd></dd>
     <dt><code>emitter</code> <a class="xref" href="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.html">CustomStudioEventEmitter</a></dt>
     <dd></dd>
-    <dt><code>stopModeType</code> <a class="xref" href="FMOD.Studio.STOP_MODE.html">STOP_MODE</a></dt>
+    <dt><code>stopModeType</code> <span class="xref">STOP_MODE</span></dt>
     <dd></dd>
   </dl>
 
@@ -515,7 +512,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UniTask Stop(FMODEventData eventData, GameObject referenceGameObject, STOP_MODE stopMode)</code></pre>
+    <pre><code class="lang-csharp hljs">public UniTask Stop(FMODEventData eventData, GameObject referenceGameObject, FMOD.Studio.STOP_MODE stopMode)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -524,7 +521,7 @@ By default it will create an Emitter and the Event Instance's STOP_MODE is set t
     <dd></dd>
     <dt><code>referenceGameObject</code> <span class="xref">GameObject</span></dt>
     <dd></dd>
-    <dt><code>stopMode</code> <a class="xref" href="FMOD.Studio.STOP_MODE.html">STOP_MODE</a></dt>
+    <dt><code>stopMode</code> <span class="xref">STOP_MODE</span></dt>
     <dd></dd>
   </dl>
 
