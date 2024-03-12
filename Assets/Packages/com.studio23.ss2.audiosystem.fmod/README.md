@@ -1,9 +1,9 @@
-<h1 align="center">Audio System FMOD</h1>
+<h1 align="center">Audio System for FMOD</h1>
 <p align="center">
 <a href="https://openupm.com/packages/com.studio23.ss2.audiosystem.fmod/"><img src="https://img.shields.io/npm/v/com.studio23.ss2.audiosystem.fmod?label=openupm&amp;registry_uri=https://package.openupm.com" /></a>
 </p>
 
-Audio System FMOD is a tool designed for managing and utilizing the FMOD engine in a simpler and unified manner within Unity. It makes it easier to manage all game audio using FMOD and allows the user to focus more on audio and sound design.
+Audio System for FMOD is a tool designed for managing and utilizing the FMOD engine in a simpler and unified manner within Unity. It makes it easier to manage all game audio using FMOD and allows the user to focus more on audio and sound design.
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@ https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod.git#upm
 
 ### Important
 
-This package cannot function on its own and is intended to be used with FMOD. Make sure you have the FMOD for Unity plugin installed in your project before installing Audio System FMOD. You can find the plugin on the Unity Asset Store or on the [FMOD website](https://www.fmod.com/download). This package assumes familiarity with FMOD for its usage so please read up on FMOD's documentation.
+This package cannot function on its own and is intended to be used with FMOD. Make sure you have the FMOD for Unity plugin installed in your project before installing Audio System for FMOD. You can find the plugin on the Unity Asset Store or on the [FMOD website](https://www.fmod.com/download). This package assumes familiarity with FMOD for its usage so please read up on FMOD's documentation.
 
 
 ### FMOD Settings in Unity
@@ -144,9 +144,9 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
 ### CallBack Handlers
 
 This system uses two callback handlers.
-1. The default callback handler ```FMODCallBackHandler``` manages the internal playback states of each event. It can also handle looping audio. This callback is set whenever an emitter is created and is fired with every event that is played.
+1. The default callback handler ```FMODCallBackHandler``` manages the internal playback states of each event (the internal states here refers to the internal states used by this package to keep track of which event is playing, suspended, paused or stopped or whether the event is looping; not FMOD's own playback states). This callback is set whenever an emitter is created and is fired with every event that is played.
 2. The programmer callback handler ```FMODProgrammerSoundCallBackHandler``` manages the playback of externally loaded sounds and is required for dialogues and localized audio tables. This callback is set whenever an ```PlayProgrammerSound()``` is called and is fired with every subsequent call.
-3. It is possible to create and set your own callback handler. You can fetch or create an emitter using ```CreateEmitter()``` and pass this to the initialize method of your callback handler. Look at the initialize methods of our callback handle to get an idea on how to make your initialize method.
+3. It is possible to create and set your own callback handler. You can fetch or create an emitter using ```CreateEmitter()``` and pass this to the initialize method of your callback handler. Look at the initialize methods of our callback handle to get an idea on how to make your initialize method. Not using the the default callback handler ```FMODCallBackHandler``` will result in that events internal states not being tracked/handled.
 
 ## Using the sample provided
 
