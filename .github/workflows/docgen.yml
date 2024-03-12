@@ -35,8 +35,8 @@ jobs:
         uses: sator-imaging/docfx-pages@v1
         id: deployment
         with:
-          app_name: 'Audio System for FMOD'
-          site_title: 'Audio System for FMOD'
+          app_name: 'Audio-System.FMOD'
+          site_title: 'AudioSystem.FMOD'
           site_footer: '<big>&times; Is HTML accepted?</big>'
           class_members: 'separatePages'
           google_analytics: ''
