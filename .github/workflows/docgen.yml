@@ -27,7 +27,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+        
+      - name: Find and copy specific files
+        run: |
+            # Look for LICENSE.md, README.md, and CHANGELOG.md in subdirectories
+            find . -name LICENSE.md -exec cp {} . \;
+            find . -name README.md -exec cp {} . \;
+            find . -name CHANGELOG.md -exec cp {} . \;
+            # Check if a "Screenshots" folder exists and copy it to the root
+            if [ -d "Screenshots" ]; then
+              cp -r Screenshots .
+            fi
+            
+        shell: bash
+        
       - name: Remove csproj files
         run: find . -name "*.csproj" -type f -delete
 
@@ -35,8 +48,8 @@ jobs:
         uses: sator-imaging/docfx-pages@v1
         id: deployment
         with:
-          app_name: 'Save System For Unity'
-          site_title: 'Save System For Unity'
+          app_name: 'Audio System for FMOD'
+          site_title: 'Audio System for FMOD'
           site_footer: '<big>&times; Is HTML accepted?</big>'
           class_members: 'separatePages'
           google_analytics: ''
