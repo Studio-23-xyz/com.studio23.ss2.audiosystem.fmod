@@ -1,71 +1,42 @@
-name: docfx for GitHub Pages
+name: docfx-unitypackage
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - 'main'
-  release:
-    types: [published]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+      - main
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+      
       - name: Find and copy specific files
         run: |
             # Look for LICENSE.md, README.md, and CHANGELOG.md in subdirectories
             find . -name LICENSE.md -exec cp {} . \;
             find . -name README.md -exec cp {} . \;
             find . -name CHANGELOG.md -exec cp {} . \;
+
             # Check if a "Screenshots" folder exists and copy it to the root
             if [ -d "Screenshots" ]; then
               cp -r Screenshots .
             fi
-            
-        shell: bash
-        
-      - name: Remove csproj files
-        run: find . -name "*.csproj" -type f -delete
 
-      - name: Deploy with DocFX
-        uses: sator-imaging/docfx-pages@v1
-        id: deployment
+        shell: bash
+      
+      - name: Build
+        uses: CaseyHofland/docfx-unitypackage@v1
         with:
-          app_name: 'Audio System for FMOD'
-          site_title: 'Audio System for FMOD'
-          site_footer: '<big>&times; Is HTML accepted?</big>'
-          class_members: 'separatePages'
-          google_analytics: ''
-          define_symbols: ''
-          site_logo: '<logo>.svg'
-          site_favicon: '<favicon>.svg'
-          main_js: |
-            export default {
-                defaultTheme: 'light',
-                showLightbox: (img) => true,
-                iconLinks: [
-                    {
-                        icon: 'github',
-                        href: 'https://github.com/sator-imaging',
-                        title: 'GitHub'
-                    },
-                ],
-            }
-          main_css: |
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: _site
