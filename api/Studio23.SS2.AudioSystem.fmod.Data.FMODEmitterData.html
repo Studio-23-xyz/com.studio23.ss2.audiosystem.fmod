@@ -164,7 +164,7 @@ public class FMODEmitterData</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FMODEmitterData(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, FMOD.Studio.STOP_MODE stopModeType = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public FMODEmitterData(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -175,7 +175,7 @@ public class FMODEmitterData</code></pre>
     <dd></dd>
     <dt><code>emitter</code> <a class="xref" href="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.html">CustomStudioEventEmitter</a></dt>
     <dd></dd>
-    <dt><code>stopModeType</code> <span class="xref">STOP_MODE</span></dt>
+    <dt><code>stopModeType</code> <a class="xref" href="FMOD.Studio.STOP_MODE.html">STOP_MODE</a></dt>
     <dd></dd>
   </dl>
 
@@ -442,12 +442,12 @@ public class FMODEmitterData</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UniTask StopAsync(FMOD.Studio.STOP_MODE stopModeType)</code></pre>
+    <pre><code class="lang-csharp hljs">public UniTask StopAsync(STOP_MODE stopModeType)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>stopModeType</code> <span class="xref">STOP_MODE</span></dt>
+    <dt><code>stopModeType</code> <a class="xref" href="FMOD.Studio.STOP_MODE.html">STOP_MODE</a></dt>
     <dd></dd>
   </dl>
 

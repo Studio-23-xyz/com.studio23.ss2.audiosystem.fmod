@@ -1,0 +1,2235 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Struct DSP |  |  </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct DSP |  |  ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      <meta name="docfx:docurl" content="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/new/main/apiSpec/new?filename=FMOD_DSP.md&amp;value=---%0Auid%3A%20FMOD.DSP%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="FMOD.DSP">
+
+
+
+  <h1 id="FMOD_DSP" data-uid="FMOD.DSP" class="text-break">
+Struct DSP  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3256"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="FMOD.html">FMOD</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct DSP</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="FMOD_DSP__ctor_" data-uid="FMOD.DSP.#ctor*"></a>
+
+  <h3 id="FMOD_DSP__ctor_System_IntPtr_" data-uid="FMOD.DSP.#ctor(System.IntPtr)">
+  DSP(nint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3559"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DSP(nint ptr)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ptr</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="FMOD_DSP_handle" data-uid="FMOD.DSP.handle">
+  handle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3557"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public nint handle</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="FMOD_DSP_FMOD5_DSP_GetCPUUsage_" data-uid="FMOD.DSP.FMOD5_DSP_GetCPUUsage*"></a>
+
+  <h3 id="FMOD_DSP_FMOD5_DSP_GetCPUUsage_System_IntPtr_System_UInt32__System_UInt32__" data-uid="FMOD.DSP.FMOD5_DSP_GetCPUUsage(System.IntPtr,System.UInt32@,System.UInt32@)">
+  FMOD5_DSP_GetCPUUsage(nint, out uint, out uint)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static extern RESULT FMOD5_DSP_GetCPUUsage(nint dsp, out uint exclusive, out uint inclusive)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dsp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>exclusive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+    <dt><code>inclusive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_FMOD5_DSP_GetMeteringEnabled_" data-uid="FMOD.DSP.FMOD5_DSP_GetMeteringEnabled*"></a>
+
+  <h3 id="FMOD_DSP_FMOD5_DSP_GetMeteringEnabled_System_IntPtr_System_Boolean__System_Boolean__" data-uid="FMOD.DSP.FMOD5_DSP_GetMeteringEnabled(System.IntPtr,System.Boolean@,System.Boolean@)">
+  FMOD5_DSP_GetMeteringEnabled(nint, out bool, out bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static extern RESULT FMOD5_DSP_GetMeteringEnabled(nint dsp, out bool inputEnabled, out bool outputEnabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dsp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>inputEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>outputEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_FMOD5_DSP_GetMeteringInfo_" data-uid="FMOD.DSP.FMOD5_DSP_GetMeteringInfo*"></a>
+
+  <h3 id="FMOD_DSP_FMOD5_DSP_GetMeteringInfo_System_IntPtr_FMOD_DSP_METERING_INFO__FMOD_DSP_METERING_INFO__" data-uid="FMOD.DSP.FMOD5_DSP_GetMeteringInfo(System.IntPtr,FMOD.DSP_METERING_INFO@,FMOD.DSP_METERING_INFO@)">
+  FMOD5_DSP_GetMeteringInfo(nint, out DSP_METERING_INFO, out DSP_METERING_INFO)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static extern RESULT FMOD5_DSP_GetMeteringInfo(nint dsp, out DSP_METERING_INFO inputInfo, out DSP_METERING_INFO outputInfo)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dsp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>inputInfo</code> <a class="xref" href="FMOD.DSP_METERING_INFO.html">DSP_METERING_INFO</a></dt>
+    <dd></dd>
+    <dt><code>outputInfo</code> <a class="xref" href="FMOD.DSP_METERING_INFO.html">DSP_METERING_INFO</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_FMOD5_DSP_GetMeteringInfo_" data-uid="FMOD.DSP.FMOD5_DSP_GetMeteringInfo*"></a>
+
+  <h3 id="FMOD_DSP_FMOD5_DSP_GetMeteringInfo_System_IntPtr_FMOD_DSP_METERING_INFO__System_IntPtr_" data-uid="FMOD.DSP.FMOD5_DSP_GetMeteringInfo(System.IntPtr,FMOD.DSP_METERING_INFO@,System.IntPtr)">
+  FMOD5_DSP_GetMeteringInfo(nint, out DSP_METERING_INFO, nint)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static extern RESULT FMOD5_DSP_GetMeteringInfo(nint dsp, out DSP_METERING_INFO inputInfo, nint zero)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dsp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>inputInfo</code> <a class="xref" href="FMOD.DSP_METERING_INFO.html">DSP_METERING_INFO</a></dt>
+    <dd></dd>
+    <dt><code>zero</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_FMOD5_DSP_GetMeteringInfo_" data-uid="FMOD.DSP.FMOD5_DSP_GetMeteringInfo*"></a>
+
+  <h3 id="FMOD_DSP_FMOD5_DSP_GetMeteringInfo_System_IntPtr_System_IntPtr_FMOD_DSP_METERING_INFO__" data-uid="FMOD.DSP.FMOD5_DSP_GetMeteringInfo(System.IntPtr,System.IntPtr,FMOD.DSP_METERING_INFO@)">
+  FMOD5_DSP_GetMeteringInfo(nint, nint, out DSP_METERING_INFO)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static extern RESULT FMOD5_DSP_GetMeteringInfo(nint dsp, nint zero, out DSP_METERING_INFO outputInfo)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dsp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>zero</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>outputInfo</code> <a class="xref" href="FMOD.DSP_METERING_INFO.html">DSP_METERING_INFO</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_FMOD5_DSP_SetMeteringEnabled_" data-uid="FMOD.DSP.FMOD5_DSP_SetMeteringEnabled*"></a>
+
+  <h3 id="FMOD_DSP_FMOD5_DSP_SetMeteringEnabled_System_IntPtr_System_Boolean_System_Boolean_" data-uid="FMOD.DSP.FMOD5_DSP_SetMeteringEnabled(System.IntPtr,System.Boolean,System.Boolean)">
+  FMOD5_DSP_SetMeteringEnabled(nint, bool, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static extern RESULT FMOD5_DSP_SetMeteringEnabled(nint dsp, bool inputEnabled, bool outputEnabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dsp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>inputEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>outputEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_addInput_" data-uid="FMOD.DSP.addInput*"></a>
+
+  <h3 id="FMOD_DSP_addInput_FMOD_DSP_" data-uid="FMOD.DSP.addInput(FMOD.DSP)">
+  addInput(DSP)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3268"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT addInput(DSP input)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>input</code> <a class="xref" href="FMOD.DSP.html">DSP</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_addInput_" data-uid="FMOD.DSP.addInput*"></a>
+
+  <h3 id="FMOD_DSP_addInput_FMOD_DSP_FMOD_DSPConnection__FMOD_DSPCONNECTION_TYPE_" data-uid="FMOD.DSP.addInput(FMOD.DSP,FMOD.DSPConnection@,FMOD.DSPCONNECTION_TYPE)">
+  addInput(DSP, out DSPConnection, DSPCONNECTION_TYPE)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3272"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT addInput(DSP input, out DSPConnection connection, DSPCONNECTION_TYPE type = DSPCONNECTION_TYPE.STANDARD)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>input</code> <a class="xref" href="FMOD.DSP.html">DSP</a></dt>
+    <dd></dd>
+    <dt><code>connection</code> <a class="xref" href="FMOD.DSPConnection.html">DSPConnection</a></dt>
+    <dd></dd>
+    <dt><code>type</code> <a class="xref" href="FMOD.DSPCONNECTION_TYPE.html">DSPCONNECTION_TYPE</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_clearHandle_" data-uid="FMOD.DSP.clearHandle*"></a>
+
+  <h3 id="FMOD_DSP_clearHandle" data-uid="FMOD.DSP.clearHandle">
+  clearHandle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3561"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void clearHandle()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_disconnectAll_" data-uid="FMOD.DSP.disconnectAll*"></a>
+
+  <h3 id="FMOD_DSP_disconnectAll_System_Boolean_System_Boolean_" data-uid="FMOD.DSP.disconnectAll(System.Boolean,System.Boolean)">
+  disconnectAll(bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3280"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT disconnectAll(bool inputs, bool outputs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>outputs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_disconnectFrom_" data-uid="FMOD.DSP.disconnectFrom*"></a>
+
+  <h3 id="FMOD_DSP_disconnectFrom_FMOD_DSP_FMOD_DSPConnection_" data-uid="FMOD.DSP.disconnectFrom(FMOD.DSP,FMOD.DSPConnection)">
+  disconnectFrom(DSP, DSPConnection)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3276"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT disconnectFrom(DSP target, DSPConnection connection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>target</code> <a class="xref" href="FMOD.DSP.html">DSP</a></dt>
+    <dd></dd>
+    <dt><code>connection</code> <a class="xref" href="FMOD.DSPConnection.html">DSPConnection</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getActive_" data-uid="FMOD.DSP.getActive*"></a>
+
+  <h3 id="FMOD_DSP_getActive_System_Boolean__" data-uid="FMOD.DSP.getActive(System.Boolean@)">
+  getActive(out bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3306"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getActive(out bool active)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>active</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getBypass_" data-uid="FMOD.DSP.getBypass*"></a>
+
+  <h3 id="FMOD_DSP_getBypass_System_Boolean__" data-uid="FMOD.DSP.getBypass(System.Boolean@)">
+  getBypass(out bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3314"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getBypass(out bool bypass)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bypass</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getCPUUsage_" data-uid="FMOD.DSP.getCPUUsage*"></a>
+
+  <h3 id="FMOD_DSP_getCPUUsage_System_UInt32__System_UInt32__" data-uid="FMOD.DSP.getCPUUsage(System.UInt32@,System.UInt32@)">
+  getCPUUsage(out uint, out uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3459"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getCPUUsage(out uint exclusive, out uint inclusive)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>exclusive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+    <dt><code>inclusive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getChannelFormat_" data-uid="FMOD.DSP.getChannelFormat*"></a>
+
+  <h3 id="FMOD_DSP_getChannelFormat_FMOD_CHANNELMASK__System_Int32__FMOD_SPEAKERMODE__" data-uid="FMOD.DSP.getChannelFormat(FMOD.CHANNELMASK@,System.Int32@,FMOD.SPEAKERMODE@)">
+  getChannelFormat(out CHANNELMASK, out int, out SPEAKERMODE)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3330"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getChannelFormat(out CHANNELMASK channelmask, out int numchannels, out SPEAKERMODE source_speakermode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>channelmask</code> <a class="xref" href="FMOD.CHANNELMASK.html">CHANNELMASK</a></dt>
+    <dd></dd>
+    <dt><code>numchannels</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>source_speakermode</code> <a class="xref" href="FMOD.SPEAKERMODE.html">SPEAKERMODE</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getDataParameterIndex_" data-uid="FMOD.DSP.getDataParameterIndex*"></a>
+
+  <h3 id="FMOD_DSP_getDataParameterIndex_System_Int32_System_Int32__" data-uid="FMOD.DSP.getDataParameterIndex(System.Int32,System.Int32@)">
+  getDataParameterIndex(int, out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3391"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getDataParameterIndex(int datatype, out int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>datatype</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getIdle_" data-uid="FMOD.DSP.getIdle*"></a>
+
+  <h3 id="FMOD_DSP_getIdle_System_Boolean__" data-uid="FMOD.DSP.getIdle(System.Boolean@)">
+  getIdle(out bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3421"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getIdle(out bool idle)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>idle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getInfo_" data-uid="FMOD.DSP.getInfo*"></a>
+
+  <h3 id="FMOD_DSP_getInfo_System_String__System_UInt32__System_Int32__System_Int32__System_Int32__" data-uid="FMOD.DSP.getInfo(System.String@,System.UInt32@,System.Int32@,System.Int32@,System.Int32@)">
+  getInfo(out string, out uint, out int, out int, out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3401"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getInfo(out string name, out uint version, out int channels, out int configwidth, out int configheight)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>version</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+    <dt><code>channels</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>configwidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>configheight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getInfo_" data-uid="FMOD.DSP.getInfo*"></a>
+
+  <h3 id="FMOD_DSP_getInfo_System_UInt32__System_Int32__System_Int32__System_Int32__" data-uid="FMOD.DSP.getInfo(System.UInt32@,System.Int32@,System.Int32@,System.Int32@)">
+  getInfo(out uint, out int, out int, out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3413"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getInfo(out uint version, out int channels, out int configwidth, out int configheight)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>version</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+    <dt><code>channels</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>configwidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>configheight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getInput_" data-uid="FMOD.DSP.getInput*"></a>
+
+  <h3 id="FMOD_DSP_getInput_System_Int32_FMOD_DSP__FMOD_DSPConnection__" data-uid="FMOD.DSP.getInput(System.Int32,FMOD.DSP@,FMOD.DSPConnection@)">
+  getInput(int, out DSP, out DSPConnection)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getInput(int index, out DSP input, out DSPConnection inputconnection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>input</code> <a class="xref" href="FMOD.DSP.html">DSP</a></dt>
+    <dd></dd>
+    <dt><code>inputconnection</code> <a class="xref" href="FMOD.DSPConnection.html">DSPConnection</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getMeteringEnabled_" data-uid="FMOD.DSP.getMeteringEnabled*"></a>
+
+  <h3 id="FMOD_DSP_getMeteringEnabled_System_Boolean__System_Boolean__" data-uid="FMOD.DSP.getMeteringEnabled(System.Boolean@,System.Boolean@)">
+  getMeteringEnabled(out bool, out bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3441"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getMeteringEnabled(out bool inputEnabled, out bool outputEnabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>outputEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getMeteringInfo_" data-uid="FMOD.DSP.getMeteringInfo*"></a>
+
+  <h3 id="FMOD_DSP_getMeteringInfo_FMOD_DSP_METERING_INFO__FMOD_DSP_METERING_INFO__" data-uid="FMOD.DSP.getMeteringInfo(FMOD.DSP_METERING_INFO@,FMOD.DSP_METERING_INFO@)">
+  getMeteringInfo(out DSP_METERING_INFO, out DSP_METERING_INFO)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3454"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getMeteringInfo(out DSP_METERING_INFO inputInfo, out DSP_METERING_INFO outputInfo)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputInfo</code> <a class="xref" href="FMOD.DSP_METERING_INFO.html">DSP_METERING_INFO</a></dt>
+    <dd></dd>
+    <dt><code>outputInfo</code> <a class="xref" href="FMOD.DSP_METERING_INFO.html">DSP_METERING_INFO</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getMeteringInfo_" data-uid="FMOD.DSP.getMeteringInfo*"></a>
+
+  <h3 id="FMOD_DSP_getMeteringInfo_FMOD_DSP_METERING_INFO__System_IntPtr_" data-uid="FMOD.DSP.getMeteringInfo(FMOD.DSP_METERING_INFO@,System.IntPtr)">
+  getMeteringInfo(out DSP_METERING_INFO, nint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3450"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getMeteringInfo(out DSP_METERING_INFO inputInfo, nint zero)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputInfo</code> <a class="xref" href="FMOD.DSP_METERING_INFO.html">DSP_METERING_INFO</a></dt>
+    <dd></dd>
+    <dt><code>zero</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getMeteringInfo_" data-uid="FMOD.DSP.getMeteringInfo*"></a>
+
+  <h3 id="FMOD_DSP_getMeteringInfo_System_IntPtr_FMOD_DSP_METERING_INFO__" data-uid="FMOD.DSP.getMeteringInfo(System.IntPtr,FMOD.DSP_METERING_INFO@)">
+  getMeteringInfo(nint, out DSP_METERING_INFO)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3446"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getMeteringInfo(nint zero, out DSP_METERING_INFO outputInfo)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>zero</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>outputInfo</code> <a class="xref" href="FMOD.DSP_METERING_INFO.html">DSP_METERING_INFO</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getNumInputs_" data-uid="FMOD.DSP.getNumInputs*"></a>
+
+  <h3 id="FMOD_DSP_getNumInputs_System_Int32__" data-uid="FMOD.DSP.getNumInputs(System.Int32@)">
+  getNumInputs(out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3284"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getNumInputs(out int numinputs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>numinputs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getNumOutputs_" data-uid="FMOD.DSP.getNumOutputs*"></a>
+
+  <h3 id="FMOD_DSP_getNumOutputs_System_Int32__" data-uid="FMOD.DSP.getNumOutputs(System.Int32@)">
+  getNumOutputs(out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3288"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getNumOutputs(out int numoutputs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>numoutputs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getNumParameters_" data-uid="FMOD.DSP.getNumParameters*"></a>
+
+  <h3 id="FMOD_DSP_getNumParameters_System_Int32__" data-uid="FMOD.DSP.getNumParameters(System.Int32@)">
+  getNumParameters(out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3380"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getNumParameters(out int numparams)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>numparams</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getOutput_" data-uid="FMOD.DSP.getOutput*"></a>
+
+  <h3 id="FMOD_DSP_getOutput_System_Int32_FMOD_DSP__FMOD_DSPConnection__" data-uid="FMOD.DSP.getOutput(System.Int32,FMOD.DSP@,FMOD.DSPConnection@)">
+  getOutput(int, out DSP, out DSPConnection)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3296"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getOutput(int index, out DSP output, out DSPConnection outputconnection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>output</code> <a class="xref" href="FMOD.DSP.html">DSP</a></dt>
+    <dd></dd>
+    <dt><code>outputconnection</code> <a class="xref" href="FMOD.DSPConnection.html">DSPConnection</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getOutputChannelFormat_" data-uid="FMOD.DSP.getOutputChannelFormat*"></a>
+
+  <h3 id="FMOD_DSP_getOutputChannelFormat_FMOD_CHANNELMASK_System_Int32_FMOD_SPEAKERMODE_FMOD_CHANNELMASK__System_Int32__FMOD_SPEAKERMODE__" data-uid="FMOD.DSP.getOutputChannelFormat(FMOD.CHANNELMASK,System.Int32,FMOD.SPEAKERMODE,FMOD.CHANNELMASK@,System.Int32@,FMOD.SPEAKERMODE@)">
+  getOutputChannelFormat(CHANNELMASK, int, SPEAKERMODE, out CHANNELMASK, out int, out SPEAKERMODE)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3334"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getOutputChannelFormat(CHANNELMASK inmask, int inchannels, SPEAKERMODE inspeakermode, out CHANNELMASK outmask, out int outchannels, out SPEAKERMODE outspeakermode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inmask</code> <a class="xref" href="FMOD.CHANNELMASK.html">CHANNELMASK</a></dt>
+    <dd></dd>
+    <dt><code>inchannels</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>inspeakermode</code> <a class="xref" href="FMOD.SPEAKERMODE.html">SPEAKERMODE</a></dt>
+    <dd></dd>
+    <dt><code>outmask</code> <a class="xref" href="FMOD.CHANNELMASK.html">CHANNELMASK</a></dt>
+    <dd></dd>
+    <dt><code>outchannels</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>outspeakermode</code> <a class="xref" href="FMOD.SPEAKERMODE.html">SPEAKERMODE</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getParameterBool_" data-uid="FMOD.DSP.getParameterBool*"></a>
+
+  <h3 id="FMOD_DSP_getParameterBool_System_Int32_System_Boolean__" data-uid="FMOD.DSP.getParameterBool(System.Int32,System.Boolean@)">
+  getParameterBool(int, out bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3372"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getParameterBool(int index, out bool value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getParameterData_" data-uid="FMOD.DSP.getParameterData*"></a>
+
+  <h3 id="FMOD_DSP_getParameterData_System_Int32_System_IntPtr__System_UInt32__" data-uid="FMOD.DSP.getParameterData(System.Int32,System.IntPtr@,System.UInt32@)">
+  getParameterData(int, out nint, out uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3376"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getParameterData(int index, out nint data, out uint length)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getParameterFloat_" data-uid="FMOD.DSP.getParameterFloat*"></a>
+
+  <h3 id="FMOD_DSP_getParameterFloat_System_Int32_System_Single__" data-uid="FMOD.DSP.getParameterFloat(System.Int32,System.Single@)">
+  getParameterFloat(int, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3364"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getParameterFloat(int index, out float value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getParameterInfo_" data-uid="FMOD.DSP.getParameterInfo*"></a>
+
+  <h3 id="FMOD_DSP_getParameterInfo_System_Int32_FMOD_DSP_PARAMETER_DESC__" data-uid="FMOD.DSP.getParameterInfo(System.Int32,FMOD.DSP_PARAMETER_DESC@)">
+  getParameterInfo(int, out DSP_PARAMETER_DESC)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3384"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getParameterInfo(int index, out DSP_PARAMETER_DESC desc)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>desc</code> <a class="xref" href="FMOD.DSP_PARAMETER_DESC.html">DSP_PARAMETER_DESC</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getParameterInt_" data-uid="FMOD.DSP.getParameterInt*"></a>
+
+  <h3 id="FMOD_DSP_getParameterInt_System_Int32_System_Int32__" data-uid="FMOD.DSP.getParameterInt(System.Int32,System.Int32@)">
+  getParameterInt(int, out int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3368"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getParameterInt(int index, out int value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getSystemObject_" data-uid="FMOD.DSP.getSystemObject*"></a>
+
+  <h3 id="FMOD_DSP_getSystemObject_FMOD_System__" data-uid="FMOD.DSP.getSystemObject(FMOD.System@)">
+  getSystemObject(out System)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3262"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getSystemObject(out System system)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>system</code> <a class="xref" href="FMOD.System.html">System</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getType_" data-uid="FMOD.DSP.getType*"></a>
+
+  <h3 id="FMOD_DSP_getType_FMOD_DSP_TYPE__" data-uid="FMOD.DSP.getType(FMOD.DSP_TYPE@)">
+  getType(out DSP_TYPE)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3417"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getType(out DSP_TYPE type)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>type</code> <a class="xref" href="FMOD.DSP_TYPE.html">DSP_TYPE</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getUserData_" data-uid="FMOD.DSP.getUserData*"></a>
+
+  <h3 id="FMOD_DSP_getUserData_System_IntPtr__" data-uid="FMOD.DSP.getUserData(System.IntPtr@)">
+  getUserData(out nint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3431"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getUserData(out nint userdata)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_getWetDryMix_" data-uid="FMOD.DSP.getWetDryMix*"></a>
+
+  <h3 id="FMOD_DSP_getWetDryMix_System_Single__System_Single__System_Single__" data-uid="FMOD.DSP.getWetDryMix(System.Single@,System.Single@,System.Single@)">
+  getWetDryMix(out float, out float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3322"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT getWetDryMix(out float prewet, out float postwet, out float dry)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>prewet</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>postwet</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>dry</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_hasHandle_" data-uid="FMOD.DSP.hasHandle*"></a>
+
+  <h3 id="FMOD_DSP_hasHandle" data-uid="FMOD.DSP.hasHandle">
+  hasHandle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3560"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool hasHandle()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_release_" data-uid="FMOD.DSP.release*"></a>
+
+  <h3 id="FMOD_DSP_release" data-uid="FMOD.DSP.release">
+  release()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3258"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT release()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_reset_" data-uid="FMOD.DSP.reset*"></a>
+
+  <h3 id="FMOD_DSP_reset" data-uid="FMOD.DSP.reset">
+  reset()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3338"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT reset()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setActive_" data-uid="FMOD.DSP.setActive*"></a>
+
+  <h3 id="FMOD_DSP_setActive_System_Boolean_" data-uid="FMOD.DSP.setActive(System.Boolean)">
+  setActive(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3302"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setActive(bool active)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>active</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setBypass_" data-uid="FMOD.DSP.setBypass*"></a>
+
+  <h3 id="FMOD_DSP_setBypass_System_Boolean_" data-uid="FMOD.DSP.setBypass(System.Boolean)">
+  setBypass(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3310"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setBypass(bool bypass)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bypass</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setCallback_" data-uid="FMOD.DSP.setCallback*"></a>
+
+  <h3 id="FMOD_DSP_setCallback_FMOD_DSP_CALLBACK_" data-uid="FMOD.DSP.setCallback(FMOD.DSP_CALLBACK)">
+  setCallback(DSP_CALLBACK)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3342"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setCallback(DSP_CALLBACK callback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>callback</code> <a class="xref" href="FMOD.DSP_CALLBACK.html">DSP_CALLBACK</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setChannelFormat_" data-uid="FMOD.DSP.setChannelFormat*"></a>
+
+  <h3 id="FMOD_DSP_setChannelFormat_FMOD_CHANNELMASK_System_Int32_FMOD_SPEAKERMODE_" data-uid="FMOD.DSP.setChannelFormat(FMOD.CHANNELMASK,System.Int32,FMOD.SPEAKERMODE)">
+  setChannelFormat(CHANNELMASK, int, SPEAKERMODE)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3326"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setChannelFormat(CHANNELMASK channelmask, int numchannels, SPEAKERMODE source_speakermode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>channelmask</code> <a class="xref" href="FMOD.CHANNELMASK.html">CHANNELMASK</a></dt>
+    <dd></dd>
+    <dt><code>numchannels</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>source_speakermode</code> <a class="xref" href="FMOD.SPEAKERMODE.html">SPEAKERMODE</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setMeteringEnabled_" data-uid="FMOD.DSP.setMeteringEnabled*"></a>
+
+  <h3 id="FMOD_DSP_setMeteringEnabled_System_Boolean_System_Boolean_" data-uid="FMOD.DSP.setMeteringEnabled(System.Boolean,System.Boolean)">
+  setMeteringEnabled(bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3437"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setMeteringEnabled(bool inputEnabled, bool outputEnabled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>outputEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setParameterBool_" data-uid="FMOD.DSP.setParameterBool*"></a>
+
+  <h3 id="FMOD_DSP_setParameterBool_System_Int32_System_Boolean_" data-uid="FMOD.DSP.setParameterBool(System.Int32,System.Boolean)">
+  setParameterBool(int, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3356"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setParameterBool(int index, bool value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setParameterData_" data-uid="FMOD.DSP.setParameterData*"></a>
+
+  <h3 id="FMOD_DSP_setParameterData_System_Int32_System_Byte___" data-uid="FMOD.DSP.setParameterData(System.Int32,System.Byte[])">
+  setParameterData(int, byte[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3360"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setParameterData(int index, byte[] data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setParameterFloat_" data-uid="FMOD.DSP.setParameterFloat*"></a>
+
+  <h3 id="FMOD_DSP_setParameterFloat_System_Int32_System_Single_" data-uid="FMOD.DSP.setParameterFloat(System.Int32,System.Single)">
+  setParameterFloat(int, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3348"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setParameterFloat(int index, float value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setParameterInt_" data-uid="FMOD.DSP.setParameterInt*"></a>
+
+  <h3 id="FMOD_DSP_setParameterInt_System_Int32_System_Int32_" data-uid="FMOD.DSP.setParameterInt(System.Int32,System.Int32)">
+  setParameterInt(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3352"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setParameterInt(int index, int value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setUserData_" data-uid="FMOD.DSP.setUserData*"></a>
+
+  <h3 id="FMOD_DSP_setUserData_System_IntPtr_" data-uid="FMOD.DSP.setUserData(System.IntPtr)">
+  setUserData(nint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3427"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setUserData(nint userdata)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userdata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_setWetDryMix_" data-uid="FMOD.DSP.setWetDryMix*"></a>
+
+  <h3 id="FMOD_DSP_setWetDryMix_System_Single_System_Single_System_Single_" data-uid="FMOD.DSP.setWetDryMix(System.Single,System.Single,System.Single)">
+  setWetDryMix(float, float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3318"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT setWetDryMix(float prewet, float postwet, float dry)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>prewet</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>postwet</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>dry</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FMOD_DSP_showConfigDialog_" data-uid="FMOD.DSP.showConfigDialog*"></a>
+
+  <h3 id="FMOD_DSP_showConfigDialog_System_IntPtr_System_Boolean_" data-uid="FMOD.DSP.showConfigDialog(System.IntPtr,System.Boolean)">
+  showConfigDialog(nint, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Plugins/FMOD/src/fmod.cs/#L3395"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RESULT showConfigDialog(nint hwnd, bool show)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>hwnd</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.intptr">nint</a></dt>
+    <dd></dd>
+    <dt><code>show</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FMOD.RESULT.html">RESULT</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/Studio-23-xyz" target="_blank">Studio-23-xyz</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -101,7 +101,7 @@ Class CustomStudioEventEmitter  <a class="header-action link-secondary" title="V
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CustomStudioEventEmitter : FMODUnity.EventHandler</code></pre>
+    <pre><code class="lang-csharp hljs">public class CustomStudioEventEmitter : EventHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler</code></pre>
   </div>
 
 
@@ -111,12 +111,41 @@ Class CustomStudioEventEmitter  <a class="header-action link-secondary" title="V
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="FMODUnity.EventHandler.html">EventHandler</a></div>
       <div><span class="xref">CustomStudioEventEmitter</span></div>
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IPointerEnterHandler</span></div>
+      <div><span class="xref">IPointerExitHandler</span></div>
+      <div><span class="xref">IPointerDownHandler</span></div>
+      <div><span class="xref">IPointerUpHandler</span></div>
+    </dd>
+  </dl>
 
 
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_CollisionTag">EventHandler.CollisionTag</a>
+    </div>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_OnPointerEnter_PointerEventData_">EventHandler.OnPointerEnter(PointerEventData)</a>
+    </div>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_OnPointerExit_PointerEventData_">EventHandler.OnPointerExit(PointerEventData)</a>
+    </div>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_OnPointerDown_PointerEventData_">EventHandler.OnPointerDown(PointerEventData)</a>
+    </div>
+    <div>
+      <a class="xref" href="FMODUnity.EventHandler.html#FMODUnity_EventHandler_OnPointerUp_PointerEventData_">EventHandler.OnPointerUp(PointerEventData)</a>
+    </div>
+  </dd></dl>
 
 
 
@@ -236,7 +265,7 @@ public string Event</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">EventReference</span></dt>
+    <dt><a class="xref" href="FMODUnity.EventReference.html">EventReference</a></dt>
     <dd></dd>
   </dl>
 
@@ -356,7 +385,7 @@ public string Event</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">ParamRef</span>[]</dt>
+    <dt><a class="xref" href="FMODUnity.ParamRef.html">ParamRef</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -386,7 +415,7 @@ public string Event</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">EmitterGameEvent</span></dt>
+    <dt><a class="xref" href="FMODUnity.EmitterGameEvent.html">EmitterGameEvent</a></dt>
     <dd></dd>
   </dl>
 
@@ -446,7 +475,7 @@ public string Event</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">EmitterGameEvent</span></dt>
+    <dt><a class="xref" href="FMODUnity.EmitterGameEvent.html">EmitterGameEvent</a></dt>
     <dd></dd>
   </dl>
 
@@ -506,7 +535,7 @@ public string Event</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">EventDescription</span></dt>
+    <dt><a class="xref" href="FMOD.Studio.EventDescription.html">EventDescription</a></dt>
     <dd></dd>
   </dl>
 
@@ -536,7 +565,7 @@ public string Event</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">EventInstance</span></dt>
+    <dt><a class="xref" href="FMOD.Studio.EventInstance.html">EventInstance</a></dt>
     <dd></dd>
   </dl>
 
@@ -572,7 +601,7 @@ public string Event</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">EventDescription</span></dt>
+    <dt><a class="xref" href="FMOD.Studio.EventDescription.html">EventDescription</a></dt>
     <dd></dd>
   </dl>
 
@@ -603,7 +632,7 @@ public string Event</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">EventInstance</span></dt>
+    <dt><a class="xref" href="FMOD.Studio.EventInstance.html">EventInstance</a></dt>
     <dd></dd>
   </dl>
 
@@ -705,7 +734,7 @@ public string Event</code></pre>
 
   <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_HandleGameEvent_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.HandleGameEvent*"></a>
 
-  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_HandleGameEvent_EmitterGameEvent_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.HandleGameEvent(EmitterGameEvent)">
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_HandleGameEvent_FMODUnity_EmitterGameEvent_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.HandleGameEvent(FMODUnity.EmitterGameEvent)">
   HandleGameEvent(EmitterGameEvent)
   <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L157"><i class="bi bi-code-slash"></i></a>
   </h3>
@@ -719,7 +748,7 @@ public string Event</code></pre>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>gameEvent</code> <span class="xref">EmitterGameEvent</span></dt>
+    <dt><code>gameEvent</code> <a class="xref" href="FMODUnity.EmitterGameEvent.html">EmitterGameEvent</a></dt>
     <dd></dd>
   </dl>
 
@@ -819,7 +848,7 @@ public string Event</code></pre>
 
   <a id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_SetParameter_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.SetParameter*"></a>
 
-  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_SetParameter_PARAMETER_ID_System_Single_System_Boolean_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.SetParameter(PARAMETER_ID,System.Single,System.Boolean)">
+  <h3 id="Studio23_SS2_AudioSystem_fmod_Extensions_CustomStudioEventEmitter_SetParameter_FMOD_Studio_PARAMETER_ID_System_Single_System_Boolean_" data-uid="Studio23.SS2.AudioSystem.fmod.Extensions.CustomStudioEventEmitter.SetParameter(FMOD.Studio.PARAMETER_ID,System.Single,System.Boolean)">
   SetParameter(PARAMETER_ID, float, bool)
   <a class="header-action link-secondary" title="View source" href="https://github.com/Studio-23-xyz/com.studio23.ss2.audiosystem.fmod/blob/main/Assets/Packages/com.studio23.ss2.audiosystem.fmod/Runtime/Extensions/CustomStudioEventEmitter.cs/#L466"><i class="bi bi-code-slash"></i></a>
   </h3>
@@ -833,7 +862,7 @@ public string Event</code></pre>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>id</code> <span class="xref">PARAMETER_ID</span></dt>
+    <dt><code>id</code> <a class="xref" href="FMOD.Studio.PARAMETER_ID.html">PARAMETER_ID</a></dt>
     <dd></dd>
     <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>

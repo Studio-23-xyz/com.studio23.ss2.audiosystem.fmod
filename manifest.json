@@ -15,6 +15,3486 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.ADVANCEDSETTINGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.ADVANCEDSETTINGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.ASYNCREADINFO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.ASYNCREADINFO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.ATTRIBUTES_3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.ATTRIBUTES_3D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CB_3D_ROLLOFF_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CB_3D_ROLLOFF_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CHANNELCONTROL_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CHANNELCONTROL_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CHANNELCONTROL_CALLBACK_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CHANNELCONTROL_CALLBACK_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CHANNELCONTROL_DSP_INDEX.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CHANNELCONTROL_DSP_INDEX.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CHANNELCONTROL_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CHANNELCONTROL_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CHANNELMASK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CHANNELMASK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CHANNELORDER.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CHANNELORDER.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.COMPLEX.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.COMPLEX.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CONSTANTS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CONSTANTS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CPU_USAGE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CPU_USAGE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.CREATESOUNDEXINFO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.CREATESOUNDEXINFO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Channel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Channel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.ChannelGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.ChannelGroup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DEBUG_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DEBUG_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DEBUG_FLAGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DEBUG_FLAGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DEBUG_MODE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DEBUG_MODE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DRIVER_STATE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DRIVER_STATE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSPCONNECTION_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSPCONNECTION_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSPConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSPConnection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_ALLOC_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_ALLOC_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_BUFFER_ARRAY.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_BUFFER_ARRAY.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_CALLBACK_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_CALLBACK_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_CHANNELMIX.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_CHANNELMIX.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_CHANNELMIX_OUTPUT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_CHANNELMIX_OUTPUT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_CHORUS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_CHORUS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_COMPRESSOR.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_COMPRESSOR.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_CONVOLUTION_REVERB.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_CONVOLUTION_REVERB.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_CREATE_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_CREATE_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_DATA_PARAMETER_INFO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_DATA_PARAMETER_INFO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_DELAY.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_DELAY.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_DESCRIPTION.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_DESCRIPTION.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_DFT_FFTREAL_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_DFT_FFTREAL_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_DFT_IFFTREAL_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_DFT_IFFTREAL_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_DISTORTION.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_DISTORTION.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_ECHO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_ECHO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_ENVELOPEFOLLOWER.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_ENVELOPEFOLLOWER.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_FADER.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_FADER.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_FFT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_FFT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_FFT_WINDOW.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_FFT_WINDOW.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_FLANGE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_FLANGE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_FREE_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_FREE_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETBLOCKSIZE_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETBLOCKSIZE_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETCLOCK_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETCLOCK_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETLISTENERATTRIBUTES_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETLISTENERATTRIBUTES_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETPARAM_BOOL_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETPARAM_BOOL_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETPARAM_DATA_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETPARAM_DATA_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETPARAM_FLOAT_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETPARAM_FLOAT_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETPARAM_INT_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETPARAM_INT_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETSAMPLERATE_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETSAMPLERATE_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETSPEAKERMODE_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETSPEAKERMODE_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_GETUSERDATA_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_GETUSERDATA_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_HIGHPASS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_HIGHPASS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_HIGHPASS_SIMPLE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_HIGHPASS_SIMPLE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_ITECHO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_ITECHO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_ITLOWPASS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_ITLOWPASS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_LIMITER.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_LIMITER.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_LOG_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_LOG_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_LOUDNESS_METER.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_LOUDNESS_METER.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_LOUDNESS_METER_INFO_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_LOUDNESS_METER_INFO_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_LOUDNESS_METER_STATE_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_LOUDNESS_METER_STATE_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_LOUDNESS_METER_WEIGHTING_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_LOUDNESS_METER_WEIGHTING_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_LOWPASS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_LOWPASS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_LOWPASS_SIMPLE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_LOWPASS_SIMPLE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_METERING_INFO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_METERING_INFO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_MULTIBAND_EQ.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_MULTIBAND_EQ.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_MULTIBAND_EQ_FILTER_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_MULTIBAND_EQ_FILTER_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_NORMALIZE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_NORMALIZE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_OBJECTPAN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_OBJECTPAN.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_OSCILLATOR.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_OSCILLATOR.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_2D_STEREO_MODE_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_2D_STEREO_MODE_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_3D_EXTENT_MODE_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_3D_EXTENT_MODE_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_3D_ROLLOFF_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_3D_ROLLOFF_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_GETROLLOFFGAIN_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_GETROLLOFFGAIN_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_MODE_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_MODE_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_SUMMONOMATRIX_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_SUMMONOMATRIX_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_SUMMONOTOSURROUNDMATRIX_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_SUMMONOTOSURROUNDMATRIX_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_SUMSTEREOMATRIX_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_SUMSTEREOMATRIX_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_SUMSTEREOTOSURROUNDMATRIX_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_SUMSTEREOTOSURROUNDMATRIX_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_SUMSURROUNDMATRIX_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_SUMSURROUNDMATRIX_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PAN_SURROUND_FLAGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PAN_SURROUND_FLAGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMEQ.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMEQ.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_3DATTRIBUTES.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_3DATTRIBUTES.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_3DATTRIBUTES_MULTI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_3DATTRIBUTES_MULTI.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_ATTENUATION_RANGE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_ATTENUATION_RANGE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_DATA_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_DATA_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_DESC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_DESC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_DESC_BOOL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_DESC_BOOL.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_DESC_DATA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_DESC_DATA.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_DESC_FLOAT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_DESC_FLOAT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_DESC_INT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_DESC_INT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_DESC_UNION.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_DESC_UNION.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_FFT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_FFT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_FLOAT_MAPPING.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_FLOAT_MAPPING.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_FLOAT_MAPPING_PIECEWISE_LINEAR.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_FLOAT_MAPPING_PIECEWISE_LINEAR.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_FLOAT_MAPPING_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_FLOAT_MAPPING_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_OVERALLGAIN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_OVERALLGAIN.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_SIDECHAIN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_SIDECHAIN.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PARAMETER_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PARAMETER_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PITCHSHIFT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PITCHSHIFT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PROCESS_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PROCESS_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_PROCESS_OPERATION.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_PROCESS_OPERATION.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_READ_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_READ_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_REALLOC_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_REALLOC_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_RELEASE_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_RELEASE_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_RESAMPLER.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_RESAMPLER.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_RESET_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_RESET_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_RETURN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_RETURN.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SEND.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SEND.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SETPARAM_BOOL_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SETPARAM_BOOL_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SETPARAM_DATA_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SETPARAM_DATA_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SETPARAM_FLOAT_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SETPARAM_FLOAT_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SETPARAM_INT_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SETPARAM_INT_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SETPOSITION_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SETPOSITION_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SFXREVERB.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SFXREVERB.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SHOULDIPROCESS_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SHOULDIPROCESS_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_STATE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_STATE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_STATE_DFT_FUNCTIONS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_STATE_DFT_FUNCTIONS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_STATE_FUNCTIONS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_STATE_FUNCTIONS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_STATE_PAN_FUNCTIONS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_STATE_PAN_FUNCTIONS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SYSTEM_DEREGISTER_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SYSTEM_DEREGISTER_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SYSTEM_MIX_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SYSTEM_MIX_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_SYSTEM_REGISTER_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_SYSTEM_REGISTER_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_THREE_EQ.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_THREE_EQ.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_THREE_EQ_CROSSOVERSLOPE_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_THREE_EQ_CROSSOVERSLOPE_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_TRANSCEIVER.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_TRANSCEIVER.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_TRANSCEIVER_SPEAKERMODE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_TRANSCEIVER_SPEAKERMODE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_TREMOLO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_TREMOLO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.DSP_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.DSP_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Debug.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Debug.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.ERRORCALLBACK_INFO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.ERRORCALLBACK_INFO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.ERRORCALLBACK_INSTANCETYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.ERRORCALLBACK_INSTANCETYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Error.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Error.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.FILE_ASYNCCANCEL_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.FILE_ASYNCCANCEL_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.FILE_ASYNCDONE_FUNC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.FILE_ASYNCDONE_FUNC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.FILE_ASYNCREAD_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.FILE_ASYNCREAD_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.FILE_CLOSE_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.FILE_CLOSE_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.FILE_OPEN_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.FILE_OPEN_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.FILE_READ_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.FILE_READ_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.FILE_SEEK_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.FILE_SEEK_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Factory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Factory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.GUID.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.GUID.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Geometry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Geometry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.INITFLAGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.INITFLAGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.MEMORY_ALLOC_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.MEMORY_ALLOC_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.MEMORY_FREE_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.MEMORY_FREE_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.MEMORY_REALLOC_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.MEMORY_REALLOC_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.MEMORY_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.MEMORY_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.MODE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.MODE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.MarshalHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.MarshalHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Memory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Memory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.OPENSTATE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.OPENSTATE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.OUTPUTTYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.OUTPUTTYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.PLUGINLIST.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.PLUGINLIST.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.PLUGINTYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.PLUGINTYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.PORT_INDEX.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.PORT_INDEX.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.PORT_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.PORT_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.PRESET.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.PRESET.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.RESULT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.RESULT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.REVERB_PROPERTIES.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.REVERB_PROPERTIES.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Reverb3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Reverb3D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SOUNDGROUP_BEHAVIOR.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SOUNDGROUP_BEHAVIOR.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SOUND_FORMAT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SOUND_FORMAT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SOUND_NONBLOCK_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SOUND_NONBLOCK_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SOUND_PCMREAD_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SOUND_PCMREAD_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SOUND_PCMSETPOS_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SOUND_PCMSETPOS_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SOUND_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SOUND_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SPEAKER.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SPEAKER.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SPEAKERMODE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SPEAKERMODE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SYSTEM_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SYSTEM_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SYSTEM_CALLBACK_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SYSTEM_CALLBACK_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Sound.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Sound.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.SoundGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.SoundGroup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.StringWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.StringWrapper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.ADVANCEDSETTINGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.ADVANCEDSETTINGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.BANK_INFO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.BANK_INFO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.BUFFER_INFO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.BUFFER_INFO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.BUFFER_USAGE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.BUFFER_USAGE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.Bank.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.Bank.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.Bus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.Bus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.COMMANDCAPTURE_FLAGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.COMMANDCAPTURE_FLAGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.COMMANDREPLAY_CREATE_INSTANCE_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.COMMANDREPLAY_CREATE_INSTANCE_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.COMMANDREPLAY_FLAGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.COMMANDREPLAY_FLAGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.COMMANDREPLAY_FRAME_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.COMMANDREPLAY_FRAME_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.COMMANDREPLAY_LOAD_BANK_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.COMMANDREPLAY_LOAD_BANK_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.COMMAND_INFO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.COMMAND_INFO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.CPU_USAGE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.CPU_USAGE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.CommandReplay.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.CommandReplay.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.EVENT_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.EVENT_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.EVENT_CALLBACK_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.EVENT_CALLBACK_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.EVENT_PROPERTY.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.EVENT_PROPERTY.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.EventDescription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.EventDescription.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.EventInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.EventInstance.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.INITFLAGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.INITFLAGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.INSTANCETYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.INSTANCETYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.LOADING_STATE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.LOADING_STATE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.LOAD_BANK_FLAGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.LOAD_BANK_FLAGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.MEMORY_USAGE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.MEMORY_USAGE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.PARAMETER_DESCRIPTION.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.PARAMETER_DESCRIPTION.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.PARAMETER_FLAGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.PARAMETER_FLAGS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.PARAMETER_ID.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.PARAMETER_ID.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.PARAMETER_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.PARAMETER_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.PLAYBACK_STATE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.PLAYBACK_STATE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.PLUGIN_INSTANCE_PROPERTIES.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.PLUGIN_INSTANCE_PROPERTIES.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.PROGRAMMER_SOUND_PROPERTIES.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.PROGRAMMER_SOUND_PROPERTIES.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.SOUND_INFO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.SOUND_INFO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.STOP_MODE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.STOP_MODE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.STUDIO_VERSION.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.STUDIO_VERSION.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.SYSTEM_CALLBACK.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.SYSTEM_CALLBACK.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.SYSTEM_CALLBACK_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.SYSTEM_CALLBACK_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.System.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.System.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.TIMELINE_BEAT_PROPERTIES.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.TIMELINE_BEAT_PROPERTIES.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.TIMELINE_MARKER_PROPERTIES.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.TIMELINE_MARKER_PROPERTIES.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.TIMELINE_NESTED_BEAT_PROPERTIES.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.TIMELINE_NESTED_BEAT_PROPERTIES.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.USER_PROPERTY.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.USER_PROPERTY.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.USER_PROPERTY_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.USER_PROPERTY_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.Util.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.Util.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.VCA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.VCA.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Studio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Studio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.System.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.System.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.TAG.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.TAG.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.TAGDATATYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.TAGDATATYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.TAGTYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.TAGTYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.THREAD_AFFINITY.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.THREAD_AFFINITY.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.THREAD_PRIORITY.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.THREAD_PRIORITY.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.THREAD_STACK_SIZE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.THREAD_STACK_SIZE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.THREAD_TYPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.THREAD_TYPE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.TIMEUNIT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.TIMEUNIT.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.Thread.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.Thread.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.VECTOR.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.VECTOR.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.VERSION.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.VERSION.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMOD.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMOD.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.AutomatableSlots.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.AutomatableSlots.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.BankLoadException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.BankLoadException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.BankLoadType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.BankLoadType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.BankRefAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.BankRefAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.BankRefDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.BankRefDrawer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.BankRefreshWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.BankRefreshWindow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.BankRefresher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.BankRefresher.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.BoltIntegration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.BoltIntegration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.BuildStatusWatcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.BuildStatusWatcher.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.BusNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.BusNotFoundException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.CodecChannelCount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.CodecChannelCount.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.CodecType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.CodecType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.CreateEventPopup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.CreateEventPopup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EditorBankRef.NameValuePair.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EditorBankRef.NameValuePair.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EditorBankRef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EditorBankRef.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EditorEventRef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EditorEventRef.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EditorParamRef.ParameterID.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EditorParamRef.ParameterID.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EditorParamRef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EditorParamRef.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EditorSettings.BuildProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EditorSettings.BuildProcessor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EditorSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EditorSettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EditorUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EditorUtils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EmitterGameEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EmitterGameEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EmitterRef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EmitterRef.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventBrowser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventBrowser.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventCache.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventCache.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventLinkage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventLinkage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventManager.ActiveBuildTargetListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventManager.ActiveBuildTargetListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventManager.PreprocessScene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventManager.PreprocessScene.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventNotFoundException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventRefAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventRefAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventReference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventReferenceDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventReferenceDrawer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.EventReferenceUpdater.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.EventReferenceUpdater.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.FMODRuntimeManagerOnGUIHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.FMODRuntimeManagerOnGUIHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.FileReorganizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.FileReorganizer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.FindAndReplace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.FindAndReplace.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.HelpContent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.HelpContent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.IEditorSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.IEditorSettings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ImportType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ImportType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.LegacyEventRefDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.LegacyEventRefDrawer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ListView.DrawElementWithLabelDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ListView.DrawElementWithLabelDelegate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ListView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ListView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.LoaderGameEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.LoaderGameEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.MeterChannelOrderingType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.MeterChannelOrderingType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.NaturalComparer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.NaturalComparer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.NoIndentScope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.NoIndentScope.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ParamRef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ParamRef.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ParamRefAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ParamRefAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ParamRefDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ParamRefDrawer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ParameterType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ParameterType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.Property-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.Property-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.PropertyBool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.PropertyBool.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.PropertyCallbackHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.PropertyCallbackHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.PropertyInt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.PropertyInt.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.PropertyScreenPosition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.PropertyScreenPosition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.PropertySpeakerMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.PropertySpeakerMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.PropertyStorage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.PropertyStorage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.PropertyString.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.PropertyString.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.PropertyStringList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.PropertyStringList.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.PropertyThreadAffinityList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.PropertyThreadAffinityList.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Platform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Platform.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformAndroid.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformAndroid.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformAppleTV.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformAppleTV.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformCallbackHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformCallbackHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformDefault.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformDefault.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformGroup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformIOS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformIOS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformLinux.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformLinux.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformMac.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformMac.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformMobileHigh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformMobileHigh.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformMobileLow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformMobileLow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformPlayInEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformPlayInEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformWebGL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformWebGL.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.PlatformWindows.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.PlatformWindows.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.RuntimeManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.RuntimeManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.RuntimeUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.RuntimeUtils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ScreenPosition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ScreenPosition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.SerializedPropertyExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.SerializedPropertyExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.Settings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.SettingsEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.SettingsEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.SetupWizardWindow.UpdateTaskType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.SetupWizardWindow.UpdateTaskType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.SetupWizardWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.SetupWizardWindow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.SimpleHelp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.SimpleHelp.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.SimpleTreeView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.SimpleTreeView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StagingSystem.UpdateStep.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StagingSystem.UpdateStep.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StagingSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StagingSystem.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioBankLoader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioBankLoader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioBankLoaderEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioBankLoaderEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioEventEmitter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioEventEmitter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioEventEmitterEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioEventEmitterEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioEventEmitterGizoDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioEventEmitterGizoDrawer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioGlobalParameterTrigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioGlobalParameterTrigger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioGlobalParameterTriggerEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioGlobalParameterTriggerEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioListener.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioListenerEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioListenerEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioParameterTrigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioParameterTrigger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.StudioParameterTriggerEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.StudioParameterTriggerEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.SystemNotInitializedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.SystemNotInitializedException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ThreadAffinity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ThreadAffinity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ThreadAffinityGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ThreadAffinityGroup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.ThreadType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.ThreadType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.TriStateBool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.TriStateBool.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.VCANotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.VCANotFoundException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnity.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnityResonance.FmodResonanceAudio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnityResonance.FmodResonanceAudio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnityResonance.FmodResonanceAudioRoom.SurfaceMaterial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnityResonance.FmodResonanceAudioRoom.SurfaceMaterial.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnityResonance.FmodResonanceAudioRoom.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnityResonance.FmodResonanceAudioRoom.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnityResonance.FmodResonanceAudioRoomEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnityResonance.FmodResonanceAudioRoomEditor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FMODUnityResonance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FMODUnityResonance.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Global.Sample.yml",
       "output": {
         ".html": {

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Audio System FMOD |  |  </title>
+      <title>Audio System for FMOD |  |  </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Audio System FMOD |  |  ">
+      <meta name="title" content="Audio System for FMOD |  |  ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -85,12 +85,12 @@
         </div>
 
         <article data-uid="">
-<h1 align="center">Audio System FMOD</h1>
+<h1 align="center">Audio System for FMOD</h1>
 
 <p align="center">
 <a href="https://openupm.com/packages/com.studio23.ss2.audiosystem.fmod/"><img src="https://img.shields.io/npm/v/com.studio23.ss2.audiosystem.fmod?label=openupm&amp;registry_uri=https://package.openupm.com"></a>
 </p>
-<p>Audio System FMOD is a tool designed for managing and utilizing the FMOD engine in a simpler and unified manner within Unity. It makes it easier to manage all game audio using FMOD and allows the user to focus more on audio and sound design.</p>
+<p>Audio System for FMOD is a tool designed for managing and utilizing the FMOD engine in a simpler and unified manner within Unity. It makes it easier to manage all game audio using FMOD and allows the user to focus more on audio and sound design.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li><a href="#installation">Installation</a></li>
@@ -125,7 +125,7 @@
 </code></pre>
 <h2 id="setup">Setup</h2>
 <h3 id="important">Important</h3>
-<p>This package cannot function on its own and is intended to be used with FMOD. Make sure you have the FMOD for Unity plugin installed in your project before installing Audio System FMOD. You can find the plugin on the Unity Asset Store or on the <a href="https://www.fmod.com/download">FMOD website</a>. This package assumes familiarity with FMOD for its usage so please read up on FMOD's documentation.</p>
+<p>This package cannot function on its own and is intended to be used with FMOD. Make sure you have the FMOD for Unity plugin installed in your project before installing Audio System for FMOD. You can find the plugin on the Unity Asset Store or on the <a href="https://www.fmod.com/download">FMOD website</a>. This package assumes familiarity with FMOD for its usage so please read up on FMOD's documentation.</p>
 <h3 id="fmod-settings-in-unity">FMOD Settings in Unity</h3>
 <h4 id="bank-import">Bank Import</h4>
 <ol>
@@ -244,9 +244,9 @@
 <h3 id="callback-handlers">CallBack Handlers</h3>
 <p>This system uses two callback handlers.</p>
 <ol>
-<li>The default callback handler <code>FMODCallBackHandler</code> manages the internal playback states of each event. It can also handle looping audio. This callback is set whenever an emitter is created and is fired with every event that is played.</li>
+<li>The default callback handler <code>FMODCallBackHandler</code> manages the internal playback states of each event (the internal states here refers to the internal states used by this package to keep track of which event is playing, suspended, paused or stopped or whether the event is looping; not FMOD's own playback states). This callback is set whenever an emitter is created and is fired with every event that is played.</li>
 <li>The programmer callback handler <code>FMODProgrammerSoundCallBackHandler</code> manages the playback of externally loaded sounds and is required for dialogues and localized audio tables. This callback is set whenever an <code>PlayProgrammerSound()</code> is called and is fired with every subsequent call.</li>
-<li>It is possible to create and set your own callback handler. You can fetch or create an emitter using <code>CreateEmitter()</code> and pass this to the initialize method of your callback handler. Look at the initialize methods of our callback handle to get an idea on how to make your initialize method.</li>
+<li>It is possible to create and set your own callback handler. You can fetch or create an emitter using <code>CreateEmitter()</code> and pass this to the initialize method of your callback handler. Look at the initialize methods of our callback handle to get an idea on how to make your initialize method. Not using the the default callback handler <code>FMODCallBackHandler</code> will result in that events internal states not being tracked/handled.</li>
 </ol>
 <h2 id="using-the-sample-provided">Using the sample provided</h2>
 <ol>
