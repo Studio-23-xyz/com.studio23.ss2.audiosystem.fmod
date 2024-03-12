@@ -1,7 +1,7 @@
 {
   "name": "com.studio23.ss2.audiosystem.fmod",
-  "version": "0.0.6",
-  "displayName": "Audio System FMOD",
+  "version": "0.0.8",
+  "displayName": "Audio System for FMOD",
   "description": "This is a system for managing and utilizing audio using FMOD. It provides an easier way to use FMOD from the get go.",
   "unity": "2022.3",
   "unityRelease": "10f1",
@@ -29,7 +29,7 @@
   ],
   "samples": [
     {
-      "displayName": "Audio System FMOD Example",
+      "displayName": "Audio System for FMOD Example",
       "description": "A small sample to demonstrate the abilities of this package.",
       "path": "Samples~/Demo1"
     }   
