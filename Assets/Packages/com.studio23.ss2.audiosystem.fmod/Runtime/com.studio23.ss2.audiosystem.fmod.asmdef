@@ -1,6 +1,6 @@
 {
     "name": "com.studio23.ss2.audiosystem.fmod",
-    "rootNamespace": "",
+    "rootNamespace": "Studio23.SS2.AudioSystem.fmod",
     "references": [
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:0c752da273b17c547ae705acf0f2adf2",

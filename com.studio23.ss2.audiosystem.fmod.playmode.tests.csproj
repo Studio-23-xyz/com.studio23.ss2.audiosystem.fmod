@@ -61,11 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_Master.cs" />
+    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\CreateFMODDataTestsEditor.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\PlayModeTests.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODLocaleList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBusList.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_SFX.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODVCAList.cs" />
+    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_SFX.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_Dialogue.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_Test.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_Sample.cs" />
@@ -933,6 +934,14 @@
     <ProjectReference Include="FMODUnityResonance.csproj">
       <Project>{127FDA29-C5BC-BC40-B36E-F5DAE763A743}</Project>
       <Name>FMODUnityResonance</Name>
+    </ProjectReference>
+    <ProjectReference Include="FMODUnityEditor.csproj">
+      <Project>{2701ECFA-BFC5-2D8C-6BB0-49E8F0E9E3D3}</Project>
+      <Name>FMODUnityEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="FMODUnityResonanceEditor.csproj">
+      <Project>{27442E2A-532C-5BDB-7F01-BE75312F9B0B}</Project>
+      <Name>FMODUnityResonanceEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

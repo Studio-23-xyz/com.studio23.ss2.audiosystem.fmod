@@ -1,40 +1,105 @@
 using FMOD;
 using FMOD.Studio;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.Plastic.Newtonsoft.Json.Linq;
 using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Studio23.SS2.AudioSystem.fmod.Editor
 {
     public class CreateFMODDataEditor : EditorWindow
     {
+        private AssemblyDefinitionAsset _assemblyDefinitionAsset;
+        private string folderName = "Resources";
+
         private static Dictionary<string, string> _bankList = new Dictionary<string, string>();
         private static List<string> _busList = new List<string>();
         private static List<string> _VCAList = new List<string>();
         private static Dictionary<string, List<string>> _eventList = new Dictionary<string, List<string>>();
         private static Dictionary<string, List<string>> _parameterList = new Dictionary<string, List<string>>();
 
-        private static string _folderPath = "Assets/Resources/FMOD_Data";
-        private static string _nameSpace = "Studio23.SS2.AudioSystem.fmod.Data";
-        private static string _testFolderPath = "Assets/Packages/com.studio23.ss2.audiosystem.fmod/Tests/PlayMode/FMOD_Test_Data";
-        private static string _testNameSpace = "Studio23.SS2.AudioSystem.fmod.Tests";
-
-        [MenuItem("Studio-23/Audio System/Generate All FMOD Data")]
-        public static void GenerateData()
+        [MenuItem("Studio-23/Audio System/Generate data from FMOD")]
+        public static void ShowWindow()
         {
-            GetAllData(_folderPath, _nameSpace);
+            GetWindow<CreateFMODDataEditor>("Generate data from FMOD");
+        }
+
+        private void OnGUI()
+        {
+            GUILayout.Space(10);
+
+            EditorGUILayout.LabelField($"Select your project's assembly definition. The data files will be created in the root folder of the assembly definition.", EditorStyles.boldLabel);
+
+            GUILayout.Space(5);
+
+            _assemblyDefinitionAsset = EditorGUILayout.ObjectField("Assembly Definition Asset", _assemblyDefinitionAsset, typeof(AssemblyDefinitionAsset), false) as AssemblyDefinitionAsset;
+
+            GUILayout.Space(5);
+
+            // Display path of the assembly definition asset
+            if (_assemblyDefinitionAsset != null)
+            {
+                EditorGUI.BeginDisabledGroup(true);
+                string assemblyDefinitionAssetPath = AssetDatabase.GetAssetPath(_assemblyDefinitionAsset);
+                EditorGUILayout.TextField("Assembly Definition Path", Path.GetDirectoryName(assemblyDefinitionAssetPath));
+                EditorGUI.EndDisabledGroup();
+            }
+
+            GUILayout.Space(10);
+
+            if (GUILayout.Button("Generate"))
+            {
+                if (_assemblyDefinitionAsset != null)
+                {
+                    string assemblyFolderPath = AssetDatabase.GetAssetPath(_assemblyDefinitionAsset);
+                    string directory = Path.GetDirectoryName(assemblyFolderPath);
+                    string folderPath = Path.Combine(directory, folderName, "FMOD_Data");
+
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                        Debug.Log("Folder created at: " + folderPath);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Folder already exists at: " + folderPath);
+                    }
+
+                    string nameSpace = GetRootNamespaceFromAssemblyDefinition(_assemblyDefinitionAsset);
+
+                    GenerateData(folderPath, nameSpace);
+                }
+                else
+                {
+                    Debug.LogError("Please select the Assembly Definition Asset.");
+                }
+            }
+        }
+
+        private string GetRootNamespaceFromAssemblyDefinition(AssemblyDefinitionAsset assemblyDefinitionAsset)
+        {
+            string assemblyDefinitionPath = AssetDatabase.GetAssetPath(assemblyDefinitionAsset);
+            string assemblyDefinitionText = File.ReadAllText(assemblyDefinitionPath);
+            JObject assemblyDefinitionObject = JObject.Parse(assemblyDefinitionText);
+            return (string)assemblyDefinitionObject["rootNamespace"];
+        }
+
+        private static void GenerateData(string folderPath, string nameSpace)
+        {
             _bankList.Clear();
             _busList.Clear();
             _VCAList.Clear();
             _eventList.Clear();
             _parameterList.Clear();
-            GetAllData(_testFolderPath, _testNameSpace, "Test_", true);
+            GetAllData(folderPath, nameSpace);
         }
 
-        private static void GetAllData(string folderPath, string nameSpace, string prefix = "", bool test = false)
+        private static void GetAllData(string folderPath, string nameSpace)
         {
             foreach (var b in FMODUnity.EventManager.Banks)
             {
@@ -76,21 +141,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
                     }
                 }
             }
-            GenerateBankList(folderPath, nameSpace, prefix, test);
-            GenerateLocaleList(folderPath, nameSpace, prefix, test);
-            GenerateEventList(folderPath, nameSpace, prefix, test);
-            GenerateParameterList(folderPath, nameSpace, prefix, test);
+            GenerateBankList(folderPath, nameSpace);
+            GenerateLocaleList(folderPath, nameSpace);
+            GenerateEventList(folderPath, nameSpace);
+            GenerateParameterList(folderPath, nameSpace);
         }
 
-        private static void GenerateBankList(string folderPath, string nameSpace, string prefix, bool test)
+        private static void GenerateBankList(string folderPath, string nameSpace)
         {
-            string filename = $"{prefix}FMODBankList";
+            string filename = $"FMODBankList";
 
             string scriptContent = "";
-            if (test)
-            {
-                scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
-            }
+
+            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
+
             scriptContent += $"namespace {nameSpace}\n{{\n";
 
             scriptContent += $"\tpublic static class {filename}\n\t{{\n";
@@ -115,10 +179,10 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
             File.WriteAllText(scriptPath, scriptContent);
             AssetDatabase.Refresh();
-            GetMixerDataList(folderPath, nameSpace, prefix, test);
+            GetMixerDataList(folderPath, nameSpace);
         }
 
-        private static void GetMixerDataList(string folderPath, string nameSpace, string prefix, bool test)
+        private static void GetMixerDataList(string folderPath, string nameSpace)
         {
 
             FMOD.Studio.System.create(out FMOD.Studio.System fmodSystem);
@@ -161,19 +225,17 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             }
             fmodSystem.unloadAll();
             fmodSystem.release();
-            GenerateBusList(folderPath, nameSpace, prefix, test);
-            GenerateVCAList(folderPath, nameSpace, prefix, test);
+            GenerateBusList(folderPath, nameSpace);
+            GenerateVCAList(folderPath, nameSpace);
         }
 
-        private static void GenerateBusList(string folderPath, string nameSpace, string prefix, bool test)
+        private static void GenerateBusList(string folderPath, string nameSpace)
         {
-            string filename = $"{prefix}FMODBusList";
+            string filename = $"FMODBusList";
 
             string scriptContent = "";
-            if (test)
-            {
-                scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
-            }
+            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
+
             scriptContent += $"namespace {nameSpace}\n{{\n";
 
             scriptContent += $"\tpublic static class {filename}\n\t{{\n";
@@ -201,15 +263,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             AssetDatabase.Refresh();
         }
 
-        private static void GenerateVCAList(string folderPath, string nameSpace, string prefix, bool test)
+        private static void GenerateVCAList(string folderPath, string nameSpace)
         {
-            string filename = $"{prefix}FMODVCAList";
+            string filename = $"FMODVCAList";
 
             string scriptContent = "";
-            if (test)
-            {
-                scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
-            }
+
+            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
+
             scriptContent += $"namespace {nameSpace}\n{{\n";
 
             scriptContent += $"\tpublic static class {filename}\n\t{{\n";
@@ -238,15 +299,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             AssetDatabase.Refresh();
         }
 
-        private static void GenerateLocaleList(string folderPath, string nameSpace, string prefix, bool test)
+        private static void GenerateLocaleList(string folderPath, string nameSpace)
         {
-            string filename = $"{prefix}FMODLocaleList";
+            string filename = $"FMODLocaleList";
 
             string scriptContent = "";
-            if (test)
-            {
-                scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n";
-            }
+
+            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n";
+
             scriptContent += "using System.Collections.Generic;\n\n";
             scriptContent += $"namespace {nameSpace}\n{{\n";
             scriptContent += $"\tpublic enum Language\n";
@@ -303,20 +363,19 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             AssetDatabase.Refresh();
         }
 
-        private static void GenerateEventList(string folderPath, string nameSpace, string prefix, bool test)
+        private static void GenerateEventList(string folderPath, string nameSpace)
         {
             for (int i = 0; i < _eventList.Count; i++)
             {
                 string scriptContent = "";
-                if (test)
-                {
-                    scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
-                }
+
+                scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
+
                 scriptContent += $"namespace {nameSpace}\n{{\n";
 
                 //string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Split("/").Last().Replace(".bank", "").Replace(" ", "_").Replace("-", "_")}";
 
-                string filename = $"{prefix}FMODBank_{_eventList.ElementAt(i).Key.Replace("bank:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_")}";
+                string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Replace("bank:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_")}";
 
                 scriptContent += $"\tpublic static class {filename}\n\t{{\n";
 
@@ -348,15 +407,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             }
         }
 
-        private static void GenerateParameterList(string folderPath, string nameSpace, string prefix, bool test)
+        private static void GenerateParameterList(string folderPath, string nameSpace)
         {
-            string filename = $"{prefix}FMODParameterList";
+            string filename = $"FMODParameterList";
 
             string scriptContent = "";
-            if (test)
-            {
-                scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
-            }
+
+            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
+
             scriptContent += $"namespace {nameSpace}\n{{\n";
 
             scriptContent += $"\tpublic static class {filename}\n\t{{\n";

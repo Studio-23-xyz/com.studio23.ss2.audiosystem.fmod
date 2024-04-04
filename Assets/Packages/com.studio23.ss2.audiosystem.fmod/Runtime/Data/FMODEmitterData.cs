@@ -96,22 +96,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         }
 
         /// <summary>
-        /// Stops the Emitter with default STOP_MODE.
-        /// </summary>
-        /// <returns></returns>
-        public async UniTask StopAsync()
-        {
-            Emitter.EventInstance.stop(StopModeType);
-            EventState = FMODEventState.Stopped;
-            await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED));
-        }
-
-        /// <summary>
-        /// Stops the Emitter with different STOP_MODE.
+        /// Stops the Emitter.
         /// </summary>
         /// <param name="stopModeType"></param>
         /// <returns></returns>
-        public async UniTask StopAsync(STOP_MODE stopModeType)
+        public async UniTask StopAsync(STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
             Emitter.EventInstance.stop(stopModeType);
             EventState = FMODEventState.Stopped;

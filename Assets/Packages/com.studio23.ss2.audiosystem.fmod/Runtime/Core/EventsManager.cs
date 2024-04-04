@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using FMOD.Studio;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
@@ -132,30 +133,33 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Stop the Emitter with default STOP_MODE.
-        /// </summary>
-        /// <param name="eventData"></param>
-        /// <param name="referenceGameObject"></param>
-        /// <returns></returns>
-        public async UniTask Stop(FMODEventData eventData, GameObject referenceGameObject)
-        {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
-            if (fetchData == null) return;
-            await fetchData.StopAsync();
-        }
-
-        /// <summary>
-        /// Stop the Emitter with a different STOP_MODE.
+        /// Stops the Emitter.
         /// </summary>
         /// <param name="eventData"></param>
         /// <param name="referenceGameObject"></param>
         /// <param name="stopMode"></param>
         /// <returns></returns>
-        public async UniTask Stop(FMODEventData eventData, GameObject referenceGameObject, STOP_MODE stopMode)
+        public async UniTask Stop(FMODEventData eventData, GameObject referenceGameObject, STOP_MODE stopMode = STOP_MODE.ALLOWFADEOUT)
         {
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
             await fetchData.StopAsync(stopMode);
+        }
+
+        /// <summary>
+        /// Stops all emitters of the same type.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="stopMode"></param>
+        /// <returns></returns>
+        public async UniTask StopAllOfType(FMODEventData eventData, STOP_MODE stopMode = STOP_MODE.ALLOWFADEOUT)
+        {
+            var fetchData = EventEmitterExists(eventData);
+            if (fetchData == null) return;
+            foreach (var emitter in fetchData)
+            {
+                await emitter.StopAsync(stopMode);
+            }
         }
 
         /// <summary>
@@ -202,6 +206,22 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             var key = (eventData.BankName, eventData.EventName, referenceGameObject.GetInstanceID());
             _emitterDataList.TryGetValue(key, out var emitterData);
             return emitterData;
+        }
+
+        private List<FMODEmitterData> EventEmitterExists(FMODEventData eventData)
+        {
+            List<FMODEmitterData> emitterDatas = new List<FMODEmitterData>();
+            var key = (eventData.BankName, eventData.EventName);
+            foreach (var emitter in _emitterDataList)
+            {
+                var data = emitter.Key;
+                if (data.Item1.Equals(key.BankName) && data.Item2.Equals(key.EventName))
+                {
+                    _emitterDataList.TryGetValue(data, out var emitterData);
+                    emitterDatas.Add(emitterData);
+                }
+            }
+            return emitterDatas;
         }
 
         internal async UniTask ClearEmitter(string bankPath)
