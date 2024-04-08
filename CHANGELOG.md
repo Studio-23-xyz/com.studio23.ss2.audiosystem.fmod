@@ -1,3 +1,15 @@
+## [v0.1.4] - 2024-04-08
+
+### Updated
+
+- Added new events to all playback functions.
+
+## [v0.1.3] - 2024-04-04
+
+### Updated 
+
+- Added new method to stop all emitters of the same event type.
+
 ## [v0.0.2] - 2023-12-28
 
 ### Updated

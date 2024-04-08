@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using FMOD.Studio;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
@@ -201,14 +200,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             RuntimeManager.StudioSystem.setParameterByName(parameterName, parameterValue);
         }
 
-        private FMODEmitterData EventEmitterExists(FMODEventData eventData, GameObject referenceGameObject)
+        public FMODEmitterData EventEmitterExists(FMODEventData eventData, GameObject referenceGameObject)
         {
             var key = (eventData.BankName, eventData.EventName, referenceGameObject.GetInstanceID());
             _emitterDataList.TryGetValue(key, out var emitterData);
             return emitterData;
         }
 
-        private List<FMODEmitterData> EventEmitterExists(FMODEventData eventData)
+        public List<FMODEmitterData> EventEmitterExists(FMODEventData eventData)
         {
             List<FMODEmitterData> emitterDatas = new List<FMODEmitterData>();
             var key = (eventData.BankName, eventData.EventName);

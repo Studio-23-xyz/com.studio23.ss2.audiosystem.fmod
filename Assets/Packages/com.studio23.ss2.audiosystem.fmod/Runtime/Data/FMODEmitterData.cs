@@ -23,6 +23,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         internal STOP_MODE StopModeType;
         internal EVENT_CALLBACK_TYPE CurrentCallbackType;
 
+        public delegate void PlaybackEvent();
+        public PlaybackEvent OnEventPlayed;
+        public PlaybackEvent OnEventSuspended;
+        public PlaybackEvent OnEventUnsuspended;
+        public PlaybackEvent OnEventPaused;
+        public PlaybackEvent OnEventUnPaused;
+        public PlaybackEvent OnEventStopped;
+
         public FMODEmitterData(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
             BankName = eventData.BankName;
@@ -61,6 +69,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             Emitter.CustomPlay();
             EventState = FMODEventState.Playing;
+            OnEventPlayed?.Invoke();
         }
 
         /// <summary>
@@ -70,6 +79,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             Emitter.EventInstance.setPaused(true);
             EventState = FMODEventState.Suspended;
+            OnEventSuspended?.Invoke();
         }
 
         /// <summary>
@@ -79,6 +89,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             Emitter.EventInstance.setPaused(false);
             EventState = FMODEventState.Playing;
+            OnEventUnsuspended?.Invoke();
         }
 
         /// <summary>
@@ -91,8 +102,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
             {
                 Emitter.EventInstance.setPaused(true);
                 EventState = FMODEventState.Paused;
+                OnEventPaused?.Invoke();
             }
-            else if (!isGamePaused && (EventState == FMODEventState.Paused)) UnPause();
+            else if (!isGamePaused && (EventState == FMODEventState.Paused))
+            {
+                UnPause();
+                OnEventUnPaused?.Invoke();
+            }
         }
 
         /// <summary>
@@ -104,6 +120,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             Emitter.EventInstance.stop(stopModeType);
             EventState = FMODEventState.Stopped;
+            OnEventStopped?.Invoke();
             await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED));
         }
 
