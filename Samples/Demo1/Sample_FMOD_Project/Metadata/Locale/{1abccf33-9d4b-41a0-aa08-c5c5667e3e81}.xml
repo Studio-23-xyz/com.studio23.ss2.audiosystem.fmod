@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="Locale" id="{1abccf33-9d4b-41a0-aa08-c5c5667e3e81}">
+		<property name="name">
+			<value>Bengali</value>
+		</property>
+		<property name="localeCode">
+			<value>LOCALE_BN</value>
+		</property>
+	</object>
+</objects>
