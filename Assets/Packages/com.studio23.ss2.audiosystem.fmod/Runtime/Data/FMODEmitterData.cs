@@ -17,7 +17,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         internal string BankName;
         internal string EventName;
         internal string EventGUID;
-        internal GameObject ReferenceGameObject;
+        internal GameObject ReferencedGameObject;
         internal CustomStudioEventEmitter Emitter;
         internal FMODEventState EventState = FMODEventState.Stopped;
         internal STOP_MODE StopModeType;
@@ -31,12 +31,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public PlaybackEvent OnEventUnPaused;
         public PlaybackEvent OnEventStopped;
 
-        public FMODEmitterData(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        public FMODEmitterData(FMODEventData eventData, GameObject referencedGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
             BankName = eventData.BankName;
             EventName = eventData.EventName;
             EventGUID = eventData.EventGUID;
-            ReferenceGameObject = referenceGameObject;
+            ReferencedGameObject = referencedGameObject;
             Emitter = emitter;
             StopModeType = stopModeType;
 
@@ -45,7 +45,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
 
         public (string, string, int) GetKey()
         {
-            return (BankName, EventName, ReferenceGameObject.GetInstanceID());
+            return (BankName, EventName, ReferencedGameObject.GetInstanceID());
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// </summary>
         public void Initialize()
         {
-            if (Emitter == null) Emitter = ReferenceGameObject.AddComponent<CustomStudioEventEmitter>();
+            if (Emitter == null) Emitter = ReferencedGameObject.AddComponent<CustomStudioEventEmitter>();
             var eventReference = new EventReference
             {
                 Guid = GUID.Parse(EventGUID)
@@ -155,6 +155,33 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public void SetParameter(string parameterName, float parameterValue)
         {
             Emitter.EventInstance.setParameterByName(parameterName, parameterValue);
+        }
+
+        /// <summary>
+        /// Returns the GameObject the Emitter is attached too.
+        /// </summary>
+        /// <returns></returns>
+        public GameObject GetReferencedGameObject()
+        {
+            return ReferencedGameObject;
+        }
+
+        /// <summary>
+        /// Returns the Emitter.
+        /// </summary>
+        /// <returns></returns>
+        public CustomStudioEventEmitter GetEmitter()
+        {
+            return Emitter;
+        }
+
+        /// <summary>
+        /// Returns the EventState of the Emitter.
+        /// </summary>
+        /// <returns></returns>
+        public FMODEventState GetEventState()
+        {
+            return EventState;
         }
     }
 

@@ -65,8 +65,8 @@
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\PlayModeTests.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODLocaleList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBusList.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODVCAList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_SFX.cs" />
+    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODVCAList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_Dialogue.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_Test.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Tests\PlayMode\FMOD_Test_Data\Test_FMODBank_Sample.cs" />
