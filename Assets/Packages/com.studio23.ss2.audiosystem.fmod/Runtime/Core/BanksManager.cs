@@ -14,7 +14,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
     {
         internal Dictionary<string, Bank> _bankList;
 
-        public delegate UniTask BankEvent(string bankName);
+        public delegate UniTask BankEvent(Bank bank);
         public BankEvent OnBankLoaded;
         public BankEvent OnBankUnloaded;
 
@@ -34,7 +34,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             var result = RuntimeManager.StudioSystem.loadBankFile(bankName, flag, out Bank bank);
             if (result == RESULT.OK && !_bankList.ContainsKey(bankName))
             {
-                OnBankLoaded?.Invoke(bankName);
+                OnBankLoaded?.Invoke(bank);
                 _bankList[bankName] = bank;
             }
         }
@@ -50,7 +50,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             if (result == RESULT.OK)
             {
                 bank.getPath(out string bankPath);
-                OnBankUnloaded?.Invoke(bankPath);
+                OnBankUnloaded?.Invoke(bank);
                 bank.unloadSampleData();
                 _bankList.Remove(bankName);
             }

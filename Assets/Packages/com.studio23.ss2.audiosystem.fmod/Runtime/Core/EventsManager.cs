@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using FMOD;
+using FMOD.Studio;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
@@ -16,7 +18,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         internal Dictionary<(string, string, int), FMODEmitterData> _emitterDataList;
 
         internal void Initialize()
-        {
+        {       
             _emitterDataList = new Dictionary<(string, string, int), FMODEmitterData>();
         }
 
@@ -202,7 +204,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
         public FMODEmitterData EventEmitterExists(FMODEventData eventData, GameObject referenceGameObject)
         {
-            var key = (eventData.BankName, eventData.EventName, referenceGameObject.GetInstanceID());
+            var key = (eventData.EventName, eventData.EventGUID, referenceGameObject.GetInstanceID());
             _emitterDataList.TryGetValue(key, out var emitterData);
             return emitterData;
         }
@@ -210,11 +212,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         public List<FMODEmitterData> EventEmitterExists(FMODEventData eventData)
         {
             List<FMODEmitterData> emitterDatas = new List<FMODEmitterData>();
-            var key = (eventData.BankName, eventData.EventName);
+            var key = (eventData.EventName, eventData.EventGUID);
             foreach (var emitter in _emitterDataList)
             {
                 var data = emitter.Key;
-                if (data.Item1.Equals(key.BankName) && data.Item2.Equals(key.EventName))
+                if (data.Item1.Equals(key.EventName) && data.Item2.Equals(key.EventGUID))
                 {
                     _emitterDataList.TryGetValue(data, out var emitterData);
                     emitterDatas.Add(emitterData);
@@ -223,15 +225,33 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             return emitterDatas;
         }
 
-        internal async UniTask ClearEmitter(string bankPath)
+        internal async UniTask ClearEmitter(Bank bank)
         {
-            List<UniTask> releaseTasks = new List<UniTask>();
-            foreach (var key in _emitterDataList.Keys.Where(k => k.Item1.Equals(bankPath)).ToList())
+            bank.getEventList(out EventDescription[] list);
+            var data = list.ToList();
+            foreach (var key in data)
             {
-                releaseTasks.Add(_emitterDataList[key].ReleaseAsync());
-                _emitterDataList.Remove(key);
+                key.getID(out var id);
+                List<UniTask> releaseTasks = new List<UniTask>();
+
+                var foundMatchData = _emitterDataList.Where(k => k.Key.Item2.Equals(id.ToString())).ToList();
+
+
+                for (int i = foundMatchData.Count -1; i >= 0; i--)
+                {
+                    releaseTasks.Add(foundMatchData[i].Value.ReleaseAsync());
+                    _emitterDataList.Remove(foundMatchData[i].Key);
+                }
+
+                //foreach (var emData in _emitterDataList.Keys.Where(k => k.Item2.Equals(id.ToString())))
+                //{
+                //    releaseTasks.Add(_emitterDataList[emData].ReleaseAsync());
+                //    _emitterDataList.Remove(emData);
+                //}
+
+                await UniTask.WhenAll(releaseTasks);
             }
-            await UniTask.WhenAll(releaseTasks);
+            
         }
     }
 }

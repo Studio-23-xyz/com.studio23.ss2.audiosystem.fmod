@@ -14,7 +14,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
     [System.Serializable]
     public class FMODEmitterData
     {
-        internal string BankName;
         internal string EventName;
         internal string EventGUID;
         internal GameObject ReferencedGameObject;
@@ -33,7 +32,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
 
         public FMODEmitterData(FMODEventData eventData, GameObject referencedGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
-            BankName = eventData.BankName;
             EventName = eventData.EventName;
             EventGUID = eventData.EventGUID;
             ReferencedGameObject = referencedGameObject;
@@ -45,7 +43,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
 
         public (string, string, int) GetKey()
         {
-            return (BankName, EventName, ReferencedGameObject.GetInstanceID());
+            return (EventName, EventGUID, ReferencedGameObject.GetInstanceID());
         }
 
         /// <summary>

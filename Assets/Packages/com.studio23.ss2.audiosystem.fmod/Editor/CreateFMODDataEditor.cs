@@ -383,7 +383,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
                 {
                     var guidValue = value.Split("GUID")[1];
                     var eventName = value.Split("GUID")[0].Replace("event:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_");
-                    scriptContent += $"\t\tpublic static FMODEventData {eventName} = new FMODEventData(\"{_eventList.ElementAt(i).Key}\", \"{value.Split("GUID")[0]}\", \"{guidValue}\");\n";
+                    scriptContent += $"\t\tpublic static FMODEventData {eventName} = new FMODEventData(\"{value.Split("GUID")[0]}\", \"{guidValue}\");\n";
                 }
 
                 scriptContent += "\t}\n";

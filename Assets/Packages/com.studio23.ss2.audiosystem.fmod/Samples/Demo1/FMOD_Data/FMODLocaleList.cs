@@ -1,6 +1,7 @@
+using Studio23.SS2.AudioSystem.fmod.Data;
 using System.Collections.Generic;
 
-namespace Studio23.SS2.AudioSystem.fmod.Data
+namespace Studio23.SS2.AudioSystem.fmod
 {
 	public enum Language
 	{

@@ -70,6 +70,7 @@
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Scripts\Sample.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODLocaleList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODVCAList.cs" />
+    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\TestScript.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBankList.cs" />
   </ItemGroup>
   <ItemGroup>

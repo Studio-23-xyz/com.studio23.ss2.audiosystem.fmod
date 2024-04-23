@@ -1,5 +1,6 @@
 using FMOD.Studio;
 using FMODUnity;
+using Studio23.SS2.AudioSystem.fmod.Core;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 
         public EmitterGameEvent PlayEvent = EmitterGameEvent.None;
         public EmitterGameEvent StopEvent = EmitterGameEvent.None;
+        public EmitterGameEvent ReleaseEvent = EmitterGameEvent.None;
         public bool AllowFadeout = true;
         public bool TriggerOnce = false;
         public bool Preload = false;
