@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.01.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="MixerGroup" id="{d320eb98-3d4a-4cd9-a001-fdb4e071c58e}">
 		<property name="name">
 			<value>SFX</value>
 		</property>
+		<relationship name="masters">
+			<destination>{0925b702-2e7b-41b8-a21b-5e2abd6fe1c1}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{fd2b0385-e5e7-4c14-8348-7ada37283192}</destination>
 		</relationship>
