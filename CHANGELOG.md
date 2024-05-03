@@ -1,3 +1,9 @@
+## [v0.1.4] - 2024-05-03
+
+### Updated
+
+- Modified pause/mute functions for buses.
+
 ## [v0.1.4] - 2024-04-08
 
 ### Updated

@@ -1,8 +1,14 @@
+## [v0.1.4] - 2024-05-03
+
+### Updated
+
+- Modified pause/mute functions for buses.
+
 ## [v0.1.4] - 2024-04-08
 
 ### Updated
 
-- Added new events to all playback functions.
+- Added events to all playback functions.
 
 ## [v0.1.3] - 2024-04-04
 

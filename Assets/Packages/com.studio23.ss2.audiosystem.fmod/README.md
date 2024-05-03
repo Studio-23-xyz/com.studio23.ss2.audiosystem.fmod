@@ -137,7 +137,7 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
 ### Mixer Manager
 
 1. The MixerManager can be used to control the Buses and VCAs within FMOD.
-2. ```SetBusVolume()```, ```PauseBus()```, ```UnPauseBus()```, ```MuteBus()```, ```UnMuteBus()``` all perform their respective functionality on the specified bus.
+2. ```SetBusVolume()```, ```PauseBus()```, ```MuteBus()```, all perform their respective functionality on the specified bus.
 3. ```StopAllBusEvents()``` stops all events under a specific bus.
 4. ```SetVCAVolume()``` is used to change the volume of a VCA.
 
