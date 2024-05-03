@@ -37,43 +37,25 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Pauses a Bus.
+        /// Pause or unpause a bus
         /// </summary>
         /// <param name="busName"></param>
-        public void PauseBus(string busName)
+        /// <param name="state"></param>
+        public void PauseBus(string busName, bool state)
         {
             var busData = BusExists(busName);
-            busData?.Pause();
+            busData?.Pause(state);
         }
 
         /// <summary>
-        /// UnPause a Bus.
+        /// Mute or unmute a bus
         /// </summary>
         /// <param name="busName"></param>
-        public void UnPauseBus(string busName)
+        /// <param name="state"></param>
+        public void MuteBus(string busName, bool state)
         {
             var busData = BusExists(busName);
-            busData?.UnPause();
-        }
-
-        /// <summary>
-        /// Mute a Bus.
-        /// </summary>
-        /// <param name="busName"></param>
-        public void MuteBus(string busName)
-        {
-            var busData = BusExists(busName);
-            busData?.Mute();
-        }
-
-        /// <summary>
-        /// UnMute a Bus.
-        /// </summary>
-        /// <param name="busName"></param>
-        public void UnMuteBus(string busName)
-        {
-            var busData = BusExists(busName);
-            busData?.UnMute();
+            busData?.Mute(state);
         }
 
         /// <summary>

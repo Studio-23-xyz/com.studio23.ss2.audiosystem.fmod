@@ -35,39 +35,23 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         }
 
         /// <summary>
-        /// Pauses a Bus.
+        /// Pause or unpause a bus
         /// </summary>
-        public void Pause()
+        /// <param name="state"></param>
+        public void Pause(bool state)
         {
-            Bus.setPaused(true);
-            IsPaused = true;
+            Bus.setPaused(state);
+            IsPaused = state;
         }
 
         /// <summary>
-        /// UnPauses a Bus.
+        /// Mute or unmute a bus
         /// </summary>
-        public void UnPause()
+        /// <param name="state"></param>
+        public void Mute(bool state)
         {
-            Bus.setPaused(false);
-            IsPaused = false;
-        }
-
-        /// <summary>
-        /// Mutes a Bus.
-        /// </summary>
-        public void Mute()
-        {
-            Bus.setMute(true);
-            IsMuted = true;
-        }
-
-        /// <summary>
-        /// UnMutes a Bus.
-        /// </summary>
-        public void UnMute()
-        {
-            Bus.setMute(false);
-            IsMuted = false;
+            Bus.setMute(state);
+            IsMuted = state;
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 using Studio23.SS2.AudioSystem.fmod;
 using Studio23.SS2.AudioSystem.fmod.Core;
+using Studio23.SS2.AudioSystem.fmod.Extensions;
 using UnityEngine;
 
 public class Sample : MonoBehaviour
@@ -8,7 +9,6 @@ public class Sample : MonoBehaviour
     public Language currentLocale;
 
     #region Basic Audio
-
     [ContextMenu("Play")]
     public void Play()
     {
@@ -141,25 +141,25 @@ public class Sample : MonoBehaviour
     [ContextMenu("Pause Bus")]
     public void PauseBus()
     {
-        FMODManager.Instance.MixerManager.PauseBus(FMODBusList.Sample);
+        FMODManager.Instance.MixerManager.PauseBus(FMODBusList.Sample, true);
     }
 
     [ContextMenu("UnPause Bus")]
     public void UnPauseBus()
     {
-        FMODManager.Instance.MixerManager.UnPauseBus(FMODBusList.Sample);
+        FMODManager.Instance.MixerManager.PauseBus(FMODBusList.Sample, false);
     }
 
     [ContextMenu("Mute Bus")]
     public void MuteBus()
     {
-        FMODManager.Instance.MixerManager.MuteBus(FMODBusList.Sample);
+        FMODManager.Instance.MixerManager.MuteBus(FMODBusList.Sample, true);
     }
 
     [ContextMenu("UnMute Bus")]
     public void UnMuteBus()
     {
-        FMODManager.Instance.MixerManager.UnMuteBus(FMODBusList.Sample);
+        FMODManager.Instance.MixerManager.MuteBus(FMODBusList.Sample, false);
     }
 
     [ContextMenu("Stop All Bus Events")]
