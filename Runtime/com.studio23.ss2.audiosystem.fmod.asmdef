@@ -1,0 +1,18 @@
+{
+    "name": "com.studio23.ss2.audiosystem.fmod",
+    "rootNamespace": "Studio23.SS2.AudioSystem.fmod",
+    "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:0c752da273b17c547ae705acf0f2adf2",
+        "GUID:44d09cf463b68274884d8a3c8a94e528"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
