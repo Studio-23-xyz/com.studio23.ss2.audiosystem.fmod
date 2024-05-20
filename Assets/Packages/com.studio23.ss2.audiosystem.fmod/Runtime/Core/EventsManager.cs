@@ -22,11 +22,23 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             _emitterDataList = new Dictionary<(string, string, int), FMODEmitterData>();
         }
 
-        // public void CreateEventData(CustomStudioEventEmitter emitter)
-        // {
-            // var eventData = new FMODEventData(emitter.EventReference.Path, emitter.EventReference.Guid.ToString());
-            // CreateEmitter(eventData, emitter.gameObject, emitter);
-        // }
+        //public FMODEmitterData CreateEventData(CustomStudioEventEmitter emitter)
+        //{
+        //    var eventData = new FMODEventData(emitter.EventReference.Path, emitter.EventReference.Guid.ToString());
+        //    return CreateEmitter(eventData, emitter.gameObject, emitter);
+        //}
+
+        //public FMODEmitterData CreateEventData(EventReference eventReference, GameObject referenceGameObject)
+        //{
+        //    var eventData = new FMODEventData(eventReference.Path, eventReference.Guid.ToString());
+        //    return CreateEmitter(eventData, referenceGameObject);
+        //}
+
+        //public FMODEmitterData CreateEventData(EventReference eventReference, CustomStudioEventEmitter emitter)
+        //{
+        //    var eventData = new FMODEventData(eventReference.Path, eventReference.Guid.ToString());
+        //    return CreateEmitter(eventData, emitter.gameObject, emitter);
+        //}
 
         /// <summary>
         /// Creates a Custom FMOD Studio Event Emitter for an Event on a GameObject.

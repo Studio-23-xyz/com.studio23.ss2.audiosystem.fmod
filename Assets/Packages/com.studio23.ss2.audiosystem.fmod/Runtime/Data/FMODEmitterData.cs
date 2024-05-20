@@ -156,6 +156,15 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         }
 
         /// <summary>
+        /// Returns the Event of the Emitter.
+        /// </summary>
+        /// <returns></returns>
+        public FMODEventData GetEventData()
+        {
+            return new FMODEventData(EventName, EventGUID);
+        }
+
+        /// <summary>
         /// Returns the GameObject the Emitter is attached too.
         /// </summary>
         /// <returns></returns>
