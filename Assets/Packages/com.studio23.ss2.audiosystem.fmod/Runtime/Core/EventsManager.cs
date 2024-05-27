@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using FMOD;
 using FMOD.Studio;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Data;
@@ -7,8 +6,6 @@ using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -20,7 +17,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         internal Dictionary<(string, string, int), FMODEmitterData> _emitterDataList;
 
         internal void Initialize()
-        {       
+        {
             _emitterDataList = new Dictionary<(string, string, int), FMODEmitterData>();
         }
 
@@ -318,7 +315,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
                 var foundMatchData = _emitterDataList.Where(k => k.Key.Item2.Equals(id.ToString())).ToList();
 
-                for (int i = foundMatchData.Count -1; i >= 0; i--)
+                for (int i = foundMatchData.Count - 1; i >= 0; i--)
                 {
                     releaseTasks.Add(foundMatchData[i].Value.ReleaseAsync());
                     _emitterDataList.Remove(foundMatchData[i].Key);
