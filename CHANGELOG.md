@@ -1,3 +1,9 @@
+## [v1.0.0] - 2024-05-27
+
+### Updated
+
+- Added/updated new functions for stopping and releasing emitters.
+
 ## [v0.1.4] - 2024-05-03
 
 ### Updated
@@ -8,7 +14,7 @@
 
 ### Updated
 
-- Added new events to all playback functions.
+- Added events to all playback functions.
 
 ## [v0.1.3] - 2024-04-04
 

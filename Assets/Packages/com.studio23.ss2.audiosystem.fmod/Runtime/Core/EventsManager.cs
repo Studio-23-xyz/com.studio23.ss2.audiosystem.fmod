@@ -7,6 +7,8 @@ using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -166,7 +168,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Stops all emitters of the same type.
+        /// Stops all Emitters of the same type.
         /// </summary>
         /// <param name="eventData"></param>
         /// <param name="stopMode"></param>
@@ -175,14 +177,31 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         {
             var fetchData = EventEmitterExists(eventData);
             if (fetchData == null) return;
+            List<UniTask> stopTasks = new List<UniTask>();
             foreach (var emitter in fetchData)
             {
-                await emitter.StopAsync(stopMode);
+                stopTasks.Add(Stop(emitter.GetEventData(), emitter.ReferencedGameObject));
             }
+            await UniTask.WhenAll(stopTasks);
         }
 
         /// <summary>
-        /// Release the Event Instance and destroy the Emitter.
+        /// Stops all currently playing Emitters.
+        /// </summary>
+        /// <param name="stopMode"></param>
+        /// <returns></returns>
+        public async UniTask StopAll(STOP_MODE stopMode = STOP_MODE.ALLOWFADEOUT)
+        {
+            List<UniTask> stopTasks = new List<UniTask>();
+            foreach (var emitter in _emitterDataList)
+            {
+                stopTasks.Add(Stop(emitter.Value.GetEventData(), emitter.Value.ReferencedGameObject));
+            }
+            await UniTask.WhenAll(stopTasks);
+        }
+
+        /// <summary>
+        /// Release the Event Instance and destroys the Emitter.
         /// </summary>
         /// <param name="eventData"></param>
         /// <param name="referenceGameObject"></param>
@@ -193,6 +212,40 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             if (fetchData == null) return;
             await fetchData.ReleaseAsync();
             _emitterDataList.Remove(fetchData.GetKey());
+        }
+
+        /// <summary>
+        /// Releases and destroys all Emitters of the same type.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="referenceGameObject"></param>
+        /// <returns></returns>
+        public async UniTask ReleaseAllOfType(FMODEventData eventData)
+        {
+            var fetchData = EventEmitterExists(eventData);
+            if (fetchData == null) return;
+            List<UniTask> releaseTasks = new List<UniTask>();
+            for (int i = fetchData.Count - 1; i >= 0; i--)
+            {
+                var value = fetchData[i];
+                releaseTasks.Add(Release(value.GetEventData(), value.ReferencedGameObject));
+            }
+            await UniTask.WhenAll(releaseTasks);
+        }
+
+        /// <summary>
+        /// Releases all existing Emitters.
+        /// </summary>
+        /// <returns></returns>
+        public async UniTask ReleaseAll()
+        {
+            List<UniTask> releaseTasks = new List<UniTask>();
+            for (int i = _emitterDataList.Count - 1; i >= 0; i--)
+            {
+                var value = _emitterDataList.ElementAt(i).Value;
+                releaseTasks.Add(Release(value.GetEventData(), value.ReferencedGameObject));
+            }
+            await UniTask.WhenAll(releaseTasks);
         }
 
         /// <summary>
@@ -220,6 +273,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             RuntimeManager.StudioSystem.setParameterByName(parameterName, parameterValue);
         }
 
+        /// <summary>
+        /// Returns an Emitter if it has exists.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="referenceGameObject"></param>
+        /// <returns></returns>
         public FMODEmitterData EventEmitterExists(FMODEventData eventData, GameObject referenceGameObject)
         {
             var key = (eventData.EventName, eventData.EventGUID, referenceGameObject.GetInstanceID());
@@ -227,6 +286,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             return emitterData;
         }
 
+        /// <summary>
+        /// Returns a list of the same type of Emitters if they exist.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <returns></returns>
         public List<FMODEmitterData> EventEmitterExists(FMODEventData eventData)
         {
             List<FMODEmitterData> emitterDatas = new List<FMODEmitterData>();
@@ -254,22 +318,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
                 var foundMatchData = _emitterDataList.Where(k => k.Key.Item2.Equals(id.ToString())).ToList();
 
-
                 for (int i = foundMatchData.Count -1; i >= 0; i--)
                 {
                     releaseTasks.Add(foundMatchData[i].Value.ReleaseAsync());
                     _emitterDataList.Remove(foundMatchData[i].Key);
                 }
 
-                //foreach (var emData in _emitterDataList.Keys.Where(k => k.Item2.Equals(id.ToString())))
-                //{
-                //    releaseTasks.Add(_emitterDataList[emData].ReleaseAsync());
-                //    _emitterDataList.Remove(emData);
-                //}
-
                 await UniTask.WhenAll(releaseTasks);
             }
-            
         }
     }
 }

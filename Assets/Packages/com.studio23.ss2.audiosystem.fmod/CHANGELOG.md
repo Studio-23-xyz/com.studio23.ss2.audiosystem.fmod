@@ -1,3 +1,9 @@
+## [v1.0.0] - 2024-05-27
+
+### Updated
+
+- Added/updated new functions for stopping and releasing emitters.
+
 ## [v0.1.4] - 2024-05-03
 
 ### Updated

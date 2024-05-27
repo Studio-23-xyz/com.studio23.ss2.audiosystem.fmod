@@ -104,24 +104,25 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
     - If the GameObject already has an emitter component, we can pass that emitter instead to initialize it.
     - If an emitter of type "event and GameObject" already exists, it will just play the event.
 5. ```Pause()```,  ```UnPause()```, ```Stop()```, ```Release()```, ```LoadEventSampleData()```, work similarly, but they need an emitter of type "event and GameObject" to exist or else they will do nothing.
-6. ```StopAllOfType()``` does not take in any GameObjects. It stops all emitters of the same event type.
-7. Sometimes an emitter may need to be created or initialized at runtime without playing it.
+6. ```StopAllOfType()``` and ```ReleaseAllOfType``` does not take in any GameObjects. They stop or release all emitters of the same event type.
+7. ```StopAll()``` and ```ReleaseAll``` stop or release all existing emitters.
+8. Sometimes an emitter may need to be created or initialized at runtime without playing it.
     - Call ```CreateEmitter()``` to create an emitter on the GameObject.
     - It will take the event we want to play and the gameobject from which it will play. 
     - By default, it will create an emitter on the GameObject and will set the event instance's ```STOP_MODE``` to ```ALLOWFADEOUT```.
     - If the GameObject already has an emitter component, we can pass that emitter instead to initialize it.
     - Once an emitter of type "event and GameObject" is created, we no longer have to create this emitter again to use playback methods.
     - We can call playback methods on this emitter by passing in the event and the GameObject.
-8. ```PlayProgrammerSound()``` creates an emitter similar to ```Play()``` and plays the sound immediately. 
+9. ```PlayProgrammerSound()``` creates an emitter similar to ```Play()``` and plays the sound immediately. 
     - It will take the key of the audio file we want to play, the event we want to play and the gameobject from which it will play.
     - The key can be a key from a audio table from FMOD.
     - The key can also be the file name of an audio file in the streaming assets folder.
-9. ```LoadEventSampleData()``` Loads the sample data of an event. It may be beneficial to load the sample data of an event that is frequently used, instead of loading/unloading every time the event is called.
-10. Make sure to call ```Release()``` for events that are no longer needed. It will release the event instance and destroy the emitter.
-11. ```TogglePauseAll()``` will pause/unpause all the events in the game.
-12. ```SetLocalParameter()``` can be used to change parameters withing event instances.
+10. ```LoadEventSampleData()``` Loads the sample data of an event. It may be beneficial to load the sample data of an event that is frequently used, instead of loading/unloading every time the event is called.
+11. Make sure to call ```Release()``` for events that are no longer needed. It will release the event instance and destroy the emitter.
+12. ```TogglePauseAll()``` will pause/unpause all the events in the game.
+13. ```SetLocalParameter()``` can be used to change parameters withing event instances.
     - It will take the event, the gameobject from which it is playing, the parameter name and the parameter value. 
-13. ```SetGlobalParameter()```can be used to change global parameters.
+14. ```SetGlobalParameter()```can be used to change global parameters.
 
 
 ### Banks Manager
