@@ -1,3 +1,9 @@
+## [v1.0.2] - 2024-06-03
+
+### Updated
+
+- Added events to functions (```StopAllOfType```, ```StopAll```, ```ReleaseAllOfType```, ```ReleaseAll```).
+
 ## [v1.0.0] - 2024-05-27
 
 ### Updated

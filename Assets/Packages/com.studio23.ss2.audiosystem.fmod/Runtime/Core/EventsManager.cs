@@ -16,6 +16,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
     {
         internal Dictionary<(string, string, int), FMODEmitterData> _emitterDataList;
 
+        public delegate void EmitterEvent();
+        public EmitterEvent OnStopAllOfType;
+        public EmitterEvent OnStopAll;
+        public EmitterEvent OnReleaseAllOfType;
+        public EmitterEvent OnReleaseAll;
+
+
         internal void Initialize()
         {
             _emitterDataList = new Dictionary<(string, string, int), FMODEmitterData>();
@@ -180,6 +187,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 stopTasks.Add(Stop(emitter.GetEventData(), emitter.ReferencedGameObject));
             }
             await UniTask.WhenAll(stopTasks);
+            OnStopAllOfType?.Invoke();
         }
 
         /// <summary>
@@ -195,6 +203,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 stopTasks.Add(Stop(emitter.Value.GetEventData(), emitter.Value.ReferencedGameObject));
             }
             await UniTask.WhenAll(stopTasks);
+            OnStopAll?.Invoke();
         }
 
         /// <summary>
@@ -228,6 +237,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 releaseTasks.Add(Release(value.GetEventData(), value.ReferencedGameObject));
             }
             await UniTask.WhenAll(releaseTasks);
+            OnReleaseAllOfType?.Invoke();
         }
 
         /// <summary>
@@ -243,6 +253,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 releaseTasks.Add(Release(value.GetEventData(), value.ReferencedGameObject));
             }
             await UniTask.WhenAll(releaseTasks);
+            OnReleaseAll?.Invoke();
         }
 
         /// <summary>
