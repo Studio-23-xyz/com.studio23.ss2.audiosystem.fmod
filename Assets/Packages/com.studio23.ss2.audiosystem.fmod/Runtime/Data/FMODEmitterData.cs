@@ -150,9 +150,30 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// </summary>
         /// <param name="parameterName"></param>
         /// <param name="parameterValue"></param>
-        public void SetParameter(string parameterName, float parameterValue)
+        public void SetParameterByName(string parameterName, float parameterValue)
         {
             Emitter.EventInstance.setParameterByName(parameterName, parameterValue);
+        }
+
+        /// <summary>
+        /// Gets a Local parameter value by name.
+        /// </summary>
+        /// <param name="parameterName"></param>
+        public float GetParameterValueByName(string parameterName)
+        {
+            Emitter.EventInstance.getParameterByName(parameterName, out float value);
+            return value;
+        }
+
+        /// <summary>
+        /// Gets a Local parameter final value by name.
+        /// </summary>
+        /// <param name="parameterName"></param>
+        /// <returns></returns>
+        public float GetParameterFinalValueByName(string parameterName)
+        {
+            Emitter.EventInstance.getParameterByName(parameterName, out float value, out float finalValue);
+            return finalValue;
         }
 
         /// <summary>

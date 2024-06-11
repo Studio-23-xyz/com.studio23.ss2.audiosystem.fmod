@@ -22,7 +22,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         public EmitterEvent OnReleaseAllOfType;
         public EmitterEvent OnReleaseAll;
 
-
         internal void Initialize()
         {
             _emitterDataList = new Dictionary<(string, string, int), FMODEmitterData>();
@@ -66,17 +65,40 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Loads the sample data of an event.
-        /// It may be beneficial to load the sample data of an event that is frequently used,
-        /// instead of loading/unloading every time the event is called.
+        /// Plays the Emitter.
+        /// If the GameObject already has an Emitter attached, then pass the Emitter to initialize it.
+        /// By default it will create an Emitter and the Event Instance's STOP_MODE is set to ALLOWFADEOUT.
         /// </summary>
         /// <param name="eventData"></param>
         /// <param name="referenceGameObject"></param>
-        public void LoadEventSampleData(FMODEventData eventData, GameObject referenceGameObject)
+        public async void Play(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
         {
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            if (fetchData == null)
+            {
+                fetchData = CreateEmitter(eventData, referenceGameObject, emitter, stopModeType);
+            }
+            if (fetchData.EventState == FMODEventState.Playing) await fetchData.StopAsync(STOP_MODE.IMMEDIATE);
+            fetchData.Play();
+        }
+
+        /// <summary>
+        /// Plays all existing emitters of the same type of event.
+        /// This does not create any emitters on its own.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="referenceGameObject"></param>
+        /// <param name="emitter"></param>
+        /// <param name="stopModeType"></param>
+        public async void PlayAllOfType(FMODEventData eventData)
+        {
+            var fetchData = EventEmitterExists(eventData);
             if (fetchData == null) return;
-            fetchData.LoadSampleData();
+            foreach (var e in fetchData)
+            {
+                if (e.EventState == FMODEventState.Playing) await e.StopAsync(STOP_MODE.IMMEDIATE);
+                e.Play();
+            }
         }
 
         /// <summary>
@@ -104,21 +126,17 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Plays the Emitter.
-        /// If the GameObject already has an Emitter attached, then pass the Emitter to initialize it.
-        /// By default it will create an Emitter and the Event Instance's STOP_MODE is set to ALLOWFADEOUT.
+        /// Loads the sample data of an event.
+        /// It may be beneficial to load the sample data of an event that is frequently used,
+        /// instead of loading/unloading every time the event is called.
         /// </summary>
         /// <param name="eventData"></param>
         /// <param name="referenceGameObject"></param>
-        public async void Play(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        public void LoadEventSampleData(FMODEventData eventData, GameObject referenceGameObject)
         {
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
-            if (fetchData == null)
-            {
-                fetchData = CreateEmitter(eventData, referenceGameObject, emitter, stopModeType);
-            }
-            if (fetchData.EventState == FMODEventState.Playing) await fetchData.StopAsync(STOP_MODE.IMMEDIATE);
-            fetchData.Play();
+            if (fetchData == null) return;
+            fetchData.LoadSampleData();
         }
 
         /// <summary>
@@ -184,7 +202,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             List<UniTask> stopTasks = new List<UniTask>();
             foreach (var emitter in fetchData)
             {
-                stopTasks.Add(Stop(emitter.GetEventData(), emitter.ReferencedGameObject));
+                stopTasks.Add(emitter.StopAsync());
             }
             await UniTask.WhenAll(stopTasks);
             OnStopAllOfType?.Invoke();
@@ -200,7 +218,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             List<UniTask> stopTasks = new List<UniTask>();
             foreach (var emitter in _emitterDataList)
             {
-                stopTasks.Add(Stop(emitter.Value.GetEventData(), emitter.Value.ReferencedGameObject));
+                stopTasks.Add(emitter.Value.StopAsync());
             }
             await UniTask.WhenAll(stopTasks);
             OnStopAll?.Invoke();
@@ -234,7 +252,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             for (int i = fetchData.Count - 1; i >= 0; i--)
             {
                 var value = fetchData[i];
-                releaseTasks.Add(Release(value.GetEventData(), value.ReferencedGameObject));
+                releaseTasks.Add(value.ReleaseAsync());
             }
             await UniTask.WhenAll(releaseTasks);
             OnReleaseAllOfType?.Invoke();
@@ -250,7 +268,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             for (int i = _emitterDataList.Count - 1; i >= 0; i--)
             {
                 var value = _emitterDataList.ElementAt(i).Value;
-                releaseTasks.Add(Release(value.GetEventData(), value.ReferencedGameObject));
+                releaseTasks.Add(value.ReleaseAsync());
             }
             await UniTask.WhenAll(releaseTasks);
             OnReleaseAll?.Invoke();
@@ -263,12 +281,55 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="referenceGameObject"></param>
         /// <param name="parameterName"></param>
         /// <param name="parameterValue"></param>
-        public void SetLocalParameter(FMODEventData eventData, GameObject referenceGameObject, string parameterName,
-            float parameterValue)
+        public void SetLocalParameterByName(FMODEventData eventData, GameObject referenceGameObject, string parameterName, float parameterValue)
         {
             var fetchData = EventEmitterExists(eventData, referenceGameObject);
             if (fetchData == null) return;
-            fetchData.SetParameter(parameterName, parameterValue);
+            fetchData.SetParameterByName(parameterName, parameterValue);
+        }
+
+        /// <summary>
+        /// Sets a Local Parameter value for all active instances of that event.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="parameterName"></param>
+        /// <param name="parameterValue"></param>
+        public void SetLocalParameterAllOfTypeByName(FMODEventData eventData, string parameterName, float parameterValue)
+        {
+            var fetchData = EventEmitterExists(eventData);
+            if (fetchData == null) return;
+            foreach (var emitter in fetchData)
+            {
+                SetLocalParameterByName(eventData, emitter.GetReferencedGameObject(), parameterName, parameterValue);
+            }
+        }
+
+        /// <summary>
+        /// Gets a Local parameter value by name.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="referenceGameObject"></param>
+        /// <param name="parameterName"></param>
+        /// <returns></returns>
+        public float GetLocalParameterValueByName(FMODEventData eventData, GameObject referenceGameObject, string parameterName)
+        {
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            if (fetchData == null) return new float();
+            return fetchData.GetParameterValueByName(parameterName);
+        }
+
+        /// <summary>
+        /// Gets a Local parameter final value by name.
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <param name="referenceGameObject"></param>
+        /// <param name="parameterName"></param>
+        /// <returns></returns>
+        public float GetLocalParameterFinalValueByName(FMODEventData eventData, GameObject referenceGameObject, string parameterName)
+        {
+            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            if (fetchData == null) return new float();
+            return fetchData.GetParameterFinalValueByName(parameterName);
         }
 
         /// <summary>
@@ -276,9 +337,31 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// </summary>
         /// <param name="parameterName"></param>
         /// <param name="parameterValue"></param>
-        public void SetGlobalParameter(string parameterName, float parameterValue)
+        public void SetGlobalParameterByName(string parameterName, float parameterValue)
         {
             RuntimeManager.StudioSystem.setParameterByName(parameterName, parameterValue);
+        }
+
+        /// <summary>
+        /// Gets a Global parameter value by name.
+        /// </summary>
+        /// <param name="parameterName"></param>
+        /// <returns></returns>
+        public float GetGlobalParameterValueByName(string parameterName)
+        {
+            RuntimeManager.StudioSystem.getParameterByName(parameterName, out float value);
+            return value;
+        }
+
+        /// <summary>
+        /// Gets a Global parameter final value by name.
+        /// </summary>
+        /// <param name="parameterName"></param>
+        /// <returns></returns>
+        public float GetGlobalParameterFinalValueByName(string parameterName)
+        {
+            RuntimeManager.StudioSystem.getParameterByName(parameterName, out float value, out float finalValue);
+            return finalValue;
         }
 
         /// <summary>

@@ -136,6 +136,7 @@
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Master.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Asset\{4c43130b-9186-4fb6-9d65-a9acdac70927}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\EventFolder\{45afd299-7990-42f5-8ca4-83d643cf06eb}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPreset\{6084c7f0-0738-4840-974b-aabf4439b65e}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Dialogue\LOCALE_CN\keys.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Tags.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />

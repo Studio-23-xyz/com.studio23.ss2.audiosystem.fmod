@@ -202,9 +202,9 @@
 
 //        [UnityTest]
 //        [Order(20)]
-//        public IEnumerator SetLocalParameter()
+//        public IEnumerator SetLocalParameterByName()
 //        {
-//            _fmodManager.EventsManager.SetLocalParameter(Test_FMODBank_Test.Test, _fmodManager.gameObject,
+//            _fmodManager.EventsManager.SetLocalParameterByName(Test_FMODBank_Test.Test, _fmodManager.gameObject,
 //                Test_FMODParameterList.Test.TestParameter, 0.5f);
 //            _fmodManager.EventsManager._emitterDataList[(Test_FMODBank_Test.Test.BankName, Test_FMODBank_Test.Test.EventName, _fmodManager.gameObject.GetInstanceID())].Emitter.EventInstance
 //                .getParameterByName(Test_FMODParameterList.Test.TestParameter, out float parameterValue);
@@ -214,9 +214,9 @@
 
 //        [UnityTest]
 //        [Order(21)]
-//        public IEnumerator SetGlobalParameter()
+//        public IEnumerator SetGlobalParameterByName()
 //        {
-//            _fmodManager.EventsManager.SetGlobalParameter(Test_FMODParameterList.snapshot_Test.GlobalTest, 0.5f);
+//            _fmodManager.EventsManager.SetGlobalParameterByName(Test_FMODParameterList.snapshot_Test.GlobalTest, 0.5f);
 //            RuntimeManager.StudioSystem.getParameterByName(Test_FMODParameterList.snapshot_Test.GlobalTest,
 //                out float parameterValue);
 //            Assert.IsTrue(parameterValue == 0.5f);

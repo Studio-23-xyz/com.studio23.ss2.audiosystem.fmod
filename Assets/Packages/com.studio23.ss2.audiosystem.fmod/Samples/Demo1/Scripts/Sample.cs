@@ -1,6 +1,5 @@
 using Studio23.SS2.AudioSystem.fmod;
 using Studio23.SS2.AudioSystem.fmod.Core;
-using Studio23.SS2.AudioSystem.fmod.Extensions;
 using UnityEngine;
 
 public class Sample : MonoBehaviour
@@ -38,7 +37,7 @@ public class Sample : MonoBehaviour
     [ContextMenu("Change Parameter")]
     public void ChangeParameter()
     {
-        FMODManager.Instance.EventsManager.SetLocalParameter(FMODBank_Sample.Test, gameObject, FMODParameterList.Test.TestParameter, Random.Range(0.0f, 1.0f));
+        FMODManager.Instance.EventsManager.SetLocalParameterByName(FMODBank_Sample.Test, gameObject, FMODParameterList.Test.TestParameter, Random.Range(0.0f, 1.0f));
     }
 
     [ContextMenu("Stop")]
