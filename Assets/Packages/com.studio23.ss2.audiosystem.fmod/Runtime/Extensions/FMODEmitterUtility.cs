@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
+using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,19 +11,16 @@ namespace Studio23.SS2
 {
     public class FMODEmitterUtility : MonoBehaviour
     {
-        [Header("FMOD Event")]
-        [SerializeField] private string _eventName;
-        [SerializeField] private string _eventGUID;
-        public FMODEventData EventData => new FMODEventData(_eventName, _eventGUID);
+        public EventReference EventReference;
+        public FMODEventData EventData => new FMODEventData(EventReference.Path, EventReference.Guid.ToString());
         [SerializeField] private GameObject _gameObject;
 
-        [Header("Parameter Settings")]
+        private float _parameterValue;
         [SerializeField] private string _parameterName;
         [SerializeField] private float _startValue;
         [SerializeField] private float _endValue;
         [SerializeField] private float _duration;
-        private float _parameterValue;
-
+        
         public bool StopOnFadeOut;
         public bool ReleaseOnFadeOut;
 
@@ -60,6 +59,9 @@ namespace Studio23.SS2
 
         #region PlayBack
 
+        /// <summary>
+        /// Plays the specified Event in EventData
+        /// </summary>
         [ContextMenu("Play")]
         public void Play()
         {
@@ -128,7 +130,6 @@ namespace Studio23.SS2
             FMODManager.Instance.EventsManager.Release(EventData, _gameObject).Forget();
         }
 
-        [ContextMenu("ReleaseAllOfType using tags")]
         public void ReleaseTargetEmitters(string tag)
         {
             var emitters = GameObject.FindGameObjectsWithTag(tag);
@@ -154,13 +155,11 @@ namespace Studio23.SS2
 
         #region Local Parameters
 
-        [ContextMenu("SetLocalParameter")]
         public void SetLocalParameter(float value)
         {
             FMODManager.Instance.EventsManager.SetLocalParameterByName(EventData, gameObject, _parameterName, value);
         }
 
-        [ContextMenu("SetLocalParameterAllOfType")]
         public void SetLocalParameterAllOfType(float value)
         {
             FMODManager.Instance.EventsManager.SetLocalParameterAllOfTypeByName(EventData, _parameterName, value);
@@ -220,12 +219,11 @@ namespace Studio23.SS2
 
         #region Global Parameters
 
-        [ContextMenu("SetGlobalParameter")]
-        public void SetGlobalParameter()
+        public void SetGlobalParameter(float value)
         {
             FMODManager.Instance.EventsManager.SetGlobalParameterByName(_parameterName, _endValue);
         }
-        
+
         private void RampGlobalParameter(float startValue, float endValue)
         {
             _onTweenUpdate.AddListener((() =>

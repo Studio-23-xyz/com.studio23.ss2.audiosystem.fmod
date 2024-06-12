@@ -126,6 +126,7 @@
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{37ebea86-d649-4a7a-b7b5-25701bfce8e9}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{3f0b7d64-e765-400e-ae74-c2d973ad4ca1}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPreset\{f1fbae11-8273-4d0f-aef5-1ad3b10f92c1}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{7e33a2b3-db05-4b7a-ba1e-e862f2bfde36}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMPro_Properties.cginc" />

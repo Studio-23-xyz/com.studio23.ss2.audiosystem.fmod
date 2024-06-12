@@ -18,7 +18,7 @@ public class CreateFMODDataTestsEditor : EditorWindow
     private static string _testNameSpace = "Studio23.SS2.AudioSystem.fmod.Tests";
 
     [MenuItem("Studio-23/Audio System/Generate Test Data")]
-    public static void GenerateData(string folderPath, string nameSpace)
+    public static void GenerateData()
     {
         _bankList.Clear();
         _busList.Clear();
