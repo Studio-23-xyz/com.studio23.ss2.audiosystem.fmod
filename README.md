@@ -104,6 +104,7 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
     - If the GameObject already has an emitter component, we can pass that emitter instead to initialize it.
     - If an emitter of type "event and GameObject" already exists, it will just play the event.
 5. ```Pause()```,  ```UnPause()```, ```Stop()```, ```Release()```, ```LoadEventSampleData()```, work similarly, but they need an emitter of type "event and GameObject" to exist or else they will do nothing.
+6. ```PlayAllOfType()``` Plays all existing emitters of the same type of event. This does not create any emitters on its own.
 6. ```StopAllOfType()``` and ```ReleaseAllOfType``` does not take in any GameObjects. They stop or release all emitters of the same event type.
 7. ```StopAll()``` and ```ReleaseAll``` stop or release all existing emitters.
 8. Sometimes an emitter may need to be created or initialized at runtime without playing it.
@@ -120,10 +121,28 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
 10. ```LoadEventSampleData()``` Loads the sample data of an event. It may be beneficial to load the sample data of an event that is frequently used, instead of loading/unloading every time the event is called.
 11. Make sure to call ```Release()``` for events that are no longer needed. It will release the event instance and destroy the emitter.
 12. ```TogglePauseAll()``` will pause/unpause all the events in the game.
-13. ```SetLocalParameter()``` can be used to change parameters withing event instances.
+13. ```SetLocalParameterByName()``` is used to set a local parameter using its name for an event. 
     - It will take the event, the gameobject from which it is playing, the parameter name and the parameter value. 
-14. ```SetGlobalParameter()```can be used to change global parameters.
+14. ```SetLocalParameterAllOfTypeByName()``` is used to set a local parameter using its name for all active instances of that event.
+14. ```SetGlobalParameter()``` is used to set a global parameter value by name.
+15. ```GetLocalParameterValueByName()``` and ```GetLocalParameterFinalValueByName()``` is used to get the local parameter's current value and current final value respectively using its name.
+16. ```SetGlobalParameterByName()``` and ```GetGlobalParameterValueByName()``` is used to get the global parameter's current value and current final value respectively using its name.
 
+### FMOD Emitter Utility
+
+1. It can be attached to game objects as a component to play and manage events without the need for code.
+2. You need to assign the event you want to play and optionally one parameter that you would like to control.
+3. It also allows you to automate and ramp parameter changes for any event.
+4. ```FadeIn()```, ```FadeInAllOfType()```, ```FadeOut()```, ```FadeOutAllOfType()``` are used for fading in/out audio within a certain duration. 
+    - The event must have some parameter that controls the master volume of the event.
+    - Should not be used for ramping other parameters. May not work as expected.
+    - For the intended behavior, ```startValue``` should be set to ```0``` and ```endValue``` should be set to ```1```. 
+    - The bools ```StopOnFadeOut``` and ```ReleaseOnFadeOut``` can be marked as true to stop or release the event respectively after fading out. 
+    - Ideally these should not be true when ramping any other parameters other than volume. May not work as expected.
+5. ```RampUpLocalParameter()```, ```RampUpLocalParameterAllOfType()```, ```RampDownLocalParameter()```, ```RampDownLocalParameterAllOfType()``` are used to ramp up/down local parameters within a certain  duration.
+    - Should not be used for volume parameters or fading in/out. May not work as expected.
+6. ```RampUpGlobalParameter()```, ```RampDownGlobalParameter()```, are used to ramp up/down global parameters within a certain  duration.
+7. The rest of the methods are similar to the methods in Events Manager.
 
 ### Banks Manager
 

@@ -41,6 +41,10 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
             Initialize();
         }
 
+        /// <summary>
+        /// Get the unique Key of an emitter
+        /// </summary>
+        /// <returns></returns>
         public (string, string, int) GetKey()
         {
             return (EventName, EventGUID, ReferencedGameObject.GetInstanceID());

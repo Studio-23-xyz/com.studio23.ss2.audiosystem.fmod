@@ -17,6 +17,10 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         internal Dictionary<(string, string, int), FMODEmitterData> _emitterDataList;
 
         public delegate void EmitterEvent();
+        public EmitterEvent OnPauseAllOfType;
+        public EmitterEvent OnUnPauseAllOfType;
+        public EmitterEvent OnPauseAll;
+        public EmitterEvent OnUnPauseAll;
         public EmitterEvent OnStopAllOfType;
         public EmitterEvent OnStopAll;
         public EmitterEvent OnReleaseAllOfType;
@@ -140,7 +144,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Pause the Emitter.
+        /// Pauses the Emitter.
         /// </summary>
         /// <param name="eventData"></param>
         /// <param name="referenceGameObject"></param>
@@ -152,7 +156,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// UnPause the Emitter
+        /// UnPauses the Emitter.
         /// </summary>
         /// <param name="eventData"></param>
         /// <param name="referenceGameObject"></param>
@@ -164,7 +168,37 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Pause all Emitters.
+        /// Pauses all Emitters of the same type.
+        /// </summary>
+        /// <param name="eventData"></param>
+        public void PauseAllOfType(FMODEventData eventData)
+        {
+            var fetchData = EventEmitterExists(eventData);
+            if (fetchData == null) return;
+            foreach (var emitter in fetchData)
+            {
+                emitter.Pause();
+            }
+            OnPauseAllOfType?.Invoke();
+        }
+
+        /// <summary>
+        /// UnPauses all Emitters of the same type.
+        /// </summary>
+        /// <param name="eventData"></param>
+        public void UnPauseAllOfType(FMODEventData eventData)
+        {
+            var fetchData = EventEmitterExists(eventData);
+            if (fetchData == null) return;
+            foreach (var emitter in fetchData)
+            {
+                emitter.UnPause();
+            }
+            OnUnPauseAllOfType?.Invoke();
+        }
+
+        /// <summary>
+        /// Pause/UnPauses all Emitters.
         /// </summary>
         /// <param name="isGamePaused"></param>
         public void TogglePauseAll(bool isGamePaused)
@@ -172,6 +206,15 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             foreach (var emitter in _emitterDataList)
             {
                 emitter.Value.TogglePause(isGamePaused);
+            }
+
+            if (isGamePaused)
+            {
+                OnPauseAll?.Invoke();
+            }
+            else
+            {
+                OnUnPauseAll?.Invoke();
             }
         }
 

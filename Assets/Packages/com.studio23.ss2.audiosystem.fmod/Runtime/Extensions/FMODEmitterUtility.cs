@@ -60,7 +60,7 @@ namespace Studio23.SS2
         #region PlayBack
 
         /// <summary>
-        /// Plays the specified Event in EventData
+        /// Creates an Emitter and plays the specified Event.
         /// </summary>
         [ContextMenu("Play")]
         public void Play()
@@ -68,56 +68,85 @@ namespace Studio23.SS2
             FMODManager.Instance.EventsManager.Play(EventData, _gameObject);
         }
 
+        /// <summary>
+        /// Plays all existing emitters of the specified Event.
+        /// </summary>
         [ContextMenu("PlayAllOfType")]
         public void PlayAllOfType()
         {
             FMODManager.Instance.EventsManager.PlayAllOfType(EventData);
         }
 
+        /// <summary>
+        /// Pauses the specified Emitter.
+        /// </summary>
+        [ContextMenu("Pause")]
+        public void Pause()
+        {
+            FMODManager.Instance.EventsManager.Pause(EventData, _gameObject);
+        }
+
+        /// <summary>
+        /// UnPauses the specified Emitter.
+        /// </summary>
+        [ContextMenu("UnPause")]
+        public void UnPause()
+        {
+            FMODManager.Instance.EventsManager.UnPause(EventData, _gameObject);
+        }
+
+        /// <summary>
+        /// Pauses all existing emitters of the specified Event.
+        /// </summary>
+        [ContextMenu("PauseAllOfType")]
+        public void PauseAllOfType()
+        {
+            FMODManager.Instance.EventsManager.PauseAllOfType(EventData);
+        }
+
+        /// <summary>
+        /// UnPauses all existing emitters of the specified Event.
+        /// </summary>
+        [ContextMenu("UnPauseAllOfType")]
+        public void UnPauseAllOfType()
+        {
+            FMODManager.Instance.EventsManager.UnPauseAllOfType(EventData);
+        }
+
+        /// <summary>
+        /// Pauses/UnPauses all existing Emitters in the scene.
+        /// </summary>
+        /// <param name="isGamePaused"></param>
+        public void TogglePause(bool isGamePaused)
+        {
+            FMODManager.Instance.EventsManager.TogglePauseAll(isGamePaused);
+        }
+
+        /// <summary>
+        /// Stops the specified Emitter.
+        /// </summary>
         [ContextMenu("Stop")]
         public void Stop()
         {
             FMODManager.Instance.EventsManager.Stop(EventData, _gameObject).Forget();
         }
 
+        /// <summary>
+        /// Stops all existing emitters of the specified Event.
+        /// </summary>
         [ContextMenu("StopAllOfType")]
         public void StopAllOfType()
         {
             FMODManager.Instance.EventsManager.StopAllOfType(EventData).Forget();
         }
 
+        /// <summary>
+        /// Stops all existing Emitters in the scene.
+        /// </summary>
         [ContextMenu("StopAll")]
         public void StopAll()
         {
             FMODManager.Instance.EventsManager.StopAll().Forget();
-        }
-
-        [ContextMenu("FadeIn")]
-        public void FadeIn()
-        {
-            SetLocalParameter(_startValue);
-            Play();
-            RampUpLocalParameter();
-        }
-
-        [ContextMenu("FadeInAllOfType")]
-        public void FadeInAllOfType()
-        {
-            SetLocalParameterAllOfType(_startValue);
-            PlayAllOfType();
-            RampUpLocalParameterAllOfType();
-        }
-
-        [ContextMenu("FadeOut")]
-        public void FadeOut()
-        {
-            RampDownLocalParameter();
-        }
-
-        [ContextMenu("FadeOutAllOfType")]
-        public void FadeOutAllOfType()
-        {
-            RampDownLocalParameterAllOfType();
         }
 
         #endregion
@@ -153,13 +182,81 @@ namespace Studio23.SS2
 
         #endregion
 
+        #region Volume Fade In/Out
+        // Use these methods for fading in/out your audio. 
+        // The event must have some parameter that controls the master volume of the event.
+        // Should not be used for ramping other parameters. May not work as expected.
+        // For the intended behavior, _startValue should be set to 0, _endValue should be set to 1. 
+
+        // The bools StopOnFadeOut and ReleaseOnFadeOut can be marked as true to stop or release the event respectively after fading out. 
+        // Ideally these should not be true when ramping any other parameters other than volume. May not work as expected.
+
+
+        /// <summary>
+        /// Sets the event volume parameter to 0.
+        /// Plays the event.
+        /// Ramps parameter from 0 to 1.
+        /// No need to call Play() separately when fading in.
+        /// </summary>
+        [ContextMenu("FadeIn")]
+        public void FadeIn()
+        {
+            SetLocalParameter(_startValue);
+            Play();
+            RampUpLocalParameter();
+        }
+
+        /// <summary>
+        /// Sets the event volume parameter to 0.
+        /// Plays the event.
+        /// Ramps parameter from 0 to 1.
+        /// Fade in for all events of the same type.
+        /// No need to call Play() separately when fading in.
+        /// </summary>
+        [ContextMenu("FadeInAllOfType")]
+        public void FadeInAllOfType()
+        {
+            SetLocalParameterAllOfType(_startValue);
+            PlayAllOfType();
+            RampUpLocalParameterAllOfType();
+        }
+
+        /// <summary>
+        /// Ramps parameter from 0 to 1.
+        /// </summary>
+        [ContextMenu("FadeOut")]
+        public void FadeOut()
+        {
+            RampDownLocalParameter();
+        }
+
+        /// <summary>
+        /// Ramps parameter from 0 to 1.
+        /// Fade out for all events of the same type.
+        /// </summary>
+        [ContextMenu("FadeOutAllOfType")]
+        public void FadeOutAllOfType()
+        {
+            RampDownLocalParameterAllOfType();
+        }
+
+        #endregion
+
         #region Local Parameters
 
+        /// <summary>
+        /// Sets the specified local parameter for the current event.
+        /// </summary>
+        /// <param name="value"></param>
         public void SetLocalParameter(float value)
         {
             FMODManager.Instance.EventsManager.SetLocalParameterByName(EventData, gameObject, _parameterName, value);
         }
 
+        /// <summary>
+        /// Sets the specified local parameter for all events of the same type.
+        /// </summary>
+        /// <param name="value"></param>
         public void SetLocalParameterAllOfType(float value)
         {
             FMODManager.Instance.EventsManager.SetLocalParameterAllOfTypeByName(EventData, _parameterName, value);
@@ -183,6 +280,9 @@ namespace Studio23.SS2
             TweenParameter(startValue, endValue);
         }
 
+        /// <summary>
+        /// Ramps up local parameter from _startValue to _endValue.
+        /// </summary>
         [ContextMenu("RampUpLocalParameter")]
         public void RampUpLocalParameter()
         {
@@ -191,6 +291,9 @@ namespace Studio23.SS2
             RampLocalParameter(_startValue, _endValue);
         }
 
+        /// <summary>
+        /// Ramps up local parameter from _startValue to _endValue for all events of the same type.
+        /// </summary>
         [ContextMenu("RampUpLocalParameterAllOfType")]
         public void RampUpLocalParameterAllOfType()
         {
@@ -199,6 +302,9 @@ namespace Studio23.SS2
             RampLocalParameterAllOfType(_startValue, _endValue);
         }
 
+        /// <summary>
+        /// Ramps down local parameter from _endValue to _startValue.
+        /// </summary>
         [ContextMenu("RampDownLocalParameter")]
         public void RampDownLocalParameter()
         {
@@ -207,6 +313,9 @@ namespace Studio23.SS2
             RampLocalParameter(_endValue, _startValue);
         }
 
+        /// <summary>
+        /// Ramps down local parameter from _endValue to _startValue for all events of the same type.
+        /// </summary>
         [ContextMenu("RampDownLocalParameterAllOfType")]
         public void RampDownLocalParameterAllOfType()
         {
@@ -219,6 +328,10 @@ namespace Studio23.SS2
 
         #region Global Parameters
 
+        /// <summary>
+        /// Sets the specified global parameter
+        /// </summary>
+        /// <param name="value"></param>
         public void SetGlobalParameter(float value)
         {
             FMODManager.Instance.EventsManager.SetGlobalParameterByName(_parameterName, _endValue);
@@ -233,17 +346,25 @@ namespace Studio23.SS2
             TweenParameter(startValue, endValue);
         }
 
+        /// <summary>
+        /// Ramps up global parameter from _startValue to _endValue.
+        /// </summary>
         [ContextMenu("RampUpGlobalParameter")]
         public void RampUpGlobalParameter()
         {
-            _onTweenComplete.RemoveListener(Release);
+            if (StopOnFadeOut) _onTweenComplete.RemoveListener(Stop);
+            if (ReleaseOnFadeOut) _onTweenComplete.RemoveListener(Release);
             RampGlobalParameter(_startValue, _endValue);
         }
 
+        /// <summary>
+        /// Ramps down global parameter from _startValue to _endValue.
+        /// </summary>
         [ContextMenu("RampDownGlobalParameter")]
         public void RampDownGlobalParameter()
         {
-            _onTweenComplete.AddListener(Release);
+            if (StopOnFadeOut) _onTweenComplete.AddListener(Stop);
+            if (ReleaseOnFadeOut) _onTweenComplete.AddListener(Release);
             RampGlobalParameter(_endValue, _startValue);
         }
 

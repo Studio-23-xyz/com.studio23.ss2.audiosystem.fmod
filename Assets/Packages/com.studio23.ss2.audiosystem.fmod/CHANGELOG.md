@@ -1,3 +1,10 @@
+## [v1.0.5] - 2024-06-13
+
+### Updated
+
+- Added/updated new functions for pausing and unpausing emitters.
+- FMODEmitterUtility class added. It is a utility to play and manage events without the need for code.
+
 ## [v1.0.2] - 2024-06-03
 
 ### Updated
