@@ -153,8 +153,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
             string scriptContent = "";
 
-            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
-
             scriptContent += $"namespace {nameSpace}\n{{\n";
 
             scriptContent += $"\tpublic static class {filename}\n\t{{\n";
@@ -234,7 +232,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             string filename = $"FMODBusList";
 
             string scriptContent = "";
-            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
 
             scriptContent += $"namespace {nameSpace}\n{{\n";
 
@@ -269,8 +266,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
             string scriptContent = "";
 
-            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
-
             scriptContent += $"namespace {nameSpace}\n{{\n";
 
             scriptContent += $"\tpublic static class {filename}\n\t{{\n";
@@ -304,8 +299,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             string filename = $"FMODLocaleList";
 
             string scriptContent = "";
-
-            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n";
 
             scriptContent += "using System.Collections.Generic;\n\n";
             scriptContent += $"namespace {nameSpace}\n{{\n";
@@ -373,8 +366,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
                 scriptContent += $"namespace {nameSpace}\n{{\n";
 
-                //string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Split("/").Last().Replace(".bank", "").Replace(" ", "_").Replace("-", "_")}";
-
                 string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Replace("bank:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_")}";
 
                 scriptContent += $"\tpublic static class {filename}\n\t{{\n";
@@ -383,7 +374,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
                 {
                     var guidValue = value.Split("GUID")[1];
                     var eventName = value.Split("GUID")[0].Replace("event:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_");
-                    scriptContent += $"\t\tpublic static FMODEventData {eventName} = new FMODEventData(\"{value.Split("GUID")[0]}\", \"{guidValue}\");\n";
+                    scriptContent += $"\t\tpublic static string {eventName} = \"{guidValue}\";\n";
                 }
 
                 scriptContent += "\t}\n";
@@ -412,8 +403,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             string filename = $"FMODParameterList";
 
             string scriptContent = "";
-
-            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
 
             scriptContent += $"namespace {nameSpace}\n{{\n";
 

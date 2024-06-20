@@ -6,7 +6,6 @@ using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
 namespace Studio23.SS2.AudioSystem.fmod.Data
@@ -14,12 +13,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
     [System.Serializable]
     public class FMODEmitterData
     {
-        internal string EventName;
         internal string EventGUID;
         internal GameObject ReferencedGameObject;
         internal CustomStudioEventEmitter Emitter;
+        internal bool AllowFadeout;
         internal FMODEventState EventState = FMODEventState.Stopped;
-        internal STOP_MODE StopModeType;
         internal EVENT_CALLBACK_TYPE CurrentCallbackType;
 
         public delegate void PlaybackEvent();
@@ -30,14 +28,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public PlaybackEvent OnEventUnPaused;
         public PlaybackEvent OnEventStopped;
 
-        public FMODEmitterData(FMODEventData eventData, GameObject referencedGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        public FMODEmitterData(string eventGUID, GameObject referencedGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
         {
-            EventName = eventData.EventName;
-            EventGUID = eventData.EventGUID;
+            EventGUID = eventGUID;
             ReferencedGameObject = referencedGameObject;
             Emitter = emitter;
-            StopModeType = stopModeType;
-
+            AllowFadeout = allowFadeout;
             Initialize();
         }
 
@@ -45,9 +41,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// Get the unique Key of an emitter
         /// </summary>
         /// <returns></returns>
-        public (string, string, int) GetKey()
+        public (string, int) GetKey()
         {
-            return (EventName, EventGUID, ReferencedGameObject.GetInstanceID());
+            return (EventGUID, ReferencedGameObject.GetInstanceID());
         }
 
         /// <summary>
@@ -55,12 +51,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// </summary>
         public void Initialize()
         {
+
             if (Emitter == null) Emitter = ReferencedGameObject.AddComponent<CustomStudioEventEmitter>();
             var eventReference = new EventReference
             {
                 Guid = GUID.Parse(EventGUID)
             };
             Emitter.EventReference = eventReference;
+            Emitter.AllowFadeout = AllowFadeout;
             Emitter.CustomInitialize();
         }
 
@@ -68,6 +66,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// Plays the Emitter.
         /// </summary>
         public void Play()
+        {
+            Emitter.Play();
+            EventState = FMODEventState.Playing;
+            OnEventPlayed?.Invoke();
+        }
+
+        public void ProgrammerPlay()
         {
             Emitter.CustomPlay();
             EventState = FMODEventState.Playing;
@@ -87,7 +92,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// <summary>
         /// UnSuspends the Emitter. Is not affected by TogglePause
         /// </summary>
-        public void UnPause()
+        public void Unpause()
         {
             Emitter.EventInstance.setPaused(false);
             EventState = FMODEventState.Playing;
@@ -108,7 +113,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
             }
             else if (!isGamePaused && (EventState == FMODEventState.Paused))
             {
-                UnPause();
+                Unpause();
                 OnEventUnPaused?.Invoke();
             }
         }
@@ -116,11 +121,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// <summary>
         /// Stops the Emitter.
         /// </summary>
-        /// <param name="stopModeType"></param>
+        /// <param name="allowFadeout"></param>
         /// <returns></returns>
-        public async UniTask StopAsync(STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        public async UniTask StopAsync(bool allowFadeout = true)
         {
-            Emitter.EventInstance.stop(stopModeType);
+            Emitter.AllowFadeout = allowFadeout;
+            Emitter.Stop();
             EventState = FMODEventState.Stopped;
             OnEventStopped?.Invoke();
             await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED));
@@ -133,7 +139,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public async UniTask ReleaseAsync()
         {
             await StopAsync();
-            Emitter.EventInstance.release();
             await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED);
             UnloadSampleData();
             Object.Destroy(Emitter);
@@ -184,9 +189,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// Returns the Event of the Emitter.
         /// </summary>
         /// <returns></returns>
-        public FMODEventData GetEventData()
+        public string GetGUID()
         {
-            return new FMODEventData(EventName, EventGUID);
+            return EventGUID;
         }
 
         /// <summary>

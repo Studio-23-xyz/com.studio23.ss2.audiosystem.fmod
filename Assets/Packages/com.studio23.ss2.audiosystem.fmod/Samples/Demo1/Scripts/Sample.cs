@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Studio23.SS2.AudioSystem.fmod;
 using Studio23.SS2.AudioSystem.fmod.Core;
 using UnityEngine;
@@ -11,8 +12,8 @@ public class Sample : MonoBehaviour
     [ContextMenu("Play")]
     public void Play()
     {
-        //FMODManager.Instance.EventsManager.CreateEmitter(FMODBank_Sample.Test, gameObject);
         FMODManager.Instance.EventsManager.Play(FMODBank_Sample.Test, gameObject);
+        FMODManager.Instance.MixerManager.SetBusVolume(FMODBusList.Sample, 1.0f);
     }
 
     [ContextMenu("Pause")]
@@ -21,17 +22,17 @@ public class Sample : MonoBehaviour
         FMODManager.Instance.EventsManager.Pause(FMODBank_Sample.Test, gameObject);
     }
 
-    [ContextMenu("UnPause")]
+    [ContextMenu("Unpause")]
     public void UnPause()
     {
-        FMODManager.Instance.EventsManager.UnPause(FMODBank_Sample.Test, gameObject);
+        FMODManager.Instance.EventsManager.Unpause(FMODBank_Sample.Test, gameObject);
     }
 
     [ContextMenu("Toggle")]
     public void Toggle()
     {
         isPaused = !isPaused;
-        FMODManager.Instance.EventsManager.TogglePauseAll(isPaused);
+        FMODManager.Instance.EventsManager.TogglePause(isPaused);
     }
 
     [ContextMenu("Change Parameter")]
@@ -121,6 +122,12 @@ public class Sample : MonoBehaviour
         FMODManager.Instance.EventsManager.PlayProgrammerSound("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
     }
 
+    [ContextMenu("Stop Dialogue")]
+    public void StopDialogue()
+    {
+        FMODManager.Instance.EventsManager.Release(FMODBank_Dialogue.Dialogue_Dialogue, gameObject).Forget();
+    }
+
     #endregion
 
     #region Mixer
@@ -143,7 +150,7 @@ public class Sample : MonoBehaviour
         FMODManager.Instance.MixerManager.PauseBus(FMODBusList.Sample, true);
     }
 
-    [ContextMenu("UnPause Bus")]
+    [ContextMenu("Unpause Bus")]
     public void UnPauseBus()
     {
         FMODManager.Instance.MixerManager.PauseBus(FMODBusList.Sample, false);

@@ -60,7 +60,6 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Data\FMODEventData.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Core\FMODManager.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Data\FMODEmitterData.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Extensions\FMODEmitterUtility.cs" />

@@ -4048,6 +4048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1106752783}
   - component: {fileID: 1106752782}
+  - component: {fileID: 1106752784}
   m_Layer: 0
   m_Name: Sample
   m_TagString: Untagged
@@ -4084,6 +4085,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1106752784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106752781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f76bde920eb8224bbed76d8c1d66b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2102246388
+      Data2: 1089425009
+      Data3: 1354650257
+      Data4: -635668887
+    Path: event:/Test
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1142034527
 GameObject:
   m_ObjectHideFlags: 0

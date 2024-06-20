@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Studio23.SS2.AudioSystem.fmod
+namespace Studio23.SS2.AudioSystem.fmod.Tests
 {
 	public enum Language
 	{
@@ -10,7 +10,7 @@ namespace Studio23.SS2.AudioSystem.fmod
 		JP,
 	}
 
-	public static class FMODLocaleList
+	public static class Test_FMODLocaleList
 	{
 		public static Dictionary<Language, string> LanguageList = new Dictionary<Language, string>
 		{

@@ -289,6 +289,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         /// <summary>
         /// Plays the created Event Instance.
         /// </summary>
+        [ContextMenu("Custom Play")]
         public void CustomPlay()
         {
             instance.start();
@@ -296,6 +297,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             hasTriggered = true;
         }
 
+        [ContextMenu("Play")]
         public void Play()
         {
             if (TriggerOnce && hasTriggered)
@@ -410,6 +412,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             hasTriggered = true;
         }
 
+        [ContextMenu("Stop")]
         public void Stop()
         {
             DeregisterActiveEmitter(this);

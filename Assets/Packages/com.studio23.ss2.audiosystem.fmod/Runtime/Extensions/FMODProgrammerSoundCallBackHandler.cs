@@ -1,4 +1,5 @@
 using AOT;
+using CodiceApp.EventTracking.Plastic;
 using Cysharp.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
@@ -32,10 +33,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 EVENT_CALLBACK eventCallback = new EVENT_CALLBACK(ProgrammerSoundCallbackHandler);
                 eventData.Emitter.EventInstance.setCallback(eventCallback);
             }
-
             GCHandle eventGcHandle = GCHandle.Alloc(data);
             eventData.Emitter.EventInstance.setUserData(GCHandle.ToIntPtr(eventGcHandle));
-            eventData.Play();
+            eventData.ProgrammerPlay();
         }
 
         /// <summary>

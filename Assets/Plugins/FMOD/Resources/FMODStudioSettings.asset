@@ -427,7 +427,6 @@ MonoBehaviour:
   - Master.strings
   - Sample
   - Dialogue
-  - Test
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
   AndroidUseOBB: 0

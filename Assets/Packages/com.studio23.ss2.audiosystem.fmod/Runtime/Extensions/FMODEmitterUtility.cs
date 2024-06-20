@@ -1,8 +1,6 @@
 using Cysharp.Threading.Tasks;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Core;
-using Studio23.SS2.AudioSystem.fmod.Data;
-using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,7 +10,7 @@ namespace Studio23.SS2
     public class FMODEmitterUtility : MonoBehaviour
     {
         public EventReference EventReference;
-        public FMODEventData EventData => new FMODEventData(EventReference.Path, EventReference.Guid.ToString());
+        public string EventGUID => EventReference.Guid.ToString();
         [SerializeField] private GameObject _gameObject;
 
         private float _parameterValue;
@@ -20,7 +18,7 @@ namespace Studio23.SS2
         [SerializeField] private float _startValue;
         [SerializeField] private float _endValue;
         [SerializeField] private float _duration;
-        
+
         public bool StopOnFadeOut;
         public bool ReleaseOnFadeOut;
 
@@ -65,7 +63,7 @@ namespace Studio23.SS2
         [ContextMenu("Play")]
         public void Play()
         {
-            FMODManager.Instance.EventsManager.Play(EventData, _gameObject);
+            FMODManager.Instance.EventsManager.Play(EventGUID, _gameObject);
         }
 
         /// <summary>
@@ -74,7 +72,7 @@ namespace Studio23.SS2
         [ContextMenu("PlayAllOfType")]
         public void PlayAllOfType()
         {
-            FMODManager.Instance.EventsManager.PlayAllOfType(EventData);
+            FMODManager.Instance.EventsManager.PlayAllOfType(EventGUID);
         }
 
         /// <summary>
@@ -83,16 +81,16 @@ namespace Studio23.SS2
         [ContextMenu("Pause")]
         public void Pause()
         {
-            FMODManager.Instance.EventsManager.Pause(EventData, _gameObject);
+            FMODManager.Instance.EventsManager.Pause(EventGUID, _gameObject);
         }
 
         /// <summary>
         /// UnPauses the specified Emitter.
         /// </summary>
-        [ContextMenu("UnPause")]
-        public void UnPause()
+        [ContextMenu("Unpause")]
+        public void Unpause()
         {
-            FMODManager.Instance.EventsManager.UnPause(EventData, _gameObject);
+            FMODManager.Instance.EventsManager.Unpause(EventGUID, _gameObject);
         }
 
         /// <summary>
@@ -101,16 +99,16 @@ namespace Studio23.SS2
         [ContextMenu("PauseAllOfType")]
         public void PauseAllOfType()
         {
-            FMODManager.Instance.EventsManager.PauseAllOfType(EventData);
+            FMODManager.Instance.EventsManager.PauseAllOfType(EventGUID);
         }
 
         /// <summary>
         /// UnPauses all existing emitters of the specified Event.
         /// </summary>
-        [ContextMenu("UnPauseAllOfType")]
-        public void UnPauseAllOfType()
+        [ContextMenu("UnpauseAllOfType")]
+        public void UnpauseAllOfType()
         {
-            FMODManager.Instance.EventsManager.UnPauseAllOfType(EventData);
+            FMODManager.Instance.EventsManager.UnpauseAllOfType(EventGUID);
         }
 
         /// <summary>
@@ -119,7 +117,7 @@ namespace Studio23.SS2
         /// <param name="isGamePaused"></param>
         public void TogglePause(bool isGamePaused)
         {
-            FMODManager.Instance.EventsManager.TogglePauseAll(isGamePaused);
+            FMODManager.Instance.EventsManager.TogglePause(isGamePaused);
         }
 
         /// <summary>
@@ -128,7 +126,7 @@ namespace Studio23.SS2
         [ContextMenu("Stop")]
         public void Stop()
         {
-            FMODManager.Instance.EventsManager.Stop(EventData, _gameObject).Forget();
+            FMODManager.Instance.EventsManager.Stop(EventGUID, _gameObject).Forget();
         }
 
         /// <summary>
@@ -137,7 +135,7 @@ namespace Studio23.SS2
         [ContextMenu("StopAllOfType")]
         public void StopAllOfType()
         {
-            FMODManager.Instance.EventsManager.StopAllOfType(EventData).Forget();
+            FMODManager.Instance.EventsManager.StopAllOfType(EventGUID).Forget();
         }
 
         /// <summary>
@@ -156,7 +154,7 @@ namespace Studio23.SS2
         [ContextMenu("Release")]
         public void Release()
         {
-            FMODManager.Instance.EventsManager.Release(EventData, _gameObject).Forget();
+            FMODManager.Instance.EventsManager.Release(EventGUID, _gameObject).Forget();
         }
 
         public void ReleaseTargetEmitters(string tag)
@@ -164,14 +162,14 @@ namespace Studio23.SS2
             var emitters = GameObject.FindGameObjectsWithTag(tag);
             foreach (var emitter in emitters)
             {
-                FMODManager.Instance.EventsManager.Release(EventData, emitter).Forget();
+                FMODManager.Instance.EventsManager.Release(EventGUID, emitter).Forget();
             }
         }
 
         [ContextMenu("ReleaseAllOfType")]
         public void ReleaseTargetEmitters()
         {
-            FMODManager.Instance.EventsManager.ReleaseAllOfType(EventData).Forget();
+            FMODManager.Instance.EventsManager.ReleaseAllOfType(EventGUID).Forget();
         }
 
         [ContextMenu("ReleaseAll")]
@@ -250,7 +248,7 @@ namespace Studio23.SS2
         /// <param name="value"></param>
         public void SetLocalParameter(float value)
         {
-            FMODManager.Instance.EventsManager.SetLocalParameterByName(EventData, gameObject, _parameterName, value);
+            FMODManager.Instance.EventsManager.SetLocalParameterByName(EventGUID, gameObject, _parameterName, value);
         }
 
         /// <summary>
@@ -259,14 +257,14 @@ namespace Studio23.SS2
         /// <param name="value"></param>
         public void SetLocalParameterAllOfType(float value)
         {
-            FMODManager.Instance.EventsManager.SetLocalParameterAllOfTypeByName(EventData, _parameterName, value);
+            FMODManager.Instance.EventsManager.SetLocalParameterAllOfTypeByName(EventGUID, _parameterName, value);
         }
 
         private void RampLocalParameter(float startValue, float endValue)
         {
             _onTweenUpdate.AddListener((() =>
             {
-                FMODManager.Instance.EventsManager.SetLocalParameterByName(EventData, gameObject, _parameterName, _parameterValue);
+                FMODManager.Instance.EventsManager.SetLocalParameterByName(EventGUID, gameObject, _parameterName, _parameterValue);
             }));
             TweenParameter(startValue, endValue);
         }
@@ -275,7 +273,7 @@ namespace Studio23.SS2
         {
             _onTweenUpdate.AddListener((() =>
             {
-                FMODManager.Instance.EventsManager.SetLocalParameterAllOfTypeByName(EventData, _parameterName, _parameterValue);
+                FMODManager.Instance.EventsManager.SetLocalParameterAllOfTypeByName(EventGUID, _parameterName, _parameterValue);
             }));
             TweenParameter(startValue, endValue);
         }

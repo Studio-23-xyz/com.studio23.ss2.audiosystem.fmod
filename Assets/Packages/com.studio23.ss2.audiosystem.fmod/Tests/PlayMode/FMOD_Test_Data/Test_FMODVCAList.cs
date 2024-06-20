@@ -1,6 +1,6 @@
-namespace Studio23.SS2.AudioSystem.fmod
+namespace Studio23.SS2.AudioSystem.fmod.Tests
 {
-	public static class FMODVCAList
+	public static class Test_FMODVCAList
 	{
 		public static readonly string SFX = "vca:/SFX";
 		public static readonly string VO = "vca:/VO";

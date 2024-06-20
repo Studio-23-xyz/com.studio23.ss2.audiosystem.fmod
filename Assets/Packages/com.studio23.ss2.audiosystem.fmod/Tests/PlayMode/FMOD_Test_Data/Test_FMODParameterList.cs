@@ -1,6 +1,6 @@
-namespace Studio23.SS2.AudioSystem.fmod
+namespace Studio23.SS2.AudioSystem.fmod.Tests
 {
-	public static class FMODParameterList
+	public static class Test_FMODParameterList
 	{
 		public static class snapshot_Test
 		{

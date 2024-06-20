@@ -7,14 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
 namespace Studio23.SS2.AudioSystem.fmod.Core
 {
     public class EventsManager
     {
-        internal Dictionary<(string, string, int), FMODEmitterData> _emitterDataList;
+        internal Dictionary<(string, int), FMODEmitterData> _emitterDataList;
 
         public delegate void EmitterEvent();
         public EmitterEvent OnPauseAllOfType;
@@ -28,7 +27,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
         internal void Initialize()
         {
-            _emitterDataList = new Dictionary<(string, string, int), FMODEmitterData>();
+            _emitterDataList = new Dictionary<(string, int), FMODEmitterData>();
         }
 
         //public FMODEmitterData CreateEventData(CustomStudioEventEmitter emitter)
@@ -50,19 +49,21 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         //}
 
         /// <summary>
-        /// Creates a Custom FMOD Studio Event Emitter for an Event on a GameObject.
+        /// Creates an FMOD Studio Event Emitter for an Event on a GameObject.
         /// If the GameObject already has an Emitter attached, then pass the Emitter to initialize it.
-        /// By default it will create an Emitter and the Event Instance's STOP_MODE is set to ALLOWFADEOUT.
+        /// An Emitter can only be initialized once. So multiple Events will require multiple Emitters.
+        /// By default it will create an Emitter and its AllowFadeout is set to true.
+        /// Returns an FMODEmitterData.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
         /// <param name="emitter"></param>
-        /// <param name="stopModeType"></param>
-        public FMODEmitterData CreateEmitter(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        /// <param name="allowFadeout"></param>
+        public FMODEmitterData CreateEmitter(string eventGUID, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData != null) return fetchData;
-            var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
+            var newEmitter = new FMODEmitterData(eventGUID, referenceGameObject, emitter, allowFadeout);
             _emitterDataList.Add(newEmitter.GetKey(), newEmitter);
             FMODCallBackHandler.InitializeCallBack(newEmitter);
             return newEmitter;
@@ -71,18 +72,21 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// Plays the Emitter.
         /// If the GameObject already has an Emitter attached, then pass the Emitter to initialize it.
-        /// By default it will create an Emitter and the Event Instance's STOP_MODE is set to ALLOWFADEOUT.
+        /// An Emitter can only be initialized once. So multiple Events will require multiple Emitters.
+        /// By default it will create an Emitter and its AllowFadeout is set to true.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
-        public async void Play(FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        /// <param name="emitter"></param>
+        /// <param name="allowFadeout"></param>
+        public async void Play(string eventGUID, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null)
             {
-                fetchData = CreateEmitter(eventData, referenceGameObject, emitter, stopModeType);
+                fetchData = CreateEmitter(eventGUID, referenceGameObject, emitter, allowFadeout);
             }
-            if (fetchData.EventState == FMODEventState.Playing) await fetchData.StopAsync(STOP_MODE.IMMEDIATE);
+            if (fetchData.EventState == FMODEventState.Playing) await fetchData.StopAsync(false);
             fetchData.Play();
         }
 
@@ -90,41 +94,41 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// Plays all existing emitters of the same type of event.
         /// This does not create any emitters on its own.
         /// </summary>
-        /// <param name="eventData"></param>
-        /// <param name="referenceGameObject"></param>
-        /// <param name="emitter"></param>
-        /// <param name="stopModeType"></param>
-        public async void PlayAllOfType(FMODEventData eventData)
+        /// <param name="eventGUID"></param>
+        public async void PlayAllOfType(string eventGUID)
         {
-            var fetchData = EventEmitterExists(eventData);
+            var fetchData = EventEmitterExists(eventGUID);
             if (fetchData == null) return;
-            foreach (var e in fetchData)
+            foreach (var emitter in fetchData)
             {
-                if (e.EventState == FMODEventState.Playing) await e.StopAsync(STOP_MODE.IMMEDIATE);
-                e.Play();
+                if (emitter.EventState == FMODEventState.Playing) await emitter.StopAsync(false);
+                emitter.Play();
             }
         }
 
         /// <summary>
-        /// Use to play FMOD Programmer Sounds. Localized audio tables for dialogues can be played.
-        /// Any external audio not within FMOD can be played.
+        /// Use to play FMOD Programmer Sounds.
+        /// Localized audio tables can be played, which is useful for playing localized dialogues.
+        /// Any external audio not within FMOD can also be played.
         /// If the GameObject already has an Emitter attached, then pass the Emitter to initialize it.
-        /// By default it will create an Emitter and the Event Instance's STOP_MODE is set to ALLOWFADEOUT.
+        /// An Emitter can only be initialized once. So multiple Events will require multiple Emitters.
+        /// By default it will create an Emitter and its AllowFadeout is set to true.
+        /// Do not call Stop when trying to stop Programmer sounds. Call Release instead.
         /// </summary>
         /// <param name="key"></param>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
         /// <param name="emitter"></param>
-        /// <param name="stopModeType"></param>
-        public async void PlayProgrammerSound(string key, FMODEventData eventData, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, STOP_MODE stopModeType = STOP_MODE.ALLOWFADEOUT)
+        /// <param name="allowFadeout"></param>
+        public async void PlayProgrammerSound(string key, string eventGUID, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData != null)
             {
                 await FMODProgrammerSoundCallBackHandler.InitializeProgrammerCallback(fetchData, key);
                 return;
             }
-            var newEmitter = new FMODEmitterData(eventData, referenceGameObject, emitter, stopModeType);
+            var newEmitter = new FMODEmitterData(eventGUID, referenceGameObject, emitter, allowFadeout);
             _emitterDataList.Add(newEmitter.GetKey(), newEmitter);
             await FMODProgrammerSoundCallBackHandler.InitializeProgrammerCallback(newEmitter, key, true);
         }
@@ -134,11 +138,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// It may be beneficial to load the sample data of an event that is frequently used,
         /// instead of loading/unloading every time the event is called.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
-        public void LoadEventSampleData(FMODEventData eventData, GameObject referenceGameObject)
+        public void LoadEventSampleData(string eventGUID, GameObject referenceGameObject)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return;
             fetchData.LoadSampleData();
         }
@@ -146,11 +150,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// Pauses the Emitter.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
-        public void Pause(FMODEventData eventData, GameObject referenceGameObject)
+        public void Pause(string eventGUID, GameObject referenceGameObject)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return;
             fetchData.Pause();
         }
@@ -158,22 +162,22 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// UnPauses the Emitter.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
-        public void UnPause(FMODEventData eventData, GameObject referenceGameObject)
+        public void Unpause(string eventGUID, GameObject referenceGameObject)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return;
-            fetchData.UnPause();
+            fetchData.Unpause();
         }
 
         /// <summary>
         /// Pauses all Emitters of the same type.
         /// </summary>
-        /// <param name="eventData"></param>
-        public void PauseAllOfType(FMODEventData eventData)
+        /// <param name="eventGUID"></param>
+        public void PauseAllOfType(string eventGUID)
         {
-            var fetchData = EventEmitterExists(eventData);
+            var fetchData = EventEmitterExists(eventGUID);
             if (fetchData == null) return;
             foreach (var emitter in fetchData)
             {
@@ -185,14 +189,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// UnPauses all Emitters of the same type.
         /// </summary>
-        /// <param name="eventData"></param>
-        public void UnPauseAllOfType(FMODEventData eventData)
+        /// <param name="eventGUID"></param>
+        public void UnpauseAllOfType(string eventGUID)
         {
-            var fetchData = EventEmitterExists(eventData);
+            var fetchData = EventEmitterExists(eventGUID);
             if (fetchData == null) return;
             foreach (var emitter in fetchData)
             {
-                emitter.UnPause();
+                emitter.Unpause();
             }
             OnUnPauseAllOfType?.Invoke();
         }
@@ -201,7 +205,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// Pause/UnPauses all Emitters.
         /// </summary>
         /// <param name="isGamePaused"></param>
-        public void TogglePauseAll(bool isGamePaused)
+        public void TogglePause(bool isGamePaused)
         {
             foreach (var emitter in _emitterDataList)
             {
@@ -221,31 +225,30 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// Stops the Emitter.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
-        /// <param name="stopMode"></param>
+        /// <param name="allowFadeOut"></param>
         /// <returns></returns>
-        public async UniTask Stop(FMODEventData eventData, GameObject referenceGameObject, STOP_MODE stopMode = STOP_MODE.ALLOWFADEOUT)
+        public async UniTask Stop(string eventGUID, GameObject referenceGameObject, bool allowFadeOut = true)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return;
-            await fetchData.StopAsync(stopMode);
+            await fetchData.StopAsync(allowFadeOut);
         }
 
         /// <summary>
         /// Stops all Emitters of the same type.
         /// </summary>
-        /// <param name="eventData"></param>
-        /// <param name="stopMode"></param>
+        /// <param name="eventGUID"></param>
         /// <returns></returns>
-        public async UniTask StopAllOfType(FMODEventData eventData, STOP_MODE stopMode = STOP_MODE.ALLOWFADEOUT)
+        public async UniTask StopAllOfType(string eventGUID, bool allowFadeOut = true)
         {
-            var fetchData = EventEmitterExists(eventData);
+            var fetchData = EventEmitterExists(eventGUID);
             if (fetchData == null) return;
             List<UniTask> stopTasks = new List<UniTask>();
             foreach (var emitter in fetchData)
             {
-                stopTasks.Add(emitter.StopAsync());
+                stopTasks.Add(emitter.StopAsync(allowFadeOut));
             }
             await UniTask.WhenAll(stopTasks);
             OnStopAllOfType?.Invoke();
@@ -254,14 +257,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// Stops all currently playing Emitters.
         /// </summary>
-        /// <param name="stopMode"></param>
+        /// <param name="allowFadeOut"></param>
         /// <returns></returns>
-        public async UniTask StopAll(STOP_MODE stopMode = STOP_MODE.ALLOWFADEOUT)
+        public async UniTask StopAll(bool allowFadeOut = true)
         {
             List<UniTask> stopTasks = new List<UniTask>();
             foreach (var emitter in _emitterDataList)
             {
-                stopTasks.Add(emitter.Value.StopAsync());
+                stopTasks.Add(emitter.Value.StopAsync(allowFadeOut));
             }
             await UniTask.WhenAll(stopTasks);
             OnStopAll?.Invoke();
@@ -270,12 +273,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// Release the Event Instance and destroys the Emitter.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
         /// <returns></returns>
-        public async UniTask Release(FMODEventData eventData, GameObject referenceGameObject)
+        public async UniTask Release(string eventGUID, GameObject referenceGameObject)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return;
             await fetchData.ReleaseAsync();
             _emitterDataList.Remove(fetchData.GetKey());
@@ -284,18 +287,19 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// Releases and destroys all Emitters of the same type.
         /// </summary>
-        /// <param name="eventData"></param>
-        /// <param name="referenceGameObject"></param>
+        /// <param name="eventGUID"></param>
         /// <returns></returns>
-        public async UniTask ReleaseAllOfType(FMODEventData eventData)
+        public async UniTask ReleaseAllOfType(string eventGUID)
         {
-            var fetchData = EventEmitterExists(eventData);
+            var fetchData = EventEmitterExists(eventGUID);
             if (fetchData == null) return;
+            var foundMatchData = _emitterDataList.Where(k => k.Key.Item1.Equals(eventGUID)).ToList();
             List<UniTask> releaseTasks = new List<UniTask>();
             for (int i = fetchData.Count - 1; i >= 0; i--)
             {
                 var value = fetchData[i];
                 releaseTasks.Add(value.ReleaseAsync());
+                _emitterDataList.Remove(foundMatchData[i].Key);
             }
             await UniTask.WhenAll(releaseTasks);
             OnReleaseAllOfType?.Invoke();
@@ -314,19 +318,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 releaseTasks.Add(value.ReleaseAsync());
             }
             await UniTask.WhenAll(releaseTasks);
+            _emitterDataList.Clear();
             OnReleaseAll?.Invoke();
         }
 
         /// <summary>
         /// Sets a Local parameter value by name.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
         /// <param name="parameterName"></param>
         /// <param name="parameterValue"></param>
-        public void SetLocalParameterByName(FMODEventData eventData, GameObject referenceGameObject, string parameterName, float parameterValue)
+        public void SetLocalParameterByName(string eventGUID, GameObject referenceGameObject, string parameterName, float parameterValue)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return;
             fetchData.SetParameterByName(parameterName, parameterValue);
         }
@@ -334,29 +339,29 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// Sets a Local Parameter value for all active instances of that event.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="parameterName"></param>
         /// <param name="parameterValue"></param>
-        public void SetLocalParameterAllOfTypeByName(FMODEventData eventData, string parameterName, float parameterValue)
+        public void SetLocalParameterAllOfTypeByName(string eventGUID, string parameterName, float parameterValue)
         {
-            var fetchData = EventEmitterExists(eventData);
+            var fetchData = EventEmitterExists(eventGUID);
             if (fetchData == null) return;
             foreach (var emitter in fetchData)
             {
-                SetLocalParameterByName(eventData, emitter.GetReferencedGameObject(), parameterName, parameterValue);
+                SetLocalParameterByName(eventGUID, emitter.GetReferencedGameObject(), parameterName, parameterValue);
             }
         }
 
         /// <summary>
         /// Gets a Local parameter value by name.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
         /// <param name="parameterName"></param>
         /// <returns></returns>
-        public float GetLocalParameterValueByName(FMODEventData eventData, GameObject referenceGameObject, string parameterName)
+        public float GetLocalParameterValueByName(string eventGUID, GameObject referenceGameObject, string parameterName)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return new float();
             return fetchData.GetParameterValueByName(parameterName);
         }
@@ -364,13 +369,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// Gets a Local parameter final value by name.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
         /// <param name="parameterName"></param>
         /// <returns></returns>
-        public float GetLocalParameterFinalValueByName(FMODEventData eventData, GameObject referenceGameObject, string parameterName)
+        public float GetLocalParameterFinalValueByName(string eventGUID, GameObject referenceGameObject, string parameterName)
         {
-            var fetchData = EventEmitterExists(eventData, referenceGameObject);
+            var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return new float();
             return fetchData.GetParameterFinalValueByName(parameterName);
         }
@@ -408,14 +413,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Returns an Emitter if it has exists.
+        /// Returns an Emitter if it exists.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
         /// <returns></returns>
-        public FMODEmitterData EventEmitterExists(FMODEventData eventData, GameObject referenceGameObject)
+        public FMODEmitterData EventEmitterExists(string eventGUID, GameObject referenceGameObject)
         {
-            var key = (eventData.EventName, eventData.EventGUID, referenceGameObject.GetInstanceID());
+            var key = (eventGUID, referenceGameObject.GetInstanceID());
             _emitterDataList.TryGetValue(key, out var emitterData);
             return emitterData;
         }
@@ -423,16 +428,16 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <summary>
         /// Returns a list of the same type of Emitters if they exist.
         /// </summary>
-        /// <param name="eventData"></param>
+        /// <param name="eventGUID"></param>
         /// <returns></returns>
-        public List<FMODEmitterData> EventEmitterExists(FMODEventData eventData)
+        public List<FMODEmitterData> EventEmitterExists(string eventGUID)
         {
             List<FMODEmitterData> emitterDatas = new List<FMODEmitterData>();
-            var key = (eventData.EventName, eventData.EventGUID);
+
             foreach (var emitter in _emitterDataList)
             {
                 var data = emitter.Key;
-                if (data.Item1.Equals(key.EventName) && data.Item2.Equals(key.EventGUID))
+                if (data.Item1.Equals(eventGUID))
                 {
                     _emitterDataList.TryGetValue(data, out var emitterData);
                     emitterDatas.Add(emitterData);
@@ -450,7 +455,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 key.getID(out var id);
                 List<UniTask> releaseTasks = new List<UniTask>();
 
-                var foundMatchData = _emitterDataList.Where(k => k.Key.Item2.Equals(id.ToString())).ToList();
+                var foundMatchData = _emitterDataList.Where(k => k.Key.Item1.Equals(id.ToString())).ToList();
 
                 for (int i = foundMatchData.Count - 1; i >= 0; i--)
                 {

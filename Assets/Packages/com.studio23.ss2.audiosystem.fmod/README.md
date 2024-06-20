@@ -72,8 +72,8 @@ When setting up localized audio tables in FMOD Studio, the project locales must 
 
 To use FMOD and its features, we need references to events, parameters, banks, buses and VCAs. 
 1. Make sure to build the FMOD project and select the correct platform build directory before generating the FMOD Data. 
-2. Go to Studio-23 -> Generate All FMOD Data. This will generate data containing the references from FMOD Studio. 
-3. You will need to generate the data again if you rebuild your FMOD project, if you want to build the Unity project for a different platform. Frequent regeneration will be needed as your project grows.
+2. Go to Studio-23 -> Generate data from FMOD. This will generate data containing the references from FMOD Studio. 
+3. You will need to generate the data again if you rebuild your FMOD project or if you want to build the Unity project for a different platform. Frequent regeneration will be needed as your project grows.
 
 In the data generated you will find:
 - ```FMODBank_[BankName]``` containing references to all the events under the ```[BankName]``` Bank.
@@ -96,12 +96,12 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
 1. The EventsManager can be used to play, pause, unpause, stop events. All events, game wide can be paused and unpaused. Programmer sounds can be played. Local and global parameters can be changed.
 2. Every sound is played through a Custom Studio Event Emitter. The only difference between our custom emitter and FMOD's emitter is in how the event instance is initialized.
     - Sounds are not played through separate event intances.
-    - Sounds are not played through ```PlayOneShot()```. This is to ensure the event instance isn't released automatically and it allows us to hold its reference so we can reuse it or pause/unpause it.
+    - Sounds are not played through ```PlayOneShot()```.
 3. Make sure the correct banks are loaded before playing a sound or creating an emitter, or else the sound won't play and will give you an error.
 4. Use ```Play()``` to play an event.
     - It will take the event we want to play and the gameobject from which it will play. 
-    - By default, it will create an emitter on the GameObject and will set the event instance's ```STOP_MODE``` to ```ALLOWFADEOUT```.
-    - If the GameObject already has an emitter component, we can pass that emitter instead to initialize it.
+    - By default, it will create an emitter on the GameObject and and its AllowFadeout is set to true.
+    - If the GameObject already has an emitter component, we can pass that emitter instead to initialize it. An Emitter can only be initialized once. So multiple Events will require multiple Emitters.
     - If an emitter of type "event and GameObject" already exists, it will just play the event.
 5. ```Pause()```,  ```UnPause()```, ```Stop()```, ```Release()```, ```LoadEventSampleData()```, work similarly, but they need an emitter of type "event and GameObject" to exist or else they will do nothing.
 6. ```PlayAllOfType()``` Plays all existing emitters of the same type of event. This does not create any emitters on its own.
@@ -110,17 +110,18 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
 8. Sometimes an emitter may need to be created or initialized at runtime without playing it.
     - Call ```CreateEmitter()``` to create an emitter on the GameObject.
     - It will take the event we want to play and the gameobject from which it will play. 
-    - By default, it will create an emitter on the GameObject and will set the event instance's ```STOP_MODE``` to ```ALLOWFADEOUT```.
-    - If the GameObject already has an emitter component, we can pass that emitter instead to initialize it.
+    - By default, it will create an emitter on the GameObject and and its AllowFadeout is set to true.
+    - If the GameObject already has an emitter component, we can pass that emitter instead to initialize it. An Emitter can only be initialized once. So multiple Events will require multiple Emitters.
     - Once an emitter of type "event and GameObject" is created, we no longer have to create this emitter again to use playback methods.
     - We can call playback methods on this emitter by passing in the event and the GameObject.
 9. ```PlayProgrammerSound()``` creates an emitter similar to ```Play()``` and plays the sound immediately. 
     - It will take the key of the audio file we want to play, the event we want to play and the gameobject from which it will play.
     - The key can be a key from a audio table from FMOD.
     - The key can also be the file name of an audio file in the streaming assets folder.
+    - Do not call Stop when trying to stop Programmer sounds. Call Release instead.
 10. ```LoadEventSampleData()``` Loads the sample data of an event. It may be beneficial to load the sample data of an event that is frequently used, instead of loading/unloading every time the event is called.
 11. Make sure to call ```Release()``` for events that are no longer needed. It will release the event instance and destroy the emitter.
-12. ```TogglePauseAll()``` will pause/unpause all the events in the game.
+12. ```TogglePause()``` will pause/unpause all the events in the game.
 13. ```SetLocalParameterByName()``` is used to set a local parameter using its name for an event. 
     - It will take the event, the gameobject from which it is playing, the parameter name and the parameter value. 
 14. ```SetLocalParameterAllOfTypeByName()``` is used to set a local parameter using its name for all active instances of that event.
@@ -167,8 +168,8 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
 This system uses two callback handlers.
 1. The default callback handler ```FMODCallBackHandler``` manages the internal playback states of each event (the internal states here refers to the internal states used by this package to keep track of which event is playing, suspended, paused or stopped or whether the event is looping; not FMOD's own playback states). This callback is set whenever an emitter is created and is fired with every event that is played.
 2. The programmer callback handler ```FMODProgrammerSoundCallBackHandler``` manages the playback of externally loaded sounds and is required for dialogues and localized audio tables. This callback is set whenever an ```PlayProgrammerSound()``` is called and is fired with every subsequent call.
-3. It is possible to create and set your own callback handler. You can fetch or create an emitter using ```CreateEmitter()``` and pass this to the initialize method of your callback handler. Look at the initialize methods of our callback handle to get an idea on how to make your initialize method. Not using the the default callback handler ```FMODCallBackHandler``` will result in that events internal states not being tracked/handled.
-
+3. It is possible to create and set your own callback handler. You can fetch or create an emitter using ```CreateEmitter()``` and pass this to the initialization method of your callback handler. Look at the initialization methods of our callback handle to get an idea on how to make your initialization method. Not using the the default callback handler ```FMODCallBackHandler``` will result in that events internal states not being tracked/handled.
+ 
 ## Using the sample provided
 
 1. Open the FMOD Project file in the samples folder. Go to Files -> Build All Platforms.

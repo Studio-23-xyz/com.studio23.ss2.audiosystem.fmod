@@ -1,8 +1,6 @@
-using Studio23.SS2.AudioSystem.fmod.Data;
-
-namespace Studio23.SS2.AudioSystem.fmod
+namespace Studio23.SS2.AudioSystem.fmod.Tests
 {
-	public static class FMODBank_Master
+	public static class Test_FMODBank_Master
 	{
 		public static string snapshot_Slow_Motion = "{6e8d8d09-12e0-48cf-b620-f9cc3bc478a3}";
 		public static string snapshot_Health_Low = "{87ea4134-fff1-4e9d-8f8b-294a2b518223}";

@@ -1,6 +1,6 @@
-namespace Studio23.SS2.AudioSystem.fmod
+namespace Studio23.SS2.AudioSystem.fmod.Tests
 {
-	public static class FMODBusList
+	public static class Test_FMODBusList
 	{
 		public static readonly string Sample = "bus:/Sample";
 		public static readonly string SFX_Character = "bus:/SFX/Character";

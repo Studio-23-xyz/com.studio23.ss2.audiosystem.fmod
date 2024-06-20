@@ -17,7 +17,7 @@ public class CreateFMODDataTestsEditor : EditorWindow
     private static string _testFolderPath = "Assets/Packages/com.studio23.ss2.audiosystem.fmod/Tests/PlayMode/FMOD_Test_Data";
     private static string _testNameSpace = "Studio23.SS2.AudioSystem.fmod.Tests";
 
-    [MenuItem("Studio-23/Audio System/Generate Test Data")]
+    [MenuItem("Studio-23/Audio System/Generate test data from FMOD")]
     public static void GenerateData()
     {
         _bankList.Clear();
@@ -81,8 +81,6 @@ public class CreateFMODDataTestsEditor : EditorWindow
         string filename = $"{prefix}FMODBankList";
 
         string scriptContent = "";
-
-        scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
 
         scriptContent += $"namespace {nameSpace}\n{{\n";
 
@@ -163,7 +161,6 @@ public class CreateFMODDataTestsEditor : EditorWindow
         string filename = $"{prefix}FMODBusList";
 
         string scriptContent = "";
-        scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
 
         scriptContent += $"namespace {nameSpace}\n{{\n";
 
@@ -198,8 +195,6 @@ public class CreateFMODDataTestsEditor : EditorWindow
 
         string scriptContent = "";
 
-        scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
-
         scriptContent += $"namespace {nameSpace}\n{{\n";
 
         scriptContent += $"\tpublic static class {filename}\n\t{{\n";
@@ -233,8 +228,6 @@ public class CreateFMODDataTestsEditor : EditorWindow
         string filename = $"{prefix}FMODLocaleList";
 
         string scriptContent = "";
-
-        scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n";
 
         scriptContent += "using System.Collections.Generic;\n\n";
         scriptContent += $"namespace {nameSpace}\n{{\n";
@@ -298,8 +291,6 @@ public class CreateFMODDataTestsEditor : EditorWindow
         {
             string scriptContent = "";
 
-            scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
-
             scriptContent += $"namespace {nameSpace}\n{{\n";
 
             //string filename = $"FMODBank_{_eventList.ElementAt(i).Key.Split("/").Last().Replace(".bank", "").Replace(" ", "_").Replace("-", "_")}";
@@ -312,7 +303,7 @@ public class CreateFMODDataTestsEditor : EditorWindow
             {
                 var guidValue = value.Split("GUID")[1];
                 var eventName = value.Split("GUID")[0].Replace("event:/", "").Replace(" ", "_").Replace(":/", "_").Replace("/", "_").Replace("-", "_");
-                scriptContent += $"\t\tpublic static FMODEventData {eventName} = new FMODEventData(\"{_eventList.ElementAt(i).Key}\", \"{value.Split("GUID")[0]}\", \"{guidValue}\");\n";
+                scriptContent += $"\t\tpublic static string {eventName} = \"{guidValue}\";\n";
             }
 
             scriptContent += "\t}\n";
@@ -341,8 +332,6 @@ public class CreateFMODDataTestsEditor : EditorWindow
         string filename = $"{prefix}FMODParameterList";
 
         string scriptContent = "";
-
-        scriptContent += "using Studio23.SS2.AudioSystem.fmod.Data;\n\n";
 
         scriptContent += $"namespace {nameSpace}\n{{\n";
 

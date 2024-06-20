@@ -43,7 +43,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 
                 eventData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY UserProperties);
                 eventData.CurrentCallbackType = type;
-
+                Debug.Log("Event Callback Type " + type);
                 switch (type)
                 {
                     case EVENT_CALLBACK_TYPE.STARTED:
