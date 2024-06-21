@@ -7,6 +7,7 @@ using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
 using System.Runtime.InteropServices;
+using Studio23.SS2.AudioSystem.fmod.Core;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -122,6 +123,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 eventData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping",
                     out USER_PROPERTY UserProperties);
                 eventData.EmitterData.CurrentCallbackType = type;
+
+                if (FMODManager.Instance.Debug)
+                {
+                    RuntimeManager.StudioSystem.lookupPath(GUID.Parse(eventData.EmitterData.EventGUID), out string path);
+                    Debug.Log($"{path} Event Callback Type {type}");
+                }
+
                 switch (type)
                 {
                     case EVENT_CALLBACK_TYPE.CREATED:

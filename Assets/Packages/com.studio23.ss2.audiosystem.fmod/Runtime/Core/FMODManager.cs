@@ -12,6 +12,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// Set true to Initialize on Start.
         /// </summary>
         public bool InitializeOnStart;
+        public bool Debug;
 
         public static FMODManager Instance;
 
