@@ -5,7 +5,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Studio23.SS2
+namespace Studio23.SS2.AudioSystem.fmod.Extensions
 {
     public class FMODEmitterUtility : MonoBehaviour
     {
