@@ -141,7 +141,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
             await StopAsync();
             await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED);
             UnloadSampleData();
-            Object.Destroy(Emitter);
+            Object.DestroyImmediate(Emitter);
         }
 
         public void LoadSampleData()
