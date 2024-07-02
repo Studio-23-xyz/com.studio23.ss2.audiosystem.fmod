@@ -1,9 +1,3 @@
-## [v1.0.6] - 2024-06-20
-
-### Updated
-
-- Stop method now releases events.
-
 ## [v1.0.5] - 2024-06-13
 
 ### Updated

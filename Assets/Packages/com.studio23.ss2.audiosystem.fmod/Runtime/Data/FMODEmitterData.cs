@@ -6,6 +6,7 @@ using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
 namespace Studio23.SS2.AudioSystem.fmod.Data
@@ -67,13 +68,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// </summary>
         public void Play()
         {
-            Emitter.Play();
-            EventState = FMODEventState.Playing;
-            OnEventPlayed?.Invoke();
-        }
-
-        public void ProgrammerPlay()
-        {
             Emitter.CustomPlay();
             EventState = FMODEventState.Playing;
             OnEventPlayed?.Invoke();
@@ -126,7 +120,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public async UniTask StopAsync(bool allowFadeout = true)
         {
             Emitter.AllowFadeout = allowFadeout;
-            Emitter.Stop();
+            Emitter.EventInstance.stop(AllowFadeout ? STOP_MODE.ALLOWFADEOUT : STOP_MODE.IMMEDIATE);
             EventState = FMODEventState.Stopped;
             OnEventStopped?.Invoke();
             await UniTask.WaitUntil(() => (CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED) || (CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED));
@@ -139,6 +133,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public async UniTask ReleaseAsync()
         {
             await StopAsync();
+            Emitter.EventInstance.release();
             await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED);
             UnloadSampleData();
             Object.DestroyImmediate(Emitter);

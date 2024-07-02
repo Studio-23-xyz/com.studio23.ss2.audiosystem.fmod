@@ -35,7 +35,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             }
             GCHandle eventGcHandle = GCHandle.Alloc(data);
             eventData.Emitter.EventInstance.setUserData(GCHandle.ToIntPtr(eventGcHandle));
-            eventData.ProgrammerPlay();
+            eventData.Play();
         }
 
         /// <summary>

@@ -9,6 +9,13 @@ public class Sample : MonoBehaviour
     public Language currentLocale;
 
     #region Basic Audio
+    [ContextMenu("Create Emitter")]
+    public void CreateEmitter()
+    {
+        FMODManager.Instance.EventsManager.CreateEmitter(FMODBank_Sample.Test, gameObject);
+        FMODManager.Instance.MixerManager.SetBusVolume(FMODBusList.Sample, 1.0f);
+    }
+
     [ContextMenu("Play")]
     public void Play()
     {

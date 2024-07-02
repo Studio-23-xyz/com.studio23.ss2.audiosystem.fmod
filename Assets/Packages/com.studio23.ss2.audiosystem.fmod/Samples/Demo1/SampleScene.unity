@@ -7984,6 +7984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitializeOnStart: 1
+  Debug: 1
 --- !u!4 &2003649483
 Transform:
   m_ObjectHideFlags: 0
