@@ -27,12 +27,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         /// <param name="assignCallBack"></param>
         public static async UniTask InitializeProgrammerCallback(FMODEmitterData eventData, string key, bool assignCallBack = false)
         {
-            var data = await LoadExternalSound(eventData, key);
             if (assignCallBack)
             {
                 EVENT_CALLBACK eventCallback = new EVENT_CALLBACK(ProgrammerSoundCallbackHandler);
                 eventData.Emitter.EventInstance.setCallback(eventCallback);
             }
+            var data = await LoadExternalSound(eventData, key);
+            if (data == null) return;
             GCHandle eventGcHandle = GCHandle.Alloc(data);
             eventData.Emitter.EventInstance.setUserData(GCHandle.ToIntPtr(eventGcHandle));
             eventData.Play();
