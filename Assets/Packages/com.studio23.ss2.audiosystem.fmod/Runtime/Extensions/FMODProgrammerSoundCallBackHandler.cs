@@ -124,11 +124,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                     out USER_PROPERTY UserProperties);
                 eventData.EmitterData.CurrentCallbackType = type;
 
+#if UNITY_EDITOR
                 if (FMODManager.Instance.Debug)
                 {
                     RuntimeManager.StudioSystem.lookupPath(GUID.Parse(eventData.EmitterData.EventGUID), out string path);
                     Debug.Log($"{path} Event Callback Type {type}");
                 }
+#endif
 
                 switch (type)
                 {

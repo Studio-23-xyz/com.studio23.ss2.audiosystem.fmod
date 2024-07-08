@@ -46,12 +46,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 eventData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY UserProperties);
                 eventData.CurrentCallbackType = type;
 
+#if UNITY_EDITOR
                 if (FMODManager.Instance.Debug)
                 {
                     RuntimeManager.StudioSystem.lookupPath(GUID.Parse(eventData.EventGUID), out string path);
                     Debug.Log($"{path} Event Callback Type {type}");
                 }
-                
+#endif
+
                 switch (type)
                 {
                     case EVENT_CALLBACK_TYPE.STARTED:

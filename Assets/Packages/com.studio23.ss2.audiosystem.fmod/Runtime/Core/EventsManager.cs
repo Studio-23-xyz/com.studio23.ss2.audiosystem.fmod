@@ -431,10 +431,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 }
                 return null;
             }
+#if UNITY_EDITOR
             if (FMODManager.Instance.Debug)
             {
                 Debug.Log($"Referenced Emitter: GUID {eventGUID}, GameObject {referenceGameObject.name}, Scene {referenceGameObject.scene.name}");
             }
+#endif
             var key = (eventGUID, referenceGameObject.GetInstanceID());
             _emitterDataList.TryGetValue(key, out var emitterData);
             return emitterData;
