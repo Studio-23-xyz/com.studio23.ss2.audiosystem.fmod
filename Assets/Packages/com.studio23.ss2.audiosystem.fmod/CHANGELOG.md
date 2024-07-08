@@ -1,3 +1,9 @@
+## [v1.0.5] - 2024-07-08
+
+### Updated
+
+- Missing GameObject Reference will now give a log.
+
 ## [v1.0.5] - 2024-06-13
 
 ### Updated

@@ -420,6 +420,21 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <returns></returns>
         public FMODEmitterData EventEmitterExists(string eventGUID, GameObject referenceGameObject)
         {
+            if (referenceGameObject == null)
+            {
+                Debug.LogError($"Referenced GameObject not found");
+                var fetchData = EventEmitterExists(eventGUID);
+                if (fetchData == null) return null;
+                foreach (var emitter in fetchData)
+                {
+                    Debug.Log($"Referenced Emitter: GUID {eventGUID}, GameObject {emitter.GetReferencedGameObjectName()}, Scene {emitter.GetReferencedGameObjectSceneName()}\n");
+                }
+                return null;
+            }
+            if (FMODManager.Instance.Debug)
+            {
+                Debug.Log($"Referenced Emitter: GUID {eventGUID}, GameObject {referenceGameObject.name}, Scene {referenceGameObject.scene.name}");
+            }
             var key = (eventGUID, referenceGameObject.GetInstanceID());
             _emitterDataList.TryGetValue(key, out var emitterData);
             return emitterData;

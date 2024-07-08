@@ -8,6 +8,8 @@ public class Sample : MonoBehaviour
     public bool isPaused;
     public Language currentLocale;
 
+    public GameObject GameObject;
+
     #region Basic Audio
     [ContextMenu("Create Emitter")]
     public void CreateEmitter()

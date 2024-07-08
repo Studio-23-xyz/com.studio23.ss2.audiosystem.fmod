@@ -16,6 +16,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
     {
         internal string EventGUID;
         internal GameObject ReferencedGameObject;
+        internal string ReferencedGameObjectName;
+        internal string ReferenceGameObjectSceneName;
         internal CustomStudioEventEmitter Emitter;
         internal bool AllowFadeout;
         internal FMODEventState EventState = FMODEventState.Stopped;
@@ -33,6 +35,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             EventGUID = eventGUID;
             ReferencedGameObject = referencedGameObject;
+            ReferencedGameObjectName = referencedGameObject.name;
+            ReferenceGameObjectSceneName = referencedGameObject.scene.name;
             Emitter = emitter;
             AllowFadeout = allowFadeout;
             Initialize();
@@ -196,6 +200,24 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public GameObject GetReferencedGameObject()
         {
             return ReferencedGameObject;
+        }
+
+        /// <summary>
+        /// Returns the name of the GameObject the Emitter is attached too.
+        /// </summary>
+        /// <returns></returns>
+        public string GetReferencedGameObjectName()
+        {
+            return ReferencedGameObjectName;
+        }
+
+        /// <summary>
+        /// Returns the name of the scene the GameObject is a part of.
+        /// </summary>
+        /// <returns></returns>
+        public string GetReferencedGameObjectSceneName()
+        {
+            return ReferenceGameObjectSceneName;
         }
 
         /// <summary>
