@@ -106,8 +106,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
                 {
                     parameterNameProp.stringValue = string.Empty;
                 }
-                
-                EditorGUILayout.HelpBox($"{(isGlobal ? "Global Parameter" : "Local Parameter")}\n" + 
+
+                EditorGUILayout.HelpBox($"{(isGlobal ? "Global Parameter" : "Local Parameter")}\n" +
                                         $"Parameter Type: {parameterType}\n" +
                                         $"Default Value: {defaultValue}, Min Value: {minValue}, Max Value: {maxValue} \n" +
                                         $"{(parameterLabels.Length <= 0 ? "" : $"Parameter Labels: {parameterLabelNames}")}", MessageType.Info);

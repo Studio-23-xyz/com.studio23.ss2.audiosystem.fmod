@@ -1,11 +1,11 @@
 using AOT;
 using FMOD;
 using FMOD.Studio;
+using FMODUnity;
+using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
 using System.Runtime.InteropServices;
-using FMODUnity;
-using Studio23.SS2.AudioSystem.fmod.Core;
 using Debug = UnityEngine.Debug;
 
 namespace Studio23.SS2.AudioSystem.fmod.Extensions

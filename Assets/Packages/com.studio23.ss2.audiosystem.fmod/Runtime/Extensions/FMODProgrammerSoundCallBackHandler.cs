@@ -3,10 +3,10 @@ using Cysharp.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
+using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
 using System.Runtime.InteropServices;
-using Studio23.SS2.AudioSystem.fmod.Core;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
