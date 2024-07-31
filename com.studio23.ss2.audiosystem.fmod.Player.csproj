@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Core\FMODManager.cs" />
+    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Extensions\FMODBankUtility.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Data\FMODEmitterData.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Extensions\FMODEmitterUtility.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Core\MixerManager.cs" />
