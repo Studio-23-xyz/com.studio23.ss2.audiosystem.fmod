@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Editor\CreateFMODDataEditor.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Editor\CustomStudioEventEmitterEditor.cs" />
+    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Editor\FMODBankUtilityEditor.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Editor\FMODEmitterUtilityEditor.cs" />
   </ItemGroup>
   <ItemGroup>

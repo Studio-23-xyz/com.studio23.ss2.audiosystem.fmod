@@ -116,12 +116,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             HandleGameEvent(EmitterGameEvent.ObjectStart);
 
             // If a Rigidbody is added, turn off "allowNonRigidbodyDoppler" option
-#if UNITY_PHYSICS_EXIST
+
             if (AllowNonRigidbodyDoppler && GetComponent<Rigidbody>())
             {
                 AllowNonRigidbodyDoppler = false;
             }
-#endif
         }
 
         private void OnApplicationQuit()
@@ -243,7 +242,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                     if (is3D)
                     {
                         var transform = GetComponent<Transform>();
-#if UNITY_PHYSICS_EXIST
+
                     if (GetComponent<Rigidbody>())
                     {
                         Rigidbody rigidBody = GetComponent<Rigidbody>();
@@ -251,8 +250,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                         RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody);
                     }
                     else
-#endif
-#if UNITY_PHYSICS2D_EXIST
                     if (GetComponent<Rigidbody2D>())
                     {
                         var rigidBody2D = GetComponent<Rigidbody2D>();
@@ -260,7 +257,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                         RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody2D);
                     }
                     else
-#endif
                         {
                             instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
                             RuntimeManager.AttachInstanceToGameObject(instance, transform, AllowNonRigidbodyDoppler);
@@ -366,7 +362,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 if (is3D)
                 {
                     var transform = GetComponent<Transform>();
-#if UNITY_PHYSICS_EXIST
+
                     if (GetComponent<Rigidbody>())
                     {
                         Rigidbody rigidBody = GetComponent<Rigidbody>();
@@ -374,8 +370,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                         RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody);
                     }
                     else
-#endif
-#if UNITY_PHYSICS2D_EXIST
+
+
                     if (GetComponent<Rigidbody2D>())
                     {
                         var rigidBody2D = GetComponent<Rigidbody2D>();
@@ -383,7 +379,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                         RuntimeManager.AttachInstanceToGameObject(instance, transform, rigidBody2D);
                     }
                     else
-#endif
+
                     {
                         instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
                         RuntimeManager.AttachInstanceToGameObject(instance, transform, AllowNonRigidbodyDoppler);

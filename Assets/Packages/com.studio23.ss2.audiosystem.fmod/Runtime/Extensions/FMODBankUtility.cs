@@ -7,22 +7,96 @@ namespace Studio23.SS2.AudioSystem.fmod
 {
     public class FMODBankUtility : MonoBehaviour
     {
-        [SerializeField]
-        [BankRef]
-        public List<string> Banks;
+        public LoaderGameEvent LoadEvent;
+        public LoaderGameEvent UnloadEvent;
+        [BankRef] public List<string> Banks;
+        public string CollisionTag;
+        private bool isQuitting;
 
-        [ContextMenu("LoadBanks")]
-        public void LoadBanks()
+        private void HandleGameEvent(LoaderGameEvent gameEvent)
+        {
+            if (LoadEvent == gameEvent)
+            {
+                Load();
+            }
+            if (UnloadEvent == gameEvent)
+            {
+                Unload();
+            }
+        }
+
+        private void Start()
+        {
+            RuntimeUtils.EnforceLibraryOrder();
+            HandleGameEvent(LoaderGameEvent.ObjectStart);
+        }
+
+        private void OnApplicationQuit()
+        {
+            isQuitting = true;
+        }
+
+        private void OnDestroy()
+        {
+            if (!isQuitting)
+            {
+                HandleGameEvent(LoaderGameEvent.ObjectDestroy);
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
+            {
+                HandleGameEvent(LoaderGameEvent.TriggerEnter);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
+            {
+                HandleGameEvent(LoaderGameEvent.TriggerExit);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
+            {
+                HandleGameEvent(LoaderGameEvent.TriggerEnter2D);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (string.IsNullOrEmpty(CollisionTag) || other.CompareTag(CollisionTag))
+            {
+                HandleGameEvent(LoaderGameEvent.TriggerExit2D);
+            }
+        }
+
+        private void OnEnable()
+        {
+            HandleGameEvent(LoaderGameEvent.ObjectEnable);
+        }
+
+        private void OnDisable()
+        {
+            HandleGameEvent(LoaderGameEvent.ObjectDisable);
+        }
+
+        [ContextMenu("Load")]
+        public void Load()
         {
             foreach (var b in Banks)
             {
                 FMODManager.Instance.BanksManager.LoadBank($"{FMODUnity.Settings.Instance.SourceBankPath}/{b}.bank");
-                if (FMODManager.Instance.Debug) Debug.Log($"{b}.bank has been loaded. Path: {FMODUnity.Settings.Instance.SourceBankPath}/{b}.bank");
             }
         }
 
-        [ContextMenu("UnloadBanks")]
-        public void UnloadBanks()
+        [ContextMenu("Unload")]
+        public void Unload()
         {
             foreach (var b in Banks)
             {
@@ -30,8 +104,8 @@ namespace Studio23.SS2.AudioSystem.fmod
             }
         }
 
-        [ContextMenu("UnloadAllBanks")]
-        public void UnloadAllBanks()
+        [ContextMenu("UnloadAll")]
+        public void UnloadAll()
         {
             FMODManager.Instance.BanksManager.UnloadAllBanks();
         }

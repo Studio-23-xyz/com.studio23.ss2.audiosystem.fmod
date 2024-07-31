@@ -36,7 +36,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             {
                 OnBankLoaded?.Invoke(bank);
                 _bankList[bankName] = bank;
+                if (FMODManager.Instance.Debug) Debug.Log($"{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]} has been loaded. Path: {bankName}");
             }
+            else Debug.LogError($"Failed to load bank '{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]}': {result}");
         }
 
         /// <summary>
@@ -53,8 +55,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 OnBankUnloaded?.Invoke(bank);
                 bank.unloadSampleData();
                 _bankList.Remove(bankName);
+                if (FMODManager.Instance.Debug) Debug.Log($"{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]} has been unloaded.");
             }
-            else Debug.LogError($"Failed to unload bank '{bankName}': {result}");
+            else Debug.LogError($"Failed to unload bank '{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]}': {result}");
         }
 
         /// <summary>
