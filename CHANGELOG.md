@@ -1,33 +1,45 @@
+## [v1.1.7] - 2024-07-31
+
+### Updated
+
+- FMODBankUtility class added. It is a utility load/unload banks without the need for code.
+
+## [v1.1.6] - 2024-07-08
+
+### Updated
+
+- Missing GameObject Reference will now give a log.
+
 ## [v1.0.5] - 2024-06-13
 
 ### Updated
 
-- Added/updated new functions for pausing and unpausing emitters.
+- Added/updated new methods for pausing and unpausing emitters.
 - FMODEmitterUtility class added. It is a utility to play and manage events without the need for code.
 
 ## [v1.0.2] - 2024-06-03
 
 ### Updated
 
-- Added events to functions (```StopAllOfType```, ```StopAll```, ```ReleaseAllOfType```, ```ReleaseAll```).
+- Added events to methods (```StopAllOfType```, ```StopAll```, ```ReleaseAllOfType```, ```ReleaseAll```).
 
 ## [v1.0.0] - 2024-05-27
 
 ### Updated
 
-- Added/updated new functions for stopping and releasing emitters.
+- Added/updated new methods for stopping and releasing emitters.
 
 ## [v0.1.4] - 2024-05-03
 
 ### Updated
 
-- Modified pause/mute functions for buses.
+- Modified pause/mute method for buses.
 
 ## [v0.1.4] - 2024-04-08
 
 ### Updated
 
-- Added events to all playback functions.
+- Added events to all playback methods
 
 ## [v0.1.3] - 2024-04-04
 

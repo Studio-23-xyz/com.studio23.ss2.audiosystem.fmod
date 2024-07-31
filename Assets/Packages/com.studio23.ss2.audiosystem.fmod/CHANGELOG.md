@@ -1,4 +1,10 @@
-## [v1.0.5] - 2024-07-08
+## [v1.1.7] - 2024-07-31
+
+### Updated
+
+- FMODBankUtility class added. It is a utility load/unload banks without the need for code.
+
+## [v1.1.6] - 2024-07-08
 
 ### Updated
 
