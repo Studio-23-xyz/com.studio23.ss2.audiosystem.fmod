@@ -5,6 +5,7 @@ using FMODUnity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
@@ -31,6 +32,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="flag"></param>
         public void LoadBank(string bankName, LOAD_BANK_FLAGS flag = LOAD_BANK_FLAGS.NORMAL)
         {
+            if (_bankList.ContainsKey(bankName))
+            {
+                if (FMODManager.Instance.Debug) Debug.Log($"{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]} is already loaded");
+                return;
+            }
+
             var result = RuntimeManager.StudioSystem.loadBankFile(bankName, flag, out Bank bank);
             if (result == RESULT.OK && !_bankList.ContainsKey(bankName))
             {
@@ -38,7 +45,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 _bankList[bankName] = bank;
                 if (FMODManager.Instance.Debug) Debug.Log($"{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]} has been loaded. Path: {bankName}");
             }
-            else Debug.LogError($"Failed to load bank '{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]}': {result}");
+            else Debug.LogError($"Failed to load bank {bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]}: {result}");
         }
 
         /// <summary>
@@ -75,6 +82,33 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
+        /// Returns true if the specified Bank has been loaded.
+        /// </summary>
+        /// <param name="bankName"></param>
+        /// <returns></returns>
+        public bool HasBankLoaded(string bankName)
+        {
+            if (RuntimeManager.HasBankLoaded(bankName))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true if all the previously loaded banks have been unloaded.
+        /// </summary>
+        /// <returns></returns>
+        public bool HasAllBanksUnLoaded()
+        {
+            foreach (var bank in _bankList)
+            {
+                if (HasBankLoaded(bank.Key)) return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// Loads all non-streaming Sample Data for a Bank.
         /// Make sure to load corresponding Bank before loading the Sample Data.
         /// </summary>
@@ -100,7 +134,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             UnloadBank(currentLocale);
             LoadBank(targetLocale);
         }
-
+        
         private Bank BankExists(string bankName)
         {
             var key = bankName;
