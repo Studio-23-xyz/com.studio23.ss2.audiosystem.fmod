@@ -14,8 +14,23 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 {
     public class CreateFMODDataEditor : EditorWindow
     {
+        private const string AssemblyDefinitionKey = "CreateFolderWindow_AssemblyDefinition";
+        private const string SelectedFolderKey = "CreateFolderWindow_SelectedFolder";
+        private const string CustomNamespaceKey = "CreateFolderWindow_CustomNamespace";
+        private const string SelectedOptionKey = "CreateFolderWindow_SelectedOption";
+
+        private enum SelectedOption
+        {
+            None,
+            AssemblyDefinition,
+            Folder
+        }
+
+        private SelectedOption _selectedOption = SelectedOption.None;
         private AssemblyDefinitionAsset _assemblyDefinitionAsset;
-        private string folderName = "Resources";
+        private DefaultAsset _selectedFolder;
+        private string _selectedFolderPath = "";
+        private string _customNamespace = "";
 
         private static Dictionary<string, string> _bankList = new Dictionary<string, string>();
         private static List<string> _busList = new List<string>();
@@ -29,20 +44,37 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             GetWindow<CreateFMODDataEditor>("Generate data from FMOD");
         }
 
+        private void OnEnable()
+        {
+            LoadPreferences();
+        }
+
+        private void OnDisable()
+        {
+            SavePreferences();
+        }
+
         private void OnGUI()
         {
             GUILayout.Space(10);
 
-            EditorGUILayout.LabelField($"Select your project's assembly definition. The data files will be created in the root folder of the assembly definition.", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField($"Select your project's assembly definition. The data files will be created in the root folder containing the assembly definition.", EditorStyles.boldLabel);
 
             GUILayout.Space(5);
 
+            EditorGUI.BeginChangeCheck();
             _assemblyDefinitionAsset = EditorGUILayout.ObjectField("Assembly Definition Asset", _assemblyDefinitionAsset, typeof(AssemblyDefinitionAsset), false) as AssemblyDefinitionAsset;
+            if (EditorGUI.EndChangeCheck() && _assemblyDefinitionAsset != null)
+            {
+                _selectedOption = SelectedOption.AssemblyDefinition;
+                _selectedFolder = null;
+                _selectedFolderPath = "";
+            }
 
             GUILayout.Space(5);
 
-            // Display path of the assembly definition asset
-            if (_assemblyDefinitionAsset != null)
+            // Display path of the assembly definition asset.
+            if (_selectedOption == SelectedOption.AssemblyDefinition && _assemblyDefinitionAsset != null)
             {
                 EditorGUI.BeginDisabledGroup(true);
                 string assemblyDefinitionAssetPath = AssetDatabase.GetAssetPath(_assemblyDefinitionAsset);
@@ -50,15 +82,58 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
                 EditorGUI.EndDisabledGroup();
             }
 
+            GUILayout.Space(15);
+
+            EditorGUILayout.LabelField($"Or select a directory for the data files to be created in.", EditorStyles.boldLabel);
+
+            GUILayout.Space(5);
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUI.BeginDisabledGroup(true);
+            _selectedFolder = EditorGUILayout.ObjectField("Select Folder", _selectedFolder, typeof(DefaultAsset), false) as DefaultAsset;
+            EditorGUI.EndDisabledGroup();
+            if (GUILayout.Button("Browse", GUILayout.Width(70)))
+            {
+                string selectedPath = EditorUtility.OpenFolderPanel("Select Folder", "Assets", "");
+                if (!string.IsNullOrEmpty(selectedPath))
+                {
+                    // Convert the absolute path to a relative path
+                    if (selectedPath.StartsWith(Application.dataPath))
+                    {
+                        _selectedFolderPath = "Assets" + selectedPath.Substring(Application.dataPath.Length);
+                        _selectedFolder = AssetDatabase.LoadAssetAtPath<DefaultAsset>(_selectedFolderPath);
+                        _selectedOption = SelectedOption.Folder;
+                        _assemblyDefinitionAsset = null;
+                    }
+                }
+            }
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.Space(5);
+
+            // Display path of selected folder.
+            if (_selectedOption == SelectedOption.Folder && !string.IsNullOrEmpty(_selectedFolderPath))
+            {
+                EditorGUI.BeginDisabledGroup(true);
+                EditorGUILayout.TextField("Selected Folder Path", _selectedFolderPath);
+                EditorGUI.EndDisabledGroup();
+
+                GUILayout.Space(5);
+
+                _customNamespace = EditorGUILayout.TextField("Custom Namespace", _customNamespace);
+            }
+
             GUILayout.Space(10);
 
             if (GUILayout.Button("Generate"))
             {
-                if (_assemblyDefinitionAsset != null)
+                string targetFolderPath = null;
+
+                if (_selectedOption == SelectedOption.AssemblyDefinition && _assemblyDefinitionAsset != null)
                 {
                     string assemblyFolderPath = AssetDatabase.GetAssetPath(_assemblyDefinitionAsset);
                     string directory = Path.GetDirectoryName(assemblyFolderPath);
-                    string folderPath = Path.Combine(directory, folderName, "FMOD_Data");
+                    string folderPath = Path.Combine(directory, "FMOD_Data");
 
                     if (!Directory.Exists(folderPath))
                     {
@@ -74,9 +149,26 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
                     GenerateData(folderPath, nameSpace);
                 }
+                else if (_selectedOption == SelectedOption.Folder && _selectedFolder != null)
+                {
+                    string selectedFolderPath = AssetDatabase.GetAssetPath(_selectedFolder);
+                    targetFolderPath = Path.Combine(selectedFolderPath, "FMOD_Data");
+
+                    if (!Directory.Exists(targetFolderPath))
+                    {
+                        Directory.CreateDirectory(targetFolderPath);
+                        Debug.Log("Folder created at: " + targetFolderPath);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Folder already exists at: " + targetFolderPath);
+                    }
+
+                    GenerateData(targetFolderPath, _customNamespace);
+                }
                 else
                 {
-                    Debug.LogError("Please select the Assembly Definition Asset.");
+                    Debug.LogError("Please select the Assembly Definition Asset or a valid directory.");
                 }
             }
         }
@@ -87,6 +179,51 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             string assemblyDefinitionText = File.ReadAllText(assemblyDefinitionPath);
             JObject assemblyDefinitionObject = JObject.Parse(assemblyDefinitionText);
             return (string)assemblyDefinitionObject["rootNamespace"];
+        }
+
+        private void SavePreferences()
+        {
+            if (_assemblyDefinitionAsset != null)
+            {
+                string assemblyDefinitionPath = AssetDatabase.GetAssetPath(_assemblyDefinitionAsset);
+                EditorPrefs.SetString(AssemblyDefinitionKey, assemblyDefinitionPath);
+            }
+            else
+            {
+                EditorPrefs.DeleteKey(AssemblyDefinitionKey);
+            }
+
+            if (!string.IsNullOrEmpty(_selectedFolderPath))
+            {
+                EditorPrefs.SetString(SelectedFolderKey, _selectedFolderPath);
+            }
+            else
+            {
+                EditorPrefs.DeleteKey(SelectedFolderKey);
+            }
+
+            EditorPrefs.SetString(CustomNamespaceKey, _customNamespace);
+        }
+
+        private void LoadPreferences()
+        {
+            _selectedOption = (SelectedOption)EditorPrefs.GetInt(SelectedOptionKey, (int)SelectedOption.None);
+
+            if (_selectedOption == SelectedOption.AssemblyDefinition && EditorPrefs.HasKey(AssemblyDefinitionKey))
+            {
+                string assemblyDefinitionPath = EditorPrefs.GetString(AssemblyDefinitionKey);
+                _assemblyDefinitionAsset = AssetDatabase.LoadAssetAtPath<AssemblyDefinitionAsset>(assemblyDefinitionPath);
+            }
+            else if (_selectedOption == SelectedOption.Folder && EditorPrefs.HasKey(SelectedFolderKey))
+            {
+                _selectedFolderPath = EditorPrefs.GetString(SelectedFolderKey);
+                _selectedFolder = AssetDatabase.LoadAssetAtPath<DefaultAsset>(_selectedFolderPath);
+
+                if (EditorPrefs.HasKey(CustomNamespaceKey))
+                {
+                    _customNamespace = EditorPrefs.GetString(CustomNamespaceKey);
+                }
+            }
         }
 
         private static void GenerateData(string folderPath, string nameSpace)
@@ -159,7 +296,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
             for (int i = 0; i < _bankList.Count; i++)
             {
-                string bankName = _bankList.ElementAt(i).Key.Replace(".", "_");
+                string bankName = _bankList.ElementAt(i).Key.Replace(".", "_").Replace("(", "").Replace(")","");
                 scriptContent += $"\t\tpublic static readonly string {bankName} = \"{_bankList.ElementAt(i).Value}\";\n";
             }
             scriptContent += "\t}\n";
@@ -302,23 +439,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
             scriptContent += "using System.Collections.Generic;\n\n";
             scriptContent += $"namespace {nameSpace}\n{{\n";
-            scriptContent += $"\tpublic enum Language\n";
-            scriptContent += "\t{";
-            scriptContent += "\n";
-
-            for (int i = 0; i < _bankList.Count; i++)
-            {
-                if (_bankList.ElementAt(i).Key.Contains("LOCALE"))
-                {
-                    var temp = _bankList.ElementAt(i).Key.Split("LOCALE_")[1];
-                    scriptContent += $"\t\t{temp},\n";
-                }
-            }
-            scriptContent += "\t}";
-            scriptContent += "\n\n";
-
+            
             scriptContent += $"\tpublic static class {filename}\n\t{{\n";
-            scriptContent += $"\t\tpublic static Dictionary<Language, string> LanguageList = new Dictionary<Language, string>\n";
+            scriptContent += $"\t\tpublic static Dictionary<string, string> LanguageList = new Dictionary<string, string>\n";
             scriptContent += "\t\t{";
             scriptContent += "\n";
 
@@ -326,9 +449,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             {
                 if (_bankList.ElementAt(i).Key.Contains("LOCALE"))
                 {
-                    var temp = _bankList.ElementAt(i).Key.Split("LOCALE_")[1];
+                    var temp = _bankList.ElementAt(i).Key.Split("LOCALE_")[1].Replace("_", " ");
                     scriptContent += "\t\t\t{";
-                    scriptContent += $"Language.{temp}, \"{_bankList.ElementAt(i).Value}\"";
+                    scriptContent += $"\"{temp}\", \"{_bankList.ElementAt(i).Value}\"";
                     scriptContent += "},";
                     scriptContent += "\n";
                 }

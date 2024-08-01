@@ -5,7 +5,7 @@
 			<value>Japanese</value>
 		</property>
 		<property name="localeCode">
-			<value>LOCALE_JP</value>
+			<value>LOCALE_Japanese_(jp)</value>
 		</property>
 	</object>
 </objects>

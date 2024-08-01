@@ -5,7 +5,7 @@
 			<value>Chinese</value>
 		</property>
 		<property name="localeCode">
-			<value>LOCALE_CN</value>
+			<value>LOCALE_Chinese_(cn)</value>
 		</property>
 	</object>
 </objects>
