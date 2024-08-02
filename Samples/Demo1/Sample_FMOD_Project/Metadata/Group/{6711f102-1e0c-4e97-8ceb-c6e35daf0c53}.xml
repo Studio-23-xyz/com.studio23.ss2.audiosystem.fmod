@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{6711f102-1e0c-4e97-8ceb-c6e35daf0c53}">
+		<property name="name">
+			<value>Sample</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{6b75504d-e32e-4a68-8833-8d5a24a64464}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{857e9cf8-2235-42b8-bdd6-384b76d5caef}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{af9d027a-3a1f-49a8-a9ef-4cbe20673632}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{6b75504d-e32e-4a68-8833-8d5a24a64464}">
+		<relationship name="effects">
+			<destination>{710b651f-c865-4d8b-8eba-797c8e97028d}</destination>
+			<destination>{705929df-34de-44bb-9dda-d6201de0e15e}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{857e9cf8-2235-42b8-bdd6-384b76d5caef}" />
+	<object class="MixerBusFader" id="{710b651f-c865-4d8b-8eba-797c8e97028d}" />
+	<object class="PitchShifterEffect" id="{705929df-34de-44bb-9dda-d6201de0e15e}">
+		<property name="overlap">
+			<value>1</value>
+		</property>
+	</object>
+</objects>
