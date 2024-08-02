@@ -18,6 +18,7 @@ Audio System for FMOD is a tool designed for managing and utilizing the FMOD eng
 3. [Usage](#usage)
     - [FMOD Manager](#fmod-manager)
     - [Events Manager](#events-manager)
+	- [Emitter Utility](#fmod-emitter-utility)
     - [Banks Manager](#banks-manager)
     - [Mixer Manager](#mixer-manager)
     - [CallBack Handlers](#callback-handlers)  
@@ -129,7 +130,7 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
 15. ```GetLocalParameterValueByName()``` and ```GetLocalParameterFinalValueByName()``` is used to get the local parameter's current value and current final value respectively using its name.
 16. ```SetGlobalParameterByName()``` and ```GetGlobalParameterValueByName()``` is used to get the global parameter's current value and current final value respectively using its name.
 
-### FMOD Emitter Utility
+### Emitter Utility
 
 1. It can be attached to game objects as a component to play and manage events without the need for code.
 2. You need to assign the event you want to play and optionally one parameter that you would like to control.
@@ -153,7 +154,16 @@ Attach the FMODManager script to a GameObject in your scene. You can access the 
 4. ```UnloadAllBanks()``` is used to unload all banks. It does not remove banks that have been specified FMOD in the FMOD Settings.
 5. ```LoadBankSampleData()``` is used to load all the non-streaming sample data of a bank. Can also be used if banks are built with separate metadata and assets.
 6. ```SwitchLocalization()``` is used to switch localization. It will unload the current localization bank and load the target localization bank.
+7. ```HasBankLoaded()``` allows you to check if a specific bank has been loaded.
+8. ```HasAllBanksUnLoaded()``` allows you to check if all banks have been unloaded. It does not check banks that have been specified FMOD in the FMOD Settings.
 
+### Bank Utility
+
+1. It can be attached to game objects as a component to load/unload without the need for code.
+2. You need to assign the banks you want to load/unload.
+3. ```LoadBank()``` is used to load banks.
+4. ```UnloadBank()``` is used to unload bank. It cannot remove banks that have been specified FMOD in the FMOD Settings.
+5. ```UnloadAllBanks()``` is used to unload all banks. It does not remove banks that have been specified FMOD in the FMOD Settings.
 
 ### Mixer Manager
 

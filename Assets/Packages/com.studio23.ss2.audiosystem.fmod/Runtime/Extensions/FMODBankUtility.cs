@@ -17,11 +17,11 @@ namespace Studio23.SS2.AudioSystem.fmod
         {
             if (LoadEvent == gameEvent)
             {
-                Load();
+                LoadBank();
             }
             if (UnloadEvent == gameEvent)
             {
-                Unload();
+                UnloadBank();
             }
         }
 
@@ -87,7 +87,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         }
 
         [ContextMenu("Load")]
-        public void Load()
+        public void LoadBank()
         {
             foreach (var b in Banks)
             {
@@ -96,7 +96,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         }
 
         [ContextMenu("Unload")]
-        public void Unload()
+        public void UnloadBank()
         {
             foreach (var b in Banks)
             {
@@ -105,7 +105,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         }
 
         [ContextMenu("UnloadAll")]
-        public void UnloadAll()
+        public void UnloadAllBanks()
         {
             FMODManager.Instance.BanksManager.UnloadAllBanks();
         }

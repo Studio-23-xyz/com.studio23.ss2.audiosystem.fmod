@@ -61,27 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Core\FMODManager.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODBusList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Extensions\FMODBankUtility.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODBank_Dialogue.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Data\FMODEmitterData.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODBank_Master.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Extensions\FMODEmitterUtility.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Core\MixerManager.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Extensions\FMODCallBackHandler.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Extensions\FMODProgrammerSoundCallBackHandler.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Extensions\CustomStudioEventEmitter.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Data\FMODBusData.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODBankList.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODBank_SFX.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODVCAList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Data\FMODVCAData.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Core\EventsManager.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODBank_Sample.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\Core\BanksManager.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODBank_Test.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODParameterList.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\FMOD_Data\FMODLocaleList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Runtime\com.studio23.ss2.audiosystem.fmod.asmdef" />

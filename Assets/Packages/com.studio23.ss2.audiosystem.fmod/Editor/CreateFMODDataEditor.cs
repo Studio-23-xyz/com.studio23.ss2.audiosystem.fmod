@@ -183,26 +183,27 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
         private void SavePreferences()
         {
-            if (_assemblyDefinitionAsset != null)
+            if (_selectedOption == SelectedOption.AssemblyDefinition && _assemblyDefinitionAsset != null)
             {
                 string assemblyDefinitionPath = AssetDatabase.GetAssetPath(_assemblyDefinitionAsset);
                 EditorPrefs.SetString(AssemblyDefinitionKey, assemblyDefinitionPath);
+                EditorPrefs.DeleteKey(SelectedFolderKey);
+                EditorPrefs.DeleteKey(CustomNamespaceKey);
+            }
+            else if (_selectedOption == SelectedOption.Folder && !string.IsNullOrEmpty(_selectedFolderPath))
+            {
+                EditorPrefs.SetString(SelectedFolderKey, _selectedFolderPath);
+                EditorPrefs.SetString(CustomNamespaceKey, _customNamespace);
+                EditorPrefs.DeleteKey(AssemblyDefinitionKey);
             }
             else
             {
                 EditorPrefs.DeleteKey(AssemblyDefinitionKey);
-            }
-
-            if (!string.IsNullOrEmpty(_selectedFolderPath))
-            {
-                EditorPrefs.SetString(SelectedFolderKey, _selectedFolderPath);
-            }
-            else
-            {
                 EditorPrefs.DeleteKey(SelectedFolderKey);
+                EditorPrefs.DeleteKey(CustomNamespaceKey);
             }
 
-            EditorPrefs.SetString(CustomNamespaceKey, _customNamespace);
+            EditorPrefs.SetInt(SelectedOptionKey, (int)_selectedOption);
         }
 
         private void LoadPreferences()
