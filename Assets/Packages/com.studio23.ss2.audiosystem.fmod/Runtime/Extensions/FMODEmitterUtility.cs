@@ -55,6 +55,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             _onTweenComplete?.Invoke();
         }
 
+        public void SetParameterName(string name)
+        {
+            _parameterName = name;
+        }
+
         #region PlayBack
 
         /// <summary>

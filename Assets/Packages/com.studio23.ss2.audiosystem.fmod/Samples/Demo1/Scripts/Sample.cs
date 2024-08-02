@@ -8,8 +8,7 @@ public class Sample : MonoBehaviour
 {
     public bool isPaused;
 
-    public GameObject GameObject;
-    public string CurrentLocale;
+    private string _currentLocale;
 
     #region Basic Audio
     [ContextMenu("Create Emitter")]
@@ -106,7 +105,7 @@ public class Sample : MonoBehaviour
     [ContextMenu("Play EN")]
     public void PlayEN()
     {
-        CurrentLocale = FMODLocaleList.LanguageList["English (en)"];
+        _currentLocale = FMODLocaleList.LanguageList["English (en)"];
         FMODManager.Instance.BanksManager.LoadBank(FMODLocaleList.LanguageList["English (en)"]);
         while (!FMODManager.Instance.BanksManager.HasBankLoaded(FMODLocaleList.LanguageList["English (en)"]))
         {
@@ -114,24 +113,24 @@ public class Sample : MonoBehaviour
             break;
         }
 
-        FMODManager.Instance.BanksManager.SwitchLocalization(CurrentLocale, FMODLocaleList.LanguageList["English (en)"]);
-        CurrentLocale = FMODLocaleList.LanguageList["English (en)"];
+        FMODManager.Instance.BanksManager.SwitchLocalization(_currentLocale, FMODLocaleList.LanguageList["English (en)"]);
+        _currentLocale = FMODLocaleList.LanguageList["English (en)"];
         FMODManager.Instance.EventsManager.PlayProgrammerSound("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
     }
 
     [ContextMenu("Play JP")]
     public void PlayJP()
     {
-        FMODManager.Instance.BanksManager.SwitchLocalization(CurrentLocale, FMODLocaleList.LanguageList["Japanese (jp)"]);
-        CurrentLocale = FMODLocaleList.LanguageList["Japanese (jp)"];
+        FMODManager.Instance.BanksManager.SwitchLocalization(_currentLocale, FMODLocaleList.LanguageList["Japanese (jp)"]);
+        _currentLocale = FMODLocaleList.LanguageList["Japanese (jp)"];
         FMODManager.Instance.EventsManager.PlayProgrammerSound("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
     }
 
     [ContextMenu("Switch to CN")]
     public void SwitchToCN()
     {
-        FMODManager.Instance.BanksManager.SwitchLocalization(CurrentLocale, FMODLocaleList.LanguageList["Chinese (cn)"]);
-        CurrentLocale = FMODLocaleList.LanguageList["Chinese (cn)"];
+        FMODManager.Instance.BanksManager.SwitchLocalization(_currentLocale, FMODLocaleList.LanguageList["Chinese (cn)"]);
+        _currentLocale = FMODLocaleList.LanguageList["Chinese (cn)"];
     }
 
     [ContextMenu("Play CN")]

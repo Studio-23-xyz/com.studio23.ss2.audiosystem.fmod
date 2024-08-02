@@ -415,10 +415,10 @@ MonoBehaviour:
   - Master
   Banks:
   - Dialogue
-  - DialogueTable_LOCALE_BN
-  - DialogueTable_LOCALE_CN
-  - DialogueTable_LOCALE_EN
-  - DialogueTable_LOCALE_JP
+  - DialogueTable_LOCALE_Bangla_(bn)
+  - DialogueTable_LOCALE_Chinese_(cn)
+  - DialogueTable_LOCALE_English_(en)
+  - DialogueTable_LOCALE_Japanese_(jp)
   - Sample
   - SFX
   - Test
