@@ -298,7 +298,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             for (int i = 0; i < _bankList.Count; i++)
             {
                 string bankName = _bankList.ElementAt(i).Key.Replace(".", "_").Replace("(", "").Replace(")","");
-                scriptContent += $"\t\tpublic static readonly string {bankName} = \"{_bankList.ElementAt(i).Value}\";\n";
+                scriptContent += $"\t\tpublic static readonly string {bankName} = \"{_bankList.ElementAt(i).Key}\";\n";
             }
             scriptContent += "\t}\n";
             scriptContent += "}";
@@ -452,7 +452,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
                 {
                     var temp = _bankList.ElementAt(i).Key.Split("LOCALE_")[1].Replace("_", " ");
                     scriptContent += "\t\t\t{";
-                    scriptContent += $"\"{temp}\", \"{_bankList.ElementAt(i).Value}\"";
+                    scriptContent += $"\"{temp}\", \"{_bankList.ElementAt(i).Key}\"";
                     scriptContent += "},";
                     scriptContent += "\n";
                 }

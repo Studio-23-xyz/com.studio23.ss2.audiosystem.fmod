@@ -13,8 +13,8 @@ namespace Studio23.SS2.AudioSystem.fmod
 		public static class Test_3
 		{
 			public static readonly string VolumeFadeOut = "VolumeFadeOut";
-			public static readonly string TestParameter = "TestParameter";
 			public static readonly string TestLabeled = "TestLabeled";
+			public static readonly string TestParameter = "TestParameter";
 		}
 		public static class Test_2
 		{

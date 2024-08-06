@@ -5,7 +5,6 @@ using FMODUnity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
@@ -34,18 +33,23 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         {
             if (_bankList.ContainsKey(bankName))
             {
-                if (FMODManager.Instance.Debug) Debug.Log($"{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]} is already loaded");
+                if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank is already loaded");
                 return;
             }
 
-            var result = RuntimeManager.StudioSystem.loadBankFile(bankName, flag, out Bank bank);
+#if !UNITY_EDITOR
+            var result = RuntimeManager.StudioSystem.loadBankFile($"{Application.streamingAssetsPath}/{FMODUnity.Settings.Instance.TargetSubFolder}/{bankName}.bank", flag, out Bank bank);
+#elif UNITY_EDITOR
+            var result = RuntimeManager.StudioSystem.loadBankFile($"{FMODUnity.Settings.Instance.SourceBankPath}/{bankName}.bank", flag, out Bank bank);
+#endif
+
             if (result == RESULT.OK && !_bankList.ContainsKey(bankName))
             {
                 OnBankLoaded?.Invoke(bank);
                 _bankList[bankName] = bank;
-                if (FMODManager.Instance.Debug) Debug.Log($"{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]} has been loaded. Path: {bankName}");
+                if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has been loaded.");
             }
-            else Debug.LogError($"Failed to load bank {bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]}: {result}");
+            else Debug.LogError($"Failed to load bank {bankName}: {result}");
         }
 
         /// <summary>
@@ -62,9 +66,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 OnBankUnloaded?.Invoke(bank);
                 bank.unloadSampleData();
                 _bankList.Remove(bankName);
-                if (FMODManager.Instance.Debug) Debug.Log($"{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]} has been unloaded.");
+                if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has been unloaded.");
             }
-            else Debug.LogError($"Failed to unload bank '{bankName.Split($"{FMODUnity.Settings.Instance.SourceBankPath}/")[1]}': {result}");
+            else Debug.LogError($"Failed to unload bank '{bankName}': {result}");
         }
 
         /// <summary>
@@ -134,7 +138,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             UnloadBank(currentLocale);
             LoadBank(targetLocale);
         }
-        
+
         private Bank BankExists(string bankName)
         {
             var key = bankName;

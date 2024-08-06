@@ -91,7 +91,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         {
             foreach (var b in Banks)
             {
-                FMODManager.Instance.BanksManager.LoadBank($"{FMODUnity.Settings.Instance.SourceBankPath}/{b}.bank");
+                FMODManager.Instance.BanksManager.LoadBank(b);
             }
         }
 
@@ -100,7 +100,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         {
             foreach (var b in Banks)
             {
-                FMODManager.Instance.BanksManager.UnloadBank($"{FMODUnity.Settings.Instance.SourceBankPath}/{b}.bank");
+                FMODManager.Instance.BanksManager.UnloadBank(b);
             }
         }
 
