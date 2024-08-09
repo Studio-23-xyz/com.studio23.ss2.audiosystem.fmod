@@ -59,11 +59,15 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="bankName"></param>
         public void UnloadBank(string bankName)
         {
+            if (!_bankList.ContainsKey(bankName))
+            {
+                if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has not been loaded yet or has already been unloaded");
+                return;
+            }
             Bank bank = BankExists(bankName);
             var result = bank.unload();
             if (result == RESULT.OK)
             {
-                bank.getPath(out string bankPath);
                 OnBankUnloaded?.Invoke(bank);
                 bank.unloadSampleData();
                 _bankList.Remove(bankName);
