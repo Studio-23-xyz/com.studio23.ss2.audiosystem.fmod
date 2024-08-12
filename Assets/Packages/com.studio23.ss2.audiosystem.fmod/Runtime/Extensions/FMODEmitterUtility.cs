@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Core;
+using Studio23.SS2.AudioSystem.fmod.Data;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         public EventReference EventReference;
         public string EventGUID => EventReference.Guid.ToString();
         [SerializeField] private GameObject _gameObject;
+        private FMODEmitterData _emitter;
 
         private float _parameterValue;
         [SerializeField] private string _parameterName;
@@ -21,6 +23,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 
         public bool StopOnFadeOut;
         public bool ReleaseOnFadeOut;
+
+        public UnityEvent OnEventPlayed;
+        public UnityEvent OnEventSuspended;
+        public UnityEvent OnEventUnsuspended;
+        public UnityEvent OnEventPaused;
+        public UnityEvent OnEventUnPaused;
+        public UnityEvent OnEventStopped;
+        private bool _isSubscribed;
 
         private UnityEvent _onTweenUpdate;
         private UnityEvent _onTweenComplete;
@@ -38,6 +48,24 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         {
             _onTweenUpdate.RemoveAllListeners();
             _onTweenComplete.RemoveAllListeners();
+        }
+
+        private void SubscribeToEvents()
+        {
+            if (_emitter == null && !_isSubscribed)
+            {
+                Debug.LogWarning("FMODEmitterData is null, cannot subscribe to events.");
+                return;
+            }
+
+            _isSubscribed = true;
+
+            _emitter.OnEventPlayed.AddListener(OnPlayed);
+            _emitter.OnEventSuspended.AddListener(OnSuspended);
+            _emitter.OnEventUnsuspended.AddListener(OnUnsuspended);
+            _emitter.OnEventPaused.AddListener(OnPaused);
+            _emitter.OnEventUnPaused.AddListener(OnUnpaused);
+            _emitter.OnEventStopped.AddListener(OnStopped);
         }
 
         private async void TweenParameter(float startValue, float endValue)
@@ -66,9 +94,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         /// Creates an Emitter and plays the specified Event.
         /// </summary>
         [ContextMenu("Play")]
-        public void Play()
+        public async void Play()
         {
-            FMODManager.Instance.EventsManager.Play(EventGUID, _gameObject);
+            _emitter = FMODManager.Instance.EventsManager.CreateEmitter(EventGUID, _gameObject);
+            _emitter.Play();
+            await UniTask.WaitForSeconds(2);
+            SubscribeToEvents();
         }
 
         /// <summary>
@@ -369,6 +400,58 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             if (StopOnFadeOut) _onTweenComplete.AddListener(Stop);
             if (ReleaseOnFadeOut) _onTweenComplete.AddListener(Release);
             RampGlobalParameter(_endValue, _startValue);
+        }
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Invoked when the event is played.
+        /// </summary>
+        private void OnPlayed()
+        {
+            OnEventPlayed.Invoke();
+        }
+
+        /// <summary>
+        /// Invoked when the event is suspended.
+        /// </summary>
+        private void OnSuspended()
+        {
+            OnEventSuspended.Invoke();
+        }
+
+        /// <summary>
+        /// Invoked when the event is unsuspended.
+        /// </summary>
+        private void OnUnsuspended()
+        {
+            OnEventUnsuspended.Invoke();
+        }
+
+        /// <summary>
+        /// Invoked when the event is paused.
+        /// </summary>
+        private void OnPaused()
+        {
+            OnEventPaused.Invoke();
+        }
+
+        /// <summary>
+        /// Invoked when the event is unpaused.
+        /// </summary>
+        private void OnUnpaused()
+        {
+            OnEventUnPaused.Invoke();
+        }
+
+        /// <summary>
+        /// Invoked when the event is stopped or completed.
+        /// </summary>
+        private void OnStopped()
+        {
+            OnEventStopped.Invoke();
         }
 
         #endregion

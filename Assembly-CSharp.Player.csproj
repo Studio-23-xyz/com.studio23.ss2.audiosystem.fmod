@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\Player\</OutputPath>
-    <DefineConstants>UNITY_2022_3_14;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_3_14;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;DEVELOPMENT_BUILD;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
@@ -75,15 +75,17 @@
   <ItemGroup>
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\EncodingSetting\{fa3463e9-0731-437c-8bee-4e68a4d3ffea}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{d320eb98-3d4a-4cd9-a001-fdb4e071c58e}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{69d0d47a-7f4b-4d6c-bfc3-bda91e9f7f1f}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Event\{074792d0-fd0d-44d4-ae87-f37f5820794a}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Return\{524ae5a9-928c-4391-9635-34b41d4602af}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Snapshot\{87ea4134-fff1-4e9d-8f8b-294a2b518223}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Snapshot\{b695eec0-fe78-4755-b806-9690c06dfc0b}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Event\{4bd7a2e2-4641-471d-ad1d-e8a4119afa57}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Snapshot\{bae958d6-a263-4de0-9ddc-64e3d8644c76}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Bank\{561cd480-bd2b-4c2e-b919-d775f9c4f409}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Locale\{257d5ec6-3b22-4b51-8f79-e9d463ab102a}.xml" />
@@ -92,21 +94,23 @@
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\BankFolder\{07fb52a7-88b7-4b50-aff5-5f9728462f36}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{bf15a3f1-6824-492a-8cb1-db2383349f1b}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Snapshot\{e305a498-2b18-461d-b35c-6eaea45fafd6}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPresetFolder\{a63b62b3-4076-438a-9e79-0ee8a5d5f39b}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{dd124d8d-1ccd-4871-a160-5024e3e3f116}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPreset\{37d94960-a7fe-4e31-a21d-b4f0654c6ec3}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{6711f102-1e0c-4e97-8ceb-c6e35daf0c53}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{0925b702-2e7b-41b8-a21b-5e2abd6fe1c1}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\EncodingSetting\{f434dfdc-80c4-445b-bdcc-9d8e5e048410}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{670390e5-527e-4f22-8654-b0326c9cc0c6}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\EffectPreset\{3eae0edd-4f73-005f-09e3-f727ff075640}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{3e1d1653-8bd5-4dbc-865e-cba8e8ded970}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Event\{7d4dbbf4-4e71-40ef-9152-be5069761cda}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ProfilerFolder\{26fc004a-e651-4c80-ac8f-6688d3221c0a}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Bank\{816d4737-171a-41e7-a9f0-32996ece71cb}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\EventFolder\{10626052-c98b-4665-b391-646f2512cecd}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{62d29c9d-bd2f-46ac-8dea-c37c666f3cfd}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Dialogue\LOCALE_Bangla_(bn)\keys.txt" />
@@ -114,60 +118,56 @@
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Workspace.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Platform\{58c99923-f513-4913-9658-22fa7559dccd}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\AudioFile\{17e49661-0d1e-4c49-ae54-15097e8ed702}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{057cc373-e8b1-482e-b667-365a1558475d}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\SnapshotGroup\{2e15ae1f-9888-48d4-9994-adc998ae281e}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Snapshot\{6e8d8d09-12e0-48cf-b620-f9cc3bc478a3}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{009ebac0-e5a9-4e69-8d37-6bdc9d8c6f45}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPresetFolder\{a418e0de-c7d0-05c9-280a-b529dc02e12e}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{37ebea86-d649-4a7a-b7b5-25701bfce8e9}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{3f0b7d64-e765-400e-ae74-c2d973ad4ca1}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPreset\{f1fbae11-8273-4d0f-aef5-1ad3b10f92c1}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{7e33a2b3-db05-4b7a-ba1e-e862f2bfde36}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{da23c66c-e512-4a93-98dc-02d6f58e4c5a}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Mixer.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Bank\{8461ebbd-7a3e-4dc4-9dfb-e2ee327cba2b}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Master.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Asset\{4c43130b-9186-4fb6-9d65-a9acdac70927}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\EventFolder\{45afd299-7990-42f5-8ca4-83d643cf06eb}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPreset\{6084c7f0-0738-4840-974b-aabf4439b65e}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Dialogue\LOCALE_Chinese_(cn)\keys.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Tags.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{d9982c58-a056-4e6c-b8e3-883854b4bffb}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Bank\{53c3e436-eefd-45ff-85eb-dd7b05698035}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Platform\{c9f35dc9-139f-472b-8888-8ad9fad5168c}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Locale\{4c47f2c8-26a5-4542-b59e-7c28c629ba48}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Bank\{c2241eda-d134-439b-a1c0-e9439b7d0c13}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPresetFolder\{67049dd2-07df-4010-8865-f2b5006188b3}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPreset\{11cab57e-8ac8-48ab-b6ca-3c855723ea66}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\SnapshotGroup\{2dcd07b1-59b3-40e5-9a17-4b3c6efc2f22}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{4af1471f-c8c6-4b8f-9ca6-f5a92d188128}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Locale\{1abccf33-9d4b-41a0-aa08-c5c5667e3e81}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Asset\{84589ad2-76ff-41aa-a2b0-39f37d76fffc}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{ab09c06a-b296-432d-92d9-15f5323daa98}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{13df530d-8d08-4da0-80de-7c4a8577e3a9}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Bank\{d100ffc4-9718-41d7-b641-181373b55498}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Event\{8e9f0b3d-5f42-422e-b43d-1b55fd43cdb2}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Dialogue\LOCALE_Japanese_(jp)\keys.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\SandboxFolder\{90f1921b-3a6d-4222-bafe-83641a15bccf}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\EffectPreset\{028d38fd-417b-0bad-290b-a30ea50da357}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Dialogue\LOCALE_English_(en)\keys.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPreset\{7eea199e-38ba-4a5e-8f36-d855c19c4a3c}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Locale\{6c4f00a8-d2d3-431e-af63-1615148089df}.xml" />
-    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

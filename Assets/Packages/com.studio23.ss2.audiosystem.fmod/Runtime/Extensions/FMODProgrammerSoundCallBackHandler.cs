@@ -14,11 +14,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 {
     public static class FMODProgrammerSoundCallBackHandler
     {
-        public delegate void ProgrammerSoundEvent();
-
-        public static ProgrammerSoundEvent OnDialogueStarted;
-        public static ProgrammerSoundEvent OnDialogueComplete;
-
         /// <summary>
         /// Initializes a CallBack for all Event Instances with programmer sounds.
         /// </summary>
@@ -101,8 +96,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         }
 
         [MonoPInvokeCallback(typeof(EVENT_CALLBACK))]
-        private static RESULT ProgrammerSoundCallbackHandler(EVENT_CALLBACK_TYPE type, IntPtr instancePtr,
-            IntPtr parameterPtr)
+        private static RESULT ProgrammerSoundCallbackHandler(EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
         {
             EventInstance instance = new EventInstance(instancePtr);
 
@@ -120,8 +114,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 GCHandle eventDataHandle = GCHandle.FromIntPtr(EventDataPtr);
                 SoundData eventData = (SoundData)eventDataHandle.Target;
 
-                eventData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping",
-                    out USER_PROPERTY UserProperties);
+                eventData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY userProperties);
                 eventData.EmitterData.CurrentCallbackType = type;
 
 #if UNITY_EDITOR
@@ -134,11 +127,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 
                 switch (type)
                 {
-                    case EVENT_CALLBACK_TYPE.CREATED:
-                        {
-                            OnDialogueStarted?.Invoke();
-                            break;
-                        }
                     case EVENT_CALLBACK_TYPE.STARTED:
                         {
                             eventData.EmitterData.EventState = FMODEventState.Playing;
@@ -146,7 +134,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                         }
                     case EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND:
                         {
-                            FMODCallBackHandler.IsLoopingCheck(UserProperties, eventData.EmitterData);
+                            FMODCallBackHandler.IsLoopingCheck(userProperties, eventData.EmitterData);
                             var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
 
                             parameter.sound = eventData.Sound.handle;
@@ -154,15 +142,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                             Marshal.StructureToPtr(parameter, parameterPtr, false);
                             break;
                         }
-                    case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
-                        {
-                            FMODCallBackHandler.IsLoopingCheck(UserProperties, eventData.EmitterData);
-                            OnDialogueComplete?.Invoke();
-                            break;
-                        }
                     case EVENT_CALLBACK_TYPE.STOPPED:
                         {
                             eventData.EmitterData.EventState = FMODEventState.Stopped;
+                            break;
+                        }
+                    case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
+                        {
+                            FMODCallBackHandler.IsLoopingCheck(userProperties, eventData.EmitterData);
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.DESTROY_PROGRAMMER_SOUND:

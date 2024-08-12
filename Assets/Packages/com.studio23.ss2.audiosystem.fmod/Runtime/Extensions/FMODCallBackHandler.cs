@@ -43,7 +43,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 GCHandle eventDataHandle = GCHandle.FromIntPtr(EventDataPtr);
                 FMODEmitterData eventData = (FMODEmitterData)eventDataHandle.Target;
 
-                eventData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY UserProperties);
+                eventData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY userProperties);
                 eventData.CurrentCallbackType = type;
 
 #if UNITY_EDITOR
@@ -61,14 +61,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                             eventData.EventState = FMODEventState.Playing;
                             break;
                         }
-                    case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
-                        {
-                            IsLoopingCheck(UserProperties, eventData);
-                            break;
-                        }
                     case EVENT_CALLBACK_TYPE.STOPPED:
                         {
                             eventData.EventState = FMODEventState.Stopped;
+                            break;
+                        }
+                    case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
+                        {
+                            IsLoopingCheck(userProperties, eventData);
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.DESTROYED:

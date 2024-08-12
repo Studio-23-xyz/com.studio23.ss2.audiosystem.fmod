@@ -5,6 +5,7 @@ using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 using Object = UnityEngine.Object;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -23,13 +24,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         internal FMODEventState EventState = FMODEventState.Stopped;
         internal EVENT_CALLBACK_TYPE CurrentCallbackType;
 
-        public delegate void PlaybackEvent();
-        public PlaybackEvent OnEventPlayed;
-        public PlaybackEvent OnEventSuspended;
-        public PlaybackEvent OnEventUnsuspended;
-        public PlaybackEvent OnEventPaused;
-        public PlaybackEvent OnEventUnPaused;
-        public PlaybackEvent OnEventStopped;
+        public UnityEvent OnEventPlayed = new UnityEvent();
+        public UnityEvent OnEventSuspended = new UnityEvent();
+        public UnityEvent OnEventUnsuspended = new UnityEvent();
+        public UnityEvent OnEventPaused = new UnityEvent();    
+        public UnityEvent OnEventUnPaused = new UnityEvent();
+        public UnityEvent OnEventStopped = new UnityEvent();
 
         public FMODEmitterData(string eventGUID, GameObject referencedGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
         {
@@ -237,8 +237,24 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             return EventState;
         }
+
+        ~FMODEmitterData()
+        {
+            OnEventPlayed.RemoveAllListeners();
+            OnEventSuspended.RemoveAllListeners();
+            OnEventUnsuspended.RemoveAllListeners();
+            OnEventPaused.RemoveAllListeners();
+            OnEventUnPaused.RemoveAllListeners();
+            OnEventStopped.RemoveAllListeners();
+        }
     }
 
+    /// <summary>
+    /// Suspended and Paused have some small differences.
+    /// Suspended sounds cannot be paused. It is not intended to be paused with the game,
+    /// but when you might need to suspend a sound for some time irrespective of whether
+    /// the game is paused or not.
+    /// </summary>
     [System.Flags]
     public enum FMODEventState
     {

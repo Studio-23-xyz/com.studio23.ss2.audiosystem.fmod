@@ -18,6 +18,16 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
         private SerializedProperty stopOnFadeOutProp;
         private SerializedProperty releaseOnFadeOutProp;
 
+        // SerializedProperties for UnityEvents
+        private SerializedProperty OnEventPlayed;
+        private SerializedProperty OnEventSuspended;
+        private SerializedProperty OnEventUnsuspended;
+        private SerializedProperty OnEventPaused;
+        private SerializedProperty OnEventUnPaused;
+        private SerializedProperty OnEventStopped;
+
+        private bool showEvents;
+
         private void OnEnable()
         {
             eventReferenceProp = serializedObject.FindProperty("EventReference");
@@ -28,6 +38,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             durationProp = serializedObject.FindProperty("_duration");
             stopOnFadeOutProp = serializedObject.FindProperty("StopOnFadeOut");
             releaseOnFadeOutProp = serializedObject.FindProperty("ReleaseOnFadeOut");
+
+            // Initialize UnityEvent properties
+            OnEventPlayed = serializedObject.FindProperty("OnEventPlayed");
+            OnEventSuspended = serializedObject.FindProperty("OnEventSuspended");
+            OnEventUnsuspended = serializedObject.FindProperty("OnEventUnsuspended");
+            OnEventPaused = serializedObject.FindProperty("OnEventPaused");
+            OnEventUnPaused = serializedObject.FindProperty("OnEventUnPaused");
+            OnEventStopped = serializedObject.FindProperty("OnEventStopped");
         }
 
         public override void OnInspectorGUI()
@@ -54,6 +72,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
             EditorGUILayout.PropertyField(stopOnFadeOutProp, new GUIContent("Stop On Fade Out"));
             EditorGUILayout.PropertyField(releaseOnFadeOutProp, new GUIContent("Release On Fade Out"));
+            EditorGUILayout.Separator();
+            EditorGUILayout.Separator();
+
+            // UnityEvents foldout
+            showEvents = EditorGUILayout.Foldout(showEvents, "Events");
+            if (showEvents)
+            {
+                EditorGUILayout.PropertyField(OnEventPlayed, new GUIContent("On Event Played"));
+                EditorGUILayout.PropertyField(OnEventSuspended, new GUIContent("On Event Suspended"));
+                EditorGUILayout.PropertyField(OnEventUnsuspended, new GUIContent("On Event Unsuspended"));
+                EditorGUILayout.PropertyField(OnEventPaused, new GUIContent("On Event Paused"));
+                EditorGUILayout.PropertyField(OnEventUnPaused, new GUIContent("On Event UnPaused"));
+                EditorGUILayout.PropertyField(OnEventStopped, new GUIContent("On Event Stopped"));
+            }
 
             serializedObject.ApplyModifiedProperties();
         }
