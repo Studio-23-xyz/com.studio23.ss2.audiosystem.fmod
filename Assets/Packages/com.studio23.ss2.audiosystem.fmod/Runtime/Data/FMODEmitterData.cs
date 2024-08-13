@@ -6,6 +6,7 @@ using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
+using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
@@ -30,6 +31,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public UnityEvent OnEventPaused = new UnityEvent();    
         public UnityEvent OnEventUnPaused = new UnityEvent();
         public UnityEvent OnEventStopped = new UnityEvent();
+        public UnityEvent OnEventCompleted = new UnityEvent();
 
         public FMODEmitterData(string eventGUID, GameObject referencedGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
         {
@@ -143,6 +145,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
             Object.DestroyImmediate(Emitter);
         }
 
+        internal void CompleteEvent()
+        {
+            OnEventCompleted?.Invoke();
+            Debug.Log("Event is complete");
+        }
+
         public void LoadSampleData()
         {
             Emitter.EventDescription.loadSampleData();
@@ -237,6 +245,26 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             return EventState;
         }
+        
+        /// <summary>
+        /// Returns length of event in milliseconds.
+        /// </summary>
+        /// <returns></returns>
+        public int GetLength()
+        {
+            Emitter.EventDescription.getLength(out int length);
+            return length;
+        }
+
+        /// <summary>
+        /// Returns the current timeline cursor position.
+        /// </summary>
+        /// <returns></returns>
+        public int GetTimelinePosition()
+        {
+            Emitter.EventInstance.getTimelinePosition(out int position);
+            return position;
+        }
 
         ~FMODEmitterData()
         {
@@ -246,6 +274,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
             OnEventPaused.RemoveAllListeners();
             OnEventUnPaused.RemoveAllListeners();
             OnEventStopped.RemoveAllListeners();
+            OnEventCompleted.RemoveAllListeners();
         }
     }
 

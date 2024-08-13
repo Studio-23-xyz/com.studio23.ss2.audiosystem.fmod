@@ -27,7 +27,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 EVENT_CALLBACK eventCallback = new EVENT_CALLBACK(ProgrammerSoundCallbackHandler);
                 eventData.Emitter.EventInstance.setCallback(eventCallback);
             }
-            var data = await LoadExternalSound(eventData, key);
+            SoundData data = await LoadExternalSound(eventData, key);
             if (data == null) return;
             GCHandle eventGcHandle = GCHandle.Alloc(data);
             eventData.Emitter.EventInstance.setUserData(GCHandle.ToIntPtr(eventGcHandle));
@@ -43,6 +43,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         private static async UniTask<SoundData> LoadExternalSound(FMODEmitterData eventData, string key)
         {
             MODE soundMode = MODE.LOOP_NORMAL | MODE.CREATECOMPRESSEDSAMPLE | MODE.NONBLOCKING;
+
             Sound sound;
             SOUND_INFO soundInfo = new SOUND_INFO() { subsoundindex = -1 };
 
@@ -104,6 +105,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             IntPtr EventDataPtr;
             RESULT result = instance.getUserData(out EventDataPtr);
 
+            uint soundLength = 0;
+
             if (result != RESULT.OK)
             {
                 Debug.LogError("Programmer Sound Callback error: " + result);
@@ -112,16 +115,17 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             {
                 // Get the object to store the FMODEmitterData
                 GCHandle eventDataHandle = GCHandle.FromIntPtr(EventDataPtr);
-                SoundData eventData = (SoundData)eventDataHandle.Target;
+                SoundData soundData = (SoundData)eventDataHandle.Target;
 
-                eventData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY userProperties);
-                eventData.EmitterData.CurrentCallbackType = type;
-
+                soundData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY userProperties);
+                soundData.EmitterData.CurrentCallbackType = type;
+                
 #if UNITY_EDITOR
+                string eventPath = "";
                 if (FMODManager.Instance.Debug)
                 {
-                    RuntimeManager.StudioSystem.lookupPath(GUID.Parse(eventData.EmitterData.EventGUID), out string path);
-                    Debug.Log($"{path} Event Callback Type {type}");
+                    RuntimeManager.StudioSystem.lookupPath(GUID.Parse(soundData.EmitterData.EventGUID), out eventPath);
+                    Debug.Log($"{eventPath} Event Callback Type {type}");
                 }
 #endif
 
@@ -129,27 +133,59 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 {
                     case EVENT_CALLBACK_TYPE.STARTED:
                         {
-                            eventData.EmitterData.EventState = FMODEventState.Playing;
+                            soundData.EmitterData.EventState = FMODEventState.Playing;
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND:
                         {
-                            FMODCallBackHandler.IsLoopingCheck(userProperties, eventData.EmitterData);
+                            FMODCallBackHandler.IsLoopingCheck(userProperties, soundData.EmitterData);
                             var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
 
-                            parameter.sound = eventData.Sound.handle;
-                            parameter.subsoundIndex = eventData.SoundInfo.subsoundindex;
+                            parameter.sound = soundData.Sound.handle;
+                            parameter.subsoundIndex = soundData.SoundInfo.subsoundindex;
                             Marshal.StructureToPtr(parameter, parameterPtr, false);
                             break;
                         }
+                    case EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
+                    {
+                        var parameter = (TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(TIMELINE_MARKER_PROPERTIES));
+                        soundData.LastMarker = parameter.name;
+                        soundData.Position = parameter.position;
+
+#if UNITY_EDITOR
+                        if (FMODManager.Instance.Debug)
+                        {
+                            Debug.Log($"{eventPath}, Marker Name: {(string)soundData.LastMarker}, Marker Position: {soundData.Position}ms");
+                        }
+#endif
+
+                        break;
+                    }
                     case EVENT_CALLBACK_TYPE.STOPPED:
                         {
-                            eventData.EmitterData.EventState = FMODEventState.Stopped;
+                            soundData.EmitterData.EventState = FMODEventState.Stopped;
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
                         {
-                            FMODCallBackHandler.IsLoopingCheck(userProperties, eventData.EmitterData);
+                            FMODCallBackHandler.IsLoopingCheck(userProperties, soundData.EmitterData);
+
+                            Sound sound = new Sound(parameterPtr);
+                            sound.getName(out string name, 256);
+                            sound.getLength(out soundLength, TIMEUNIT.MS);
+
+#if UNITY_EDITOR
+                            if (FMODManager.Instance.Debug)
+                            {
+                                if (name != null) Debug.Log($"Programmer Sound Name: {name}, Length: {soundLength}");
+                                Debug.Log($"{eventPath}, Timeline Position: {soundData.EmitterData.GetTimelinePosition()}ms, Length: {soundLength} ms");
+                            }
+#endif
+
+                            if (soundData.EmitterData.GetTimelinePosition() >= soundLength)
+                            {
+                                soundData.EmitterData.CompleteEvent();
+                            }
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.DESTROY_PROGRAMMER_SOUND:
@@ -175,12 +211,16 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             public FMODEmitterData EmitterData;
             public SOUND_INFO SoundInfo;
             public Sound Sound;
+            public FMOD.StringWrapper LastMarker;
+            public int Position;
 
             public SoundData(FMODEmitterData emitterData, SOUND_INFO soundInfo, Sound sound)
             {
                 EmitterData = emitterData;
                 SoundInfo = soundInfo;
                 Sound = sound;
+                LastMarker = new StringWrapper();
+                Position = 0;
             }
         }
     }

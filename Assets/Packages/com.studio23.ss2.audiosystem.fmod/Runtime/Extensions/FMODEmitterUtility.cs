@@ -30,6 +30,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         public UnityEvent OnEventPaused;
         public UnityEvent OnEventUnPaused;
         public UnityEvent OnEventStopped;
+        public UnityEvent OnEventCompleted;
         private bool _isSubscribed;
 
         private UnityEvent _onTweenUpdate;
@@ -66,6 +67,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             _emitter.OnEventPaused.AddListener(OnPaused);
             _emitter.OnEventUnPaused.AddListener(OnUnpaused);
             _emitter.OnEventStopped.AddListener(OnStopped);
+            _emitter.OnEventCompleted.AddListener(OnCompleted);
         }
 
         private async void TweenParameter(float startValue, float endValue)
@@ -447,11 +449,19 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         }
 
         /// <summary>
-        /// Invoked when the event is stopped or completed.
+        /// Invoked when the event is stopped.
         /// </summary>
         private void OnStopped()
         {
             OnEventStopped.Invoke();
+        }
+
+        /// <summary>
+        /// Invoked when the event is completed.
+        /// </summary>
+        private void OnCompleted()
+        {
+            OnEventCompleted.Invoke();
         }
 
         #endregion

@@ -154,12 +154,14 @@
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{4af1471f-c8c6-4b8f-9ca6-f5a92d188128}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Locale\{1abccf33-9d4b-41a0-aa08-c5c5667e3e81}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\AudioFile\{bbdab1b6-a57f-48c8-878e-0f48c2b94065}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Asset\{84589ad2-76ff-41aa-a2b0-39f37d76fffc}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{ab09c06a-b296-432d-92d9-15f5323daa98}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\VCA\{13df530d-8d08-4da0-80de-7c4a8577e3a9}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Bank\{d100ffc4-9718-41d7-b641-181373b55498}.xml" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Event\{4585ad36-db51-496d-8da9-3e7dbbaeb2b4}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Event\{8e9f0b3d-5f42-422e-b43d-1b55fd43cdb2}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Dialogue\LOCALE_Japanese_(jp)\keys.txt" />

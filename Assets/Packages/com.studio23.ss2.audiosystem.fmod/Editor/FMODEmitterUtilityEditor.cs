@@ -25,6 +25,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
         private SerializedProperty OnEventPaused;
         private SerializedProperty OnEventUnPaused;
         private SerializedProperty OnEventStopped;
+        private SerializedProperty OnEventCompleted;
 
         private bool showEvents;
 
@@ -46,6 +47,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             OnEventPaused = serializedObject.FindProperty("OnEventPaused");
             OnEventUnPaused = serializedObject.FindProperty("OnEventUnPaused");
             OnEventStopped = serializedObject.FindProperty("OnEventStopped");
+            OnEventCompleted = serializedObject.FindProperty("OnEventCompleted");
         }
 
         public override void OnInspectorGUI()
@@ -85,6 +87,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
                 EditorGUILayout.PropertyField(OnEventPaused, new GUIContent("On Event Paused"));
                 EditorGUILayout.PropertyField(OnEventUnPaused, new GUIContent("On Event UnPaused"));
                 EditorGUILayout.PropertyField(OnEventStopped, new GUIContent("On Event Stopped"));
+                EditorGUILayout.PropertyField(OnEventCompleted, new GUIContent("On Event Completed"));
             }
 
             serializedObject.ApplyModifiedProperties();

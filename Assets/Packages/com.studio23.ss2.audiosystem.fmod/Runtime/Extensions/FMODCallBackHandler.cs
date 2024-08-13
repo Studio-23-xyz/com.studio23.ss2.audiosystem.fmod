@@ -5,7 +5,9 @@ using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using Debug = UnityEngine.Debug;
 
 namespace Studio23.SS2.AudioSystem.fmod.Extensions
@@ -19,7 +21,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         public static void InitializeCallBack(FMODEmitterData eventData)
         {
             EVENT_CALLBACK EventCallback = new EVENT_CALLBACK(EventCallbackHandler);
-            GCHandle EventGCHandle = GCHandle.Alloc(eventData);
+            SoundData data = CreateSoundData(eventData);
+            if (data == null) return;
+            GCHandle EventGCHandle = GCHandle.Alloc(data);
             eventData.Emitter.EventInstance.setUserData(GCHandle.ToIntPtr(EventGCHandle));
             eventData.Emitter.EventInstance.setCallback(EventCallback);
         }
@@ -28,6 +32,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         private static RESULT EventCallbackHandler(EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
         {
             EventInstance instance = new EventInstance(instancePtr);
+            
 
             // Retrieve the user data
             IntPtr EventDataPtr;
@@ -41,16 +46,17 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             {
                 // Get the object to store the FMODEmitterData
                 GCHandle eventDataHandle = GCHandle.FromIntPtr(EventDataPtr);
-                FMODEmitterData eventData = (FMODEmitterData)eventDataHandle.Target;
+                SoundData soundData = (SoundData)eventDataHandle.Target;
 
-                eventData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY userProperties);
-                eventData.CurrentCallbackType = type;
+                soundData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY userProperties);
+                soundData.EmitterData.CurrentCallbackType = type;
 
 #if UNITY_EDITOR
+                string eventPath = "";
                 if (FMODManager.Instance.Debug)
                 {
-                    RuntimeManager.StudioSystem.lookupPath(GUID.Parse(eventData.EventGUID), out string path);
-                    Debug.Log($"{path} Event Callback Type {type}");
+                    RuntimeManager.StudioSystem.lookupPath(GUID.Parse(soundData.EmitterData.EventGUID), out eventPath);
+                    Debug.Log($"{eventPath}, Event Callback Type {type}");
                 }
 #endif
 
@@ -58,17 +64,44 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 {
                     case EVENT_CALLBACK_TYPE.STARTED:
                         {
-                            eventData.EventState = FMODEventState.Playing;
+                            soundData.EmitterData.EventState = FMODEventState.Playing;
+                            break;
+                        }
+                    case EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
+                        {
+                            var parameter = (TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(TIMELINE_MARKER_PROPERTIES));
+                            soundData.LastMarker = parameter.name;
+                            soundData.Position = parameter.position;
+
+#if UNITY_EDITOR
+                            if (FMODManager.Instance.Debug)
+                            {
+                                Debug.Log($"{eventPath}, Marker Name: {(string)soundData.LastMarker}, Marker Position: {soundData.Position}ms");
+                            }
+#endif
+
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.STOPPED:
                         {
-                            eventData.EventState = FMODEventState.Stopped;
+                            soundData.EmitterData.EventState = FMODEventState.Stopped;
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
                         {
-                            IsLoopingCheck(userProperties, eventData);
+                            IsLoopingCheck(userProperties, soundData.EmitterData);
+
+#if UNITY_EDITOR
+                            if (FMODManager.Instance.Debug)
+                            {
+                                Debug.Log($"{eventPath}, Timeline Position: {soundData.EmitterData.GetTimelinePosition()}ms, Length: {soundData.EmitterData.GetLength()}ms");
+                            }
+#endif
+
+                            if (soundData.EmitterData.GetTimelinePosition() >= soundData.EmitterData.GetLength())
+                            {
+                                soundData.EmitterData.CompleteEvent();
+                            }
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.DESTROYED:
@@ -79,6 +112,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 }
             }
             return RESULT.OK;
+        }
+
+        private static SoundData CreateSoundData(FMODEmitterData eventData)
+        {
+            return new SoundData(eventData);
         }
 
         /// <summary>
@@ -95,5 +133,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             else
                 eventData.EventState = FMODEventState.Stopped;
         }
+
+        private class SoundData
+        {
+            public FMODEmitterData EmitterData;
+            public FMOD.StringWrapper LastMarker;
+            public int Position;
+
+            public SoundData(FMODEmitterData emitterData)
+            {
+                EmitterData = emitterData;
+                LastMarker = new StringWrapper();
+                Position = 0;
+            }
+        }
     }
+
 }
