@@ -5,6 +5,7 @@ using FMODUnity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
