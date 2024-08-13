@@ -173,6 +173,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                             Sound sound = new Sound(parameterPtr);
                             sound.getName(out string name, 256);
                             sound.getLength(out soundLength, TIMEUNIT.MS);
+                            sound.release();
 
 #if UNITY_EDITOR
                             if (FMODManager.Instance.Debug)

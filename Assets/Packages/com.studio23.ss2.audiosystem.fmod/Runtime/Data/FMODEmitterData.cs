@@ -145,8 +145,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
             Object.DestroyImmediate(Emitter);
         }
 
-        internal void CompleteEvent()
+        internal async void CompleteEvent()
         {
+            await UniTask.SwitchToMainThread();
             OnEventCompleted?.Invoke();
             Debug.Log("Event is complete");
         }
