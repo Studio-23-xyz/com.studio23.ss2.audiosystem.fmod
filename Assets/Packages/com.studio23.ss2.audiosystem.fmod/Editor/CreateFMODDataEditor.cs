@@ -297,7 +297,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
             for (int i = 0; i < _bankList.Count; i++)
             {
-                string bankName = _bankList.ElementAt(i).Key.Replace(".", "_").Replace("(", "").Replace(")","");
+                string bankName = _bankList.ElementAt(i).Key.Replace(".", "_").Replace("(", "").Replace(")", "");
                 scriptContent += $"\t\tpublic static readonly string {bankName} = \"{_bankList.ElementAt(i).Key}\";\n";
             }
             scriptContent += "\t}\n";
@@ -440,7 +440,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
 
             scriptContent += "using System.Collections.Generic;\n\n";
             scriptContent += $"namespace {nameSpace}\n{{\n";
-            
+
             scriptContent += $"\tpublic static class {filename}\n\t{{\n";
             scriptContent += $"\t\tpublic static Dictionary<string, string> LanguageList = new Dictionary<string, string>\n";
             scriptContent += "\t\t{";

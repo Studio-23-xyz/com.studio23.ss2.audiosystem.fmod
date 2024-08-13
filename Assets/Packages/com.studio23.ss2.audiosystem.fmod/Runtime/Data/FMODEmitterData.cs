@@ -28,7 +28,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         public UnityEvent OnEventPlayed = new UnityEvent();
         public UnityEvent OnEventSuspended = new UnityEvent();
         public UnityEvent OnEventUnsuspended = new UnityEvent();
-        public UnityEvent OnEventPaused = new UnityEvent();    
+        public UnityEvent OnEventPaused = new UnityEvent();
         public UnityEvent OnEventUnPaused = new UnityEvent();
         public UnityEvent OnEventStopped = new UnityEvent();
         public UnityEvent OnEventCompleted = new UnityEvent();
@@ -245,7 +245,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             return EventState;
         }
-        
+
         /// <summary>
         /// Returns length of event in milliseconds.
         /// </summary>

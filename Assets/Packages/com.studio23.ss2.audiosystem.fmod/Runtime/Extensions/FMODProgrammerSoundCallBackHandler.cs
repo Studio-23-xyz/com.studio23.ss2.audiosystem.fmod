@@ -119,7 +119,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 
                 soundData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY userProperties);
                 soundData.EmitterData.CurrentCallbackType = type;
-                
+
 #if UNITY_EDITOR
                 string eventPath = "";
                 if (FMODManager.Instance.Debug)
@@ -147,20 +147,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
-                    {
-                        var parameter = (TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(TIMELINE_MARKER_PROPERTIES));
-                        soundData.LastMarker = parameter.name;
-                        soundData.Position = parameter.position;
+                        {
+                            var parameter = (TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(TIMELINE_MARKER_PROPERTIES));
+                            soundData.LastMarker = parameter.name;
+                            soundData.Position = parameter.position;
 
 #if UNITY_EDITOR
-                        if (FMODManager.Instance.Debug)
-                        {
-                            Debug.Log($"{eventPath}, Marker Name: {(string)soundData.LastMarker}, Marker Position: {soundData.Position}ms");
-                        }
+                            if (FMODManager.Instance.Debug)
+                            {
+                                Debug.Log($"{eventPath}, Marker Name: {(string)soundData.LastMarker}, Marker Position: {soundData.Position}ms");
+                            }
 #endif
 
-                        break;
-                    }
+                            break;
+                        }
                     case EVENT_CALLBACK_TYPE.STOPPED:
                         {
                             soundData.EmitterData.EventState = FMODEventState.Stopped;

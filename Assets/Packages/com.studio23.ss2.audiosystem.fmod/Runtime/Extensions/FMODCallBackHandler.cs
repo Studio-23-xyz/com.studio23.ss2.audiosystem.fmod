@@ -5,9 +5,7 @@ using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
-using System.IO;
 using System.Runtime.InteropServices;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using Debug = UnityEngine.Debug;
 
 namespace Studio23.SS2.AudioSystem.fmod.Extensions
@@ -32,7 +30,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         private static RESULT EventCallbackHandler(EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
         {
             EventInstance instance = new EventInstance(instancePtr);
-            
+
 
             // Retrieve the user data
             IntPtr EventDataPtr;
