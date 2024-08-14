@@ -149,7 +149,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             await UniTask.SwitchToMainThread();
             OnEventCompleted?.Invoke();
-            Debug.Log("Event is complete");
         }
 
         public void LoadSampleData()

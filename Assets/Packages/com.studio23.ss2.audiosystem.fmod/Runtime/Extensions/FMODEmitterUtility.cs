@@ -61,7 +61,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 
             _isSubscribed = true;
 
-            _emitter.OnEventPlayed.AddListener(OnPlayed);
             _emitter.OnEventSuspended.AddListener(OnSuspended);
             _emitter.OnEventUnsuspended.AddListener(OnUnsuspended);
             _emitter.OnEventPaused.AddListener(OnPaused);
@@ -96,12 +95,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         /// Creates an Emitter and plays the specified Event.
         /// </summary>
         [ContextMenu("Play")]
-        public async void Play()
+        public void Play()
         {
             _emitter = FMODManager.Instance.EventsManager.CreateEmitter(EventGUID, _gameObject);
             _emitter.Play();
-            await UniTask.WaitForSeconds(2);
             SubscribeToEvents();
+            OnPlayed();
         }
 
         /// <summary>
