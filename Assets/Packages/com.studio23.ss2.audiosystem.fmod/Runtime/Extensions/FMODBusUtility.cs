@@ -24,6 +24,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         /// <summary>
         /// Pauses buses.
         /// </summary>
+		[ContextMenu("Pause")]
         public void Pause()
         {
             foreach (var bus in Buses)
@@ -35,6 +36,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         /// <summary>
         /// Unpauses buses.
         /// </summary>
+		[ContextMenu("Unpause")]
         public void Unpause()
         {
             foreach (var bus in Buses)
@@ -46,6 +48,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         /// <summary>
         /// Mutes buses.
         /// </summary>
+		[ContextMenu("Mute")]
         public void Mute()
         {
             foreach (var bus in Buses)
@@ -57,6 +60,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         /// <summary>
         /// Unmutes buses.
         /// </summary>
+		[ContextMenu("Unmute")]
         public void Unmute()
         {
             foreach (var bus in Buses)
@@ -68,6 +72,7 @@ namespace Studio23.SS2.AudioSystem.fmod
         /// <summary>
         /// Stops all active Events under the buses.
         /// </summary>
+		[ContextMenu("StopAllBusEvents")]
         public async void StopAllBusEvents()
         {
             foreach (var bus in Buses)
