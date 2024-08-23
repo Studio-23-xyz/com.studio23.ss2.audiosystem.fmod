@@ -32,6 +32,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
         private SerializedProperty startValueRangeProp;
         private SerializedProperty endValueRangeProp;
         private SerializedProperty durationRangeProp;
+        private SerializedProperty roundToIntProp;  // New property for round to integer
 
         private bool showEvents;
 
@@ -60,6 +61,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             startValueRangeProp = serializedObject.FindProperty("_startValueRange");
             endValueRangeProp = serializedObject.FindProperty("_endValueRange");
             durationRangeProp = serializedObject.FindProperty("_durationRange");
+            roundToIntProp = serializedObject.FindProperty("roundToInt");  // Initialize the round to integer property
         }
 
         public override void OnInspectorGUI()
@@ -80,12 +82,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             // Draw randomization toggle
             EditorGUILayout.PropertyField(randomizeParametersProp, new GUIContent("Randomize Parameters"));
 
-            // If randomization is enabled, show the range fields, otherwise show the regular fields
+            // If randomization is enabled, show the range fields and the round to integer toggle
             if (randomizeParametersProp.boolValue)
             {
                 EditorGUILayout.PropertyField(startValueRangeProp, new GUIContent("Start Value Range"));
                 EditorGUILayout.PropertyField(endValueRangeProp, new GUIContent("End Value Range"));
                 EditorGUILayout.PropertyField(durationRangeProp, new GUIContent("Duration Range"));
+                EditorGUILayout.PropertyField(roundToIntProp, new GUIContent("Round to Integer"));  // Display the round to integer option
             }
             else
             {

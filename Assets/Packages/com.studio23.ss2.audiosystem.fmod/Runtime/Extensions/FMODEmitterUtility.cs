@@ -22,6 +22,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [SerializeField] private float _duration;
 
         [SerializeField] private bool randomizeParameters;
+        [SerializeField] private bool roundToInt = false;
         [SerializeField] private Vector2 _startValueRange = new Vector2(0f, 1f);
         [SerializeField] private Vector2 _endValueRange = new Vector2(0f, 1f);
         [SerializeField] private Vector2 _durationRange = new Vector2(0f, 1f);
@@ -93,10 +94,16 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         {
             if (randomizeParameters)
             {
-                _startValue = Random.Range(_startValueRange.x, _startValueRange.y);
-                _endValue = Random.Range(_endValueRange.x, _endValueRange.y);
-                _duration = Random.Range(_durationRange.x, _durationRange.y);
+                _startValue = GetRandomValue(_startValueRange, roundToInt);
+                _endValue = GetRandomValue(_endValueRange, roundToInt);
+                _duration = GetRandomValue(_durationRange, roundToInt);
             }
+        }
+
+        private float GetRandomValue(Vector2 range, bool round)
+        {
+            float value = Random.Range(range.x, range.y);
+            return round ? Mathf.Round(value) : value;
         }
 
         #region PlayBack
