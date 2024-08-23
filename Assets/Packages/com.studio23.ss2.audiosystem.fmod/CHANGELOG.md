@@ -1,3 +1,9 @@
+## [v1.1.7] - 2024-08-23
+
+### Updated
+
+- Parameter randomization added to FMODEmitterUtility.
+
 ## [v1.1.7] - 2024-07-31
 
 ### Updated
