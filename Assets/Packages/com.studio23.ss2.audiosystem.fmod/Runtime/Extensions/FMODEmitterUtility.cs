@@ -106,6 +106,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             return round ? Mathf.Round(value) : value;
         }
 
+        public void SetParameterName(string name)
+        {
+            _parameterName = name;
+        }
+
         #region PlayBack
 
         /// <summary>
