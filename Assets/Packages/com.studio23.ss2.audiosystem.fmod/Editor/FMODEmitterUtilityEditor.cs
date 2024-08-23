@@ -27,6 +27,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
         private SerializedProperty OnEventStopped;
         private SerializedProperty OnEventCompleted;
 
+        // SerializedProperties for randomization
+        private SerializedProperty randomizeParametersProp;
+        private SerializedProperty startValueRangeProp;
+        private SerializedProperty endValueRangeProp;
+        private SerializedProperty durationRangeProp;
+
         private bool showEvents;
 
         private void OnEnable()
@@ -48,6 +54,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             OnEventUnPaused = serializedObject.FindProperty("OnEventUnPaused");
             OnEventStopped = serializedObject.FindProperty("OnEventStopped");
             OnEventCompleted = serializedObject.FindProperty("OnEventCompleted");
+
+            // Initialize randomization properties
+            randomizeParametersProp = serializedObject.FindProperty("randomizeParameters");
+            startValueRangeProp = serializedObject.FindProperty("_startValueRange");
+            endValueRangeProp = serializedObject.FindProperty("_endValueRange");
+            durationRangeProp = serializedObject.FindProperty("_durationRange");
         }
 
         public override void OnInspectorGUI()
@@ -65,10 +77,23 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             // Draw the parameter selection
             DrawParameterSelection();
 
-            // Draw other fields
-            EditorGUILayout.PropertyField(startValueProp, new GUIContent("Start Value"));
-            EditorGUILayout.PropertyField(endValueProp, new GUIContent("End Value"));
-            EditorGUILayout.PropertyField(durationProp, new GUIContent("Duration"));
+            // Draw randomization toggle
+            EditorGUILayout.PropertyField(randomizeParametersProp, new GUIContent("Randomize Parameters"));
+
+            // If randomization is enabled, show the range fields, otherwise show the regular fields
+            if (randomizeParametersProp.boolValue)
+            {
+                EditorGUILayout.PropertyField(startValueRangeProp, new GUIContent("Start Value Range"));
+                EditorGUILayout.PropertyField(endValueRangeProp, new GUIContent("End Value Range"));
+                EditorGUILayout.PropertyField(durationRangeProp, new GUIContent("Duration Range"));
+            }
+            else
+            {
+                EditorGUILayout.PropertyField(startValueProp, new GUIContent("Start Value"));
+                EditorGUILayout.PropertyField(endValueProp, new GUIContent("End Value"));
+                EditorGUILayout.PropertyField(durationProp, new GUIContent("Duration"));
+            }
+
             EditorGUILayout.Separator();
             EditorGUILayout.Separator();
 

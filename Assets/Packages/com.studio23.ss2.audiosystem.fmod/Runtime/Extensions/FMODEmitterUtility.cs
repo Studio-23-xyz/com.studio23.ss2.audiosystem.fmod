@@ -21,6 +21,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [SerializeField] private float _endValue;
         [SerializeField] private float _duration;
 
+        [SerializeField] private bool randomizeParameters;
+        [SerializeField] private Vector2 _startValueRange = new Vector2(0f, 1f);
+        [SerializeField] private Vector2 _endValueRange = new Vector2(0f, 1f);
+        [SerializeField] private Vector2 _durationRange = new Vector2(0f, 1f);
+
         public bool StopOnFadeOut;
         public bool ReleaseOnFadeOut;
 
@@ -84,9 +89,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             _onTweenComplete?.Invoke();
         }
 
-        public void SetParameterName(string name)
+        private void ApplyRandomization()
         {
-            _parameterName = name;
+            if (randomizeParameters)
+            {
+                _startValue = Random.Range(_startValueRange.x, _startValueRange.y);
+                _endValue = Random.Range(_endValueRange.x, _endValueRange.y);
+                _duration = Random.Range(_durationRange.x, _durationRange.y);
+            }
         }
 
         #region PlayBack
@@ -97,6 +107,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [ContextMenu("Play")]
         public void Play()
         {
+            ApplyRandomization();
             _emitter = FMODManager.Instance.EventsManager.CreateEmitter(EventGUID, _gameObject);
             _emitter.Play();
             SubscribeToEvents();
@@ -236,6 +247,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [ContextMenu("FadeIn")]
         public void FadeIn()
         {
+            ApplyRandomization();
             SetLocalParameter(_startValue);
             Play();
             RampUpLocalParameter();
@@ -262,6 +274,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [ContextMenu("FadeOut")]
         public void FadeOut()
         {
+            ApplyRandomization();
             RampDownLocalParameter();
         }
 
