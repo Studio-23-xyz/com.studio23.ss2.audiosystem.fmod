@@ -119,11 +119,45 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [ContextMenu("Play")]
         public void Play()
         {
-            ApplyRandomization();
             _emitter = FMODManager.Instance.EventsManager.CreateEmitter(EventGUID, _gameObject);
             _emitter.Play();
             SubscribeToEvents();
             OnPlayed();
+        }
+
+        /// <summary>
+        /// Creates an Emitter, plays the specified Event and sets a parameter for the event.
+        /// </summary>
+        [ContextMenu("PlayAndSetParameter")]
+        public void PlayAndSetParameter()
+        {
+            ApplyRandomization();
+            Play();
+            SetLocalParameter(_startValue);
+        }
+
+        /// <summary>
+        /// Plays the specified Event only if it isn't already playing.
+        /// </summary>
+        [ContextMenu("PlayIfNotPlaying")]
+        public void PlayIfNotPlaying()
+        {
+            if (_emitter == null || _emitter.GetEventState() != FMODEventState.Playing)
+            {
+                Play();
+            }
+        }
+
+        /// <summary>
+        /// Plays the specified Event only if it isn't already playing and sets a parameter for the event.
+        /// </summary>
+        [ContextMenu("PlayIfNotPlayingAndSetParameter")]
+        public void PlayIfNotPlayingAndSetParameter()
+        {
+            if (_emitter == null || _emitter.GetEventState() != FMODEventState.Playing)
+            {
+                PlayAndSetParameter();
+            }
         }
 
         /// <summary>
