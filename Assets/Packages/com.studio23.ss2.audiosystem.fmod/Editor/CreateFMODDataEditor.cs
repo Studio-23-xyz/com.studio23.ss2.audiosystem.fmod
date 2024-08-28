@@ -1,10 +1,10 @@
 using FMOD;
 using FMOD.Studio;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unity.Plastic.Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -177,7 +177,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
         {
             string assemblyDefinitionPath = AssetDatabase.GetAssetPath(assemblyDefinitionAsset);
             string assemblyDefinitionText = File.ReadAllText(assemblyDefinitionPath);
-            JObject assemblyDefinitionObject = JObject.Parse(assemblyDefinitionText);
+            var assemblyDefinitionObject = JObject.Parse(assemblyDefinitionText);
             return (string)assemblyDefinitionObject["rootNamespace"];
         }
 
