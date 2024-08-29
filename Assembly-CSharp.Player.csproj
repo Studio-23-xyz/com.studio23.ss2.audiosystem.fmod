@@ -139,6 +139,7 @@
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\EventFolder\{45afd299-7990-42f5-8ca4-83d643cf06eb}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\ParameterPreset\{6084c7f0-0738-4840-974b-aabf4439b65e}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Dialogue\LOCALE_Chinese_(cn)\keys.txt" />
+    <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Event\{c3c43eac-0908-4919-9725-cd3b9ca85c3e}.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Tags.xml" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Sample_FMOD_Project\Metadata\Group\{d9982c58-a056-4e6c-b8e3-883854b4bffb}.xml" />
@@ -442,6 +443,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\AOT\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
