@@ -123,22 +123,22 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         /// </summary>
         /// <param name="allowFadeout"></param>
         /// <returns></returns>
-        public async UniTask StopAsync(bool allowFadeout = true)
+        public void Stop(bool allowFadeout = true)
         {
             Emitter.AllowFadeout = allowFadeout;
             Emitter.EventInstance.stop(AllowFadeout ? STOP_MODE.ALLOWFADEOUT : STOP_MODE.IMMEDIATE);
             EventState = FMODEventState.Stopped;
             OnEventStopped?.Invoke();
-            await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED || CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED);
+            //await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.STOPPED || CurrentCallbackType == EVENT_CALLBACK_TYPE.SOUND_STOPPED);
         }
 
         /// <summary>
         /// Releases the Event Instance and destroys the Emitter.
         /// </summary>
         /// <returns></returns>
-        public async UniTask ReleaseAsync()
+        public void Release()
         {
-            await StopAsync();
+            Stop();
             Emitter.EventInstance.release();
             //await UniTask.WaitUntil(() => CurrentCallbackType == EVENT_CALLBACK_TYPE.DESTROYED);
             //UnloadSampleData();

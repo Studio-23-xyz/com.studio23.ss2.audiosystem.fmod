@@ -50,15 +50,15 @@ public class Sample : MonoBehaviour
     }
 
     [ContextMenu("Stop")]
-    public async void Stop()
+    public void Stop()
     {
-        await FMODManager.Instance.EventsManager.Stop(FMODBank_Sample.Test, gameObject);
+        FMODManager.Instance.EventsManager.Stop(FMODBank_Sample.Test, gameObject);
     }
 
     [ContextMenu("Release")]
-    public async void Release()
+    public void Release()
     {
-        await FMODManager.Instance.EventsManager.Release(FMODBank_Sample.Test, gameObject);
+        FMODManager.Instance.EventsManager.Release(FMODBank_Sample.Test, gameObject);
     }
 
     #endregion
@@ -73,9 +73,9 @@ public class Sample : MonoBehaviour
     }
 
     [ContextMenu("Stop Sound")]
-    public async void StopSound()
+    public void StopSound()
     {
-        await FMODManager.Instance.EventsManager.Stop(FMODBank_Test.Test_3, gameObject);
+        FMODManager.Instance.EventsManager.Stop(FMODBank_Test.Test_3, gameObject);
     }
 
     [ContextMenu("Load Bank")]
@@ -141,7 +141,7 @@ public class Sample : MonoBehaviour
     [ContextMenu("Stop Dialogue")]
     public void StopDialogue()
     {
-        FMODManager.Instance.EventsManager.Release(FMODBank_Dialogue.Dialogue_Dialogue, gameObject).Forget();
+        FMODManager.Instance.EventsManager.Release(FMODBank_Dialogue.Dialogue_Dialogue, gameObject);
     }
 
     #endregion

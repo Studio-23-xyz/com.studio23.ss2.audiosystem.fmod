@@ -79,14 +79,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="referenceGameObject"></param>
         /// <param name="emitter"></param>
         /// <param name="allowFadeout"></param>
-        public async void Play(string eventGUID, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
+        public void Play(string eventGUID, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
         {
             var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null)
             {
                 fetchData = CreateEmitter(eventGUID, referenceGameObject, emitter, allowFadeout);
             }
-            if (fetchData.EventState == FMODEventState.Playing) await fetchData.StopAsync(false);
+            //if (fetchData.EventState == FMODEventState.Playing) await fetchData.StopAsync(false);
             fetchData.Play();
         }
 
@@ -101,7 +101,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             if (fetchData == null) return;
             foreach (var emitter in fetchData)
             {
-                if (emitter.EventState == FMODEventState.Playing) await emitter.StopAsync(false);
+                //if (emitter.EventState == FMODEventState.Playing) await emitter.StopAsync(false);
                 emitter.Play();
             }
         }
@@ -229,11 +229,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="referenceGameObject"></param>
         /// <param name="allowFadeOut"></param>
         /// <returns></returns>
-        public async UniTask Stop(string eventGUID, GameObject referenceGameObject, bool allowFadeOut = true)
+        public void Stop(string eventGUID, GameObject referenceGameObject, bool allowFadeOut = true)
         {
             var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return;
-            await fetchData.StopAsync(allowFadeOut);
+            fetchData.Stop(allowFadeOut);
         }
 
         /// <summary>
@@ -241,16 +241,16 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// </summary>
         /// <param name="eventGUID"></param>
         /// <returns></returns>
-        public async UniTask StopAllOfType(string eventGUID, bool allowFadeOut = true)
+        public void StopAllOfType(string eventGUID, bool allowFadeOut = true)
         {
             var fetchData = EventEmitterExists(eventGUID);
             if (fetchData == null) return;
             List<UniTask> stopTasks = new List<UniTask>();
             foreach (var emitter in fetchData)
             {
-                stopTasks.Add(emitter.StopAsync(allowFadeOut));
+                emitter.Stop(allowFadeOut);
             }
-            await UniTask.WhenAll(stopTasks);
+            //await UniTask.WhenAll(stopTasks);
             OnStopAllOfType?.Invoke();
         }
 
@@ -259,14 +259,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// </summary>
         /// <param name="allowFadeOut"></param>
         /// <returns></returns>
-        public async UniTask StopAll(bool allowFadeOut = true)
+        public void StopAll(bool allowFadeOut = true)
         {
             List<UniTask> stopTasks = new List<UniTask>();
             foreach (var emitter in _emitterDataList)
             {
-                stopTasks.Add(emitter.Value.StopAsync(allowFadeOut));
+                emitter.Value.Stop(allowFadeOut);
             }
-            await UniTask.WhenAll(stopTasks);
+            //await UniTask.WhenAll(stopTasks);
             OnStopAll?.Invoke();
         }
 
@@ -276,11 +276,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="eventGUID"></param>
         /// <param name="referenceGameObject"></param>
         /// <returns></returns>
-        public async UniTask Release(string eventGUID, GameObject referenceGameObject)
+        public void Release(string eventGUID, GameObject referenceGameObject)
         {
             var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null) return;
-            await fetchData.ReleaseAsync();
+            fetchData.Release();
             _emitterDataList.Remove(fetchData.GetKey());
         }
 
@@ -289,7 +289,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// </summary>
         /// <param name="eventGUID"></param>
         /// <returns></returns>
-        public async UniTask ReleaseAllOfType(string eventGUID)
+        public void ReleaseAllOfType(string eventGUID)
         {
             var fetchData = EventEmitterExists(eventGUID);
             if (fetchData == null) return;
@@ -298,10 +298,10 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             for (int i = fetchData.Count - 1; i >= 0; i--)
             {
                 var value = fetchData[i];
-                releaseTasks.Add(value.ReleaseAsync());
+                value.Release();
                 _emitterDataList.Remove(foundMatchData[i].Key);
             }
-            await UniTask.WhenAll(releaseTasks);
+            //await UniTask.WhenAll(releaseTasks);
             OnReleaseAllOfType?.Invoke();
         }
 
@@ -309,15 +309,15 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// Releases all existing Emitters.
         /// </summary>
         /// <returns></returns>
-        public async UniTask ReleaseAll()
+        public void ReleaseAll()
         {
             List<UniTask> releaseTasks = new List<UniTask>();
             for (int i = _emitterDataList.Count - 1; i >= 0; i--)
             {
                 var value = _emitterDataList.ElementAt(i).Value;
-                releaseTasks.Add(value.ReleaseAsync());
+                value.Release();
             }
-            await UniTask.WhenAll(releaseTasks);
+            //await UniTask.WhenAll(releaseTasks);
             _emitterDataList.Clear();
             OnReleaseAll?.Invoke();
         }
@@ -431,12 +431,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 }
                 return null;
             }
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
             if (FMODManager.Instance.Debug)
             {
                 Debug.Log($"Referenced Emitter: GUID {eventGUID}, GameObject {referenceGameObject.name}, Scene {referenceGameObject.scene.name}");
             }
-#endif
+//#endif
             var key = (eventGUID, referenceGameObject.GetInstanceID());
             _emitterDataList.TryGetValue(key, out var emitterData);
             return emitterData;
@@ -476,7 +476,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
                 for (int i = foundMatchData.Count - 1; i >= 0; i--)
                 {
-                    releaseTasks.Add(foundMatchData[i].Value.ReleaseAsync());
+                    foundMatchData[i].Value.Release();
                     _emitterDataList.Remove(foundMatchData[i].Key);
                 }
 

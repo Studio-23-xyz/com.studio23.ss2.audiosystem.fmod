@@ -220,7 +220,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [ContextMenu("Stop")]
         public void Stop()
         {
-            FMODManager.Instance.EventsManager.Stop(EventGUID, _gameObject).Forget();
+            FMODManager.Instance.EventsManager.Stop(EventGUID, _gameObject);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [ContextMenu("StopAllOfType")]
         public void StopAllOfType()
         {
-            FMODManager.Instance.EventsManager.StopAllOfType(EventGUID).Forget();
+            FMODManager.Instance.EventsManager.StopAllOfType(EventGUID);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [ContextMenu("StopAll")]
         public void StopAll()
         {
-            FMODManager.Instance.EventsManager.StopAll().Forget();
+            FMODManager.Instance.EventsManager.StopAll();
         }
 
         #endregion
@@ -248,7 +248,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         [ContextMenu("Release")]
         public void Release()
         {
-            FMODManager.Instance.EventsManager.Release(EventGUID, _gameObject).Forget();
+            FMODManager.Instance.EventsManager.Release(EventGUID, _gameObject);
         }
 
         public void ReleaseTargetEmitters(string tag)
@@ -256,20 +256,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             var emitters = GameObject.FindGameObjectsWithTag(tag);
             foreach (var emitter in emitters)
             {
-                FMODManager.Instance.EventsManager.Release(EventGUID, emitter).Forget();
+                FMODManager.Instance.EventsManager.Release(EventGUID, emitter);
             }
         }
 
         [ContextMenu("ReleaseAllOfType")]
         public void ReleaseTargetEmitters()
         {
-            FMODManager.Instance.EventsManager.ReleaseAllOfType(EventGUID).Forget();
+            FMODManager.Instance.EventsManager.ReleaseAllOfType(EventGUID);
         }
 
         [ContextMenu("ReleaseAll")]
         public async void ReleaseAllEmitters()
         {
-            await FMODManager.Instance.EventsManager.ReleaseAll();
+            FMODManager.Instance.EventsManager.ReleaseAll();
         }
 
         #endregion
