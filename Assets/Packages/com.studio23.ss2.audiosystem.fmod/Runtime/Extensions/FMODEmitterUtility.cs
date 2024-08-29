@@ -267,7 +267,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         }
 
         [ContextMenu("ReleaseAll")]
-        public async void ReleaseAllEmitters()
+        public void ReleaseAllEmitters()
         {
             FMODManager.Instance.EventsManager.ReleaseAll();
         }

@@ -95,7 +95,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// This does not create any emitters on its own.
         /// </summary>
         /// <param name="eventGUID"></param>
-        public async void PlayAllOfType(string eventGUID)
+        public void PlayAllOfType(string eventGUID)
         {
             var fetchData = EventEmitterExists(eventGUID);
             if (fetchData == null) return;
