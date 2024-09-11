@@ -6,6 +6,7 @@ using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
@@ -79,7 +80,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="referenceGameObject"></param>
         /// <param name="emitter"></param>
         /// <param name="allowFadeout"></param>
-        public void Play(string eventGUID, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
+        public FMODEmitterData Play(string eventGUID, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
         {
             var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData == null)
@@ -88,6 +89,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             }
             //if (fetchData.EventState == FMODEventState.Playing) await fetchData.StopAsync(false);
             fetchData.Play();
+            return fetchData;
         }
 
         /// <summary>
@@ -120,17 +122,18 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         /// <param name="referenceGameObject"></param>
         /// <param name="emitter"></param>
         /// <param name="allowFadeout"></param>
-        public async void PlayProgrammerSound(string key, string eventGUID, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
+        public async UniTask<FMODEmitterData> PlayProgrammerSound(string key, string eventGUID, GameObject referenceGameObject, CustomStudioEventEmitter emitter = null, bool allowFadeout = true)
         {
             var fetchData = EventEmitterExists(eventGUID, referenceGameObject);
             if (fetchData != null)
             {
                 await FMODProgrammerSoundCallBackHandler.InitializeProgrammerCallback(fetchData, key);
-                return;
+                return fetchData;
             }
             var newEmitter = new FMODEmitterData(eventGUID, referenceGameObject, emitter, allowFadeout);
             _emitterDataList.Add(newEmitter.GetKey(), newEmitter);
             await FMODProgrammerSoundCallBackHandler.InitializeProgrammerCallback(newEmitter, key, true);
+            return newEmitter;
         }
 
         /// <summary>
