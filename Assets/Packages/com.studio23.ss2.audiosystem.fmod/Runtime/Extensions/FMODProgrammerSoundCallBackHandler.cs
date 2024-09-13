@@ -54,7 +54,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                         soundMode, out sound);
                 if (soundResult != RESULT.OK)
                 {
-                    Debug.LogError("Couldn't find external sound with key: " + key);
+                    Debug.LogWarning("Couldn't find external audio file with key: " + key);
                     return null;
                 }
             }
@@ -64,7 +64,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 RESULT keyResult = RuntimeManager.StudioSystem.getSoundInfo(key, out soundInfo);
                 if (keyResult != RESULT.OK)
                 {
-                    Debug.LogError("Couldn't find dialogue with key: " + key);
+                    Debug.LogWarning("Couldn't find dialogue with key: " + key);
                     return null;
                 }
 
@@ -73,7 +73,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                     soundMode | soundInfo.mode, ref soundInfo.exinfo, out sound);
                 if (soundResult != RESULT.OK)
                 {
-                    Debug.LogError("Couldn't load dialogue sound: " + key);
+                    Debug.LogWarning("Couldn't load dialogue sound: " + key);
                     return null;
                 }
             }
@@ -88,7 +88,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 if (--maxFrameWait <= 0)
                 {
                     sound.release();
-                    Debug.LogError("Failed to load sound " + key);
+                    Debug.LogWarning("Failed to load sound " + key);
                     return null;
                 }
             }

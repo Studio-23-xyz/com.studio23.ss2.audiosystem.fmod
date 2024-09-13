@@ -38,7 +38,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 
             if (result != RESULT.OK)
             {
-                Debug.LogError("Event State Callback error: " + result);
+                Debug.LogError("Event Callback error: " + result);
             }
             else if (EventDataPtr != IntPtr.Zero)
             {
