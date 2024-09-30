@@ -50,6 +50,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 _bankList[bankName] = bank;
                 if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has been loaded.");
             }
+            else if (result == RESULT.ERR_EVENT_ALREADY_LOADED) Debug.LogWarning($"{bankName} bank is already loaded");
             else Debug.LogError($"Failed to load bank {bankName}: {result}");
         }
 
