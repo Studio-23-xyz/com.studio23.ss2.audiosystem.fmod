@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 7bec0a8f899f40d48b7b707677bfe057
+  m_SerializeEntries:
+  - m_GUID: 26d3e4bd4e28e3d48a8cdb839a4a09c7
+    m_Address: Assets/FMODBanks/Test.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9b1a66d06fa8a94ea68f4011d19905d
+    m_Address: Assets/FMODBanks/DialogueTable_LOCALE_Japanese_(jp).bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3125687fb07493147811e5d4550decb3
+    m_Address: Assets/FMODBanks/DialogueTable_LOCALE_Chinese_(cn).bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e6bb6917ba2c8442988fd15bc8e0e07
+    m_Address: Assets/FMODBanks/Master.strings.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 35fee5ed36bcbfc46b3fec8343027992
+    m_Address: Assets/FMODBanks/DialogueTable_LOCALE_Bangla_(bn).bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d56150bfa53697340b7b97b2992ef007
+    m_Address: Assets/FMODBanks/Master.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bd4ec2564a1585a4a8d50f9e2ef2a056
+    m_Address: Assets/FMODBanks/Dialogue.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 05cbecc669dc32343a16935b8d315193
+    m_Address: Assets/FMODBanks/DialogueTable_LOCALE_English_(en).bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 919918ef59e230a4d81745e4a47966c0
+    m_Address: Assets/FMODBanks/Sample.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de3a280645ed68046a1a8abd1c67b35e
+    m_Address: Assets/FMODBanks/SFX.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 64de0da8ba99b5340803f37ccb6e7a52, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 302f476fcb48d7742a4e553c5ed48ea2, type: 2}
+    - {fileID: 11400000, guid: 96b4e44891c84f2468c793902b71aeb6, type: 2}

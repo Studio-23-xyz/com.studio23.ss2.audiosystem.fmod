@@ -1,6 +1,9 @@
 using Studio23.SS2.AudioSystem.fmod;
 using Studio23.SS2.AudioSystem.fmod.Core;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class Sample : MonoBehaviour
 {
@@ -8,6 +11,11 @@ public class Sample : MonoBehaviour
 
     private string _currentLocale;
 
+    public AssetReference MasterBank;
+    public AssetReference MasterStringBank;
+    public AssetReference TestBank;
+    public List<AssetReference> Banks = new List<AssetReference>();
+    
     #region Basic Audio
     [ContextMenu("Create Emitter")]
     public void CreateEmitter()
@@ -94,6 +102,20 @@ public class Sample : MonoBehaviour
     public void UnloadAllBanks()
     {
         FMODManager.Instance.BanksManager.UnloadAllBanks();
+    }
+
+    [ContextMenu("Load Addressable Bank")]
+    public void LoadBankAdd()
+    {
+        FMODManager.Instance.BanksManager.LoadBank(MasterBank);
+        FMODManager.Instance.BanksManager.LoadBank(MasterStringBank);
+        FMODManager.Instance.BanksManager.LoadBank(TestBank);
+    }
+
+    [ContextMenu("Unload Addressable Bank")]
+    public void UnloadBankAdd()
+    {
+        FMODManager.Instance.BanksManager.UnloadBank(TestBank);
     }
 
     #endregion

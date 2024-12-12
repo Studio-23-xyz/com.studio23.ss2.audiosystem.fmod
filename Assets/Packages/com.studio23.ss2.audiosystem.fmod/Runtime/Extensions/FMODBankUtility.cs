@@ -2,6 +2,7 @@ using Studio23.SS2.AudioSystem.fmod.Core;
 using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Studio23.SS2.AudioSystem.fmod
 {
@@ -9,7 +10,9 @@ namespace Studio23.SS2.AudioSystem.fmod
     {
         public LoaderGameEvent LoadEvent;
         public LoaderGameEvent UnloadEvent;
+        public bool LoadBanksUsingAddressable => FMODUnity.Settings.Instance.ImportType == ImportType.AssetBundle;
         [BankRef] public List<string> Banks;
+        public List<AssetReference> AddressableBanks = new List<AssetReference>();
         public string CollisionTag;
         private bool isQuitting;
 
@@ -89,18 +92,38 @@ namespace Studio23.SS2.AudioSystem.fmod
         [ContextMenu("Load")]
         public void LoadBank()
         {
-            foreach (var b in Banks)
+            if (LoadBanksUsingAddressable)
             {
-                FMODManager.Instance.BanksManager.LoadBank(b);
+                foreach (var b in AddressableBanks)
+                {
+                    FMODManager.Instance.BanksManager.LoadBank(b);
+                }
+            }
+            else
+            {
+                foreach (var b in Banks)
+                {
+                    FMODManager.Instance.BanksManager.LoadBank(b);
+                }
             }
         }
 
         [ContextMenu("Unload")]
         public void UnloadBank()
         {
-            foreach (var b in Banks)
+            if (LoadBanksUsingAddressable)
             {
-                FMODManager.Instance.BanksManager.UnloadBank(b);
+                foreach (var b in AddressableBanks)
+                {
+                    FMODManager.Instance.BanksManager.UnloadBank(b);
+                }
+            }
+            else
+            {
+                foreach (var b in Banks)
+                {
+                    FMODManager.Instance.BanksManager.UnloadBank(b);
+                }
             }
         }
 

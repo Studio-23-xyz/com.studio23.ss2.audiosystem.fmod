@@ -4068,6 +4068,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
+  MasterBank:
+    m_AssetGUID: d56150bfa53697340b7b97b2992ef007
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  MasterStringBank:
+    m_AssetGUID: 4e6bb6917ba2c8442988fd15bc8e0e07
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  TestBank:
+    m_AssetGUID: 26d3e4bd4e28e3d48a8cdb839a4a09c7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  Banks: []
 --- !u!4 &1106752783
 Transform:
   m_ObjectHideFlags: 0

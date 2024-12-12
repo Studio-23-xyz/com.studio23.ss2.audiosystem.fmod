@@ -4,7 +4,9 @@
     "references": [
         "FMODUnity",
         "FMODUnityResonance",
-        "UniTask"
+        "Unity.Addressables",
+        "UniTask",
+        "UniTask.Addressables"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
