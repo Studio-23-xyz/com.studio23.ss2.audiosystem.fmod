@@ -1,12 +1,13 @@
-﻿using FMODUnity;
+﻿using Studio23.SS2.AudioSystem.fmod;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
-namespace Studio23.SS2.AudioSystem.fmod.Editor
+namespace FMODUnity
 {
     [CustomEditor(typeof(FMODBankUtility))]
     [CanEditMultipleObjects]
-    public class FMODBankUtilityEditor : UnityEditor.Editor
+    public class FMODBankUtilityEditor : Editor
     {
         public override void OnInspectorGUI()
         {
@@ -15,7 +16,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
             var tag = serializedObject.FindProperty("CollisionTag");
             var banks = serializedObject.FindProperty("Banks");
             var addressableBanks = serializedObject.FindProperty("AddressableBanks");
-            var loadUsingAddressable = serializedObject.FindProperty("LoadBanksUsingAddressable");
+
+            // Reference to the target script
+            FMODBankUtility utility = (FMODBankUtility)target;
 
             EditorGUILayout.PropertyField(load, new GUIContent("Load"));
             EditorGUILayout.PropertyField(unload, new GUIContent("Unload"));
@@ -26,11 +29,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Editor
                 tag.stringValue = EditorGUILayout.TagField("Collision Tag", tag.stringValue);
             }
 
-            EditorGUILayout.PropertyField(loadUsingAddressable, new GUIContent("Load Banks Using Addressable"));
-
-            if (loadUsingAddressable.boolValue)
+            // Display the correct field based on LoadBanksUsingAddressable
+            if (utility.LoadBanksUsingAddressable)
             {
-                // Display AddressableBanks list
                 EditorGUILayout.PropertyField(addressableBanks, new GUIContent("Addressable Banks"), true);
             }
             else

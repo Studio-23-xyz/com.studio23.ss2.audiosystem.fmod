@@ -64,8 +64,8 @@
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBank_Master.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBusList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBank_SFX.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODParameterList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBank_Test.cs" />
+    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODParameterList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBank_Dialogue.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Scripts\Sample.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODLocaleList.cs" />

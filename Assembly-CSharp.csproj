@@ -64,8 +64,8 @@
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBank_Master.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBusList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBank_SFX.cs" />
-    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODParameterList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBank_Test.cs" />
+    <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODParameterList.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODBank_Dialogue.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\Scripts\Sample.cs" />
     <Compile Include="Assets\Packages\com.studio23.ss2.audiosystem.fmod\Samples\Demo1\FMOD_Data\FMODLocaleList.cs" />
@@ -1053,16 +1053,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UniTask.Linq">
