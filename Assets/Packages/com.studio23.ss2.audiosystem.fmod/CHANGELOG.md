@@ -1,4 +1,10 @@
-## [v1.1.7] - 2024-08-23
+## [v1.5.0] - 2024-12-13
+
+### Updated
+
+- Banks can now be loaded using addressables.
+
+## [v1.4.5] - 2024-08-23
 
 ### Updated
 
@@ -8,13 +14,8 @@
 
 ### Updated
 
-- Unity events added to FMODEmitterUtility.
-
-## [v1.1.7] - 2024-07-31
-
-### Updated
-
 - FMODBankUtility class added. It is a utility load/unload banks without the need for code.
+- Unity events added to FMODEmitterUtility.
 
 ## [v1.1.6] - 2024-07-08
 
