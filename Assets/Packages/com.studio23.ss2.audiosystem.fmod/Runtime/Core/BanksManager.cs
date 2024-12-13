@@ -238,6 +238,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             LoadBank(targetLocale);
         }
 
+        public void SwitchLocalization(AssetReference currentLocale, AssetReference targetLocale)
+        {
+            if (targetLocale == null) return;
+            UnloadBank(currentLocale);
+            LoadBank(targetLocale);
+        }
+
         private Bank BankExists(string bankName)
         {
             var key = bankName;
