@@ -1,0 +1,20 @@
+{
+    "name": "com.studio23.ss2.audiosystem.fmod",
+    "rootNamespace": "Studio23.SS2.AudioSystem.fmod",
+    "references": [
+        "FMODUnity",
+        "FMODUnityResonance",
+        "Unity.Addressables",
+        "UniTask",
+        "UniTask.Addressables"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
