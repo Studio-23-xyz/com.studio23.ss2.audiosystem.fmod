@@ -11,10 +11,10 @@ public class Sample : MonoBehaviour
 
     private string _currentLocale;
 
-    public AssetReference MasterBank;
-    public AssetReference MasterStringBank;
-    public AssetReference TestBank;
-    public List<AssetReference> Banks = new List<AssetReference>();
+    public AssetReferenceT<TextAsset> MasterBank;
+    public AssetReferenceT<TextAsset> MasterStringBank;
+    public AssetReferenceT<TextAsset> TestBank;
+    public List<AssetReferenceT<TextAsset>> Banks = new List<AssetReferenceT<TextAsset>>();
     
     #region Basic Audio
     [ContextMenu("Create Emitter")]

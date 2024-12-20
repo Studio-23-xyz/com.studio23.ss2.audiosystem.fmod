@@ -40,21 +40,21 @@ namespace FMODUnity
 
         public override void OnInspectorGUI()
         {
-            var begin = serializedObject.FindProperty("PlayEvent");
-            var end = serializedObject.FindProperty("StopEvent");
+            var begin = serializedObject.FindProperty("EventPlayTrigger");
+            var end = serializedObject.FindProperty("EventStopTrigger");
             var tag = serializedObject.FindProperty("CollisionTag");
             var eventReference = serializedObject.FindProperty("EventReference");
             var eventPath = eventReference.FindPropertyRelative("Path");
             var fadeout = serializedObject.FindProperty("AllowFadeout");
             var once = serializedObject.FindProperty("TriggerOnce");
             var preload = serializedObject.FindProperty("Preload");
-            var allowNonRigidbodyDoppler = serializedObject.FindProperty("AllowNonRigidbodyDoppler");
+            var nonRigidbodyVelocity = serializedObject.FindProperty("NonRigidbodyVelocity");
             var overrideAtt = serializedObject.FindProperty("OverrideAttenuation");
             var minDistance = serializedObject.FindProperty("OverrideMinDistance");
             var maxDistance = serializedObject.FindProperty("OverrideMaxDistance");
 
-            EditorGUILayout.PropertyField(begin, new GUIContent("Play Event"));
-            EditorGUILayout.PropertyField(end, new GUIContent("Stop Event"));
+            EditorGUILayout.PropertyField(begin, new GUIContent("Event Play Trigger"));
+            EditorGUILayout.PropertyField(end, new GUIContent("Event Stop Trigger"));
 
             if ((begin.enumValueIndex >= (int)EmitterGameEvent.TriggerEnter && begin.enumValueIndex <= (int)EmitterGameEvent.TriggerExit2D) ||
             (end.enumValueIndex >= (int)EmitterGameEvent.TriggerEnter && end.enumValueIndex <= (int)EmitterGameEvent.TriggerExit2D))
@@ -122,7 +122,7 @@ namespace FMODUnity
                     EditorGUILayout.PropertyField(preload, new GUIContent("Preload Sample Data"));
                     EditorGUILayout.PropertyField(fadeout, new GUIContent("Allow Fadeout When Stopping"));
                     EditorGUILayout.PropertyField(once, new GUIContent("Trigger Once"));
-                    EditorGUILayout.PropertyField(allowNonRigidbodyDoppler, new GUIContent("Allow Non-Rigidbody Doppler"));
+                    EditorGUILayout.PropertyField(nonRigidbodyVelocity, new GUIContent("Non-Rigidbody Velocity"));
                 }
             }
 

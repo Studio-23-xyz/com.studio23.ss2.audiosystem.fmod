@@ -760,7 +760,7 @@ namespace FMODUnity
 
         private void DisplayCodecChannels(string label, Platform platform)
         {
-            if (platform is PlatformGroup)
+            if (platform is PlatformGroup || platform is PlatformDefault)
             {
                 return;
             }
@@ -874,7 +874,7 @@ namespace FMODUnity
             private GUIContent subdirectoryHeader = new GUIContent("Output sub-directory:");
             private GUIContent speakerModeHeader = new GUIContent("Surround speaker mode:");
 
-            private const string HelpText = "Select the output sub-directory and speaker mode that match the project " +
+            private const string HelpText = "Select the output sub-directory and surround speaker mode that match the project " +
                 "platform settings in the FMOD Studio build preferences.";
             private const string UndoText = "Edit FMOD Platform Settings";
 
@@ -1355,9 +1355,10 @@ namespace FMODUnity
             GUIContent text = new GUIContent("FMOD Settings");
 
             Vector2 textSize = mainHeaderStyle.CalcSize(text);
+
             Vector2 iconSize = GUI.skin.label.CalcSize(mainHeaderIcon);
 
-            Rect rect = EditorGUILayout.GetControlRect(false, Math.Max(textSize.y, iconSize.y));
+            Rect rect = EditorGUILayout.GetControlRect(false, (Math.Max(textSize.y, iconSize.y)) * 1.75f);
 
             Rect iconRect = rect;
             iconRect.width = iconSize.x;

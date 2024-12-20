@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
 
 namespace Studio23.SS2.AudioSystem.fmod.Core
 {
@@ -7,6 +11,10 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         public EventsManager EventsManager;
         public BanksManager BanksManager;
         public MixerManager MixerManager;
+
+        public UnityEvent OnInitializeComplete;
+
+        public List<AssetReferenceT<TextAsset>> Banks = new List<AssetReferenceT<TextAsset>>();
 
         /// <summary>
         /// Set true to Initialize on Start.
@@ -53,11 +61,43 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             EventsManager.Initialize();
             BanksManager.Initialize();
             MixerManager.Initialize();
+
+            OnInitializeComplete?.Invoke();
         }
 
-        private void OnDestroy()
+        [ContextMenu("Print All Lists")]
+        public void PrintAllLists()
         {
-            BanksManager.UnloadAllBanks();
+            BanksManager.PrintFMODBankList();
+            BanksManager.PrintBankList();
+            BanksManager.PrintBankAssetReferenceList();
+        }
+
+        [ContextMenu("Print FMOD Bank List")]
+        public void PrintFMODBankList()
+        {
+            BanksManager.PrintFMODBankList();
+        }
+
+        [ContextMenu("Print Bank List")]
+        public void PrintBankList()
+        {
+            BanksManager.PrintBankList();
+        }
+
+        [ContextMenu("Print Bank Asset Reference List")]
+        public void PrintBankAssetReferenceList()
+        {
+            BanksManager.PrintBankAssetReferenceList();
+        }
+
+        [ContextMenu("Remove Banks")]
+        public void RemoveBanks()
+        {
+            foreach (var b in Banks)
+            {
+                RuntimeManager.UnloadBank(b);
+            }
         }
     }
 }

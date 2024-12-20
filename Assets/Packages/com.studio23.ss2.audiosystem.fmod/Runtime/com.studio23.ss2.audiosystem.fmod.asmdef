@@ -6,7 +6,8 @@
         "FMODUnityResonance",
         "Unity.Addressables",
         "UniTask",
-        "UniTask.Addressables"
+        "UniTask.Addressables",
+        "Unity.ResourceManager"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

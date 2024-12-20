@@ -9,6 +9,9 @@ using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if UNITY_INPUTSYSTEM_EXIST
+using UnityEngine.InputSystem;
+#endif
 
 namespace FMODUnity
 {
@@ -681,17 +684,39 @@ namespace FMODUnity
                 foreach (FieldInfo subObjectField in subObjectFields)
                 {
                     object value = subObjectField.GetValue(target);
+                    if (value == null || (value is UnityEngine.Object && !(value as UnityEngine.Object)))
+                    { 
+                        continue;
+                    }
 
-                    if (value != null && !parents.Contains(value))
+                    if (subObjectField.FieldType.IsValueType || !parents.Contains(value))
                     {
-                        if (value is System.Collections.IEnumerable)
+                        if (value is System.Collections.IEnumerable && !(value is string))
                         {
                             int index = 0;
-                            foreach (object item in value as System.Collections.IEnumerable)
+                            var valueEnumerator = (value as System.Collections.IEnumerable).GetEnumerator();
+                            for (;;)
                             {
-                                foreach (Task t in GetGenericUpdateTasks(item, FieldPath(subObjectPath, subObjectField.Name, index), parents))
+                                object item = null;
+                                try
                                 {
-                                    yield return t;
+                                    if (!valueEnumerator.MoveNext())
+                                    {
+                                        break;
+                                    }
+                                    item = valueEnumerator.Current;
+                                }
+                                catch (Exception)
+                                {
+                                    break;
+                                }
+                                if (item != null && !item.GetType().IsPrimitive && !parents.Contains(item)
+                                    && item.GetType().Namespace != "UnityEngine.InputSystem")
+                                {
+                                    foreach (Task t in GetGenericUpdateTasks(item, FieldPath(subObjectPath, subObjectField.Name, index), parents))
+                                    {
+                                        yield return t;
+                                    }
                                 }
                                 index++;
                             }

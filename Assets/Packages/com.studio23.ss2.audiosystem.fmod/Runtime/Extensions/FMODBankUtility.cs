@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
 
 namespace Studio23.SS2.AudioSystem.fmod
 {
@@ -12,9 +13,13 @@ namespace Studio23.SS2.AudioSystem.fmod
         public LoaderGameEvent UnloadEvent;
         public bool LoadBanksUsingAddressable => FMODUnity.Settings.Instance.ImportType == ImportType.AssetBundle;
         [BankRef] public List<string> Banks;
-        public List<AssetReference> AddressableBanks = new List<AssetReference>();
+        public List<AssetReferenceT<TextAsset>> AddressableBanks = new List<AssetReferenceT<TextAsset>>();
         public string CollisionTag;
         private bool isQuitting;
+
+        public UnityEvent OnBankLoadingComplete;
+        public UnityEvent OnBankUnloadingComplete;
+
 
         private void HandleGameEvent(LoaderGameEvent gameEvent)
         {
@@ -90,13 +95,13 @@ namespace Studio23.SS2.AudioSystem.fmod
         }
 
         [ContextMenu("Load")]
-        public void LoadBank()
+        public async void LoadBank()
         {
             if (LoadBanksUsingAddressable)
             {
                 foreach (var b in AddressableBanks)
                 {
-                    FMODManager.Instance.BanksManager.LoadBank(b);
+                    await FMODManager.Instance.BanksManager.LoadBank(b);
                 }
             }
             else
@@ -106,6 +111,8 @@ namespace Studio23.SS2.AudioSystem.fmod
                     FMODManager.Instance.BanksManager.LoadBank(b);
                 }
             }
+
+            OnBankLoadingComplete?.Invoke();
         }
 
         [ContextMenu("Unload")]
@@ -125,6 +132,8 @@ namespace Studio23.SS2.AudioSystem.fmod
                     FMODManager.Instance.BanksManager.UnloadBank(b);
                 }
             }
+
+            OnBankUnloadingComplete?.Invoke();
         }
 
         [ContextMenu("UnloadAll")]

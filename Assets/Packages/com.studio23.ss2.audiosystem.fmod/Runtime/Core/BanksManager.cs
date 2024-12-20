@@ -1,4 +1,3 @@
-using System;
 using Cysharp.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
@@ -17,7 +16,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
     public class BanksManager
     {
         internal Dictionary<string, Bank> _bankList;
-        internal List<AssetReference> _bankAssetReferences;
+        internal Dictionary<string, AssetReference> _bankAssetReferences;
 
         public delegate UniTask BankEvent(Bank bank);
         public BankEvent OnBankLoaded;
@@ -26,7 +25,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         internal void Initialize()
         {
             _bankList = new Dictionary<string, Bank>();
-            _bankAssetReferences = new List<AssetReference>();
+            _bankAssetReferences = new Dictionary<string, AssetReference>();
         }
 
         /// <summary>
@@ -78,22 +77,34 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         //    if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has been loaded.");
         //}
 
-        public void LoadBank(AssetReference assetReference, bool loadSamples = false, System.Action completionCallback = null)
+        public async UniTask LoadBank(AssetReferenceT<TextAsset> assetReference, bool loadSamples = false, System.Action completionCallback = null)
         {
-            var bankName = assetReference.ToString().Split(":")[1];
+            if (_bankAssetReferences.ContainsValue(assetReference))
+            {
+                if (FMODManager.Instance.Debug) Debug.Log($"{assetReference} asset reference is already loaded");
+                return;
+            }
+
+            var handle = assetReference.LoadAssetAsync<TextAsset>();
+            handle.WaitForCompletion();
+            var bankToLoad = handle.Result;
+            var bankName = bankToLoad.name;
+            assetReference.ReleaseAsset();
+
             if (_bankList.ContainsKey(bankName))
             {
                 if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank is already loaded");
                 return;
             }
 
+            Debug.Log($"To Load bank:/{bankName}");
             RuntimeManager.LoadBank(assetReference, loadSamples, completionCallback);
+            await UniTask.WaitUntil(() => RuntimeManager.HasBankLoaded(assetReference.AssetGUID));
+            Bank bank = GetBank(bankName);
 
-            Debug.Log($"bank:/{bankName}");
-            RuntimeManager.StudioSystem.getBank($"bank:/{bankName}", out Bank bank);
             OnBankLoaded?.Invoke(bank);
             _bankList[bankName] = bank;
-            _bankAssetReferences.Add(assetReference);
+            _bankAssetReferences[bankName] = assetReference;
             if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has been loaded.");
         }
 
@@ -138,7 +149,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
         public void UnloadBank(AssetReference assetReference)
         {
-            var bankName = assetReference.ToString().Split(":")[1];
+            var handle = assetReference.LoadAssetAsync<TextAsset>();
+            handle.WaitForCompletion();
+            var bankToLoad = handle.Result;
+            var bankName = bankToLoad.name;
+            assetReference.ReleaseAsset();
+
             if (!_bankList.ContainsKey(bankName))
             {
                 if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has not been loaded yet or has already been unloaded");
@@ -146,14 +162,14 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             }
 
             RuntimeManager.UnloadBank(assetReference);
+            //await UniTask.WaitUntil(() => RuntimeManager.HasBankLoaded(assetReference.AssetGUID) == false);
 
-            Debug.Log($"bank:/{bankName}");
-            RuntimeManager.StudioSystem.getBank($"bank:/{bankName}", out Bank bank);
-            
-            OnBankUnloaded?.Invoke(bank);
-            bank.unloadSampleData();
+            //var bankKey = _bankAssetReferences.FirstOrDefault(pair => pair.Value.Equals(assetReference)).Key;
+            //var bank = _bankList[bankKey];
+            OnBankUnloaded?.Invoke(_bankList[bankName]);
+            _bankList[bankName].unloadSampleData();
             _bankList.Remove(bankName);
-            _bankAssetReferences.Remove(assetReference);
+            _bankAssetReferences.Remove(bankName);
             if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has been unloaded.");
         }
 
@@ -174,7 +190,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             }
             else
             {
-                List<AssetReference> banksToRemove = _bankAssetReferences.ToList();
+                List<AssetReference> banksToRemove = _bankAssetReferences.Values.ToList();
                 foreach (var bankName in banksToRemove)
                 {
                     UnloadBank(bankName);
@@ -238,11 +254,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             LoadBank(targetLocale);
         }
 
-        public void SwitchLocalization(AssetReference currentLocale, AssetReference targetLocale)
+        public async UniTask SwitchLocalization(AssetReferenceT<TextAsset> currentLocale, AssetReferenceT<TextAsset> targetLocale)
         {
             if (targetLocale == null) return;
             UnloadBank(currentLocale);
-            LoadBank(targetLocale);
+            await LoadBank(targetLocale);
         }
 
         private Bank BankExists(string bankName)
@@ -250,6 +266,50 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             var key = bankName;
             _bankList.TryGetValue(key, out var bank);
             return bank;
+        }
+
+        public Bank GetBank(string name)
+        {
+            RuntimeManager.StudioSystem.getBankList(out Bank[] bankList);
+            foreach (var bank in bankList)
+            {
+                bank.getPath(out string path);
+                if (path.Contains(name)) return bank;
+            }
+
+            return new Bank();
+        }
+
+        public Dictionary<string, AssetReference> GetBankAssetReferenceList()
+        {
+            return _bankAssetReferences;
+        }
+
+        public void PrintFMODBankList()
+        {
+            RuntimeManager.StudioSystem.getBankList(out Bank[] bankList);
+            foreach (var bank in bankList)
+            {
+                bank.getPath(out string path);
+                Debug.Log($"FMOD Bank List contains: {path}");
+            }
+        }
+
+        public void PrintBankList()
+        {
+            foreach (var bank in _bankList)
+            {
+                bank.Value.getPath(out string name);
+                Debug.Log($"Bank List contains: {bank.Key}, {bank.Value}: {name}");
+            }
+        }
+
+        public void PrintBankAssetReferenceList()
+        {
+            foreach (var bank in _bankAssetReferences)
+            {
+                Debug.Log($"Asset Reference Bank List contains: {bank.Key}");
+            }
         }
     }
 }

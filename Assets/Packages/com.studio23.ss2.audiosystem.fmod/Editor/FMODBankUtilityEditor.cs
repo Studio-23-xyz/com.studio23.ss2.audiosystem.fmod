@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
 
 namespace FMODUnity
 {
@@ -16,6 +17,8 @@ namespace FMODUnity
             var tag = serializedObject.FindProperty("CollisionTag");
             var banks = serializedObject.FindProperty("Banks");
             var addressableBanks = serializedObject.FindProperty("AddressableBanks");
+            var onBankLoadingComplete = serializedObject.FindProperty("OnBankLoadingComplete");
+            var onBankUnloadingComplete = serializedObject.FindProperty("OnBankUnloadingComplete");
 
             // Reference to the target script
             FMODBankUtility utility = (FMODBankUtility)target;
@@ -103,6 +106,11 @@ namespace FMODUnity
                     }
                 }
             }
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Bank Events", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(onBankLoadingComplete, new GUIContent("On Bank Loading Complete"));
+            EditorGUILayout.PropertyField(onBankUnloadingComplete, new GUIContent("On Bank Unloading Complete"));
 
             serializedObject.ApplyModifiedProperties();
         }

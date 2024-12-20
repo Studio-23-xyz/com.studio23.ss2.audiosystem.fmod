@@ -854,6 +854,10 @@
       <HintPath>Library\ScriptAssemblies\UniTask.Addressables.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>

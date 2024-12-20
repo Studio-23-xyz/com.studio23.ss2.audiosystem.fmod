@@ -6,7 +6,6 @@ using Studio23.SS2.AudioSystem.fmod.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using UnityEngine;
 
 [assembly: InternalsVisibleTo("com.studio23.ss2.audiosystem.fmod.playmode.tests")]
@@ -434,12 +433,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 }
                 return null;
             }
-//#if UNITY_EDITOR
+            //#if UNITY_EDITOR
             if (FMODManager.Instance.Debug)
             {
                 Debug.Log($"Referenced Emitter: GUID {eventGUID}, GameObject {referenceGameObject.name}, Scene {referenceGameObject.scene.name}");
             }
-//#endif
+            //#endif
             var key = (eventGUID, referenceGameObject.GetInstanceID());
             _emitterDataList.TryGetValue(key, out var emitterData);
             return emitterData;
@@ -468,8 +467,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
         internal async UniTask ClearEmitter(Bank bank)
         {
-            bank.getEventList(out EventDescription[] list);
-            var data = list.ToList();
+            EventDescription[] eventList = new EventDescription[] { };
+            bank.getPath(out string name);
+            Debug.Log($"Clearing emitters: {name}");
+            bank.getEventList(out eventList);
+            var data = eventList.ToList();
             foreach (var key in data)
             {
                 key.getID(out var id);
