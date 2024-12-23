@@ -119,7 +119,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has not been loaded yet or has already been unloaded");
                 return;
             }
-            Bank bank = BankExists(bankName);
+            Bank bank = GetBank(bankName);
             var result = bank.unload();
             if (result == RESULT.OK)
             {
@@ -164,8 +164,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             RuntimeManager.UnloadBank(assetReference);
             //await UniTask.WaitUntil(() => RuntimeManager.HasBankLoaded(assetReference.AssetGUID) == false);
 
-            //var bankKey = _bankAssetReferences.FirstOrDefault(pair => pair.Value.Equals(assetReference)).Key;
-            //var bank = _bankList[bankKey];
             OnBankUnloaded?.Invoke(_bankList[bankName]);
             _bankList[bankName].unloadSampleData();
             _bankList.Remove(bankName);
@@ -201,40 +199,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Returns true if the specified Bank has been loaded.
-        /// </summary>
-        /// <param name="bankName"></param>
-        /// <returns></returns>
-        public bool HasBankLoaded(string bankName)
-        {
-            if (RuntimeManager.HasBankLoaded(bankName))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Returns true if all the previously loaded banks have been unloaded.
-        /// </summary>
-        /// <returns></returns>
-        public bool HasAllBanksUnLoaded()
-        {
-            foreach (var bank in _bankList)
-            {
-                if (HasBankLoaded(bank.Key)) return false;
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// Loads all non-streaming Sample Data for a Bank.
-        /// Make sure to load corresponding Bank before loading the Sample Data.
+        /// Loads all non-streaming Sample Data for a bank.
+        /// Make sure to load the corresponding bank before loading the Sample Data.
         /// </summary>
         /// <param name="bankName"></param>
         public void LoadBankSampleData(string bankName)
         {
-            Bank bank = BankExists(bankName);
+            Bank bank = GetBank(bankName);
             var result = bank.loadSampleData();
             if (result != RESULT.OK)
             {
@@ -243,40 +214,44 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
         }
 
         /// <summary>
-        /// Switches localization for audio.
+        /// Switches localization current locale audio table and loading the target locale audio table.
         /// </summary>
         /// <param name="currentLocale"></param>
         /// <param name="targetLocale"></param>
         public void SwitchLocalization(string currentLocale, string targetLocale)
         {
-            if (string.IsNullOrEmpty(targetLocale)) return;
+            if (string.IsNullOrEmpty(currentLocale) || string.IsNullOrEmpty(targetLocale)) return;
             UnloadBank(currentLocale);
             LoadBank(targetLocale);
         }
 
+        /// <summary>
+        /// Switches localization current locale audio table and loading the target locale audio table.
+        /// </summary>
+        /// <param name="currentLocale"></param>
+        /// <param name="targetLocale"></param>
         public async UniTask SwitchLocalization(AssetReferenceT<TextAsset> currentLocale, AssetReferenceT<TextAsset> targetLocale)
         {
-            if (targetLocale == null) return;
+            if (currentLocale == null || targetLocale == null) return;
             UnloadBank(currentLocale);
             await LoadBank(targetLocale);
         }
 
-        private Bank BankExists(string bankName)
+        private Bank GetBank(string bankName)
         {
-            var key = bankName;
-            _bankList.TryGetValue(key, out var bank);
-            return bank;
-        }
+            if (FMODUnity.Settings.Instance.ImportType == ImportType.StreamingAssets)
+            {
+                var key = bankName;
+                _bankList.TryGetValue(key, out var bank);
+                return bank;
+            }
 
-        public Bank GetBank(string name)
-        {
             RuntimeManager.StudioSystem.getBankList(out Bank[] bankList);
             foreach (var bank in bankList)
             {
                 bank.getPath(out string path);
-                if (path.Contains(name)) return bank;
+                if (path.Contains(bankName)) return bank;
             }
-
             return new Bank();
         }
 
@@ -285,6 +260,10 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             return _bankAssetReferences;
         }
 
+        #region Debug
+        /// <summary>
+        /// Prints the names of the banks loaded by FMOD.
+        /// </summary>
         public void PrintFMODBankList()
         {
             RuntimeManager.StudioSystem.getBankList(out Bank[] bankList);
@@ -295,6 +274,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             }
         }
 
+        /// <summary>
+        /// Prints the names of the banks stored in this manager when loading banks.
+        /// </summary>
         public void PrintBankList()
         {
             foreach (var bank in _bankList)
@@ -304,6 +286,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             }
         }
 
+        /// <summary>
+        /// Prints the names of the asset references stored when loading banks.
+        /// </summary>
         public void PrintBankAssetReferenceList()
         {
             foreach (var bank in _bankAssetReferences)
@@ -311,5 +296,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
                 Debug.Log($"Asset Reference Bank List contains: {bank.Key}");
             }
         }
+        #endregion
     }
 }

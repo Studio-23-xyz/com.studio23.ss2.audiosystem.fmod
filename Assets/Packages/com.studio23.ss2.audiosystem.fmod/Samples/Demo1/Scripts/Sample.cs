@@ -127,12 +127,6 @@ public class Sample : MonoBehaviour
     {
         _currentLocale = FMODLocaleList.LanguageList["English (en)"];
         FMODManager.Instance.BanksManager.LoadBank(FMODLocaleList.LanguageList["English (en)"]);
-        while (!FMODManager.Instance.BanksManager.HasBankLoaded(FMODLocaleList.LanguageList["English (en)"]))
-        {
-            Debug.Log("Bank is loading");
-            break;
-        }
-
         FMODManager.Instance.BanksManager.SwitchLocalization(_currentLocale, FMODLocaleList.LanguageList["English (en)"]);
         _currentLocale = FMODLocaleList.LanguageList["English (en)"];
         FMODManager.Instance.EventsManager.PlayProgrammerSound("welcome", FMODBank_Dialogue.Dialogue_Dialogue, gameObject);

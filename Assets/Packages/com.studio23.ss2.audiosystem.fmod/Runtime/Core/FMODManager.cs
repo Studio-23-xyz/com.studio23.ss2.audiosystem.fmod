@@ -14,8 +14,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
         public UnityEvent OnInitializeComplete;
 
-        public List<AssetReferenceT<TextAsset>> Banks = new List<AssetReferenceT<TextAsset>>();
-
         /// <summary>
         /// Set true to Initialize on Start.
         /// </summary>
@@ -65,6 +63,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             OnInitializeComplete?.Invoke();
         }
 
+        #region Debug
+        
+        /// <summary>
+        /// Prints FMOD Bank List, Manager Bank List, Asset Reference List.
+        /// </summary>
         [ContextMenu("Print All Lists")]
         public void PrintAllLists()
         {
@@ -73,31 +76,32 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             BanksManager.PrintBankAssetReferenceList();
         }
 
+        /// <summary>
+        /// Prints the names of the banks loaded by FMOD.
+        /// </summary>
         [ContextMenu("Print FMOD Bank List")]
         public void PrintFMODBankList()
         {
             BanksManager.PrintFMODBankList();
         }
 
+        /// <summary>
+        /// Prints the names of the banks stored in this manager when loading banks.
+        /// </summary>
         [ContextMenu("Print Bank List")]
         public void PrintBankList()
         {
             BanksManager.PrintBankList();
         }
 
+        /// <summary>
+        /// Prints the names of the asset references stored when loading banks.
+        /// </summary>
         [ContextMenu("Print Bank Asset Reference List")]
         public void PrintBankAssetReferenceList()
         {
             BanksManager.PrintBankAssetReferenceList();
         }
-
-        [ContextMenu("Remove Banks")]
-        public void RemoveBanks()
-        {
-            foreach (var b in Banks)
-            {
-                RuntimeManager.UnloadBank(b);
-            }
-        }
+        #endregion
     }
 }
