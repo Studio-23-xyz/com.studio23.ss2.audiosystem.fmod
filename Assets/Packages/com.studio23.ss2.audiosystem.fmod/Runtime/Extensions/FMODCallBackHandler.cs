@@ -5,6 +5,7 @@ using FMODUnity;
 using Studio23.SS2.AudioSystem.fmod.Core;
 using Studio23.SS2.AudioSystem.fmod.Data;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Debug = UnityEngine.Debug;
 
@@ -46,17 +47,18 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 GCHandle eventDataHandle = GCHandle.FromIntPtr(EventDataPtr);
                 SoundData soundData = (SoundData)eventDataHandle.Target;
 
-                soundData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY userProperties);
+                USER_PROPERTY userProperties;
+                if (soundData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out userProperties) != RESULT.OK) userProperties = default;
                 soundData.EmitterData.CurrentCallbackType = type;
 
-//#if UNITY_EDITOR
+                //#if UNITY_EDITOR
                 string eventPath = "";
                 if (FMODManager.Instance.Debug)
                 {
                     RuntimeManager.StudioSystem.lookupPath(GUID.Parse(soundData.EmitterData.EventGUID), out eventPath);
                     Debug.Log($"{eventPath}, Event Callback Type {type}");
                 }
-//#endif
+                //#endif
 
                 switch (type)
                 {
@@ -71,12 +73,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                             soundData.LastMarker = parameter.name;
                             soundData.Position = parameter.position;
 
-//#if UNITY_EDITOR
+                            //#if UNITY_EDITOR
                             if (FMODManager.Instance.Debug)
                             {
                                 Debug.Log($"{eventPath}, Marker Name: {(string)soundData.LastMarker}, Marker Position: {soundData.Position}ms");
                             }
-//#endif
+                            //#endif
 
                             break;
                         }
@@ -89,12 +91,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                         {
                             IsLoopingCheck(userProperties, soundData.EmitterData);
 
-//#if UNITY_EDITOR
+                            //#if UNITY_EDITOR
                             if (FMODManager.Instance.Debug)
                             {
                                 Debug.Log($"{eventPath}, Timeline Position: {soundData.EmitterData.GetTimelinePosition()}ms, Length: {soundData.EmitterData.GetLength()}ms");
                             }
-//#endif
+                            //#endif
 
                             if (soundData.EmitterData.GetTimelinePosition() >= soundData.EmitterData.GetLength())
                             {
@@ -125,6 +127,11 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         /// <param name="eventData"></param>
         public static void IsLoopingCheck(USER_PROPERTY userProperties, FMODEmitterData eventData)
         {
+            if (EqualityComparer<USER_PROPERTY>.Default.Equals(userProperties, default(USER_PROPERTY)))
+            {
+                return;
+            }
+
             bool isLooping = Convert.ToBoolean(userProperties.intValue());
             if (isLooping)
                 eventData.EventState = FMODEventState.Playing;

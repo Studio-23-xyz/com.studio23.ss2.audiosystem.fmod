@@ -14,6 +14,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
 {
     public static class FMODProgrammerSoundCallBackHandler
     {
+        static int cpsCount = 0;
+
         /// <summary>
         /// Initializes a CallBack for all Event Instances with programmer sounds.
         /// </summary>
@@ -105,6 +107,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             IntPtr EventDataPtr;
             RESULT result = instance.getUserData(out EventDataPtr);
 
+            
             uint soundLength = 0;
 
             if (result != RESULT.OK)
@@ -117,17 +120,18 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 GCHandle eventDataHandle = GCHandle.FromIntPtr(EventDataPtr);
                 SoundData soundData = (SoundData)eventDataHandle.Target;
 
-                soundData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out USER_PROPERTY userProperties);
+                USER_PROPERTY userProperties;
+                if (soundData.EmitterData.Emitter.EventDescription.getUserProperty("IsLooping", out userProperties) != RESULT.OK) userProperties = default;
                 soundData.EmitterData.CurrentCallbackType = type;
 
-//#if UNITY_EDITOR
+                //#if UNITY_EDITOR
                 string eventPath = "";
                 if (FMODManager.Instance.Debug)
                 {
                     RuntimeManager.StudioSystem.lookupPath(GUID.Parse(soundData.EmitterData.EventGUID), out eventPath);
                     Debug.Log($"{eventPath} Event Callback Type {type}");
                 }
-//#endif
+                //#endif
 
                 switch (type)
                 {
@@ -138,12 +142,17 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                         }
                     case EVENT_CALLBACK_TYPE.CREATE_PROGRAMMER_SOUND:
                         {
-                            FMODCallBackHandler.IsLoopingCheck(userProperties, soundData.EmitterData);
-                            var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
+                            if (soundData.Count < 1)
+                            {
+                                FMODCallBackHandler.IsLoopingCheck(userProperties, soundData.EmitterData);
+                                var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr,
+                                    typeof(PROGRAMMER_SOUND_PROPERTIES));
 
-                            parameter.sound = soundData.Sound.handle;
-                            parameter.subsoundIndex = soundData.SoundInfo.subsoundindex;
-                            Marshal.StructureToPtr(parameter, parameterPtr, false);
+                                parameter.sound = soundData.Sound.handle;
+                                parameter.subsoundIndex = soundData.SoundInfo.subsoundindex;
+                                Marshal.StructureToPtr(parameter, parameterPtr, false);
+                            }
+                            soundData.Count++;
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
@@ -152,12 +161,12 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                             soundData.LastMarker = parameter.name;
                             soundData.Position = parameter.position;
 
-//#if UNITY_EDITOR
+                            //#if UNITY_EDITOR
                             if (FMODManager.Instance.Debug)
                             {
                                 Debug.Log($"{eventPath}, Marker Name: {(string)soundData.LastMarker}, Marker Position: {soundData.Position}ms");
                             }
-//#endif
+                            //#endif
 
                             break;
                         }
@@ -175,15 +184,17 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                             sound.getLength(out soundLength, TIMEUNIT.MS);
                             sound.release();
 
-//#if UNITY_EDITOR
+                            soundData.EmitterData.Emitter.EventInstance.getTimelinePosition(out int soundPosition);
+                            //#if UNITY_EDITOR
                             if (FMODManager.Instance.Debug)
                             {
-                                if (name != null) Debug.Log($"Programmer Sound Name: {name}, Length: {soundLength}");
-                                Debug.Log($"{eventPath}, Timeline Position: {soundData.EmitterData.GetTimelinePosition()}ms, Length: {soundLength} ms");
-                            }
-//#endif
 
-                            if (soundData.EmitterData.GetTimelinePosition() >= soundLength)
+                                if (name != null) Debug.Log($"Programmer Sound Name: {name}, Length: {soundLength}");
+                                Debug.Log($"{eventPath}, Timeline Position: {soundPosition} ms, Length: {soundLength} ms");
+                            }
+                            //#endif
+
+                            if (soundPosition >= soundLength)
                             {
                                 soundData.EmitterData.CompleteEvent();
                             }
@@ -194,6 +205,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                             var parameter = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
                             var sound = new Sound(parameter.sound);
                             sound.release();
+
+                            soundData.Count = 0;
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.DESTROYED:
@@ -214,6 +227,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             public Sound Sound;
             public FMOD.StringWrapper LastMarker;
             public int Position;
+            public int Count;
 
             public SoundData(FMODEmitterData emitterData, SOUND_INFO soundInfo, Sound sound)
             {
@@ -222,6 +236,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 Sound = sound;
                 LastMarker = new StringWrapper();
                 Position = 0;
+                Count = 0;
             }
         }
     }

@@ -621,17 +621,8 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks:
-  - Master
-  Banks:
-  - Dialogue
-  - DialogueTable_LOCALE_Bangla_(bn)
-  - DialogueTable_LOCALE_Chinese_(cn)
-  - DialogueTable_LOCALE_English_(en)
-  - DialogueTable_LOCALE_Japanese_(jp)
-  - Sample
-  - SFX
-  - Test
+  MasterBanks: []
+  Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
@@ -643,7 +634,7 @@ MonoBehaviour:
   EnableErrorCallback: 0
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
-  CurrentVersion: 131622
+  CurrentVersion: 131623
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131616
   Platforms:
