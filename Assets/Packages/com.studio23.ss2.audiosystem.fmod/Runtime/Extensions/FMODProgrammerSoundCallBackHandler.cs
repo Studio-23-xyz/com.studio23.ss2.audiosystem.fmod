@@ -172,7 +172,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                         }
                     case EVENT_CALLBACK_TYPE.STOPPED:
                         {
-                            soundData.EmitterData.EventState = FMODEventState.Stopped;
+                            //soundData.EmitterData.EventState = FMODEventState.Stopped;
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.SOUND_STOPPED:
