@@ -184,20 +184,20 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                             sound.getLength(out soundLength, TIMEUNIT.MS);
                             sound.release();
 
-                            soundData.EmitterData.Emitter.EventInstance.getTimelinePosition(out int soundPosition);
                             //#if UNITY_EDITOR
                             if (FMODManager.Instance.Debug)
                             {
-
                                 if (name != null) Debug.Log($"Programmer Sound Name: {name}, Length: {soundLength}");
-                                Debug.Log($"{eventPath}, Timeline Position: {soundPosition} ms, Length: {soundLength} ms");
+                                Debug.Log($"{eventPath}, Timeline Position: {soundData.EmitterData.GetTimelinePosition()} ms, Length: {soundLength} ms");
                             }
                             //#endif
 
-                            if (soundPosition >= soundLength)
+                            if (soundData.EmitterData.GetTimelinePosition() >= soundLength)
                             {
                                 soundData.EmitterData.CompleteEvent();
                             }
+
+                            soundData.EmitterData.EventState = FMODEventState.Stopped;
                             break;
                         }
                     case EVENT_CALLBACK_TYPE.DESTROY_PROGRAMMER_SOUND:

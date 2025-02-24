@@ -104,21 +104,21 @@
     <None Include="Assets\Plugins\FMOD\platforms\uwp\lib\arm\fmodL.dll" />
     <None Include="Assets\Plugins\FMOD\platforms\win\lib\x86\resonanceaudio.dll" />
     <None Include="Assets\Plugins\FMOD\platforms\uwp\lib\x86\fmodstudioL.dll" />
-    <None Include="Assets\Plugins\FMOD\platforms\win\lib\x86\fmodstudioL.dll" />
     <None Include="Assets\Plugins\FMOD\platforms\uwp\lib\x86\fmodL.dll" />
     <None Include="Assets\Plugins\FMOD\platforms\uwp\lib\arm\fmodstudioL.dll" />
+    <None Include="Assets\Plugins\FMOD\platforms\win\lib\x86\fmodstudioL.dll" />
     <None Include="Assets\Plugins\FMOD\platforms\win\lib\x86\fmodstudio.dll" />
+    <None Include="Assets\Plugins\FMOD\LICENSE.txt" />
     <None Include="Assets\Plugins\FMOD\platforms\uwp\lib\arm\fmodstudio.dll" />
-    <None Include="Assets\Plugins\FMOD\platforms\win\lib\x86_64\fmodstudioL.dll" />
     <None Include="Assets\Plugins\FMOD\README.txt" />
     <None Include="Assets\Plugins\FMOD\platforms\uwp\lib\x64\fmod.dll" />
     <None Include="Assets\Plugins\FMOD\platforms\win\lib\x86_64\fmodstudio.dll" />
     <None Include="Assets\Plugins\FMOD\platforms\uwp\lib\x64\fmodstudio.dll" />
     <None Include="Assets\Plugins\FMOD\platforms\uwp\lib\x86\fmod.dll" />
+    <None Include="Assets\Plugins\FMOD\platforms\win\lib\x86_64\fmodstudioL.dll" />
     <None Include="Assets\Plugins\FMOD\FMODUnity.asmdef" />
     <None Include="Assets\Plugins\FMOD\platforms\win\lib\x86_64\resonanceaudio.dll" />
     <None Include="Assets\Plugins\FMOD\platforms\uwp\lib\x86\fmodstudio.dll" />
-    <None Include="Assets\Plugins\FMOD\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
