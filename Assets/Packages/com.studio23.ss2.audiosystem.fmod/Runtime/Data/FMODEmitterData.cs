@@ -25,6 +25,8 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         internal FMODEventState EventState = FMODEventState.Stopped;
         internal EVENT_CALLBACK_TYPE CurrentCallbackType;
 
+        public int SoundLength;
+
         public UnityEvent OnEventPlayed = new UnityEvent();
         public UnityEvent OnEventSuspended = new UnityEvent();
         public UnityEvent OnEventUnsuspended = new UnityEvent();
@@ -254,6 +256,16 @@ namespace Studio23.SS2.AudioSystem.fmod.Data
         {
             Emitter.EventDescription.getLength(out int length);
             return length;
+        }
+
+        public int GetSoundLength()
+        {
+            return SoundLength;
+        }
+
+        public void SetSoundLength(int length)
+        {
+            SoundLength = length;
         }
 
         /// <summary>

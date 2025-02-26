@@ -44,16 +44,13 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
         /// <returns></returns>
         private static async UniTask<SoundData> LoadExternalSound(FMODEmitterData eventData, string key)
         {
-            MODE soundMode = MODE.LOOP_NORMAL | MODE.CREATECOMPRESSEDSAMPLE | MODE.NONBLOCKING;
-
+            MODE soundMode = MODE.LOOP_NORMAL | MODE.CREATESTREAM; // Stream large files
             Sound sound;
             SOUND_INFO soundInfo = new SOUND_INFO() { subsoundindex = -1 };
 
             if (key.Contains("."))
             {
-                var soundResult =
-                    RuntimeManager.CoreSystem.createSound(Application.streamingAssetsPath + "/" + key,
-                        soundMode, out sound);
+                var soundResult = RuntimeManager.CoreSystem.createSound(Application.streamingAssetsPath + "/" + key, soundMode, out sound);
                 if (soundResult != RESULT.OK)
                 {
                     Debug.LogWarning("Couldn't find external audio file with key: " + key);
@@ -62,7 +59,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             }
             else
             {
-                // Load Sound Path
                 RESULT keyResult = RuntimeManager.StudioSystem.getSoundInfo(key, out soundInfo);
                 if (keyResult != RESULT.OK)
                 {
@@ -70,9 +66,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                     return null;
                 }
 
-                // Load Sound
-                RESULT soundResult = RuntimeManager.CoreSystem.createSound(soundInfo.name_or_data,
-                    soundMode | soundInfo.mode, ref soundInfo.exinfo, out sound);
+                RESULT soundResult = RuntimeManager.CoreSystem.createSound(soundInfo.name_or_data, soundMode | soundInfo.mode, ref soundInfo.exinfo, out sound);
                 if (soundResult != RESULT.OK)
                 {
                     Debug.LogWarning("Couldn't load dialogue sound: " + key);
@@ -80,7 +74,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 }
             }
 
-            //Wait to Load
+            // Wait for the sound to be fully loaded
             int maxFrameWait = 120;
             OPENSTATE openstate = OPENSTATE.BUFFERING;
             while (openstate != OPENSTATE.READY)
@@ -95,8 +89,15 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 }
             }
 
-            return new SoundData(eventData, soundInfo, sound);
+            // Retrieve sound length once it's ready
+            await UniTask.DelayFrame(5); // Wait 5 frames before getting length
+            sound.getLength(out uint soundLength, TIMEUNIT.MS);
+            Debug.Log($"Loaded sound {key} with length: {soundLength} ms");
+
+            eventData.SetSoundLength((int)soundLength);
+            return new SoundData(eventData, soundInfo, sound, (int)soundLength);
         }
+
 
         [MonoPInvokeCallback(typeof(EVENT_CALLBACK))]
         private static RESULT ProgrammerSoundCallbackHandler(EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
@@ -228,8 +229,9 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
             public FMOD.StringWrapper LastMarker;
             public int Position;
             public int Count;
+            public int SoundLength; // Store sound length
 
-            public SoundData(FMODEmitterData emitterData, SOUND_INFO soundInfo, Sound sound)
+            public SoundData(FMODEmitterData emitterData, SOUND_INFO soundInfo, Sound sound, int soundLength)
             {
                 EmitterData = emitterData;
                 SoundInfo = soundInfo;
@@ -237,6 +239,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Extensions
                 LastMarker = new StringWrapper();
                 Position = 0;
                 Count = 0;
+                SoundLength = soundLength;
             }
         }
     }
