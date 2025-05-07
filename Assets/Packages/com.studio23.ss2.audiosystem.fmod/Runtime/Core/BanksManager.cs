@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using FMOD;
 using FMOD.Studio;
@@ -89,7 +90,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             handle.WaitForCompletion();
             var bankToLoad = handle.Result;
             var bankName = bankToLoad.name;
-            assetReference.ReleaseAsset();
+            Addressables.Release(handle);
 
             if (_bankList.ContainsKey(bankName))
             {
