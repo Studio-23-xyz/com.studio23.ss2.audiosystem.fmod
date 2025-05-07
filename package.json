@@ -1,0 +1,42 @@
+{
+  "name": "com.studio23.ss2.audiosystem.fmod",
+  "version": "1.6.4",
+  "displayName": "Audio System for FMOD",
+  "description": "This is a system for managing and utilizing audio using FMOD. It provides an easier way to use FMOD from the get go.",
+  "unity": "2022.3",
+  "unityRelease": "10f1",
+  "documentationUrl": "https://studio-23-xyz.github.io/com.studio23.ss2.audiosystem.fmod/manual/",
+  "changelogUrl": "https://studio-23-xyz.github.io/com.studio23.ss2.audiosystem.fmod/changelog/CHANGELOG.html",
+  "licensesUrl": "https://studio-23-xyz.github.io/com.studio23.ss2.audiosystem.fmod/license/LICENSE.html",
+  "scopedRegistries": [
+    {
+      "name": "Studio 23",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.studio23.ss2",
+		"com.cysharp.unitask"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.cysharp.unitask": "2.5.4"
+	},
+  "keywords": [
+    "audio system",
+	"audiosystem",
+    "audio",
+    "FMOD"
+  ],
+  "samples": [
+    {
+      "displayName": "Audio System for FMOD Example",
+      "description": "A small sample to demonstrate the abilities of this package.",
+      "path": "Samples~/Demo1"
+    }   
+  ],    
+  "author": {
+    "name": "Studio 23",
+    "email": "contact@studio-23.xyz",
+    "url": "https://studio-23.xyz"
+  }
+}
