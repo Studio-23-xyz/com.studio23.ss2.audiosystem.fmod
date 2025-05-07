@@ -100,7 +100,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
 
             Debug.Log($"To Load bank:/{bankName}");
             RuntimeManager.LoadBank(assetReference, loadSamples, completionCallback);
-            await UniTask.WaitUntil(() => RuntimeManager.HasBankLoaded(assetReference.AssetGUID));
+            //await UniTask.WaitUntil(() => RuntimeManager.HasBankLoaded(assetReference.AssetGUID));
             Bank bank = GetBank(bankName);
 
             OnBankLoaded?.Invoke(bank);
