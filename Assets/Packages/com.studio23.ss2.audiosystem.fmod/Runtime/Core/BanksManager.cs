@@ -90,7 +90,6 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             handle.WaitForCompletion();
             var bankToLoad = handle.Result;
             var bankName = bankToLoad.name;
-            Addressables.Release(handle);
 
             if (_bankList.ContainsKey(bankName))
             {
@@ -101,12 +100,15 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             Debug.Log($"To Load bank:/{bankName}");
             RuntimeManager.LoadBank(assetReference, loadSamples, completionCallback);
             //await UniTask.WaitUntil(() => RuntimeManager.HasBankLoaded(assetReference.AssetGUID));
+            await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             Bank bank = GetBank(bankName);
 
             OnBankLoaded?.Invoke(bank);
             _bankList[bankName] = bank;
             _bankAssetReferences[bankName] = assetReference;
             if (FMODManager.Instance.Debug) Debug.Log($"{bankName} bank has been loaded.");
+
+            Addressables.Release(handle);
         }
 
         /// <summary>
