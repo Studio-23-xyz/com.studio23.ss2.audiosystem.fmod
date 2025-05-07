@@ -250,7 +250,7 @@ namespace Studio23.SS2.AudioSystem.fmod.Core
             foreach (var bank in bankList)
             {
                 bank.getPath(out string path);
-                if (path == null) continue;
+                if (path ==  null) continue;
                 if (path.Contains(bankName)) return bank;
             }
             return new Bank();
